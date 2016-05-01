@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/pycon_logo"
+        android:tint="#D9FFFFFF"
+        android:src="@drawable/logo_icon"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- PyCon JP 2016 -->
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/about_pycon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/about_pycon_body"/>
+
+        <!-- 運営情報, このアプリについて -->
+        <ListView
+            android:id="@+id/about_list_view"
+            android:divider="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </LinearLayout>
+</FrameLayout>

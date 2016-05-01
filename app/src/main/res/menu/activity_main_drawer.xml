@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_talks"
+            android:icon="@drawable/ic_event_note_black_24dp"
+            android:title="@string/nav_talks" />
+        <item
+            android:id="@+id/nav_my_talks"
+            android:icon="@drawable/ic_local_offer_black_24dp"
+            android:title="@string/nav_my_talks" />
+        <item
+            android:id="@+id/nav_access"
+            android:icon="@drawable/ic_place_black_24dp"
+            android:title="@string/nav_access" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="@string/nav_about" />
+    </group>
+
+</menu>

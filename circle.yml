@@ -1,0 +1,28 @@
+machine:
+    java:
+        version: openjdk8
+    environment:
+        JAVA_OPTS: "-Xmx2048m -XX:MaxPermSize=1024m"
+
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-23
+    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.3
+
+test:
+  override:
+    - ./gradlew assembleDebug
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./gradlew assembleRelease
+      - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+  beta:
+    branch: develop
+    commands:
+      - ./gradlew assembleDebug
+      - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+      - curl -F "file=@app/build/outputs/apk/app-debug.apk" -F "token=${DEPLOY_GATE_API_KEY}" -F "message=Deploy from CircleCI." https://deploygate.com/api/users/rhoboro/apps
+
