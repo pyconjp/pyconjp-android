@@ -31,5 +31,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Feature.About.AboutOrganizerActivity" >
+        </activity>
+        <activity
+            android:name=".Feature.About.AboutAppActivity" >
+        </activity>
+        <activity
+            android:name=".Feature.About.FeedbackActivity" >
+        </activity>
     </application>
 </manifest>
