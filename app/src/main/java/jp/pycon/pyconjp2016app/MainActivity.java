@@ -1,14 +1,12 @@
 package jp.pycon.pyconjp2016app;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -145,6 +143,16 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void toggleToolbarElevation(boolean enable) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            float elevation = enable ? getResources().getDimension(R.dimen.elevation) : 0;
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            if (toolbar != null) {
+                toolbar.setElevation(elevation);
+            }
+        }
+    }
+
     private void replaceFragment(Fragment fragment) {
         final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(R.anim.fragment_fade_enter, R.anim.fragment_fade_exit);
@@ -168,6 +176,7 @@ public class MainActivity extends AppCompatActivity
             navigationView.setCheckedItem(feature.getMenuId());
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toggleToolbarElevation(feature.shouldToggleToolbar());
         if (toolbar != null) {
             toolbar.setTitle(feature.getTitleResId());
         }
