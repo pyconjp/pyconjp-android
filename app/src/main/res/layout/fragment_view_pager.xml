@@ -13,6 +13,7 @@
             android:id="@+id/tab_layout"
             android:layout_height="?attr/actionBarSize"
             android:layout_width="match_parent"
+            android:elevation="@dimen/elevation"
             android:background="?attr/colorPrimary"
             app:tabIndicatorColor="@color/colorMagenta"
             app:tabIndicatorHeight="3dp"

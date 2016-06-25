@@ -12,25 +12,25 @@ import jp.pycon.pyconjp2016app.R;
  * Created by rhoboro on 5/1/16.
  */
 public enum Feature {
-    TALKS(R.id.nav_talks, R.string.nav_talks, TalksFragment.class.getSimpleName()) {
+    TALKS(R.id.nav_talks, R.string.nav_talks, false, TalksFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return TalksFragment.newInstance();
         }
     },
-    MY_TALKS(R.id.nav_my_talks, R.string.nav_my_talks, MyTalksFragment.class.getSimpleName()) {
+    MY_TALKS(R.id.nav_my_talks, R.string.nav_my_talks, false, MyTalksFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return MyTalksFragment.newInstance();
         }
     },
-    ACCESS(R.id.nav_access, R.string.nav_access, AccessFragment.class.getSimpleName()) {
+    ACCESS(R.id.nav_access, R.string.nav_access, true, AccessFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return AccessFragment.newInstance();
         }
     },
-    ABOUT(R.id.nav_about, R.string.nav_about, AboutFragment.class.getSimpleName()) {
+    ABOUT(R.id.nav_about, R.string.nav_about, true, AboutFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return AboutFragment.newInstance();
@@ -39,11 +39,13 @@ public enum Feature {
 
     private final int menuId;
     private final int titleResId;
+    private final boolean toggleToolbar;
     private final String pageName;
 
-    Feature(int menuId, int titleResId, String pageName){
+    Feature(int menuId, int titleResId, boolean toggleToolbar, String pageName){
         this.menuId = menuId;
         this.titleResId = titleResId;
+        this.toggleToolbar = toggleToolbar;
         this.pageName = pageName;
     }
 
@@ -61,6 +63,10 @@ public enum Feature {
         return menuId;
     }
 
+    public boolean shouldToggleToolbar() {
+        return toggleToolbar;
+    }
+    
     public int getTitleResId() {
         return titleResId;
     }
