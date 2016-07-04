@@ -18,8 +18,6 @@ import jp.pycon.pyconjp2016app.R;
  */
 public class MyTalksFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
-    private TalkListAdapter mTalkAdapter;
-
     public static MyTalksFragment newInstance() {
         MyTalksFragment fragment = new MyTalksFragment();
         return fragment;
@@ -37,7 +35,7 @@ public class MyTalksFragment extends Fragment implements ViewPager.OnPageChangeL
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                TalkListFragment f = TalkListFragment.newInstance(position);
+                MyTalkListFragment f = MyTalkListFragment.newInstance(position);
                 return f;
             }
 

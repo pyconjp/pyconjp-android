@@ -24,6 +24,8 @@ import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.MyTalksFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.TalksFragment;
 
+import jp.pycon.pyconjp2016app.R;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
 
