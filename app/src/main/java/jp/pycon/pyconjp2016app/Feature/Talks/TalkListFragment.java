@@ -50,7 +50,7 @@ public class TalkListFragment extends Fragment {
 
         final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.GRAY);
-        final int dividerHeight = (int)(4 * getResources().getDisplayMetrics().density);
+        final int dividerHeight = (int)(1 * getResources().getDisplayMetrics().density);
 
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
 
