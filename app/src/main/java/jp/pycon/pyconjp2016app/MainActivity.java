@@ -95,7 +95,11 @@ public class MainActivity extends AppCompatActivity
 
                                @Override
                                public void onNext(PyConJPScheduleEntity pyConJPScheduleEntity) {
-                                   Log.d("tag", "API" + pyConJPScheduleEntity.data0.contents.toString());
+                                   Log.d("tag", "data0" + pyConJPScheduleEntity.data0.contents.toString());
+                                   Log.d("tag", "data1" + pyConJPScheduleEntity.data1.contents.toString());
+                                   Log.d("tag", "data2" + pyConJPScheduleEntity.data2.contents.toString());
+                                   Log.d("tag", "data3" + pyConJPScheduleEntity.data3.contents.toString());
+                                   // TODO: Realmに格納
                                }
                            }
                 );
