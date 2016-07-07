@@ -6,10 +6,10 @@ machine:
 
 dependencies:
   pre:
-    - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-23
-    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.3
-    - echo y | android update sdk -u -a -t sys-img-armeabi-v7a-android-23
-    - echo n | android create avd -n testing -f -t android-23 -b armeabi-v7a
+    - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-24
+    - echo y | android update sdk --no-ui --all --filter build-tools-24
+    - echo y | android update sdk -u -a -t sys-img-armeabi-v7a-android-24
+    - echo n | android create avd -n testing -f -t android-24 -b armeabi-v7a
 
 test:
   pre:
