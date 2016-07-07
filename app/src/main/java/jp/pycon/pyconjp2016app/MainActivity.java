@@ -12,38 +12,29 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
-import jp.pycon.pyconjp2016app.API.Client.APIClient;
-import jp.pycon.pyconjp2016app.API.Entity.PyConJPScheduleEntity;
+import io.realm.Realm;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.MyTalksFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.TalksFragment;
 
-import jp.pycon.pyconjp2016app.R;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
 
     private static final long DRAWER_CLOSE_DELAY_MILLS = 300L;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        realm = Realm.getDefaultInstance();
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -57,8 +48,6 @@ public class MainActivity extends AppCompatActivity
             toggle.syncState();
         }
 
-        getPyConJPSchedule();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
@@ -70,40 +59,14 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().addOnBackStackChangedListener(this);
     }
 
-    private void getPyConJPSchedule() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://pycon.jp/2016/site_media/static/json/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-        APIClient apiClient = retrofit.create(APIClient.class);
-        rx.Observable<PyConJPScheduleEntity> observable =  apiClient.getPyConJPSchedule();
-        observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<PyConJPScheduleEntity>() {
-                               @Override
-                               public void onCompleted() {
-
-                               }
-
-                               @Override
-                               public void onError(Throwable e) {
-                                   e.printStackTrace();
-                                   Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
-                               }
-
-                               @Override
-                               public void onNext(PyConJPScheduleEntity pyConJPScheduleEntity) {
-                                   Log.d("tag", "data0" + pyConJPScheduleEntity.data0.contents.toString());
-                                   Log.d("tag", "data1" + pyConJPScheduleEntity.data1.contents.toString());
-                                   Log.d("tag", "data2" + pyConJPScheduleEntity.data2.contents.toString());
-                                   Log.d("tag", "data3" + pyConJPScheduleEntity.data3.contents.toString());
-                                   // TODO: Realmに格納
-                               }
-                           }
-                );
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
+
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
