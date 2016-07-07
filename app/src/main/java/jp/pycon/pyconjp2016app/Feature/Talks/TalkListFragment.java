@@ -1,6 +1,5 @@
 package jp.pycon.pyconjp2016app.Feature.Talks;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,16 +10,25 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Toast;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.API.Client.APIClient;
+import jp.pycon.pyconjp2016app.API.Entity.ContentEntity;
+import jp.pycon.pyconjp2016app.API.Entity.PyConJPScheduleEntity;
+import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.R;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by rhoboro on 4/23/16.
@@ -29,6 +37,10 @@ public class TalkListFragment extends Fragment {
 
 
     private Realm realm;
+    private RealmResults<RealmScheduleObject> scheduleObjects;
+    private RecyclerView recyclerView;
+    RealmScheduleAdapter adapter;
+
     public TalkListFragment() {
 
     }
@@ -45,14 +57,14 @@ public class TalkListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_talk_list, container, false);
-        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.talk_recycler_view);
+        recyclerView = (RecyclerView) v.findViewById(R.id.talk_recycler_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
         final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.GRAY);
-        final int dividerHeight = (int)(1 * getResources().getDisplayMetrics().density);
+        final int dividerHeight = (int) (1 * getResources().getDisplayMetrics().density);
 
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
 
@@ -85,32 +97,11 @@ public class TalkListFragment extends Fragment {
 
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                int position = ((RecyclerView.LayoutParams)view.getLayoutParams()).getViewLayoutPosition();
+                int position = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
                 int top = position == 0 ? 0 : dividerHeight;
                 outRect.set(0, top, 0, 0);
             }
         });
-
-        List<TalkScheduleModel> data = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            TalkScheduleModel model = new TalkScheduleModel();
-            if (i%3 == 0) {
-                model.setTime("10:00AM");
-                model.setSpeaker("Takesxi Sximada");
-                model.setTitle("【初心者向けPythonチュートリアル】Webスクレイピングに挑戦してみよう");
-            } else if (i%3 == 1) {
-                model.setTime("02:00PM");
-                model.setSpeaker("Kimikazu Kato");
-                model.setTitle("Pythonを使った機械学習入門");
-            } else {
-                model.setTime("02:00PM");
-                model.setSpeaker("Takahiro Ikeuchi");
-                model.setTitle("Python x Edison x AWSではじめる IoT");
-            }
-
-            data.add(model);
-        }
-        recyclerView.setAdapter(new TalkListAdapter(getContext(), data));
 
         return v;
     }
@@ -119,6 +110,11 @@ public class TalkListFragment extends Fragment {
     public void onStart() {
         super.onStart();
         realm = Realm.getDefaultInstance();
+
+        scheduleObjects = realm.where(RealmScheduleObject.class).findAll();
+        adapter = new RealmScheduleAdapter(getContext(), scheduleObjects);
+        recyclerView.setAdapter(adapter);
+        getPyConJPSchedule(recyclerView);
     }
 
     @Override
@@ -127,79 +123,56 @@ public class TalkListFragment extends Fragment {
         realm.close();
     }
 
-    private static class TalkScheduleModel {
+    private void getPyConJPSchedule(final RecyclerView recyclerView) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://pycon.jp/2016/site_media/static/json/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        APIClient apiClient = retrofit.create(APIClient.class);
+        rx.Observable<PyConJPScheduleEntity> observable =  apiClient.getPyConJPSchedule();
+        observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<PyConJPScheduleEntity>() {
+                               @Override
+                               public void onCompleted() {
+                                   scheduleObjects = realm.where(RealmScheduleObject.class).findAllAsync();
+                                   adapter.notifyDataSetChanged();
+                               }
 
-        private int id;
-        private String title;
-        private String time;
-        private String speaker;
+                               @Override
+                               public void onError(Throwable e) {
+                                   e.printStackTrace();
+                                   Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+                               }
 
-        public void setTime(String time) {
-            this.time = time;
-        }
+                               @Override
+                               public void onNext(PyConJPScheduleEntity pyConJPScheduleEntity) {
+                                   Log.d("tag", "data0" + pyConJPScheduleEntity.data0.contents.toString());
+                                   Log.d("tag", "data1" + pyConJPScheduleEntity.data1.contents.toString());
+                                   Log.d("tag", "data2" + pyConJPScheduleEntity.data2.contents.toString());
+                                   Log.d("tag", "data3" + pyConJPScheduleEntity.data3.contents.toString());
 
-        public String getTime() {
-            return time;
-        }
-
-        public void setSpeaker(String speaker) {
-            this.speaker = speaker;
-        }
-
-        public String getSpeaker() {
-            return speaker;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-        public String getTitle() {
-            return title;
-        }
-    }
-
-    private static class ViewHolder extends RecyclerView.ViewHolder {
-
-        static final int LAYOUT_ID = R.layout.cell_schedule;
-
-        final TextView speaker;
-        final TextView time;
-        final TextView title;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            speaker = (TextView)itemView.findViewById(R.id.speaker);
-            time = (TextView)itemView.findViewById(R.id.time);
-            title = (TextView)itemView.findViewById(R.id.title);
-        }
-    }
-
-    private static class TalkListAdapter extends RecyclerView.Adapter<ViewHolder> {
-
-        private final LayoutInflater inflater;
-        private final List<TalkScheduleModel> data;
-
-        private TalkListAdapter(Context context, List<TalkScheduleModel> data) {
-            this.inflater = LayoutInflater.from(context);
-            this.data = data;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(inflater.inflate(ViewHolder.LAYOUT_ID, parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            TalkScheduleModel model = data.get(position);
-            holder.title.setText(model.getTitle());
-            holder.speaker.setText(model.getSpeaker());
-            holder.time.setText(model.getTime());
-        }
-
-        @Override
-        public int getItemCount() {
-            return data.size();
-        }
+                                   // 前回結果を Realm から削除
+                                   final RealmResults<RealmScheduleObject> results = realm.where(RealmScheduleObject.class).findAll();
+                                   realm.executeTransaction(new Realm.Transaction() {
+                                       @Override
+                                       public void execute(Realm realm) {
+                                           results.deleteAllFromRealm();
+                                       }
+                                   });
+                                   // TODO: 結果を Realm に格納
+                                   realm.beginTransaction();
+                                   for (ContentEntity entity: pyConJPScheduleEntity.data1.contents) {
+                                       RealmScheduleObject obj = realm.createObject(RealmScheduleObject.class);
+                                       obj.time = entity.time;
+                                       obj.speaker = entity.speaker;
+                                       obj.title  = entity.title;
+                                   }
+                                   realm.commitTransaction();
+                               }
+                           }
+                );
     }
 }
