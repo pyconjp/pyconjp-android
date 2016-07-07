@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
 import jp.pycon.pyconjp2016app.R;
 
 /**
@@ -27,6 +28,7 @@ import jp.pycon.pyconjp2016app.R;
 public class TalkListFragment extends Fragment {
 
 
+    private Realm realm;
     public TalkListFragment() {
 
     }
@@ -111,6 +113,18 @@ public class TalkListFragment extends Fragment {
         recyclerView.setAdapter(new TalkListAdapter(getContext(), data));
 
         return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        realm = Realm.getDefaultInstance();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        realm.close();
     }
 
     private static class TalkScheduleModel {

@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
+import io.realm.Realm;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.API.Entity.PyConJPScheduleEntity;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
@@ -40,10 +41,12 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
 
     private static final long DRAWER_CLOSE_DELAY_MILLS = 300L;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        realm = Realm.getDefaultInstance();
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,6 +71,12 @@ public class MainActivity extends AppCompatActivity
             }
         }
         getSupportFragmentManager().addOnBackStackChangedListener(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 
     private void getPyConJPSchedule() {
