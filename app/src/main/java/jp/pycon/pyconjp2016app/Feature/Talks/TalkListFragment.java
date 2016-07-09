@@ -1,5 +1,7 @@
 package jp.pycon.pyconjp2016app.Feature.Talks;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -36,6 +38,7 @@ import rx.schedulers.Schedulers;
 public class TalkListFragment extends Fragment {
 
 
+    private Context mContext;
     private Realm realm;
     private RealmResults<RealmScheduleObject> scheduleObjects;
     private RecyclerView recyclerView;
@@ -51,6 +54,12 @@ public class TalkListFragment extends Fragment {
         TalkListFragment fragment = new TalkListFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext = context;
     }
 
     @Nullable
@@ -117,6 +126,9 @@ public class TalkListFragment extends Fragment {
             @Override
             public void onClick(RealmScheduleObject obj) {
                 Toast.makeText(getContext(), obj.title,Toast.LENGTH_SHORT).show();
+                final Intent intent = new Intent(mContext, TalkDetailActivity.class);
+                intent.putExtra(TalkDetailActivity.BUNDLE_KEY_TALK_ID, obj.title);
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(adapter);
