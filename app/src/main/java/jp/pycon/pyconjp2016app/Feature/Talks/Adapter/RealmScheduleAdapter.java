@@ -2,6 +2,7 @@ package jp.pycon.pyconjp2016app.Feature.Talks.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -16,6 +17,12 @@ import jp.pycon.pyconjp2016app.R;
  */
 public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmScheduleObject, RealmScheduleAdapter.MyViewHolder> {
 
+    public interface RealmScheduleAdapterListener {
+        void onClick(RealmScheduleObject obj);
+    }
+
+    private RealmScheduleAdapterListener mListener;
+
     private final Context context;
 
     public RealmScheduleAdapter(Context context, RealmResults<RealmScheduleObject> data) {
@@ -25,16 +32,34 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmSchedule
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MyViewHolder(inflater.inflate(MyViewHolder.LAYOUT_ID, parent, false));
+        final MyViewHolder holder = new MyViewHolder(inflater.inflate(MyViewHolder.LAYOUT_ID, parent, false));
+        TypedValue val = new TypedValue();
+        if (context.getTheme() != null) {
+            context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, val, true);
+        }
+        holder.itemView.setBackgroundResource(val.resourceId);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.onClick(holder.obj);
+                }
+            }
+        });
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
         RealmScheduleObject obj = getData().get(position);
         holder.obj = obj;
         holder.title.setText(obj.title);
         holder.speaker.setText(obj.speaker);
         holder.time.setText(obj.time);
+    }
+
+    public void setOnClickListener(RealmScheduleAdapterListener listener) {
+        this.mListener = listener;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
