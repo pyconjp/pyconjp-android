@@ -127,6 +127,7 @@ public class TalkListFragment extends Fragment {
             public void onClick(RealmScheduleObject obj) {
                 Toast.makeText(getContext(), obj.title,Toast.LENGTH_SHORT).show();
                 final Intent intent = new Intent(mContext, TalkDetailActivity.class);
+                // TODO: 渡すのは id にする
                 intent.putExtra(TalkDetailActivity.BUNDLE_KEY_TALK_ID, obj.title);
                 startActivity(intent);
             }
