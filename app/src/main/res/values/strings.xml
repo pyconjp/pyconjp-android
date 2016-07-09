@@ -20,14 +20,15 @@
 
     <!-- About -->
     <string name="about_pycon">PyCon JP 2016</string>
-    <string name="about_pycon_body">PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。\n\nPyCon JPの開催を通じて、Pythonの使い手が一同に集まり、Pythonにまつわる様々な分野の知識や情報を交換し、新たな友達やコミュニティとのつながり、仕事やビジネスチャンスを増やせる場所とすることが目標です。</string>
+    <string name="about_pycon_body">PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。\n\nPyCon JP 2016では、「Everyone\'s different, all are wonderful.」をテーマに据えました。Pythonをキーワードに多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンスを目指して、スタッフ全員で企画を進めています。</string>
     <string name="about_pycon_web">https://pycon.jp/2016</string>
 
-    <string name="about_organizers">運営情報</string>
-    <string name="about_organizers_body">PyCon JP 2016は、PyCon JP実行委員会PyCon JP 2016運営チームによって運営されています。</string>
+    <string name="about_organizers">PyCon JP 運営について</string>
+    <string name="about_organizers_body1">PyCon JP 2016は、PyCon JP実行委員会 PyCon JP 2016運営チームによって運営されています。</string>
+    <string name="about_organizers_body2">私たちは、Pythonユーザが一堂に介し、互いに交流を深め、知識を分けあい、新たな可能性を見つけられる場所として、PyCon JPの企画と運営に取り組んできました。とりわけ、PyCon JPを広く世界のPythonユーザにも開かれた場と位置づけ、国内外のユーザにとって魅力的なカンファレンスとなるよう努力をつづけています。</string>
     <string name="about_organizers_chairperson">座長: 鈴木たかのり</string>
-    <string name="about_organizers_web">http://www.pycon.jp</string>
-    <string name="about_organizers_contact">2016@pycon.jp</string>
+    <string name="about_organizers_web">Webサイト: http://www.pycon.jp</string>
+    <string name="about_organizers_contact">連絡先: 2016@pycon.jp</string>
     <string name="about_blog">PyCon JP Blog</string>
     <string name="about_blog_web">http://pyconjp.blogspot.jp/</string>
     <string name="about_staff">スタッフ一覧</string>

@@ -39,7 +39,8 @@ public class AboutFragment extends Fragment  implements AdapterView.OnItemClickL
         ListView listView = (ListView) v.findViewById(R.id.about_list_view);
         listView.setOnItemClickListener(this);
 
-        String[] aboutList = {getString(R.string.about_organizers), getString(R.string.about_this_app), getString(R.string.about_feedback)};
+//        String[] aboutList = {getString(R.string.about_organizers), getString(R.string.about_this_app), getString(R.string.about_feedback)};
+        String[] aboutList = {getString(R.string.about_organizers), getString(R.string.about_this_app)};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(mContext, R.layout.cell_about, aboutList);
         listView.setAdapter(arrayAdapter);
         return v;
