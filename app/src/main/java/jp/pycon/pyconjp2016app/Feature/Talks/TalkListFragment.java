@@ -113,8 +113,14 @@ public class TalkListFragment extends Fragment {
 
         scheduleObjects = realm.where(RealmScheduleObject.class).findAll();
         adapter = new RealmScheduleAdapter(getContext(), scheduleObjects);
+        adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
+            @Override
+            public void onClick(RealmScheduleObject obj) {
+                Toast.makeText(getContext(), obj.title,Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(adapter);
-        getPyConJPSchedule(recyclerView);
+        getPyConJPSchedule();
     }
 
     @Override
@@ -123,7 +129,7 @@ public class TalkListFragment extends Fragment {
         realm.close();
     }
 
-    private void getPyConJPSchedule(final RecyclerView recyclerView) {
+    private void getPyConJPSchedule() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://pycon.jp/2016/site_media/static/json/")
                 .addConverterFactory(GsonConverterFactory.create())

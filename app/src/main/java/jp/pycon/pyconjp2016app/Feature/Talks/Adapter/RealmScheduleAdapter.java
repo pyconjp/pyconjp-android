@@ -6,7 +6,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import io.realm.RealmRecyclerViewAdapter;
 import io.realm.RealmResults;
@@ -17,6 +16,12 @@ import jp.pycon.pyconjp2016app.R;
  * Created by rhoboro on 7/8/16.
  */
 public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmScheduleObject, RealmScheduleAdapter.MyViewHolder> {
+
+    public interface RealmScheduleAdapterListener {
+        void onClick(RealmScheduleObject obj);
+    }
+
+    private RealmScheduleAdapterListener mListener;
 
     private final Context context;
 
@@ -36,8 +41,9 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmSchedule
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 詳細画面を表示
-                Toast.makeText(view.getContext(), holder.title.getText(),Toast.LENGTH_SHORT).show();
+                if (mListener != null) {
+                    mListener.onClick(holder.obj);
+                }
             }
         });
         return holder;
@@ -50,6 +56,10 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmSchedule
         holder.title.setText(obj.title);
         holder.speaker.setText(obj.speaker);
         holder.time.setText(obj.time);
+    }
+
+    public void setOnClickListener(RealmScheduleAdapterListener listener) {
+        this.mListener = listener;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
