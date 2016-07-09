@@ -31,7 +31,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Feature.About.AboutOrganizerActivity" >
+            android:name=".Feature.About.AboutOrganizerActivity"
+            android:label="@string/about_organizers">
         </activity>
         <activity
             android:name=".Feature.About.AboutAppActivity" >
