@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +20,8 @@ import android.widget.Toast;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
-import jp.pycon.pyconjp2016app.API.Entity.ContentEntity;
-import jp.pycon.pyconjp2016app.API.Entity.PyConJPScheduleEntity;
+import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationEntity;
+import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationListEntity;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.R;
 import retrofit2.Retrofit;
@@ -72,7 +71,7 @@ public class TalkListFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.GRAY);
+        paint.setColor(Color.argb(15, 0, 0, 0));
         final int dividerHeight = (int) (1 * getResources().getDisplayMetrics().density);
 
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
@@ -144,16 +143,16 @@ public class TalkListFragment extends Fragment {
 
     private void getPyConJPSchedule() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://pycon.jp/2016/site_media/static/json/")
+                .baseUrl(APIClient.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         APIClient apiClient = retrofit.create(APIClient.class);
-        rx.Observable<PyConJPScheduleEntity> observable =  apiClient.getPyConJPSchedule();
+        rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<PyConJPScheduleEntity>() {
+                .subscribe(new Subscriber<PresentationListEntity>() {
                                @Override
                                public void onCompleted() {
                                    scheduleObjects = realm.where(RealmScheduleObject.class).findAllAsync();
@@ -163,15 +162,11 @@ public class TalkListFragment extends Fragment {
                                @Override
                                public void onError(Throwable e) {
                                    e.printStackTrace();
-                                   Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+                                   Toast.makeText(getContext(), "error" + e, Toast.LENGTH_SHORT).show();
                                }
 
                                @Override
-                               public void onNext(PyConJPScheduleEntity pyConJPScheduleEntity) {
-                                   Log.d("tag", "data0" + pyConJPScheduleEntity.data0.contents.toString());
-                                   Log.d("tag", "data1" + pyConJPScheduleEntity.data1.contents.toString());
-                                   Log.d("tag", "data2" + pyConJPScheduleEntity.data2.contents.toString());
-                                   Log.d("tag", "data3" + pyConJPScheduleEntity.data3.contents.toString());
+                               public void onNext(PresentationListEntity presentationList) {
 
                                    // 前回結果を Realm から削除
                                    final RealmResults<RealmScheduleObject> results = realm.where(RealmScheduleObject.class).findAll();
@@ -183,11 +178,12 @@ public class TalkListFragment extends Fragment {
                                    });
                                    // TODO: 結果を Realm に格納
                                    realm.beginTransaction();
-                                   for (ContentEntity entity: pyConJPScheduleEntity.data1.contents) {
+                                   for (PresentationEntity presentation: presentationList.presentations) {
                                        RealmScheduleObject obj = realm.createObject(RealmScheduleObject.class);
-                                       obj.time = entity.time;
-                                       obj.speaker = entity.speaker;
-                                       obj.title  = entity.title;
+                                       obj.title = presentation.title;
+                                       obj.speaker = presentation.speakers[0];
+                                       obj.time = "22:26";
+                                       obj.rooms = presentation.rooms;
                                    }
                                    realm.commitTransaction();
                                }

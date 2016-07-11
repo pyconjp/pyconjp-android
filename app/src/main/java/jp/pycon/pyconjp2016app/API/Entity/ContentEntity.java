@@ -1,6 +1,5 @@
 package jp.pycon.pyconjp2016app.API.Entity;
 
-import com.google.common.base.Strings;
 import com.google.gson.annotations.SerializedName;
 
 /**

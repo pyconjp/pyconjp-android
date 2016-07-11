@@ -10,6 +10,7 @@ public class RealmScheduleObject extends RealmObject {
     public String time;
     public String title;
     public String speaker;
+    public String rooms;
 }
 
 
