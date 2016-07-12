@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import jp.pycon.pyconjp2016app.API.Entity.Talk;
+import io.realm.Realm;
+import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.TalkListAdapter;
 import jp.pycon.pyconjp2016app.R;
 
@@ -22,6 +22,7 @@ import jp.pycon.pyconjp2016app.R;
 public class MyTalkListFragment extends Fragment {
 
     private TalkListAdapter mTalkAdapter;
+    private Realm realm;
 
     public MyTalkListFragment() {
 
@@ -43,25 +44,27 @@ public class MyTalkListFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        mTalkAdapter = new TalkListAdapter(getContext(), new ArrayList<Talk>());
+        mTalkAdapter = new TalkListAdapter(getContext(), new ArrayList<RealmScheduleObject>());
         int position = getArguments().getInt("position", 0);
         recyclerView.setAdapter(mTalkAdapter);
-        fetchTalkList(position);
         return v;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        realm = Realm.getDefaultInstance();
+        fetchTalkList(0);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        realm.close();
+    }
+
     public void fetchTalkList(int position) {
-        Talk talk = new Talk();
-        Talk talk1 = new Talk();
-        List<Talk> list = new ArrayList<>();
-        list.add(talk);
-        list.add(talk1);
-        list.add(talk1);
-        list.add(talk1);
-        list.add(talk1);
-        list.add(talk1);
-        list.add(talk1);
-        list.add(talk1);
-        mTalkAdapter.updateTalks(list);
+        RealmResults<RealmScheduleObject> talks = realm.where(RealmScheduleObject.class).findAll();
+        mTalkAdapter.updateTalks(talks);
     }
 }

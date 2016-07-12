@@ -11,14 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.android.databinding.library.baseAdapters.BR;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.pycon.pyconjp2016app.API.Entity.Talk;
+import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.BR;
+import jp.pycon.pyconjp2016app.Feature.Talks.RealmScheduleObject;
 import jp.pycon.pyconjp2016app.R;
 
 /**
@@ -27,7 +26,7 @@ import jp.pycon.pyconjp2016app.R;
 public class TalkListAdapter extends RecyclerView.Adapter<TalkListAdapter.TalkBindingHolder> {
 
     Context mContext;
-    List<Talk> talks;
+    List<RealmScheduleObject> talks;
 
     static class TalkBindingHolder extends RecyclerView.ViewHolder {
         private final ViewDataBinding binding;
@@ -41,7 +40,7 @@ public class TalkListAdapter extends RecyclerView.Adapter<TalkListAdapter.TalkBi
         }
     }
 
-    public TalkListAdapter(Context context, ArrayList<Talk> talks) {
+    public TalkListAdapter(Context context, ArrayList<RealmScheduleObject> talks) {
         this.mContext = context;
         this.talks = talks;
     }
@@ -54,12 +53,12 @@ public class TalkListAdapter extends RecyclerView.Adapter<TalkListAdapter.TalkBi
 
     @Override
     public void onBindViewHolder(TalkBindingHolder holder, int position) {
-        holder.getBinding().setVariable(BR.talk, talks.get(position));
+        holder.getBinding().setVariable(BR.realmScheduleObject, talks.get(position));
         View v =holder.getBinding().getRoot();
 
         // TODO: デザイン確認
-        TextView textView = (TextView) v.findViewById(R.id.card_room);
-        textView.setTextColor(ContextCompat.getColor(mContext, getColor(position)));
+//        TextView textView = (TextView) v.findViewById(R.id.card_room);
+//        textView.setTextColor(ContextCompat.getColor(mContext, getColor(position)));
         ImageView star = (ImageView) v.findViewById(R.id.card_star);
         star.setImageDrawable(getStar(position));
     }
@@ -101,7 +100,7 @@ public class TalkListAdapter extends RecyclerView.Adapter<TalkListAdapter.TalkBi
         return talks.size();
     }
 
-    public void updateTalks(List<Talk> talkList) {
+    public void updateTalks(RealmResults<RealmScheduleObject> talkList) {
         talks.clear();
         talks.addAll(talkList);
         notifyDataSetChanged();
