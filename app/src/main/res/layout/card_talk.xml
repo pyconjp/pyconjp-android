@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable name="talk" type="jp.pycon.pyconjp2016app.API.Entity.Talk"/>
+        <variable name="realmScheduleObject" type="jp.pycon.pyconjp2016app.Feature.Talks.RealmScheduleObject"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                                 android:layout_marginLeft="4dp"
                                 android:maxLines="2"
                                 android:textColor="@color/colorGray"
-                                android:text="@{talk.time}"/>
+                                android:text="@{realmScheduleObject.time}"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -67,23 +67,23 @@
                                 android:layout_height="wrap_content"
                                 android:tint="@color/colorGray"
                                 android:src="@drawable/ic_edit_location_black_18dp"/>
-                            <TextView
-                                android:id="@+id/card_room"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="4dp"
-                                android:maxLines="2"
-                                android:textColor="#FF0B86"
-                                android:text="@{talk.room}"/>
-                            <TextView
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
-                                android:maxLines="2"
-                                android:textColor="@color/colorGray"
-                                android:text="@{talk.category}"/>
+                            <!--<TextView-->
+                                <!--android:id="@+id/card_room"-->
+                                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginLeft="4dp"-->
+                                <!--android:maxLines="2"-->
+                                <!--android:textColor="#FF0B86"-->
+                                <!--android:text="@{talk.room}"/>-->
+                            <!--<TextView-->
+                                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginLeft="8dp"-->
+                                <!--android:maxLines="2"-->
+                                <!--android:textColor="@color/colorGray"-->
+                                <!--android:text="@{talk.category}"/>-->
                         </LinearLayout>
 
                     </LinearLayout>
@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="2"
                     android:textColor="#000000"
-                    android:text="@{talk.subject}"
+                    android:text="@{realmScheduleObject.title}"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"/>
                 <LinearLayout
@@ -126,7 +126,7 @@
                         android:layout_marginLeft="4dp"
                         android:maxLines="2"
                         android:textColor="@color/colorGray"
-                        android:text="@{talk.speaker}"/>
+                        android:text="@{realmScheduleObject.speaker}"/>
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>

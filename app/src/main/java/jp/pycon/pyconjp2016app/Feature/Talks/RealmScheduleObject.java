@@ -7,9 +7,26 @@ import io.realm.RealmObject;
  */
 public class RealmScheduleObject extends RealmObject {
 
-    public String time;
     public String title;
+    public String time;
     public String speaker;
+    public String rooms;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getSpeaker() {
+        return speaker;
+    }
+
+    public String getRooms() {
+        return rooms;
+    }
 }
 
 
