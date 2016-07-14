@@ -22,13 +22,13 @@ import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
-import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationEntity;
-import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationListEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.MyTalksFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.RealmScheduleObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.Feature.Talks.TalksFragment;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity
                                public void onNext(PresentationListEntity presentationList) {
 
                                    // 前回結果を Realm から削除
-                                   final RealmResults<RealmScheduleObject> results = realm.where(RealmScheduleObject.class).findAll();
+                                   final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
                                    realm.executeTransaction(new Realm.Transaction() {
                                        @Override
                                        public void execute(Realm realm) {
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity
                                    });
                                    realm.beginTransaction();
                                    for (PresentationEntity presentation: presentationList.presentations) {
-                                       RealmScheduleObject obj = realm.createObject(RealmScheduleObject.class);
+                                       RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
                                        obj.title = presentation.title;
                                        obj.speaker = presentation.speakers[0];
                                        obj.time = "22:26";

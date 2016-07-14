@@ -1,7 +1,7 @@
 package jp.pycon.pyconjp2016app.API.Client;
 
-import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationDetailEntity;
-import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationListEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;

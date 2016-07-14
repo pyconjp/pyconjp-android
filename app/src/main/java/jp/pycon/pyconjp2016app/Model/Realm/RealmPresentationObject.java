@@ -1,11 +1,11 @@
-package jp.pycon.pyconjp2016app.Feature.Talks;
+package jp.pycon.pyconjp2016app.Model.Realm;
 
 import io.realm.RealmObject;
 
 /**
  * Created by rhoboro on 7/7/16.
  */
-public class RealmScheduleObject extends RealmObject {
+public class RealmPresentationObject extends RealmObject {
 
     public String title;
     public String time;

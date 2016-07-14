@@ -9,23 +9,23 @@ import android.widget.TextView;
 
 import io.realm.RealmRecyclerViewAdapter;
 import io.realm.RealmResults;
-import jp.pycon.pyconjp2016app.Feature.Talks.RealmScheduleObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 
 /**
  * Created by rhoboro on 7/8/16.
  */
-public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmScheduleObject, RealmScheduleAdapter.MyViewHolder> {
+public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresentationObject, RealmScheduleAdapter.MyViewHolder> {
 
     public interface RealmScheduleAdapterListener {
-        void onClick(RealmScheduleObject obj);
+        void onClick(RealmPresentationObject obj);
     }
 
     private RealmScheduleAdapterListener mListener;
 
     private final Context context;
 
-    public RealmScheduleAdapter(Context context, RealmResults<RealmScheduleObject> data) {
+    public RealmScheduleAdapter(Context context, RealmResults<RealmPresentationObject> data) {
         super(context, data, true);
         this.context = context;
     }
@@ -51,7 +51,7 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmSchedule
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        RealmScheduleObject obj = getData().get(position);
+        RealmPresentationObject obj = getData().get(position);
         holder.obj = obj;
         holder.title.setText(obj.title);
         holder.speaker.setText(obj.speaker);
@@ -65,7 +65,7 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmSchedule
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         static final int LAYOUT_ID = R.layout.cell_schedule;
-        public RealmScheduleObject obj;
+        public RealmPresentationObject obj;
 
         final TextView speaker;
         final TextView time;

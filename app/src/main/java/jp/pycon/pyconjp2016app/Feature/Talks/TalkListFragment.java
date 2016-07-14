@@ -21,6 +21,7 @@ import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 
 /**
@@ -32,7 +33,7 @@ public class TalkListFragment extends Fragment {
     private Context mContext;
     private Realm realm;
     private RecyclerView recyclerView;
-    private RealmResults<RealmScheduleObject> schedules;
+    private RealmResults<RealmPresentationObject> schedules;
     private RealmChangeListener realmListener;
     RealmScheduleAdapter adapter;
 
@@ -113,11 +114,11 @@ public class TalkListFragment extends Fragment {
         realm = Realm.getDefaultInstance();
 
 
-        schedules = realm.where(RealmScheduleObject.class).findAll();
+        schedules = realm.where(RealmPresentationObject.class).findAll();
         adapter = new RealmScheduleAdapter(getContext(), schedules);
         adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
             @Override
-            public void onClick(RealmScheduleObject obj) {
+            public void onClick(RealmPresentationObject obj) {
                 Toast.makeText(getContext(), obj.title,Toast.LENGTH_SHORT).show();
                 final Intent intent = new Intent(mContext, TalkDetailActivity.class);
                 // TODO: 渡すのは id にする

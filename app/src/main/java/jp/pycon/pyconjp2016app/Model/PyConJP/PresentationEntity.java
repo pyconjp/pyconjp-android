@@ -1,7 +1,9 @@
-package jp.pycon.pyconjp2016app.API.Entity.PyConJP;
+package jp.pycon.pyconjp2016app.Model.PyConJP;
 
 
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 
 /**
