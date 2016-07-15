@@ -109,10 +109,10 @@ public class TalkListFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        realm = Realm.getDefaultInstance();
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        realm = Realm.getDefaultInstance();
 
         schedules = realm.where(RealmPresentationObject.class).findAll();
         adapter = new RealmScheduleAdapter(getContext(), schedules);
@@ -137,10 +137,9 @@ public class TalkListFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroyView() {
+        super.onDestroyView();
         schedules.removeChangeListener(realmListener);
         realm.close();
     }
-
 }
