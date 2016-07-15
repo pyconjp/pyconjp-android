@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.TalkListAdapter;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 
 /**
@@ -44,7 +45,7 @@ public class MyTalkListFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        mTalkAdapter = new TalkListAdapter(getContext(), new ArrayList<RealmScheduleObject>());
+        mTalkAdapter = new TalkListAdapter(getContext(), new ArrayList<RealmPresentationObject>());
         int position = getArguments().getInt("position", 0);
         recyclerView.setAdapter(mTalkAdapter);
         return v;
@@ -64,7 +65,7 @@ public class MyTalkListFragment extends Fragment {
     }
 
     public void fetchTalkList(int position) {
-        RealmResults<RealmScheduleObject> talks = realm.where(RealmScheduleObject.class).findAll();
+        RealmResults<RealmPresentationObject> talks = realm.where(RealmPresentationObject.class).findAll();
         mTalkAdapter.updateTalks(talks);
     }
 }

@@ -16,9 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.RealmResults;
-import jp.pycon.pyconjp2016app.BR;
-import jp.pycon.pyconjp2016app.Feature.Talks.RealmScheduleObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.BR;
+
 
 /**
  * Created by rhoboro on 4/23/16.
@@ -26,7 +27,7 @@ import jp.pycon.pyconjp2016app.R;
 public class TalkListAdapter extends RecyclerView.Adapter<TalkListAdapter.TalkBindingHolder> {
 
     Context mContext;
-    List<RealmScheduleObject> talks;
+    List<RealmPresentationObject> talks;
 
     static class TalkBindingHolder extends RecyclerView.ViewHolder {
         private final ViewDataBinding binding;
@@ -40,7 +41,7 @@ public class TalkListAdapter extends RecyclerView.Adapter<TalkListAdapter.TalkBi
         }
     }
 
-    public TalkListAdapter(Context context, ArrayList<RealmScheduleObject> talks) {
+    public TalkListAdapter(Context context, ArrayList<RealmPresentationObject> talks) {
         this.mContext = context;
         this.talks = talks;
     }
@@ -100,7 +101,7 @@ public class TalkListAdapter extends RecyclerView.Adapter<TalkListAdapter.TalkBi
         return talks.size();
     }
 
-    public void updateTalks(RealmResults<RealmScheduleObject> talkList) {
+    public void updateTalks(RealmResults<RealmPresentationObject> talkList) {
         talks.clear();
         talks.addAll(talkList);
         notifyDataSetChanged();

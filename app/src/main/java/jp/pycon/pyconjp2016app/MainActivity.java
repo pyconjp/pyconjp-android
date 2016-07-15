@@ -14,16 +14,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
+import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.API.Client.APIClient;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.MyTalksFragment;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.Feature.Talks.TalksFragment;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
@@ -35,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         realm = Realm.getDefaultInstance();
+        getPyConJPSchedule();
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -191,5 +204,53 @@ public class MainActivity extends AppCompatActivity
         if (toolbar != null) {
             toolbar.setTitle(feature.getTitleResId());
         }
+    }
+
+    private void getPyConJPSchedule() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIClient.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        APIClient apiClient = retrofit.create(APIClient.class);
+        rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
+        observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<PresentationListEntity>() {
+                               @Override
+                               public void onCompleted() {
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                                   e.printStackTrace();
+                                   Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
+                               }
+
+                               @Override
+                               public void onNext(PresentationListEntity presentationList) {
+
+                                   // 前回結果を Realm から削除
+                                   final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
+                                   realm.executeTransaction(new Realm.Transaction() {
+                                       @Override
+                                       public void execute(Realm realm) {
+                                           results.deleteAllFromRealm();
+                                       }
+                                   });
+                                   realm.beginTransaction();
+                                   for (PresentationEntity presentation: presentationList.presentations) {
+                                       RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
+                                       obj.pk = presentation.pk;
+                                       obj.title = presentation.title;
+                                       obj.speaker = presentation.speakers[0];
+                                       obj.time = "22:26";
+                                       obj.rooms = presentation.rooms;
+                                   }
+                                   realm.commitTransaction();
+                               }
+                           }
+                );
     }
 }

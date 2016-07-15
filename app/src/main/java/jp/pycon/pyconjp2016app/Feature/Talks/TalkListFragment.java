@@ -12,17 +12,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
-import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationEntity;
-import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationListEntity;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -39,8 +42,9 @@ public class TalkListFragment extends Fragment {
 
     private Context mContext;
     private Realm realm;
-    private RealmResults<RealmScheduleObject> scheduleObjects;
     private RecyclerView recyclerView;
+    private RealmResults<RealmPresentationObject> schedules;
+    private RealmChangeListener realmListener;
     RealmScheduleAdapter adapter;
 
     public TalkListFragment() {
@@ -115,76 +119,84 @@ public class TalkListFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         realm = Realm.getDefaultInstance();
 
-        scheduleObjects = realm.where(RealmScheduleObject.class).findAll();
-        adapter = new RealmScheduleAdapter(getContext(), scheduleObjects);
+        schedules = realm.where(RealmPresentationObject.class).findAll();
+        adapter = new RealmScheduleAdapter(getContext(), schedules);
         adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
             @Override
-            public void onClick(RealmScheduleObject obj) {
-                Toast.makeText(getContext(), obj.title,Toast.LENGTH_SHORT).show();
-                final Intent intent = new Intent(mContext, TalkDetailActivity.class);
-                // TODO: 渡すのは id にする
-                intent.putExtra(TalkDetailActivity.BUNDLE_KEY_TALK_ID, obj.title);
-                startActivity(intent);
+            public void onClick(int pk) {
+                RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
+                        .equalTo("pk", pk)
+                        .findAll();
+                if (results.size() != 0) {
+                    final Intent intent = new Intent(mContext, TalkDetailActivity.class);
+                    intent.putExtra(TalkDetailActivity.BUNDLE_KEY_PRESENTATION_ID, pk);
+                    startActivity(intent);
+                } else {
+                    getPyConJPPresentation(pk);
+                    Toast.makeText(getContext(), ""+pk,Toast.LENGTH_SHORT).show();
+                }
             }
         });
         recyclerView.setAdapter(adapter);
-        getPyConJPSchedule();
+        realmListener = new RealmChangeListener() {
+            @Override
+            public void onChange(Object element) {
+                adapter.notifyDataSetChanged();
+            }
+        };
+        schedules.addChangeListener(realmListener);
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroyView() {
+        super.onDestroyView();
+        schedules.removeChangeListener(realmListener);
         realm.close();
     }
 
-    private void getPyConJPSchedule() {
-        Retrofit retrofit = new Retrofit.Builder()
+    private void getPyConJPPresentation(final int pk) {
+        final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIClient.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         APIClient apiClient = retrofit.create(APIClient.class);
-        rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
+        rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<PresentationListEntity>() {
+                .subscribe(new Subscriber<PresentationDetailEntity>() {
                                @Override
                                public void onCompleted() {
-                                   scheduleObjects = realm.where(RealmScheduleObject.class).findAllAsync();
-                                   adapter.notifyDataSetChanged();
+                                   final Intent intent = new Intent(mContext, TalkDetailActivity.class);
+                                   intent.putExtra(TalkDetailActivity.BUNDLE_KEY_PRESENTATION_ID, pk);
+                                   startActivity(intent);
                                }
 
                                @Override
                                public void onError(Throwable e) {
                                    e.printStackTrace();
-                                   Toast.makeText(getContext(), "error" + e, Toast.LENGTH_SHORT).show();
+                                   Toast.makeText(mContext, "error" + e, Toast.LENGTH_SHORT).show();
                                }
 
                                @Override
-                               public void onNext(PresentationListEntity presentationList) {
-
-                                   // 前回結果を Realm から削除
-                                   final RealmResults<RealmScheduleObject> results = realm.where(RealmScheduleObject.class).findAll();
-                                   realm.executeTransaction(new Realm.Transaction() {
-                                       @Override
-                                       public void execute(Realm realm) {
-                                           results.deleteAllFromRealm();
-                                       }
-                                   });
-                                   // TODO: 結果を Realm に格納
+                               public void onNext(final PresentationDetailEntity presentation) {
+                                   RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
+                                           .equalTo("pk", pk)
+                                           .findAll();
                                    realm.beginTransaction();
-                                   for (PresentationEntity presentation: presentationList.presentations) {
-                                       RealmScheduleObject obj = realm.createObject(RealmScheduleObject.class);
-                                       obj.title = presentation.title;
-                                       obj.speaker = presentation.speakers[0];
-                                       obj.time = "22:26";
-                                       obj.rooms = presentation.rooms;
-                                   }
+                                   RealmPresentationDetailObject obj = realm.createObject(RealmPresentationDetailObject.class);
+//                                   obj.pk = presentation.pk;
+//                                   obj.title = presentation.title;
+                                   obj.title = results.get(0).title;
+                                   obj.pk = pk;
+                                   obj.description = presentation.description;
+                                   obj.speaker = presentation.speakers[0];
                                    realm.commitTransaction();
                                }
                            }

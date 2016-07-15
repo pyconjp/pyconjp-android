@@ -1,7 +1,7 @@
 package jp.pycon.pyconjp2016app.API.Client;
 
-import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationDetailEntity;
-import jp.pycon.pyconjp2016app.API.Entity.PyConJP.PresentationListEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
@@ -19,7 +19,7 @@ public interface APIClient {
     Observable<PresentationListEntity> getPyConJPPosters();
     @GET("tutorials/list/")
     Observable<PresentationListEntity> getPyConJPTutorials();
-    @GET("presentation/{pk}")
+    @GET("presentation/{pk}/")
     Observable<PresentationDetailEntity> getPyConJPPresentationDetail(@Path("pk") int pk);
 
 }

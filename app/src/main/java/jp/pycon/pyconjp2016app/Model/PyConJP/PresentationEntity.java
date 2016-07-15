@@ -1,11 +1,15 @@
-package jp.pycon.pyconjp2016app.API.Entity.PyConJP;
+package jp.pycon.pyconjp2016app.Model.PyConJP;
+
 
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 
 /**
  * Created by rhoboro on 7/11/16.
  */
-public class PresentationDetailEntity {
+public class PresentationEntity {
 
     @SerializedName("category")
     public String category;
@@ -18,13 +22,12 @@ public class PresentationDetailEntity {
     @SerializedName("title")
     public String title;
     @SerializedName("id")
-    public String pk;
+    public int pk;
     @SerializedName("start")
     public String start;
     @SerializedName("rooms")
     public String rooms;
-    @SerializedName("abst")
-    public String abst;
-    @SerializedName("level")
-    public String level;
+    @SerializedName("day")
+    public String day;
+
 }
