@@ -11,7 +11,7 @@ public class RealmPresentationDetailObject extends RealmObject {
     public String end;
     public String description;
     public String title;
-    public String pk;
+    public int pk;
     public String start;
     public String rooms;
     public String abst;
@@ -37,7 +37,7 @@ public class RealmPresentationDetailObject extends RealmObject {
         return title;
     }
 
-    public String getPk() {
+    public int getPk() {
         return pk;
     }
 

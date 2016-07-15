@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,18 @@ import android.widget.Toast;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by rhoboro on 4/23/16.
@@ -118,12 +128,18 @@ public class TalkListFragment extends Fragment {
         adapter = new RealmScheduleAdapter(getContext(), schedules);
         adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
             @Override
-            public void onClick(RealmPresentationObject obj) {
-                Toast.makeText(getContext(), obj.title,Toast.LENGTH_SHORT).show();
-                final Intent intent = new Intent(mContext, TalkDetailActivity.class);
-                // TODO: 渡すのは id にする
-                intent.putExtra(TalkDetailActivity.BUNDLE_KEY_TALK_ID, obj.title);
-                startActivity(intent);
+            public void onClick(int pk) {
+                RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
+                        .equalTo("pk", pk)
+                        .findAll();
+                if (results.size() != 0) {
+                    final Intent intent = new Intent(mContext, TalkDetailActivity.class);
+                    intent.putExtra(TalkDetailActivity.BUNDLE_KEY_PRESENTATION_ID, pk);
+                    startActivity(intent);
+                } else {
+                    getPyConJPPresentation(pk);
+                    Toast.makeText(getContext(), ""+pk,Toast.LENGTH_SHORT).show();
+                }
             }
         });
         recyclerView.setAdapter(adapter);
@@ -141,5 +157,49 @@ public class TalkListFragment extends Fragment {
         super.onDestroyView();
         schedules.removeChangeListener(realmListener);
         realm.close();
+    }
+
+    private void getPyConJPPresentation(final int pk) {
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIClient.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        APIClient apiClient = retrofit.create(APIClient.class);
+        rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);
+        observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<PresentationDetailEntity>() {
+                               @Override
+                               public void onCompleted() {
+                                   final Intent intent = new Intent(mContext, TalkDetailActivity.class);
+                                   intent.putExtra(TalkDetailActivity.BUNDLE_KEY_PRESENTATION_ID, pk);
+                                   startActivity(intent);
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                                   e.printStackTrace();
+                                   Toast.makeText(mContext, "error" + e, Toast.LENGTH_SHORT).show();
+                               }
+
+                               @Override
+                               public void onNext(final PresentationDetailEntity presentation) {
+                                   RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
+                                           .equalTo("pk", pk)
+                                           .findAll();
+                                   realm.beginTransaction();
+                                   RealmPresentationDetailObject obj = realm.createObject(RealmPresentationDetailObject.class);
+//                                   obj.pk = presentation.pk;
+//                                   obj.title = presentation.title;
+                                   obj.title = results.get(0).title;
+                                   obj.pk = pk;
+                                   obj.description = presentation.description;
+                                   obj.speaker = presentation.speakers[0];
+                                   realm.commitTransaction();
+                               }
+                           }
+                );
     }
 }

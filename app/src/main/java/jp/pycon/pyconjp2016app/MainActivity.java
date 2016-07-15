@@ -242,6 +242,7 @@ public class MainActivity extends AppCompatActivity
                                    realm.beginTransaction();
                                    for (PresentationEntity presentation: presentationList.presentations) {
                                        RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
+                                       obj.pk = presentation.pk;
                                        obj.title = presentation.title;
                                        obj.speaker = presentation.speakers[0];
                                        obj.time = "22:26";

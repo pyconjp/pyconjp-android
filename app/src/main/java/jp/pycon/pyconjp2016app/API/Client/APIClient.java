@@ -19,7 +19,7 @@ public interface APIClient {
     Observable<PresentationListEntity> getPyConJPPosters();
     @GET("tutorials/list/")
     Observable<PresentationListEntity> getPyConJPTutorials();
-    @GET("presentation/{pk}")
+    @GET("presentation/{pk}/")
     Observable<PresentationDetailEntity> getPyConJPPresentationDetail(@Path("pk") int pk);
 
 }

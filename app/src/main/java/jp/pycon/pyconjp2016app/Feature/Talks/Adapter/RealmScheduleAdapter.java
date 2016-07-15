@@ -18,7 +18,7 @@ import jp.pycon.pyconjp2016app.R;
 public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresentationObject, RealmScheduleAdapter.MyViewHolder> {
 
     public interface RealmScheduleAdapterListener {
-        void onClick(RealmPresentationObject obj);
+        void onClick(int pk);
     }
 
     private RealmScheduleAdapterListener mListener;
@@ -42,7 +42,7 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
             @Override
             public void onClick(View view) {
                 if (mListener != null) {
-                    mListener.onClick(holder.obj);
+                    mListener.onClick(holder.obj.pk);
                 }
             }
         });

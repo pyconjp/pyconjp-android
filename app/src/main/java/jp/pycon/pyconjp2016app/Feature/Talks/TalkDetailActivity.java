@@ -2,32 +2,48 @@ package jp.pycon.pyconjp2016app.Feature.Talks;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.R;
 
 /**
  * Created by rhoboro on 7/9/16.
  */
 public class TalkDetailActivity extends AppCompatActivity {
-    public static final String BUNDLE_KEY_TALK_ID = "bundle_key_talk_id";
+    public static final String BUNDLE_KEY_PRESENTATION_ID = "bundle_key_presentation_id";
+    private Realm realm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_detail);
-
-        String title = getIntent().getStringExtra(BUNDLE_KEY_TALK_ID);
+        realm = Realm.getDefaultInstance();
+        int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
+        RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
+                .equalTo("pk", pk)
+                .findAll();
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle(title);
+        collapsingToolbarLayout.setTitle(results.get(0).title);
+        ((TextView)findViewById(R.id.description)).setText(results.get(0).description);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 
     @Override

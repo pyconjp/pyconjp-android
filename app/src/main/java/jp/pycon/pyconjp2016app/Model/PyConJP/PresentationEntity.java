@@ -22,7 +22,7 @@ public class PresentationEntity {
     @SerializedName("title")
     public String title;
     @SerializedName("id")
-    public String pk;
+    public int pk;
     @SerializedName("start")
     public String start;
     @SerializedName("rooms")
