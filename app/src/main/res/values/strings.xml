@@ -38,6 +38,11 @@
 
     <string name="about_feedback">フィードバックを送る</string>
 
+    <!-- Talk -->
+    <string name="speaker">スピーカー</string>
+    <string name="description">説明</string>
+    <string name="abst">概要</string>
+
     <!-- Other -->
     <string name="pycon_theme">Everyone\'s different, all are wonderful.</string>
     <string name="tutorial_day">9月20日</string>
@@ -47,4 +52,5 @@
 
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>
+    <string name="python_logo">Python</string>
 </resources>

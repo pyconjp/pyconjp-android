@@ -1,14 +1,19 @@
 package jp.pycon.pyconjp2016app.Feature.Talks;
 
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.TextViewCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
+
+import java.util.Random;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -27,17 +32,18 @@ public class TalkDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_detail);
         realm = Realm.getDefaultInstance();
-        int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
+        initToolbar();
+
+        final int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
         RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
                 .equalTo("pk", pk)
                 .findAll();
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle(results.get(0).title);
-        ((TextView)findViewById(R.id.description)).setText(results.get(0).description);
+        final RealmPresentationDetailObject presentation = results.get(0);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // ビューの設定
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle(presentation.title);
+        setupViews(presentation);
     }
 
     @Override
@@ -56,5 +62,29 @@ public class TalkDetailActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void initToolbar() {
+        final Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    private void setupViews(RealmPresentationDetailObject presentation) {
+        // ロゴ
+        final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
+        Random r = new Random();
+        int i = r.nextInt(6);
+        Drawable drawable = logos.getDrawable(i);
+        ((ImageView)findViewById(R.id.python_logo)).setImageDrawable(drawable);
+        // スピーカー
+        ((TextView)findViewById(R.id.speaker)).setText(presentation.speakerstring());
+        // 説明
+        ((TextView)findViewById(R.id.description)).setText(presentation.description);
+        // 概要
+        ((TextView)findViewById(R.id.abst)).setText(presentation.abst);
     }
 }

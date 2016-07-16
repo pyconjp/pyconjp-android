@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +19,14 @@ import android.widget.Toast;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
 import jp.pycon.pyconjp2016app.R;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -191,12 +192,17 @@ public class TalkListFragment extends Fragment {
                                            .findAll();
                                    realm.beginTransaction();
                                    RealmPresentationDetailObject obj = realm.createObject(RealmPresentationDetailObject.class);
-//                                   obj.pk = presentation.pk;
-//                                   obj.title = presentation.title;
                                    obj.title = results.get(0).title;
                                    obj.pk = pk;
                                    obj.description = presentation.description;
-                                   obj.speaker = presentation.speakers[0];
+                                   obj.abst = presentation.abst;
+                                   RealmList<RealmSpeakerObject> speakers = new RealmList<>();
+                                   for (String speaker : presentation.speakers) {
+                                       RealmSpeakerObject speakerObject = realm.createObject(RealmSpeakerObject.class);
+                                       speakerObject.speaker = speaker;
+                                       speakers.add(speakerObject);
+                                   }
+                                   obj.speakers = speakers;
                                    realm.commitTransaction();
                                }
                            }

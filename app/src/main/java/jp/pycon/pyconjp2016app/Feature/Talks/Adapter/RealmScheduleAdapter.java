@@ -54,7 +54,7 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
         RealmPresentationObject obj = getData().get(position);
         holder.obj = obj;
         holder.title.setText(obj.title);
-        holder.speaker.setText(obj.speaker);
+        holder.speaker.setText(obj.speakerString());
         holder.time.setText(obj.time);
     }
 

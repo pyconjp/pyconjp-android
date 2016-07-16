@@ -20,6 +20,7 @@ import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationEntity;
@@ -30,6 +31,7 @@ import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.MyTalksFragment;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.Feature.Talks.TalksFragment;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -244,9 +246,15 @@ public class MainActivity extends AppCompatActivity
                                        RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
                                        obj.pk = presentation.pk;
                                        obj.title = presentation.title;
-                                       obj.speaker = presentation.speakers[0];
                                        obj.time = "22:26";
                                        obj.rooms = presentation.rooms;
+                                       RealmList<RealmSpeakerObject> speakers = new RealmList<>();
+                                       for (String speaker : presentation.speakers) {
+                                           RealmSpeakerObject speakerObject = realm.createObject(RealmSpeakerObject.class);
+                                           speakerObject.speaker = speaker;
+                                           speakers.add(speakerObject);
+                                       }
+                                       obj.speakers = speakers;
                                    }
                                    realm.commitTransaction();
                                }

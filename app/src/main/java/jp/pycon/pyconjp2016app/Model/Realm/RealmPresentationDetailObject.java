@@ -1,5 +1,11 @@
 package jp.pycon.pyconjp2016app.Model.Realm;
 
+import android.text.TextUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 /**
@@ -7,7 +13,7 @@ import io.realm.RealmObject;
  */
 public class RealmPresentationDetailObject extends RealmObject {
     public String category;
-    public String speaker;
+    public RealmList<RealmSpeakerObject> speakers;
     public String end;
     public String description;
     public String title;
@@ -21,8 +27,8 @@ public class RealmPresentationDetailObject extends RealmObject {
         return category;
     }
 
-    public String getSpeaker() {
-        return speaker;
+    public RealmList<RealmSpeakerObject> getSpeakers() {
+        return speakers;
     }
 
     public String getEnd() {
@@ -55,5 +61,12 @@ public class RealmPresentationDetailObject extends RealmObject {
 
     public String getLevel() {
         return level;
+    }
+    public String speakerstring() {
+        List<String> strings = new ArrayList<>();
+        for (RealmSpeakerObject speaker : speakers) {
+            strings.add(speaker.getSpeaker());
+        }
+        return TextUtils.join("\n", strings);
     }
 }
