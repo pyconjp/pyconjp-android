@@ -57,6 +57,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        production {
+            buildConfigField "boolean", "PRODUCTION", "true"
+        }
+        staging {
+            buildConfigField "boolean", "PRODUCTION", "false"
+        }
+    }
 }
 
 ext {
