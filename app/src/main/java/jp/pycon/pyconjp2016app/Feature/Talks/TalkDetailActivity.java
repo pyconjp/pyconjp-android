@@ -2,9 +2,10 @@ package jp.pycon.pyconjp2016app.Feature.Talks;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.TextViewCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -33,13 +34,19 @@ public class TalkDetailActivity extends AppCompatActivity {
                 .findAll();
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(results.get(0).title);
+        // スピーカー
+        ((TextView)findViewById(R.id.speaker)).setText(results.get(0).speakerstring());
+        // 説明
         ((TextView)findViewById(R.id.description)).setText(results.get(0).description);
+        // 概要
         ((TextView)findViewById(R.id.abst)).setText(results.get(0).abst);
-        ((TextView)findViewById(R.id.speaker)).setText(results.get(0).speaker);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
