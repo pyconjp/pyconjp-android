@@ -22,25 +22,36 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:maxLines="4">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                android:fitsSystemWindows="true"/>
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax">
+
+                <ImageView
+                    android:id="@+id/img_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/square" />
+
+            </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/tool_bar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"/>
+
         </net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="80dp"
         android:layout_gravity="fill_vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -50,11 +61,54 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:padding="2sp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/colorGray"
+                        android:src="@drawable/ic_query_builder_black_18dp"/>
+                    <TextView
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:maxLines="2"
+                        android:textColor="@color/colorGray"
+                        android:text="2016/09/21 11:00 - 12:00" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2sp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/colorGray"
+                        android:src="@drawable/ic_room_black_18dp" />
+
+                    <TextView
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:maxLines="2"
+                        android:textColor="@color/colorGray"
+                        android:text="02-01" />
+                </LinearLayout>
+
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
                     android:text="@string/speaker" />
@@ -72,6 +126,7 @@
                         android:layout_margin="5dp"
                         android:contentDescription="@string/python_logo"
                         android:src="@drawable/python_logo_01"/>
+
                     <TextView
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:id="@+id/speaker"
@@ -86,7 +141,8 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
                     android:text="@string/description" />
@@ -95,15 +151,14 @@
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
                     android:text="@string/description" />
 
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
                     android:text="@string/abst" />
@@ -112,19 +167,17 @@
                     android:id="@+id/abst"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
                     android:text="@string/abst" />
 
             </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_add_white_24dp"
+        android:tint="@color/colorWhite"
+        android:src="@drawable/ic_bookmark_black_24dp"
         app:layout_anchor="@+id/app_bar"
         app:layout_anchorGravity="bottom|right|end"/>
 
