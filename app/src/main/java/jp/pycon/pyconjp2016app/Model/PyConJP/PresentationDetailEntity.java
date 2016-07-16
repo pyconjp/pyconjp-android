@@ -23,7 +23,7 @@ public class PresentationDetailEntity {
     public String start;
     @SerializedName("rooms")
     public String rooms;
-    @SerializedName("abst")
+    @SerializedName("abstract")
     public String abst;
     @SerializedName("level")
     public String level;

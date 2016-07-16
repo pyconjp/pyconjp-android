@@ -195,8 +195,9 @@ public class TalkListFragment extends Fragment {
 //                                   obj.title = presentation.title;
                                    obj.title = results.get(0).title;
                                    obj.pk = pk;
-                                   obj.description = presentation.description;
                                    obj.speaker = presentation.speakers[0];
+                                   obj.description = presentation.description;
+                                   obj.abst = presentation.abst;
                                    realm.commitTransaction();
                                }
                            }

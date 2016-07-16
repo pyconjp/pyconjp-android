@@ -34,6 +34,8 @@ public class TalkDetailActivity extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(results.get(0).title);
         ((TextView)findViewById(R.id.description)).setText(results.get(0).description);
+        ((TextView)findViewById(R.id.abst)).setText(results.get(0).abst);
+        ((TextView)findViewById(R.id.speaker)).setText(results.get(0).speaker);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
