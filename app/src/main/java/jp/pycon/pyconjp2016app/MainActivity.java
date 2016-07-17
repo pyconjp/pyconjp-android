@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity
                         }
                     }, DRAWER_CLOSE_DELAY_MILLS);
                     break;
-                case R.id.nav_my_talks:
+                case R.id.nav_bookmark:
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {

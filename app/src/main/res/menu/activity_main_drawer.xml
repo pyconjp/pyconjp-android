@@ -7,9 +7,9 @@
             android:icon="@drawable/ic_event_note_black_24dp"
             android:title="@string/nav_talks" />
         <item
-            android:id="@+id/nav_my_talks"
-            android:icon="@drawable/ic_local_offer_black_24dp"
-            android:title="@string/nav_my_talks" />
+            android:id="@+id/nav_bookmark"
+            android:icon="@drawable/ic_bookmark_black_24dp"
+            android:title="@string/nav_bookmark" />
         <item
             android:id="@+id/nav_access"
             android:icon="@drawable/ic_place_black_24dp"

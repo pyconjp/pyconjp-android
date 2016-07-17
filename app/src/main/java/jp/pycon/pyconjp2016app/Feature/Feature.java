@@ -18,7 +18,7 @@ public enum Feature {
             return TalksFragment.newInstance();
         }
     },
-    MY_TALKS(R.id.nav_my_talks, R.string.nav_my_talks, false, MyTalksFragment.class.getSimpleName()) {
+    MY_TALKS(R.id.nav_bookmark, R.string.nav_bookmark, false, MyTalksFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return MyTalksFragment.newInstance();
