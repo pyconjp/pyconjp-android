@@ -3,6 +3,8 @@ package jp.pycon.pyconjp2016app.Feature.Talks.Detail;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.res.ResourcesCompat;
@@ -30,12 +32,14 @@ import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 public class TalkDetailActivity extends AppCompatActivity {
     public static final String BUNDLE_KEY_PRESENTATION_ID = "bundle_key_presentation_id";
     private Realm realm;
+    private Handler mHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_detail);
         realm = Realm.getDefaultInstance();
+        mHandler = new Handler(Looper.getMainLooper());
         initToolbar();
 
         final int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
@@ -94,14 +98,29 @@ public class TalkDetailActivity extends AppCompatActivity {
     }
 
     private void setupBookmark(final int pk) {
-        FloatingActionButton bookmark = (FloatingActionButton)findViewById(R.id.bookmark);
-        if (PreferencesManager.isBookmarkContains(this, pk)) {
+        final FloatingActionButton bookmark = (FloatingActionButton)findViewById(R.id.bookmark);
+        if (PreferencesManager.isBookmarkContains(getApplicationContext(), pk)) {
             bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bookmark_black_24dp, null));
         }
         bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BookmarkDialog dialog = new BookmarkDialog();
+                dialog.setmListener(new BookmarkDialog.BookmarkDialogListener() {
+                    @Override
+                    public void bookmarkStatusChanged(int pk2, boolean added) {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (PreferencesManager.isBookmarkContains(getApplicationContext(), pk)) {
+                                    bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bookmark_black_24dp, null));
+                                } else {
+                                    bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bookmark_border_black_24dp, null));
+                                }
+                            }
+                        });
+                    }
+                });
                 Bundle bundle = new Bundle();
                 // TODO: ブックマーク状態の変更でブックマーク画像を変更させる
                 bundle.putInt(BookmarkDialog.BUNDLE_KEY_PRESENTATION_ID, pk);

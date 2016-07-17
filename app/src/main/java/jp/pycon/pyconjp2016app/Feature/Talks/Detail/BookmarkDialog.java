@@ -20,8 +20,13 @@ import jp.pycon.pyconjp2016app.Util.PreferencesManager;
  */
 public class BookmarkDialog extends DialogFragment {
 
+    public interface BookmarkDialogListener {
+        public void bookmarkStatusChanged(int pk, boolean added);
+    }
+
     public static final String BUNDLE_KEY_PRESENTATION_ID = "bundle_key_presentation_id";
     private Context mContext;
+    private BookmarkDialogListener mListener;
     private Realm realm;
 
     @Override
@@ -62,6 +67,9 @@ public class BookmarkDialog extends DialogFragment {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             PreferencesManager.deleteBookmark(mContext, pk);
+                            if (mListener != null) {
+                                mListener.bookmarkStatusChanged(pk, false);
+                            }
                         }
                     })
                     .setNegativeButton(R.string.dialog_cancel, null)
@@ -79,11 +87,18 @@ public class BookmarkDialog extends DialogFragment {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             PreferencesManager.putBookmark(mContext, pk);
+                            if (mListener != null) {
+                                mListener.bookmarkStatusChanged(pk, true);
+                            }
                         }
                     })
                     .setNegativeButton(R.string.dialog_cancel, null)
                     .create();
         }
         return dialog;
+    }
+
+    public void setmListener(BookmarkDialogListener mListener) {
+        this.mListener = mListener;
     }
 }
