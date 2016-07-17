@@ -37,7 +37,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                TalkListFragment f = TalkListFragment.newInstance(position);
+                TalkListFragment f = TalkListFragment.newInstance(position, false);
                 return f;
             }
 

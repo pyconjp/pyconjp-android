@@ -29,7 +29,7 @@ import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
-import jp.pycon.pyconjp2016app.Feature.Talks.List.MyTalksFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            replaceFragment(MyTalksFragment.newInstance());
+                            replaceFragment(BookmarkFragment.newInstance());
                         }
                     }, DRAWER_CLOSE_DELAY_MILLS);
                     break;

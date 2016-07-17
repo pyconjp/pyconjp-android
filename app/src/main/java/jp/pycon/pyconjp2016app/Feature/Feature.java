@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.List.MyTalksFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.R;
 
@@ -18,10 +18,10 @@ public enum Feature {
             return TalksFragment.newInstance();
         }
     },
-    MY_TALKS(R.id.nav_bookmark, R.string.nav_bookmark, false, MyTalksFragment.class.getSimpleName()) {
+    MY_TALKS(R.id.nav_bookmark, R.string.nav_bookmark, false, BookmarkFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
-            return MyTalksFragment.newInstance();
+            return BookmarkFragment.newInstance();
         }
     },
     ACCESS(R.id.nav_access, R.string.nav_access, true, AccessFragment.class.getSimpleName()) {

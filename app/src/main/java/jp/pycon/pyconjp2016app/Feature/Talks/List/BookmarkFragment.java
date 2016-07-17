@@ -15,10 +15,10 @@ import jp.pycon.pyconjp2016app.R;
 /**
  * Created by rhoboro on 4/22/16.
  */
-public class MyTalksFragment extends Fragment implements ViewPager.OnPageChangeListener {
+public class BookmarkFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
-    public static MyTalksFragment newInstance() {
-        MyTalksFragment fragment = new MyTalksFragment();
+    public static BookmarkFragment newInstance() {
+        BookmarkFragment fragment = new BookmarkFragment();
         return fragment;
     }
 
@@ -34,7 +34,7 @@ public class MyTalksFragment extends Fragment implements ViewPager.OnPageChangeL
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                MyTalkListFragment f = MyTalkListFragment.newInstance(position);
+                TalkListFragment f = TalkListFragment.newInstance(position, true);
                 return f;
             }
 

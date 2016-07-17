@@ -7,7 +7,7 @@ import org.junit.runners.JUnit4;
 
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.List.MyTalksFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.R;
 
@@ -40,7 +40,7 @@ public class FeatureTest {
 
         @Test
         public void MyTalks画面のgetMenuID() throws Exception {
-            Feature feature = Feature.forName(new MyTalksFragment());
+            Feature feature = Feature.forName(new BookmarkFragment());
             int expected = R.id.nav_my_talks;
             int actual = feature.getMenuId();
             assertThat(expected, is(actual));
@@ -48,7 +48,7 @@ public class FeatureTest {
 
         @Test
         public void MyTalks画面のgetTitleResId() throws Exception {
-            Feature feature = Feature.forName(new MyTalksFragment());
+            Feature feature = Feature.forName(new BookmarkFragment());
             int expected = R.string.nav_my_talks;
             int actual = feature.getTitleResId();
             assertThat(expected, is(actual));

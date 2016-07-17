@@ -46,7 +46,7 @@ public class TalkDetailActivity extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(presentation.title);
         setupViews(presentation);
-        setupBookmark();
+        setupBookmark(pk);
     }
 
     @Override
@@ -91,12 +91,15 @@ public class TalkDetailActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.abst)).setText(presentation.abst);
     }
 
-    private void setupBookmark() {
+    private void setupBookmark(final int pk) {
         FloatingActionButton bookmark = (FloatingActionButton)findViewById(R.id.bookmark);
         bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BookmarkDialog dialog = new BookmarkDialog();
+                Bundle bundle = new Bundle();
+                bundle.putInt(BookmarkDialog.BUNDLE_KEY_PRESENTATION_ID, pk);
+                dialog.setArguments(bundle);
                 dialog.show(getSupportFragmentManager(), "bookmark");
             }
         });
