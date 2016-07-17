@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Feature.Talks.TalkDetailActivity"
+            android:name=".Feature.Talks.Detail.TalkDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity

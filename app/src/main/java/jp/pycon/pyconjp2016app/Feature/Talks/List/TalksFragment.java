@@ -1,4 +1,4 @@
-package jp.pycon.pyconjp2016app.Feature.Talks;
+package jp.pycon.pyconjp2016app.Feature.Talks.List;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

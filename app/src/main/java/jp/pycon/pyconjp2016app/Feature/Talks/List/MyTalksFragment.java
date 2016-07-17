@@ -1,4 +1,4 @@
-package jp.pycon.pyconjp2016app.Feature.Talks;
+package jp.pycon.pyconjp2016app.Feature.Talks.List;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.TalkListAdapter;
 import jp.pycon.pyconjp2016app.R;
 
 /**

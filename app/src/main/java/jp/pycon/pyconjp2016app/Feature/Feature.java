@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.MyTalksFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.TalksFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.MyTalksFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.R;
 
 /**

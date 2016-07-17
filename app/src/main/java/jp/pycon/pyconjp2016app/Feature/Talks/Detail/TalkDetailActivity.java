@@ -1,13 +1,15 @@
-package jp.pycon.pyconjp2016app.Feature.Talks;
+package jp.pycon.pyconjp2016app.Feature.Talks.Detail;
 
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +46,7 @@ public class TalkDetailActivity extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(presentation.title);
         setupViews(presentation);
+        setupBookmark();
     }
 
     @Override
@@ -86,5 +89,16 @@ public class TalkDetailActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.description)).setText(presentation.description);
         // 概要
         ((TextView)findViewById(R.id.abst)).setText(presentation.abst);
+    }
+
+    private void setupBookmark() {
+        FloatingActionButton bookmark = (FloatingActionButton)findViewById(R.id.bookmark);
+        bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BookmarkDialog dialog = new BookmarkDialog();
+                dialog.show(getSupportFragmentManager(), "bookmark");
+            }
+        });
     }
 }
