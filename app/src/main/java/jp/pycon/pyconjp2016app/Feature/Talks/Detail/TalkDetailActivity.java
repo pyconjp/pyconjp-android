@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +22,7 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 
 /**
  * Created by rhoboro on 7/9/16.
@@ -93,11 +95,15 @@ public class TalkDetailActivity extends AppCompatActivity {
 
     private void setupBookmark(final int pk) {
         FloatingActionButton bookmark = (FloatingActionButton)findViewById(R.id.bookmark);
+        if (PreferencesManager.isBookmarkContains(this, pk)) {
+            bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bookmark_black_24dp, null));
+        }
         bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BookmarkDialog dialog = new BookmarkDialog();
                 Bundle bundle = new Bundle();
+                // TODO: ブックマーク状態の変更でブックマーク画像を変更させる
                 bundle.putInt(BookmarkDialog.BUNDLE_KEY_PRESENTATION_ID, pk);
                 dialog.setArguments(bundle);
                 dialog.show(getSupportFragmentManager(), "bookmark");

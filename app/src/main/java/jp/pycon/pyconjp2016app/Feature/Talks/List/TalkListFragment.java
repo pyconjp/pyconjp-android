@@ -139,6 +139,7 @@ public class TalkListFragment extends Fragment {
             // ブックマーク登録しているもののみ取得
             List<Integer> list = PreferencesManager.getBookmark(mContext);
             RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
+            query.equalTo("pk", 0);
             for (int pk : list) {
                 query.or().equalTo("pk", pk);
             }

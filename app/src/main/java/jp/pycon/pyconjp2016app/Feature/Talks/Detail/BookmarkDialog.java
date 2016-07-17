@@ -45,24 +45,45 @@ public class BookmarkDialog extends DialogFragment {
         Bundle bundle = getArguments();
         final int pk = bundle.getInt(BUNDLE_KEY_PRESENTATION_ID);
 
+
         final boolean[] checked = {true};
         final CharSequence[] notification = {getString(R.string.dialog_list_notification)};
-        final Dialog dialog = new AlertDialog.Builder(mContext)
-                .setTitle(R.string.dialog_title_bookmark_on)
-                .setMultiChoiceItems(notification, checked, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which, boolean flag) {
-                        checked[which] = flag;
-                    }
-                })
-                .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        PreferencesManager.putBookmark(mContext, pk);
-                    }
-                })
-                .setNegativeButton(R.string.dialog_cancel, null)
-                .create();
+        Dialog dialog;
+        if (PreferencesManager.isBookmarkContains(mContext, pk)) {
+            dialog = new AlertDialog.Builder(mContext)
+                    .setTitle(R.string.dialog_title_bookmark_off)
+                    .setMultiChoiceItems(notification, checked, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which, boolean flag) {
+                            checked[which] = flag;
+                        }
+                    })
+                    .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            PreferencesManager.deleteBookmark(mContext, pk);
+                        }
+                    })
+                    .setNegativeButton(R.string.dialog_cancel, null)
+                    .create();
+        } else {
+            dialog = new AlertDialog.Builder(mContext)
+                    .setTitle(R.string.dialog_title_bookmark_on)
+                    .setMultiChoiceItems(notification, checked, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which, boolean flag) {
+                            checked[which] = flag;
+                        }
+                    })
+                    .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            PreferencesManager.putBookmark(mContext, pk);
+                        }
+                    })
+                    .setNegativeButton(R.string.dialog_cancel, null)
+                    .create();
+        }
         return dialog;
     }
 }
