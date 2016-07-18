@@ -1,4 +1,4 @@
-package jp.pycon.pyconjp2016app.Feature.Talks;
+package jp.pycon.pyconjp2016app.Feature.Talks.List;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
@@ -17,19 +19,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.List;
+import java.util.concurrent.RunnableFuture;
+
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmList;
+import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
 import jp.pycon.pyconjp2016app.BuildConfig;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
+import jp.pycon.pyconjp2016app.Feature.Talks.Detail.TalkDetailActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -55,9 +63,10 @@ public class TalkListFragment extends Fragment {
 
     }
 
-    public static TalkListFragment newInstance(int position) {
+    public static TalkListFragment newInstance(int position, boolean bookmark) {
         Bundle args = new Bundle();
         args.putInt("position", position);
+        args.putBoolean("bookmark", bookmark);
         TalkListFragment fragment = new TalkListFragment();
         fragment.setArguments(args);
         return fragment;
@@ -125,10 +134,37 @@ public class TalkListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         realm = Realm.getDefaultInstance();
+        setupRecycleView();
+    }
 
-        schedules = realm.where(RealmPresentationObject.class).findAll();
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        schedules.removeChangeListener(realmListener);
+        realm.close();
+    }
+
+    private void setupRecycleView() {
+        Bundle bundle = getArguments();
+        boolean bookmark = bundle.getBoolean("bookmark", false);
+        if (bookmark) {
+            // ブックマーク登録しているもののみ取得
+            List<Integer> list = PreferencesManager.getBookmark(mContext);
+            RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
+            query.equalTo("pk", -1);
+            for (int i = 0; i < list.size(); i++) {
+                if (i != 0) {
+                    query.or();
+                }
+                query.equalTo("pk", (int)list.get(i));
+            }
+            schedules = query.findAll();
+        } else {
+            schedules = realm.where(RealmPresentationObject.class)
+                    .findAll();
+        }
+
         adapter = new RealmScheduleAdapter(getContext(), schedules);
         adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
             @Override
@@ -141,8 +177,8 @@ public class TalkListFragment extends Fragment {
                     intent.putExtra(TalkDetailActivity.BUNDLE_KEY_PRESENTATION_ID, pk);
                     startActivity(intent);
                 } else {
-                    getPyConJPPresentation(pk);
-                    Toast.makeText(getContext(), ""+pk,Toast.LENGTH_SHORT).show();
+                    getPyConJPPresentationDetail(pk);
+                    Toast.makeText(getContext(), "" + pk,Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -156,14 +192,7 @@ public class TalkListFragment extends Fragment {
         schedules.addChangeListener(realmListener);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        schedules.removeChangeListener(realmListener);
-        realm.close();
-    }
-
-    private void getPyConJPPresentation(final int pk) {
+    private void getPyConJPPresentationDetail(final int pk) {
         APIClient apiClient = getClient(BuildConfig.PRODUCTION);
         rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);
         observable

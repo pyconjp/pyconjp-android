@@ -19,6 +19,7 @@ public class RealmPresentationObject extends RealmObject {
     public String time;
     public RealmList<RealmSpeakerObject> speakers;
     public String rooms;
+    public boolean bookmark;
 
     public int getPk() {
         return pk;
@@ -45,6 +46,14 @@ public class RealmPresentationObject extends RealmObject {
             strings.add(speaker.getSpeaker());
         }
         return TextUtils.join("\n", strings);
+    }
+
+    public boolean isBookmark() {
+        return bookmark;
+    }
+
+    public void setBookmark(boolean bookmark) {
+        this.bookmark = bookmark;
     }
 }
 

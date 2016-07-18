@@ -1,13 +1,18 @@
-package jp.pycon.pyconjp2016app.Feature.Talks;
+package jp.pycon.pyconjp2016app.Feature.Talks.Detail;
 
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +23,9 @@ import java.util.Random;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 
 /**
  * Created by rhoboro on 7/9/16.
@@ -26,24 +33,26 @@ import jp.pycon.pyconjp2016app.R;
 public class TalkDetailActivity extends AppCompatActivity {
     public static final String BUNDLE_KEY_PRESENTATION_ID = "bundle_key_presentation_id";
     private Realm realm;
+    private Handler mHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_detail);
         realm = Realm.getDefaultInstance();
+        mHandler = new Handler(Looper.getMainLooper());
         initToolbar();
 
         final int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
-        RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
+        final RealmPresentationDetailObject presentation = realm.where(RealmPresentationDetailObject.class)
                 .equalTo("pk", pk)
-                .findAll();
-        final RealmPresentationDetailObject presentation = results.get(0);
+                .findFirst();
 
         // ビューの設定
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(presentation.title);
         setupViews(presentation);
+        setupBookmark(pk);
     }
 
     @Override
@@ -86,5 +95,35 @@ public class TalkDetailActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.description)).setText(presentation.description);
         // 概要
         ((TextView)findViewById(R.id.abst)).setText(presentation.abst);
+    }
+
+    private void setupBookmark(final int pk) {
+        final FloatingActionButton bookmark = (FloatingActionButton)findViewById(R.id.bookmark);
+        if (PreferencesManager.isBookmarkContains(getApplicationContext(), pk)) {
+            bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bookmark_black_24dp, null));
+        }
+        bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BookmarkDialog dialog = new BookmarkDialog();
+                dialog.setmListener(new BookmarkDialog.BookmarkDialogListener() {
+                    @Override
+                    public void bookmarkStatusChanged(int pk2, boolean added) {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                boolean bookmarkStatus = PreferencesManager.isBookmarkContains(getApplicationContext(), pk);
+                                int resId = bookmarkStatus ? R.drawable.ic_bookmark_black_24dp : R.drawable.ic_bookmark_border_black_24dp;
+                                bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resId, null));
+                            }
+                        });
+                    }
+                });
+                Bundle bundle = new Bundle();
+                bundle.putInt(BookmarkDialog.BUNDLE_KEY_PRESENTATION_ID, pk);
+                dialog.setArguments(bundle);
+                dialog.show(getSupportFragmentManager(), "bookmark");
+            }
+        });
     }
 }

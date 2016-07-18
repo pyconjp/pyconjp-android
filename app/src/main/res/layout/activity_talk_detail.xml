@@ -173,11 +173,13 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/bookmark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        app:fabSize="mini"
         android:tint="@color/colorWhite"
-        android:src="@drawable/ic_bookmark_black_24dp"
+        android:src="@drawable/ic_bookmark_border_black_24dp"
         app:layout_anchor="@+id/app_bar"
         app:layout_anchorGravity="bottom|right|end"/>
 

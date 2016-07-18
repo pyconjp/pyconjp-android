@@ -1,4 +1,4 @@
-package jp.pycon.pyconjp2016app.Feature.Talks;
+package jp.pycon.pyconjp2016app.Feature.Talks.List;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,14 +15,11 @@ import jp.pycon.pyconjp2016app.R;
 /**
  * Created by rhoboro on 4/22/16.
  */
-public class TalksFragment extends Fragment implements ViewPager.OnPageChangeListener {
+public class BookmarkFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
-    public static TalksFragment newInstance() {
-        return new TalksFragment();
-    }
-
-    public TalksFragment() {
-        // nop
+    public static BookmarkFragment newInstance() {
+        BookmarkFragment fragment = new BookmarkFragment();
+        return fragment;
     }
 
     @Nullable
@@ -37,7 +34,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                TalkListFragment f = TalkListFragment.newInstance(position);
+                TalkListFragment f = TalkListFragment.newInstance(position, true);
                 return f;
             }
 

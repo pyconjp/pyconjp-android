@@ -29,9 +29,9 @@ import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
-import jp.pycon.pyconjp2016app.Feature.Talks.MyTalksFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
-import jp.pycon.pyconjp2016app.Feature.Talks.TalksFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -135,11 +135,11 @@ public class MainActivity extends AppCompatActivity
                         }
                     }, DRAWER_CLOSE_DELAY_MILLS);
                     break;
-                case R.id.nav_my_talks:
+                case R.id.nav_bookmark:
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            replaceFragment(MyTalksFragment.newInstance());
+                            replaceFragment(BookmarkFragment.newInstance());
                         }
                     }, DRAWER_CLOSE_DELAY_MILLS);
                     break;

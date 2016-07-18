@@ -7,7 +7,7 @@
 
     <!-- Navigation Menu Items -->
     <string name="nav_talks">Talks</string>
-    <string name="nav_my_talks">My talks</string>
+    <string name="nav_bookmark">Bookmark</string>
     <string name="nav_access">Access</string>
     <string name="nav_about">About</string>
     <string name="nav_sponsors">Sponsors</string>
@@ -42,6 +42,13 @@
     <string name="speaker">スピーカー</string>
     <string name="description">説明</string>
     <string name="abst">概要</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_bookmark_on">このトークをブックマークに登録しますか？</string>
+    <string name="dialog_title_bookmark_off">このトークをブックマークから外しますか？</string>
+    <string name="dialog_list_notification">開始前に通知する</string>
+    <string name="dialog_cancel">キャンセル</string>
+    <string name="dialog_ok">OK</string>
 
     <!-- Other -->
     <string name="pycon_theme">Everyone\'s different, all are wonderful.</string>
