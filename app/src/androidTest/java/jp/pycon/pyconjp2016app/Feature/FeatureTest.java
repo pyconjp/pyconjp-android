@@ -39,17 +39,17 @@ public class FeatureTest {
         }
 
         @Test
-        public void MyTalks画面のgetMenuID() throws Exception {
+        public void Bookmark画面のgetMenuID() throws Exception {
             Feature feature = Feature.forName(new BookmarkFragment());
-            int expected = R.id.nav_my_talks;
+            int expected = R.id.nav_bookmark;
             int actual = feature.getMenuId();
             assertThat(expected, is(actual));
         }
 
         @Test
-        public void MyTalks画面のgetTitleResId() throws Exception {
+        public void Bookmark画面のgetTitleResId() throws Exception {
             Feature feature = Feature.forName(new BookmarkFragment());
-            int expected = R.string.nav_my_talks;
+            int expected = R.string.nav_bookmark;
             int actual = feature.getTitleResId();
             assertThat(expected, is(actual));
         }
