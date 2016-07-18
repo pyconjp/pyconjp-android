@@ -23,6 +23,7 @@ import java.util.Random;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 
@@ -43,10 +44,9 @@ public class TalkDetailActivity extends AppCompatActivity {
         initToolbar();
 
         final int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
-        RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
+        final RealmPresentationDetailObject presentation = realm.where(RealmPresentationDetailObject.class)
                 .equalTo("pk", pk)
-                .findAll();
-        final RealmPresentationDetailObject presentation = results.get(0);
+                .findFirst();
 
         // ビューの設定
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
@@ -112,17 +112,14 @@ public class TalkDetailActivity extends AppCompatActivity {
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                if (PreferencesManager.isBookmarkContains(getApplicationContext(), pk)) {
-                                    bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bookmark_black_24dp, null));
-                                } else {
-                                    bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bookmark_border_black_24dp, null));
-                                }
+                                boolean bookmarkStatus = PreferencesManager.isBookmarkContains(getApplicationContext(), pk);
+                                int resId = bookmarkStatus ? R.drawable.ic_bookmark_black_24dp : R.drawable.ic_bookmark_border_black_24dp;
+                                bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resId, null));
                             }
                         });
                     }
                 });
                 Bundle bundle = new Bundle();
-                // TODO: ブックマーク状態の変更でブックマーク画像を変更させる
                 bundle.putInt(BookmarkDialog.BUNDLE_KEY_PRESENTATION_ID, pk);
                 dialog.setArguments(bundle);
                 dialog.show(getSupportFragmentManager(), "bookmark");

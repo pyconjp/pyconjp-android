@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.concurrent.RunnableFuture;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -132,16 +135,29 @@ public class TalkListFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         realm = Realm.getDefaultInstance();
+        setupRecycleView();
+    }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        schedules.removeChangeListener(realmListener);
+        realm.close();
+    }
+
+    private void setupRecycleView() {
         Bundle bundle = getArguments();
         boolean bookmark = bundle.getBoolean("bookmark", false);
         if (bookmark) {
             // ブックマーク登録しているもののみ取得
             List<Integer> list = PreferencesManager.getBookmark(mContext);
             RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
-            query.equalTo("pk", 0);
-            for (int pk : list) {
-                query.or().equalTo("pk", pk);
+            query.equalTo("pk", -1);
+            for (int i = 0; i < list.size(); i++) {
+                if (i != 0) {
+                    query.or();
+                }
+                query.equalTo("pk", (int)list.get(i));
             }
             schedules = query.findAll();
         } else {
@@ -162,7 +178,7 @@ public class TalkListFragment extends Fragment {
                     startActivity(intent);
                 } else {
                     getPyConJPPresentationDetail(pk);
-                    Toast.makeText(getContext(), ""+pk,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "" + pk,Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -174,13 +190,6 @@ public class TalkListFragment extends Fragment {
             }
         };
         schedules.addChangeListener(realmListener);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        schedules.removeChangeListener(realmListener);
-        realm.close();
     }
 
     private void getPyConJPPresentationDetail(final int pk) {
