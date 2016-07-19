@@ -20,6 +20,7 @@ public class RealmPresentationObject extends RealmObject {
     public RealmList<RealmSpeakerObject> speakers;
     public String rooms;
     public boolean bookmark;
+    public String day;
 
     public int getPk() {
         return pk;
@@ -54,6 +55,10 @@ public class RealmPresentationObject extends RealmObject {
 
     public void setBookmark(boolean bookmark) {
         this.bookmark = bookmark;
+    }
+
+    public String getDay() {
+        return day;
     }
 }
 

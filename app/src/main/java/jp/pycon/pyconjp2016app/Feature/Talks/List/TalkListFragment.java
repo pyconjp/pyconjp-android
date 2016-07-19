@@ -7,8 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
@@ -20,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.List;
-import java.util.concurrent.RunnableFuture;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -147,24 +144,9 @@ public class TalkListFragment extends Fragment {
 
     private void setupRecycleView() {
         Bundle bundle = getArguments();
-        boolean bookmark = bundle.getBoolean("bookmark", false);
-        if (bookmark) {
-            // ブックマーク登録しているもののみ取得
-            List<Integer> list = PreferencesManager.getBookmark(mContext);
-            RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
-            query.equalTo("pk", -1);
-            for (int i = 0; i < list.size(); i++) {
-                if (i != 0) {
-                    query.or();
-                }
-                query.equalTo("pk", (int)list.get(i));
-            }
-            schedules = query.findAll();
-        } else {
-            schedules = realm.where(RealmPresentationObject.class)
-                    .findAll();
-        }
-
+        final boolean bookmark = bundle.getBoolean("bookmark", false);
+        final int position = bundle.getInt("position");
+        schedules = setupSchedules(bookmark, position);
         adapter = new RealmScheduleAdapter(getContext(), schedules);
         adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
             @Override
@@ -190,6 +172,29 @@ public class TalkListFragment extends Fragment {
             }
         };
         schedules.addChangeListener(realmListener);
+    }
+
+    private RealmResults<RealmPresentationObject> setupSchedules(boolean bookmark, int position) {
+        RealmResults<RealmPresentationObject> results;
+        String date = position == 0 ? "2016-09-21" : "2016-09-22";
+        if (bookmark) {
+            // ブックマーク登録しているもののみ取得
+            List<Integer> list = PreferencesManager.getBookmark(mContext);
+            RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
+            query.equalTo("pk", -1);
+            for (int i = 0; i < list.size(); i++) {
+                if (i != 0) {
+                    query.or();
+                }
+                query.equalTo("pk", (int)list.get(i));
+            }
+            results = query.equalTo("day", date).findAll();
+        } else {
+            results = realm.where(RealmPresentationObject.class)
+                    .equalTo("day", date)
+                    .findAll();
+        }
+        return results;
     }
 
     private void getPyConJPPresentationDetail(final int pk) {
