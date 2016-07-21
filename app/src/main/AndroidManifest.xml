@@ -39,7 +39,8 @@
             android:label="@string/about_organizers">
         </activity>
         <activity
-            android:name=".Feature.About.AboutAppActivity" >
+            android:name=".Feature.About.AboutAppActivity"
+            android:label="@string/about_license">
         </activity>
         <activity
             android:name=".Feature.About.FeedbackActivity" >
