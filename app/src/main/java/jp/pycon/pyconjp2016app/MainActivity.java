@@ -253,6 +253,7 @@ public class MainActivity extends AppCompatActivity
             obj.title = presentation.title;
             obj.time = "22:26";
             obj.rooms = presentation.rooms;
+            obj.day = presentation.day;
             RealmList<RealmSpeakerObject> speakers = new RealmList<>();
             for (String speaker : presentation.speakers) {
                 RealmSpeakerObject speakerObject = realm.createObject(RealmSpeakerObject.class);
