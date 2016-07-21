@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 
+import java.util.Random;
+
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -253,7 +255,7 @@ public class MainActivity extends AppCompatActivity
             obj.title = presentation.title;
             obj.time = "22:26";
             obj.rooms = presentation.rooms;
-            obj.day = presentation.day;
+            obj.day = dummyDay();
             RealmList<RealmSpeakerObject> speakers = new RealmList<>();
             for (String speaker : presentation.speakers) {
                 RealmSpeakerObject speakerObject = realm.createObject(RealmSpeakerObject.class);
@@ -289,5 +291,11 @@ public class MainActivity extends AppCompatActivity
                     .build();
         }
         return retrofit.create(APIClient.class);
+    }
+
+    private String dummyDay() {
+        Random r = new Random();
+        int i = r.nextInt(2);
+        return i == 0 ? "2016-09-21" : "2016-09-22";
     }
 }
