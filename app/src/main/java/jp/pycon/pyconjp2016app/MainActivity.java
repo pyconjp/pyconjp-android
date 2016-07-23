@@ -21,6 +21,7 @@ import io.fabric.sdk.android.Fabric;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
+import jp.pycon.pyconjp2016app.Feature.Settings.SettingsFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 
@@ -72,28 +73,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
         if (!item.isChecked()) {
@@ -120,6 +99,14 @@ public class MainActivity extends AppCompatActivity
                         @Override
                         public void run() {
                             replaceFragment(AccessFragment.newInstance());
+                        }
+                    }, DRAWER_CLOSE_DELAY_MILLS);
+                    break;
+                case R.id.nav_settings:
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            replaceFragment(SettingsFragment.newInstance());
                         }
                     }, DRAWER_CLOSE_DELAY_MILLS);
                     break;
