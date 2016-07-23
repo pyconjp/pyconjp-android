@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void getPyConJPSchedule() {
-        APIClient apiClient = getClient(BuildConfig.PRODUCTION);
+        APIClient apiClient = ((App)getApplication()).getAPIClient();
         rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
         observable
                 .subscribeOn(Schedulers.io())
@@ -266,31 +266,6 @@ public class MainActivity extends AppCompatActivity
         }
         realm.commitTransaction();
 
-    }
-
-    private APIClient getClient(boolean production) {
-        Retrofit retrofit;
-        if (production) {
-            // 本番APIを叩く
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .build();
-        } else {
-            // ローカルのサンプルファイルを利用する
-            LocalResponseInterceptor i = new LocalResponseInterceptor(getApplicationContext());
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .addInterceptor(i)
-                    .build();
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .client(okHttpClient)
-                    .build();
-        }
-        return retrofit.create(APIClient.class);
     }
 
     private String dummyDay() {

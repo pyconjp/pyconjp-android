@@ -26,6 +26,7 @@ import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
+import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.BuildConfig;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.Feature.Talks.Detail.TalkDetailActivity;
@@ -171,7 +172,7 @@ public class TalkListFragment extends Fragment {
                     startActivity(intent);
                 } else {
                     getPyConJPPresentationDetail(pk);
-                    Toast.makeText(getContext(), "" + pk,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "" + pk, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -197,7 +198,7 @@ public class TalkListFragment extends Fragment {
                 if (i != 0) {
                     query.or();
                 }
-                query.equalTo("pk", (int)list.get(i));
+                query.equalTo("pk", (int) list.get(i));
             }
             results = query.equalTo("day", date).findAll();
         } else {
@@ -209,7 +210,7 @@ public class TalkListFragment extends Fragment {
     }
 
     private void getPyConJPPresentationDetail(final int pk) {
-        APIClient apiClient = getClient(BuildConfig.PRODUCTION);
+        APIClient apiClient = ((App) getActivity().getApplication()).getAPIClient();
         rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);
         observable
                 .subscribeOn(Schedulers.io())
@@ -254,30 +255,5 @@ public class TalkListFragment extends Fragment {
         }
         obj.speakers = speakers;
         realm.commitTransaction();
-    }
-
-    private APIClient getClient(boolean production) {
-        Retrofit retrofit;
-        if (production) {
-            // 本番APIを叩く
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .build();
-        } else {
-            // ローカルのサンプルファイルを利用する
-            LocalResponseInterceptor i = new LocalResponseInterceptor(mContext);
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .addInterceptor(i)
-                    .build();
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .client(okHttpClient)
-                    .build();
-        }
-        return retrofit.create(APIClient.class);
     }
 }
