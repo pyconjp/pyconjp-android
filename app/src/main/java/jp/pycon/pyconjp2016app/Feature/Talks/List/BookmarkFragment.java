@@ -10,6 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import io.realm.Realm;
+import io.realm.RealmList;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmDaysObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmStringObject;
 import jp.pycon.pyconjp2016app.R;
 
 /**
@@ -17,6 +21,8 @@ import jp.pycon.pyconjp2016app.R;
  */
 public class BookmarkFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
+    private Realm realm;
+    private View view;
     public static BookmarkFragment newInstance() {
         BookmarkFragment fragment = new BookmarkFragment();
         return fragment;
@@ -25,11 +31,15 @@ public class BookmarkFragment extends Fragment implements ViewPager.OnPageChange
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_view_pager, container, false);
-        TabLayout tab= (TabLayout)v.findViewById(R.id.tab_layout);
+        view = inflater.inflate(R.layout.fragment_view_pager, container, false);
+        realm = Realm.getDefaultInstance();
+        TabLayout tab= (TabLayout)view.findViewById(R.id.tab_layout);
         tab.setTabMode(TabLayout.MODE_FIXED);
         tab.setTabGravity(TabLayout.GRAVITY_FILL);
-        ViewPager pager = (ViewPager)v.findViewById(R.id.view_pager);
+        ViewPager pager = (ViewPager)view.findViewById(R.id.view_pager);
+
+        final RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
+        final RealmList<RealmStringObject> list = days.getDays();
 
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
@@ -40,30 +50,27 @@ public class BookmarkFragment extends Fragment implements ViewPager.OnPageChange
 
             @Override
             public int getCount() {
-                return 2;
+                return list.size();
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
-                switch (position) {
-                    case 0:
-                        return getString(R.string.conference_day_1);
-                    case 1:
-                        return getString(R.string.conference_day_2);
-                }
-                return "";
+                return list.get(position).getString();
             }
         };
         pager.setAdapter(adapter);
         pager.addOnPageChangeListener(this);
         tab.setupWithViewPager(pager);
 
-        return v;
+        return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ViewPager pager = (ViewPager)view.findViewById(R.id.view_pager);
+        pager.setAdapter(null);
+        realm.close();
     }
 
     @Override

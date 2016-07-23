@@ -17,7 +17,7 @@ public class RealmPresentationObject extends RealmObject {
     public int pk;
     public String title;
     public String time;
-    public RealmList<RealmSpeakerObject> speakers;
+    public RealmList<RealmStringObject> speakers;
     public String rooms;
     public boolean bookmark;
     public String day;
@@ -34,7 +34,7 @@ public class RealmPresentationObject extends RealmObject {
         return time;
     }
 
-    public RealmList<RealmSpeakerObject> getSpeakers() {
+    public RealmList<RealmStringObject> getSpeakers() {
         return speakers;
     }
 
@@ -43,8 +43,8 @@ public class RealmPresentationObject extends RealmObject {
     }
     public String speakerString() {
         List<String> strings = new ArrayList<>();
-        for (RealmSpeakerObject speaker : speakers) {
-            strings.add(speaker.getSpeaker());
+        for (RealmStringObject speaker : speakers) {
+            strings.add(speaker.getString());
         }
         return TextUtils.join("\n", strings);
     }

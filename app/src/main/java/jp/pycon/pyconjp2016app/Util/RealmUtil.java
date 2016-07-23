@@ -12,9 +12,10 @@ import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationEntity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmDaysObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
-import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmStringObject;
 
 /**
  * Created by rhoboro on 7/23/16.
@@ -31,6 +32,14 @@ public class RealmUtil {
             }
         });
 
+        final RealmResults<RealmDaysObject> dayResults = realm.where(RealmDaysObject.class).findAll();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                dayResults.deleteAllFromRealm();
+            }
+        });
+
         // Realm用のビューモデルに変換してから格納する
         realm.beginTransaction();
         for (PresentationEntity presentation: presentations.presentations) {
@@ -40,13 +49,31 @@ public class RealmUtil {
             obj.time = "22:26";
             obj.rooms = presentation.rooms;
             obj.day = dummyDay();
-            RealmList<RealmSpeakerObject> speakers = new RealmList<>();
+            RealmList<RealmStringObject> speakers = new RealmList<>();
             for (String speaker : presentation.speakers) {
-                RealmSpeakerObject speakerObject = realm.createObject(RealmSpeakerObject.class);
-                speakerObject.speaker = speaker;
+                RealmStringObject speakerObject = realm.createObject(RealmStringObject.class);
+                speakerObject.setString(speaker);
                 speakers.add(speakerObject);
             }
             obj.speakers = speakers;
+
+            RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
+            RealmStringObject day = realm.createObject(RealmStringObject.class);
+            day.setString(obj.day);
+            if (days != null) {
+                boolean isExist = false;
+                for (RealmStringObject str : days.getDays()) {
+                    if (str.getString().equals(day.getString())) {
+                        isExist = true;
+                    }
+                }
+                if (!isExist) {
+                    days.getDays().add(day);
+                }
+            } else {
+                days = realm.createObject(RealmDaysObject.class);
+                days.getDays().add(day);
+            }
         }
         realm.commitTransaction();
     }
@@ -61,10 +88,10 @@ public class RealmUtil {
         obj.pk = pk;
         obj.description = detail.description;
         obj.abst = detail.abst;
-        RealmList<RealmSpeakerObject> speakers = new RealmList<>();
+        RealmList<RealmStringObject> speakers = new RealmList<>();
         for (String speaker : detail.speakers) {
-            RealmSpeakerObject speakerObject = realm.createObject(RealmSpeakerObject.class);
-            speakerObject.speaker = speaker;
+            RealmStringObject speakerObject = realm.createObject(RealmStringObject.class);
+            speakerObject.setString(speaker);
             speakers.add(speakerObject);
         }
         obj.speakers = speakers;
@@ -73,16 +100,18 @@ public class RealmUtil {
 
     public static RealmResults<RealmPresentationObject> getAllTalks(Realm realm, int position) {
         RealmResults<RealmPresentationObject> results;
-        String date = position == 0 ? "2016-09-21" : "2016-09-22";
+        RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
+        String day = days.getDays().get(position).getString();
         results = realm.where(RealmPresentationObject.class)
-                .equalTo("day", date)
+                .equalTo("day", day)
                 .findAll();
         return results;
     }
 
     public static RealmResults<RealmPresentationObject> getBookmarkTalks(Context context, Realm realm, int position) {
         RealmResults<RealmPresentationObject> results;
-        String date = position == 0 ? "2016-09-21" : "2016-09-22";
+        RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
+        String day = days.getDays().get(position).getString();
         // ブックマーク登録しているもののみ取得
         List<Integer> list = PreferencesManager.getBookmark(context);
         RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
@@ -93,7 +122,7 @@ public class RealmUtil {
             }
             query.equalTo("pk", (int) list.get(i));
         }
-        results = query.equalTo("day", date).findAll();
+        results = query.equalTo("day", day).findAll();
         return results;
     }
 
@@ -111,6 +140,18 @@ public class RealmUtil {
     private static String dummyDay() {
         Random r = new Random();
         int i = r.nextInt(2);
-        return i == 0 ? "2016-09-21" : "2016-09-22";
+        String day = "";
+        switch (i) {
+            case 0:
+                day = "2016-09-21";
+                break;
+            case 1:
+                day = "2016-09-22";
+                break;
+            case 2:
+                day = "2016-09-23";
+                break;
+        }
+        return day;
     }
 }

@@ -13,7 +13,7 @@ import io.realm.RealmObject;
  */
 public class RealmPresentationDetailObject extends RealmObject {
     public String category;
-    public RealmList<RealmSpeakerObject> speakers;
+    public RealmList<RealmStringObject> speakers;
     public String end;
     public String description;
     public String title;
@@ -27,7 +27,7 @@ public class RealmPresentationDetailObject extends RealmObject {
         return category;
     }
 
-    public RealmList<RealmSpeakerObject> getSpeakers() {
+    public RealmList<RealmStringObject> getSpeakers() {
         return speakers;
     }
 
@@ -64,8 +64,8 @@ public class RealmPresentationDetailObject extends RealmObject {
     }
     public String speakerstring() {
         List<String> strings = new ArrayList<>();
-        for (RealmSpeakerObject speaker : speakers) {
-            strings.add(speaker.getSpeaker());
+        for (RealmStringObject speaker : speakers) {
+            strings.add(speaker.getString());
         }
         return TextUtils.join("\n", strings);
     }
