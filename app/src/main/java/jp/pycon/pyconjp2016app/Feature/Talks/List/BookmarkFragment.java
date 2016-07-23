@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmDaysObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmStringObject;
 import jp.pycon.pyconjp2016app.R;
@@ -40,6 +41,7 @@ public class BookmarkFragment extends Fragment implements ViewPager.OnPageChange
 
         final RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
         final RealmList<RealmStringObject> list = days.getDays();
+        final RealmResults<RealmStringObject> results = list.sort("string");
 
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
@@ -50,12 +52,12 @@ public class BookmarkFragment extends Fragment implements ViewPager.OnPageChange
 
             @Override
             public int getCount() {
-                return list.size();
+                return results.size();
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
-                return list.get(position).getString();
+                return results.get(position).getString();
             }
         };
         pager.setAdapter(adapter);

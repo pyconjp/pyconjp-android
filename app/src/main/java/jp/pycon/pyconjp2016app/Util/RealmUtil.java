@@ -2,6 +2,7 @@ package jp.pycon.pyconjp2016app.Util;
 
 import android.content.Context;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -22,7 +23,7 @@ import jp.pycon.pyconjp2016app.Model.Realm.RealmStringObject;
  */
 public class RealmUtil {
 
-    public static void savePresentationList(Realm realm, PresentationListEntity presentations) {
+    public static void savePresentationList(Context context, Realm realm, PresentationListEntity presentations) {
         // 前回結果を Realm から削除
         final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
         realm.executeTransaction(new Realm.Transaction() {
@@ -40,6 +41,7 @@ public class RealmUtil {
             }
         });
 
+        List<Integer> bookmarks = PreferencesManager.getBookmark(context);
         // Realm用のビューモデルに変換してから格納する
         realm.beginTransaction();
         for (PresentationEntity presentation: presentations.presentations) {
@@ -56,6 +58,9 @@ public class RealmUtil {
                 speakers.add(speakerObject);
             }
             obj.speakers = speakers;
+            if (bookmarks.contains(obj.pk)) {
+                obj.bookmark = true;
+            }
 
             RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
             RealmStringObject day = realm.createObject(RealmStringObject.class);
@@ -115,14 +120,9 @@ public class RealmUtil {
         // ブックマーク登録しているもののみ取得
         List<Integer> list = PreferencesManager.getBookmark(context);
         RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
-        query.equalTo("pk", -1);
-        for (int i = 0; i < list.size(); i++) {
-            if (i != 0) {
-                query.or();
-            }
-            query.equalTo("pk", (int) list.get(i));
-        }
-        results = query.equalTo("day", day).findAll();
+        results = query.equalTo("day", day)
+                .equalTo("bookmark", true)
+                .findAll();
         return results;
     }
 
