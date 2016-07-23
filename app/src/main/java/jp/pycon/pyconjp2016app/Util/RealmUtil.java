@@ -22,7 +22,6 @@ import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
 public class RealmUtil {
 
     public static void savePresentationList(Realm realm, PresentationListEntity presentations) {
-
         // 前回結果を Realm から削除
         final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
         realm.executeTransaction(new Realm.Transaction() {
@@ -98,6 +97,17 @@ public class RealmUtil {
         return results;
     }
 
+    public static boolean isTalkDetailExist(Realm realm, int pk) {
+        RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
+                .equalTo("pk", pk)
+                .findAll();
+        return results.size() > 0;
+    }
+    public static RealmPresentationDetailObject getTalkDetail(Realm realm, int pk) {
+        return realm.where(RealmPresentationDetailObject.class)
+                .equalTo("pk", pk)
+                .findFirst();
+    }
     private static String dummyDay() {
         Random r = new Random();
         int i = r.nextInt(2);

@@ -25,7 +25,6 @@ import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.Feature.Talks.Detail.TalkDetailActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
-import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.RealmUtil;
@@ -37,7 +36,6 @@ import rx.schedulers.Schedulers;
  * Created by rhoboro on 4/23/16.
  */
 public class TalkListFragment extends Fragment {
-
 
     private Context mContext;
     private Realm realm;
@@ -152,17 +150,8 @@ public class TalkListFragment extends Fragment {
         adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
             @Override
             public void onClick(int pk) {
-                RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
-                        .equalTo("pk", pk)
-                        .findAll();
-                if (results.size() != 0) {
-                    final Intent intent = new Intent(mContext, TalkDetailActivity.class);
-                    intent.putExtra(TalkDetailActivity.BUNDLE_KEY_PRESENTATION_ID, pk);
-                    startActivity(intent);
-                } else {
-                    getPyConJPPresentationDetail(pk);
+                TalkDetailActivity.start(mContext, pk);
                     Toast.makeText(getContext(), "" + pk, Toast.LENGTH_SHORT).show();
-                }
             }
         });
         recyclerView.setAdapter(adapter);

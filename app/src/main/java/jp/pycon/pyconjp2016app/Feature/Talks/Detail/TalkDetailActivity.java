@@ -1,5 +1,7 @@
 package jp.pycon.pyconjp2016app.Feature.Talks.Detail;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -15,17 +17,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
 
 import java.util.Random;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.API.Client.APIClient;
+import jp.pycon.pyconjp2016app.App;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
-import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
+import jp.pycon.pyconjp2016app.Util.RealmUtil;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by rhoboro on 7/9/16.
@@ -35,6 +43,11 @@ public class TalkDetailActivity extends AppCompatActivity {
     private Realm realm;
     private Handler mHandler;
 
+    public static void start(Context context, int pk) {
+        final Intent intent = new Intent(context, TalkDetailActivity.class);
+        intent.putExtra(TalkDetailActivity.BUNDLE_KEY_PRESENTATION_ID, pk);
+        context.startActivity(intent);
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +57,15 @@ public class TalkDetailActivity extends AppCompatActivity {
         initToolbar();
 
         final int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
-        final RealmPresentationDetailObject presentation = realm.where(RealmPresentationDetailObject.class)
-                .equalTo("pk", pk)
-                .findFirst();
+        if (RealmUtil.isTalkDetailExist(realm, pk)) {
+            showTalkDetail(pk);
+        } else {
+            getPyConJPPresentationDetail(pk);
+        }
+    }
 
+    private void showTalkDetail(int pk) {
+        final RealmPresentationDetailObject presentation = RealmUtil.getTalkDetail(realm, pk);
         // ビューの設定
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(presentation.title);
@@ -125,5 +143,31 @@ public class TalkDetailActivity extends AppCompatActivity {
                 dialog.show(getSupportFragmentManager(), "bookmark");
             }
         });
+    }
+
+    private void getPyConJPPresentationDetail(final int pk) {
+        APIClient apiClient = ((App)getApplication()).getAPIClient();
+        rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);
+        observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<PresentationDetailEntity>() {
+                               @Override
+                               public void onCompleted() {
+                                   showTalkDetail(pk);
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                                   e.printStackTrace();
+                                   Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
+                               }
+
+                               @Override
+                               public void onNext(final PresentationDetailEntity presentation) {
+                                   RealmUtil.savePresentationDetail(realm, pk, presentation);
+                               }
+                           }
+                );
     }
 }
