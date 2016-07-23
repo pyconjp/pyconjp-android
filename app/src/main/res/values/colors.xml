@@ -6,6 +6,8 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#808080</color>
+    <color name="colorDarkGray">#505050</color>
+    <color name="colorLightGray">#A0A0A0</color>
     <color name="colorMagenta">#EB6D9A</color>
     <color name="colorLightBlue">#92D8F5</color>
     <color name="colorYellowGreen">#A9C952</color>
