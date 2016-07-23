@@ -17,29 +17,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.List;
-
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
-import io.realm.RealmList;
-import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
-import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
 import jp.pycon.pyconjp2016app.App;
-import jp.pycon.pyconjp2016app.BuildConfig;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.Feature.Talks.Detail.TalkDetailActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
-import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
 import jp.pycon.pyconjp2016app.R;
-import jp.pycon.pyconjp2016app.Util.PreferencesManager;
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import jp.pycon.pyconjp2016app.Util.RealmUtil;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -158,7 +147,7 @@ public class TalkListFragment extends Fragment {
         Bundle bundle = getArguments();
         final boolean bookmark = bundle.getBoolean("bookmark", false);
         final int position = bundle.getInt("position");
-        schedules = setupSchedules(bookmark, position);
+        schedules = bookmark ? RealmUtil.getBookmarkTalks(mContext, realm, position) : RealmUtil.getAllTalks(realm, position);
         adapter = new RealmScheduleAdapter(getContext(), schedules);
         adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
             @Override
@@ -186,29 +175,6 @@ public class TalkListFragment extends Fragment {
         schedules.addChangeListener(realmListener);
     }
 
-    private RealmResults<RealmPresentationObject> setupSchedules(boolean bookmark, int position) {
-        RealmResults<RealmPresentationObject> results;
-        String date = position == 0 ? "2016-09-21" : "2016-09-22";
-        if (bookmark) {
-            // ブックマーク登録しているもののみ取得
-            List<Integer> list = PreferencesManager.getBookmark(mContext);
-            RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
-            query.equalTo("pk", -1);
-            for (int i = 0; i < list.size(); i++) {
-                if (i != 0) {
-                    query.or();
-                }
-                query.equalTo("pk", (int) list.get(i));
-            }
-            results = query.equalTo("day", date).findAll();
-        } else {
-            results = realm.where(RealmPresentationObject.class)
-                    .equalTo("day", date)
-                    .findAll();
-        }
-        return results;
-    }
-
     private void getPyConJPPresentationDetail(final int pk) {
         APIClient apiClient = ((App) getActivity().getApplication()).getAPIClient();
         rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);
@@ -231,29 +197,10 @@ public class TalkListFragment extends Fragment {
 
                                @Override
                                public void onNext(final PresentationDetailEntity presentation) {
-                                   saveEntity(pk, presentation);
+                                   RealmUtil.savePresentationDetail(realm, pk, presentation);
                                }
                            }
                 );
     }
 
-    private void saveEntity(final int pk, final PresentationDetailEntity entity) {
-        RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
-                .equalTo("pk", pk)
-                .findAll();
-        realm.beginTransaction();
-        RealmPresentationDetailObject obj = realm.createObject(RealmPresentationDetailObject.class);
-        obj.title = results.get(0).title;
-        obj.pk = pk;
-        obj.description = entity.description;
-        obj.abst = entity.abst;
-        RealmList<RealmSpeakerObject> speakers = new RealmList<>();
-        for (String speaker : entity.speakers) {
-            RealmSpeakerObject speakerObject = realm.createObject(RealmSpeakerObject.class);
-            speakerObject.speaker = speaker;
-            speakers.add(speakerObject);
-        }
-        obj.speakers = speakers;
-        realm.commitTransaction();
-    }
 }
