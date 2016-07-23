@@ -18,27 +18,16 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 
-import java.util.Random;
-
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
-import io.realm.RealmList;
-import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
-import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
-import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationEntity;
-import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
-import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
-import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerObject;
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
+import jp.pycon.pyconjp2016app.Util.RealmUtil;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -213,7 +202,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void getPyConJPSchedule() {
-        APIClient apiClient = getClient(BuildConfig.PRODUCTION);
+        APIClient apiClient = ((App)getApplication()).getAPIClient();
         rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
         observable
                 .subscribeOn(Schedulers.io())
@@ -231,71 +220,9 @@ public class MainActivity extends AppCompatActivity
 
                                @Override
                                public void onNext(PresentationListEntity presentationList) {
-                                   saveEntity(presentationList);
+                                   RealmUtil.savePresentationList(realm, presentationList);
                                }
                            }
                 );
-    }
-
-    private void saveEntity(PresentationListEntity entity) {
-        // 前回結果を Realm から削除
-        final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                results.deleteAllFromRealm();
-            }
-        });
-
-        // Realm用のビューモデルに変換してから格納する
-        realm.beginTransaction();
-        for (PresentationEntity presentation: entity.presentations) {
-            RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
-            obj.pk = presentation.pk;
-            obj.title = presentation.title;
-            obj.time = "22:26";
-            obj.rooms = presentation.rooms;
-            obj.day = dummyDay();
-            RealmList<RealmSpeakerObject> speakers = new RealmList<>();
-            for (String speaker : presentation.speakers) {
-                RealmSpeakerObject speakerObject = realm.createObject(RealmSpeakerObject.class);
-                speakerObject.speaker = speaker;
-                speakers.add(speakerObject);
-            }
-            obj.speakers = speakers;
-        }
-        realm.commitTransaction();
-
-    }
-
-    private APIClient getClient(boolean production) {
-        Retrofit retrofit;
-        if (production) {
-            // 本番APIを叩く
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .build();
-        } else {
-            // ローカルのサンプルファイルを利用する
-            LocalResponseInterceptor i = new LocalResponseInterceptor(getApplicationContext());
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .addInterceptor(i)
-                    .build();
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .client(okHttpClient)
-                    .build();
-        }
-        return retrofit.create(APIClient.class);
-    }
-
-    private String dummyDay() {
-        Random r = new Random();
-        int i = r.nextInt(2);
-        return i == 0 ? "2016-09-21" : "2016-09-22";
     }
 }

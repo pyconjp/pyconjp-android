@@ -65,11 +65,6 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-    @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
     }
