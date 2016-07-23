@@ -14,6 +14,7 @@ import io.realm.annotations.PrimaryKey;
  */
 public class RealmPresentationObject extends RealmObject {
 
+    @PrimaryKey
     public int pk;
     public String title;
     public String time;

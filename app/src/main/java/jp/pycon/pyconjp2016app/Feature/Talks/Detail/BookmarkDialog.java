@@ -67,6 +67,15 @@ public class BookmarkDialog extends DialogFragment {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             PreferencesManager.deleteBookmark(mContext, pk);
+                            final RealmPresentationObject obj = realm.where(RealmPresentationObject.class)
+                                    .equalTo("pk", pk)
+                                    .findFirst();
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    obj.bookmark = false;
+                                }
+                            });
                             if (mListener != null) {
                                 mListener.bookmarkStatusChanged(pk, false);
                             }
@@ -87,6 +96,15 @@ public class BookmarkDialog extends DialogFragment {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             PreferencesManager.putBookmark(mContext, pk);
+                            final RealmPresentationObject obj = realm.where(RealmPresentationObject.class)
+                                    .equalTo("pk", pk)
+                                    .findFirst();
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    obj.bookmark = true;
+                                }
+                            });
                             if (mListener != null) {
                                 mListener.bookmarkStatusChanged(pk, true);
                             }

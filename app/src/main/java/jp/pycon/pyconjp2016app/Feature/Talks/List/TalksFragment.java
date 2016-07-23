@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
@@ -48,11 +49,11 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
         view = inflater.inflate(R.layout.fragment_view_pager, container, false);
         realm = Realm.getDefaultInstance();
         final RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
-//        if (days != null) {
-//            setupTalkList();
-//        } else {
+        if (days != null) {
+            setupTalkList();
+        } else {
             getPyConJPSchedule();
-//        }
+        }
         return view;
     }
 
@@ -104,7 +105,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
 
                                @Override
                                public void onNext(PresentationListEntity presentationList) {
-                                   RealmUtil.savePresentationList(realm, presentationList);
+                                   RealmUtil.savePresentationList(mContext, realm, presentationList);
                                }
                            }
                 );
@@ -118,6 +119,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
 
         final RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
         final RealmList<RealmStringObject> list = days.getDays();
+        final RealmResults<RealmStringObject> results = list.sort("string");
 
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
@@ -128,12 +130,12 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
 
             @Override
             public int getCount() {
-                return list.size();
+                return results.size();
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
-                return list.get(position).getString();
+                return results.get(position).getString();
             }
         };
         pager.setAdapter(adapter);
