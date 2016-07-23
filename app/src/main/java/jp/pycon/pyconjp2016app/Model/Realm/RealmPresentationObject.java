@@ -21,6 +21,7 @@ public class RealmPresentationObject extends RealmObject {
     public RealmList<RealmStringObject> speakers;
     public String rooms;
     public boolean bookmark;
+    public boolean alert;
     public String day;
 
     public int getPk() {

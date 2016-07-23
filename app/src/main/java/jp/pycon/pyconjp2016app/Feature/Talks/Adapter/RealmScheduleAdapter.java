@@ -1,10 +1,12 @@
 package jp.pycon.pyconjp2016app.Feature.Talks.Adapter;
 
 import android.content.Context;
+import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.realm.RealmRecyclerViewAdapter;
@@ -56,6 +58,10 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
         holder.title.setText(obj.title);
         holder.speaker.setText(obj.speakerString());
         holder.time.setText(obj.time);
+        int bookmarkVisibility = obj.bookmark ? View.VISIBLE : View.INVISIBLE;
+        holder.bookmark.setVisibility(bookmarkVisibility);
+        int alertVisibility = obj.alert ? View.VISIBLE : View.INVISIBLE;
+        holder.alert.setVisibility(alertVisibility);
     }
 
     public void setOnClickListener(RealmScheduleAdapterListener listener) {
@@ -70,12 +76,16 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
         final TextView speaker;
         final TextView time;
         final TextView title;
+        final ImageView alert;
+        final ImageView bookmark;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             speaker = (TextView)itemView.findViewById(R.id.speaker);
             time = (TextView)itemView.findViewById(R.id.time);
             title = (TextView)itemView.findViewById(R.id.title);
+            alert = (ImageView)itemView.findViewById(R.id.alert_img);
+            bookmark = (ImageView)itemView.findViewById(R.id.bookmark_img);
         }
     }
 }

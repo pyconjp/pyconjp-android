@@ -21,7 +21,7 @@ import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 public class BookmarkDialog extends DialogFragment {
 
     public interface BookmarkDialogListener {
-        public void bookmarkStatusChanged(int pk, boolean added);
+        void bookmarkStatusChanged(int pk, boolean added);
     }
 
     public static final String BUNDLE_KEY_PRESENTATION_ID = "bundle_key_presentation_id";
@@ -49,20 +49,10 @@ public class BookmarkDialog extends DialogFragment {
 
         Bundle bundle = getArguments();
         final int pk = bundle.getInt(BUNDLE_KEY_PRESENTATION_ID);
-
-
-        final boolean[] checked = {true};
-        final CharSequence[] notification = {getString(R.string.dialog_list_notification)};
         Dialog dialog;
         if (PreferencesManager.isBookmarkContains(mContext, pk)) {
             dialog = new AlertDialog.Builder(mContext)
                     .setTitle(R.string.dialog_title_bookmark_off)
-                    .setMultiChoiceItems(notification, checked, new DialogInterface.OnMultiChoiceClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which, boolean flag) {
-                            checked[which] = flag;
-                        }
-                    })
                     .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -74,6 +64,7 @@ public class BookmarkDialog extends DialogFragment {
                                 @Override
                                 public void execute(Realm realm) {
                                     obj.bookmark = false;
+                                    obj.alert = false;
                                 }
                             });
                             if (mListener != null) {
@@ -84,6 +75,8 @@ public class BookmarkDialog extends DialogFragment {
                     .setNegativeButton(R.string.dialog_cancel, null)
                     .create();
         } else {
+            final boolean[] checked = {true};
+            final CharSequence[] notification = {getString(R.string.dialog_list_notification)};
             dialog = new AlertDialog.Builder(mContext)
                     .setTitle(R.string.dialog_title_bookmark_on)
                     .setMultiChoiceItems(notification, checked, new DialogInterface.OnMultiChoiceClickListener() {
@@ -103,6 +96,7 @@ public class BookmarkDialog extends DialogFragment {
                                 @Override
                                 public void execute(Realm realm) {
                                     obj.bookmark = true;
+                                    obj.alert = checked[0];
                                 }
                             });
                             if (mListener != null) {
