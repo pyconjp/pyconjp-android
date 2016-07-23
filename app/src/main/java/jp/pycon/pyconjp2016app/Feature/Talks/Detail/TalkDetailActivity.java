@@ -71,6 +71,7 @@ public class TalkDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setTitle(presentation.title);
         setupViews(presentation);
         setupBookmark(pk);
+        findViewById(R.id.detail_view).setVisibility(View.VISIBLE);
     }
 
     @Override
