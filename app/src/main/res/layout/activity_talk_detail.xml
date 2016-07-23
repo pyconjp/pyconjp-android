@@ -22,10 +22,11 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:maxLines="4">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
+                android:orientation="vertical"
                 app:layout_collapseMode="parallax">
 
                 <ImageView
@@ -36,7 +37,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/square" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/tool_bar"
@@ -55,6 +56,15 @@
         android:layout_marginBottom="80dp"
         android:layout_gravity="fill_vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:id="@+id/detail_view"
@@ -168,6 +178,7 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+        </FrameLayout>
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton

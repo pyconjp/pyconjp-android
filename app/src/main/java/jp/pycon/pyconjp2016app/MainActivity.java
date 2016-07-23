@@ -14,35 +14,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
-import io.realm.Realm;
-import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
-import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
-import jp.pycon.pyconjp2016app.Util.RealmUtil;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
 
     private static final long DRAWER_CLOSE_DELAY_MILLS = 300L;
-    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        realm = Realm.getDefaultInstance();
-        getPyConJPSchedule();
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -66,14 +55,6 @@ public class MainActivity extends AppCompatActivity
         }
         getSupportFragmentManager().addOnBackStackChangedListener(this);
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        realm.close();
-    }
-
-
 
     @Override
     public void onBackPressed() {
@@ -201,28 +182,4 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void getPyConJPSchedule() {
-        APIClient apiClient = ((App)getApplication()).getAPIClient();
-        rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
-        observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<PresentationListEntity>() {
-                               @Override
-                               public void onCompleted() {
-                               }
-
-                               @Override
-                               public void onError(Throwable e) {
-                                   e.printStackTrace();
-                                   Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
-                               }
-
-                               @Override
-                               public void onNext(PresentationListEntity presentationList) {
-                                   RealmUtil.savePresentationList(realm, presentationList);
-                               }
-                           }
-                );
-    }
 }

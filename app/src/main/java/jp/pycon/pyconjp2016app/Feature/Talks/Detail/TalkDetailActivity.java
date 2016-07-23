@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,8 @@ public class TalkDetailActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_detail);
+        ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
         realm = Realm.getDefaultInstance();
         mHandler = new Handler(Looper.getMainLooper());
         initToolbar();
@@ -71,6 +74,8 @@ public class TalkDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setTitle(presentation.title);
         setupViews(presentation);
         setupBookmark(pk);
+        ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.GONE);
         findViewById(R.id.detail_view).setVisibility(View.VISIBLE);
     }
 
