@@ -120,24 +120,24 @@ public class TalkListFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         realm = Realm.getDefaultInstance();
+        setupRecycleView();
 
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        setupRecycleView();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        schedules.removeChangeListener(realmListener);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        schedules.removeChangeListener(realmListener);
         realm.close();
     }
 
@@ -162,34 +162,6 @@ public class TalkListFragment extends Fragment {
             }
         };
         schedules.addChangeListener(realmListener);
-    }
-
-    private void getPyConJPPresentationDetail(final int pk) {
-        APIClient apiClient = ((App) getActivity().getApplication()).getAPIClient();
-        rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);
-        observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<PresentationDetailEntity>() {
-                               @Override
-                               public void onCompleted() {
-                                   final Intent intent = new Intent(mContext, TalkDetailActivity.class);
-                                   intent.putExtra(TalkDetailActivity.BUNDLE_KEY_PRESENTATION_ID, pk);
-                                   startActivity(intent);
-                               }
-
-                               @Override
-                               public void onError(Throwable e) {
-                                   e.printStackTrace();
-                                   Toast.makeText(mContext, "error" + e, Toast.LENGTH_SHORT).show();
-                               }
-
-                               @Override
-                               public void onNext(final PresentationDetailEntity presentation) {
-                                   RealmUtil.savePresentationDetail(realm, pk, presentation);
-                               }
-                           }
-                );
     }
 
 }
