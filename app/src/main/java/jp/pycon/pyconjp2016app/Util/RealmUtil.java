@@ -2,7 +2,6 @@ package jp.pycon.pyconjp2016app.Util;
 
 import android.content.Context;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -62,6 +61,7 @@ public class RealmUtil {
                 obj.bookmark = true;
             }
 
+            // 日付は動的に取得したものをあとでタブで利用
             RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
             RealmStringObject day = realm.createObject(RealmStringObject.class);
             day.setString(obj.day);

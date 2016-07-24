@@ -1,7 +1,6 @@
 package jp.pycon.pyconjp2016app.Feature.Talks.List;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,22 +14,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
-import jp.pycon.pyconjp2016app.API.Client.APIClient;
-import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.Feature.Talks.Detail.TalkDetailActivity;
-import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.RealmUtil;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by rhoboro on 4/23/16.
@@ -42,6 +34,8 @@ public class TalkListFragment extends Fragment {
     private RecyclerView recyclerView;
     private RealmResults<RealmPresentationObject> schedules;
     private RealmChangeListener realmListener;
+    private static final String BUNDLE_KEY_POSITION = "bundle_key_position";
+    private static final String BUNDLE_KEY_BOOKMARK = "bundle_key_bookmark";
     RealmScheduleAdapter adapter;
 
     public TalkListFragment() {
@@ -50,8 +44,8 @@ public class TalkListFragment extends Fragment {
 
     public static TalkListFragment newInstance(int position, boolean bookmark) {
         Bundle args = new Bundle();
-        args.putInt("position", position);
-        args.putBoolean("bookmark", bookmark);
+        args.putInt(BUNDLE_KEY_POSITION, position);
+        args.putBoolean(BUNDLE_KEY_BOOKMARK, bookmark);
         TalkListFragment fragment = new TalkListFragment();
         fragment.setArguments(args);
         return fragment;
@@ -142,9 +136,9 @@ public class TalkListFragment extends Fragment {
     }
 
     private void setupRecycleView() {
-        Bundle bundle = getArguments();
-        final boolean bookmark = bundle.getBoolean("bookmark", false);
-        final int position = bundle.getInt("position");
+        final Bundle bundle = getArguments();
+        final int position = bundle.getInt(BUNDLE_KEY_POSITION);
+        final boolean bookmark = bundle.getBoolean(BUNDLE_KEY_BOOKMARK, false);
         schedules = bookmark ? RealmUtil.getBookmarkTalks(mContext, realm, position) : RealmUtil.getAllTalks(realm, position);
         adapter = new RealmScheduleAdapter(getContext(), schedules);
         adapter.setOnClickListener(new RealmScheduleAdapter.RealmScheduleAdapterListener() {
