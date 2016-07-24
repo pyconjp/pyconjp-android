@@ -9,8 +9,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
-import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
