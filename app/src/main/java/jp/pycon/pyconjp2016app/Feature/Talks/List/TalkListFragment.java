@@ -151,7 +151,6 @@ public class TalkListFragment extends Fragment {
             @Override
             public void onClick(int pk) {
                 TalkDetailActivity.start(mContext, pk);
-                    Toast.makeText(getContext(), "" + pk, Toast.LENGTH_SHORT).show();
             }
         });
         recyclerView.setAdapter(adapter);
@@ -163,5 +162,4 @@ public class TalkListFragment extends Fragment {
         };
         schedules.addChangeListener(realmListener);
     }
-
 }
