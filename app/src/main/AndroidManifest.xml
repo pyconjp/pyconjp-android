@@ -32,6 +32,7 @@
         </activity>
         <activity
             android:name=".Feature.Talks.Detail.TalkDetailActivity"
+            android:label=""
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
