@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
+import jp.pycon.pyconjp2016app.Feature.Settings.SettingsFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.R;
@@ -28,6 +29,12 @@ public enum Feature {
         @Override
         public Fragment createFragment() {
             return AccessFragment.newInstance();
+        }
+    },
+    SETTINGS(R.id.nav_settings, R.string.nav_settings, true, SettingsFragment.class.getSimpleName()){
+        @Override
+        public Fragment createFragment() {
+            return SettingsFragment.newInstance();
         }
     },
     ABOUT(R.id.nav_about, R.string.nav_about, true, AboutFragment.class.getSimpleName()) {
