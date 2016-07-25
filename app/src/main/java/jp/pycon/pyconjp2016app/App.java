@@ -32,13 +32,6 @@ public class App extends Application {
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
 
-        // 前回結果を Realm から削除
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
-        results.deleteAllFromRealm();
-        realm.commitTransaction();
-        realm.close();
     }
 
     public APIClient getAPIClient() {
