@@ -6,8 +6,10 @@ import com.deploygate.sdk.DeployGate;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -29,6 +31,14 @@ public class App extends Application {
                 .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
+
+        // 前回結果を Realm から削除
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
+        realm.close();
     }
 
     public APIClient getAPIClient() {

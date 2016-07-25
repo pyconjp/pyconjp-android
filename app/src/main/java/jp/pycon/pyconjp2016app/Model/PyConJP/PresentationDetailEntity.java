@@ -27,4 +27,8 @@ public class PresentationDetailEntity {
     public String abst;
     @SerializedName("level")
     public String level;
+    @SerializedName("day")
+    public String day;
+    @SerializedName("language")
+    public String language;
 }

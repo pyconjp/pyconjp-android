@@ -29,5 +29,7 @@ public class PresentationEntity {
     public String rooms;
     @SerializedName("day")
     public String day;
+    @SerializedName("language")
+    public String language;
 
 }
