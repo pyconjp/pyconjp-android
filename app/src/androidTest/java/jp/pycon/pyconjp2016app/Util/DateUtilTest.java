@@ -33,7 +33,7 @@ public class DateUtilTest {
     public static class testToStartToEndFormattedString {
         @Test
         public void 正しい書式() {
-            String expected = "2016/09/21 13:00-13:30";
+            String expected = "2016/09/21 13:00 - 13:30";
             String actual = DateUtil.toStartToEndFormattedString("2016-09-21", "13:00:00", "13:30:00");
             assertThat(expected, is(actual));
         }

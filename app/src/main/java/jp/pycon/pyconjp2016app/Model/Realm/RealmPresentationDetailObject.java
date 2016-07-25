@@ -22,6 +22,9 @@ public class RealmPresentationDetailObject extends RealmObject {
     public String rooms;
     public String abst;
     public String level;
+    public String day;
+    public String dispDate;
+    public String language;
 
     public String getCategory() {
         return category;

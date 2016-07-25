@@ -13,6 +13,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.DateUtil;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 import jp.pycon.pyconjp2016app.Util.RealmUtil;
 import rx.Subscriber;
@@ -113,6 +115,10 @@ public class TalkDetailActivity extends AppCompatActivity {
         int i = r.nextInt(6);
         Drawable drawable = logos.getDrawable(i);
         ((ImageView)findViewById(R.id.python_logo)).setImageDrawable(drawable);
+        // 日時
+        ((TextView)findViewById(R.id.day_start_end)).setText(presentation.dispDate);
+        // 部屋
+        ((TextView)findViewById(R.id.room)).setText(presentation.rooms);
         // スピーカー
         ((TextView)findViewById(R.id.speaker)).setText(presentation.speakerstring());
         // 説明

@@ -47,10 +47,12 @@ public class RealmUtil {
             RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
             obj.pk = presentation.pk;
             obj.title = presentation.title;
-            obj.time = DateUtil.toTimeFormattedString("14:00:00");
-//            obj.time = DateUtil.toTimeFormattedString(presentation.start);
+            obj.start = presentation.start;
+            obj.end = presentation.end;
+            obj.dispStart = DateUtil.toTimeFormattedString(presentation.start);
             obj.rooms = presentation.rooms;
-            obj.day = dummyDay();
+            obj.language = presentation.language;
+            obj.day = presentation.day;
             RealmList<RealmStringObject> speakers = new RealmList<>();
             for (String speaker : presentation.speakers) {
                 RealmStringObject speakerObject = realm.createObject(RealmStringObject.class);
@@ -94,6 +96,12 @@ public class RealmUtil {
         obj.pk = pk;
         obj.description = detail.description;
         obj.abst = detail.abst;
+        obj.language = detail.language;
+        obj.rooms = detail.rooms;
+        obj.start = detail.start;
+        obj.end = detail.end;
+        obj.day = detail.day;
+        obj.dispDate = DateUtil.toStartToEndFormattedString(detail.day, detail.start, detail.end);
         RealmList<RealmStringObject> speakers = new RealmList<>();
         for (String speaker : detail.speakers) {
             RealmStringObject speakerObject = realm.createObject(RealmStringObject.class);
@@ -137,22 +145,5 @@ public class RealmUtil {
         return realm.where(RealmPresentationDetailObject.class)
                 .equalTo("pk", pk)
                 .findFirst();
-    }
-    private static String dummyDay() {
-        Random r = new Random();
-        int i = r.nextInt(2);
-        String day = "";
-        switch (i) {
-            case 0:
-                day = "2016-09-21";
-                break;
-            case 1:
-                day = "2016-09-22";
-                break;
-            case 2:
-                day = "2016-09-23";
-                break;
-        }
-        return day;
     }
 }

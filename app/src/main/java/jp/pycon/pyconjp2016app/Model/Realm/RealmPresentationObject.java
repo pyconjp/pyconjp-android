@@ -17,12 +17,15 @@ public class RealmPresentationObject extends RealmObject {
     @PrimaryKey
     public int pk;
     public String title;
-    public String time;
     public RealmList<RealmStringObject> speakers;
     public String rooms;
     public boolean bookmark;
     public boolean alert;
     public String day;
+    public String start;
+    public String end;
+    public String dispStart;
+    public String language;
 
     public int getPk() {
         return pk;
@@ -30,10 +33,6 @@ public class RealmPresentationObject extends RealmObject {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getTime() {
-        return time;
     }
 
     public RealmList<RealmStringObject> getSpeakers() {

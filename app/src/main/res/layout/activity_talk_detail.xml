@@ -85,19 +85,13 @@
                         android:tint="@color/colorGray"
                         android:src="@drawable/ic_query_builder_black_18dp"/>
                     <TextView
+                        android:id="@+id/day_start_end"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
                         android:maxLines="1"
                         android:text="Time: "
-                        android:textColor="@color/colorGray" />
-                    <TextView
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:maxLines="1"
                         android:textColor="@color/colorGray" />
                 </LinearLayout>
                 <LinearLayout
@@ -122,13 +116,13 @@
                         android:textColor="@color/colorGray" />
 
                     <TextView
+                        android:id="@+id/room"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
                         android:maxLines="2"
-                        android:textColor="@color/colorGray"
-                        android:text="02-01" />
+                        android:textColor="@color/colorGray" />
                 </LinearLayout>
 
                 <TextView

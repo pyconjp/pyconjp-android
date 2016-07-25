@@ -41,7 +41,7 @@ public class DateUtil {
             Date endDate = df1.parse(day + " " + end);
             String startStr = df2.format(startDate);
             String endStr = df3.format(endDate);
-            return startStr + "-" + endStr;
+            return startStr + " - " + endStr;
         } catch (ParseException e) {
             // nop
         }
