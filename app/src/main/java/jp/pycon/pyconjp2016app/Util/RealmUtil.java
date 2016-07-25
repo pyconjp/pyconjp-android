@@ -47,7 +47,8 @@ public class RealmUtil {
             RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
             obj.pk = presentation.pk;
             obj.title = presentation.title;
-            obj.time = "22:26";
+            obj.time = DateUtil.toTimeFormattedString("14:00:00");
+//            obj.time = DateUtil.toTimeFormattedString(presentation.start);
             obj.rooms = presentation.rooms;
             obj.day = dummyDay();
             RealmList<RealmStringObject> speakers = new RealmList<>();
