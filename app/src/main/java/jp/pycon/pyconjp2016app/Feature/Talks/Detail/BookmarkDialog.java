@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import io.realm.Realm;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.NotificationUtil;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 
 /**
@@ -65,6 +66,7 @@ public class BookmarkDialog extends DialogFragment {
                                     obj.alert = false;
                                 }
                             });
+                            NotificationUtil.cancelNotification(mContext, pk);
                             if (mListener != null) {
                                 mListener.bookmarkStatusChanged(pk, false);
                             }
@@ -97,6 +99,7 @@ public class BookmarkDialog extends DialogFragment {
                                     obj.alert = checked[0];
                                 }
                             });
+                            NotificationUtil.setNotification(mContext, obj.title + "がそろそろはじまるよ", pk, 10);
                             if (mListener != null) {
                                 mListener.bookmarkStatusChanged(pk, true);
                             }
