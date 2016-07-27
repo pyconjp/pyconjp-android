@@ -62,6 +62,7 @@ public class TalkDetailActivity extends AppCompatActivity {
         initToolbar();
 
         final int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
+        Log.d("pk", "" + pk);
         if (RealmUtil.isTalkDetailExist(realm, pk)) {
             showTalkDetail(pk);
         } else {

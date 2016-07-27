@@ -43,6 +43,7 @@
     <string name="speaker">スピーカー</string>
     <string name="description">説明</string>
     <string name="abst">概要</string>
+    <string name="notification_message">%sがもうすぐ始まります</string>
 
     <!-- Settings -->
     <string name="settings">設定</string>
