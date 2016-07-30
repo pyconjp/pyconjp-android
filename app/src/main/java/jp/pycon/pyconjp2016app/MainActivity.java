@@ -76,50 +76,8 @@ public class MainActivity extends AppCompatActivity
 
         if (!item.isChecked()) {
             item.setChecked(true);
-            switch (item.getItemId()) {
-                case R.id.nav_talks:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(TalksFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                case R.id.nav_bookmark:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(BookmarkFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                case R.id.nav_access:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(AccessFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                case R.id.nav_settings:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(SettingsFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                case R.id.nav_about:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(AboutFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                default:
-                    break;
-            }
+            Feature feature = Feature.forMenuId(item.getItemId());
+            changePage(feature.createFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -127,6 +85,15 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         }
         return true;
+    }
+
+    private void changePage(final Fragment fragment) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                replaceFragment(fragment);
+            }
+        }, DRAWER_CLOSE_DELAY_MILLS);
     }
 
     private void toggleToolbarElevation(boolean enable) {

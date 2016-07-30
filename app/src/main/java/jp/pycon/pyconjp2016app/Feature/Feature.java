@@ -1,9 +1,12 @@
 package jp.pycon.pyconjp2016app.Feature;
 
 import android.support.v4.app.Fragment;
+import android.view.MenuItem;
 
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
+import jp.pycon.pyconjp2016app.Feature.FloorMap.FloorMapFragment;
+import jp.pycon.pyconjp2016app.Feature.Schedule.ScheduleFragment;
 import jp.pycon.pyconjp2016app.Feature.Settings.SettingsFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
@@ -19,16 +22,28 @@ public enum Feature {
             return TalksFragment.newInstance();
         }
     },
-    MY_TALKS(R.id.nav_bookmark, R.string.nav_bookmark, false, BookmarkFragment.class.getSimpleName()) {
+    BOOKMARK(R.id.nav_bookmark, R.string.nav_bookmark, false, BookmarkFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return BookmarkFragment.newInstance();
+        }
+    },
+    SCHEDULE(R.id.nav_schedule, R.string.nav_schedule, true, ScheduleFragment.class.getSimpleName()) {
+        @Override
+        public Fragment createFragment() {
+            return ScheduleFragment.newInstance();
         }
     },
     ACCESS(R.id.nav_access, R.string.nav_access, true, AccessFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return AccessFragment.newInstance();
+        }
+    },
+    FLOOR_MAP(R.id.nav_floor_map, R.string.nav_floor_map, true, FloorMapFragment.class.getSimpleName()){
+        @Override
+        public Fragment createFragment() {
+            return FloorMapFragment.newInstance();
         }
     },
     SETTINGS(R.id.nav_settings, R.string.nav_settings, true, SettingsFragment.class.getSimpleName()){
@@ -66,6 +81,19 @@ public enum Feature {
         throw new AssertionError("no menu enum found for the id. you forgot to implement?");
     }
 
+    public static Feature forMenuId(MenuItem item) {
+        int id = item.getItemId();
+        return forMenuId(id);
+    }
+
+    public static Feature forMenuId(int id) {
+        for (Feature page : values()) {
+            if (page.menuId == id) {
+                return page;
+            }
+        }
+        throw new AssertionError("no menu enum found for the id. you forgot to implement?");
+    }
     public int getMenuId() {
         return menuId;
     }
