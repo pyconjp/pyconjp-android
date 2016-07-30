@@ -17,6 +17,7 @@ public class PreferencesManager {
 
     private static final String PREFERENCES_NAME = "jp.pycon.pychonjp2016app";
     private static final String PREFERENCES_KEY_BOOKMARK_ARRAY = "preferences_key_bookmark_array";
+    private static final String PREFERENCES_KEY_MINUTES_BEFORE = "preferences_key_minutes_before";
 
     public static boolean putBookmark(Context context, int pk) {
         SharedPreferences pref = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
@@ -71,6 +72,18 @@ public class PreferencesManager {
     public static boolean isBookmarkContains(Context context, int pk) {
         List<Integer> list = getBookmark(context);
         return list.contains(pk);
+    }
+
+    public static int getMinutesBefore(Context context) {
+        SharedPreferences pref = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+        return pref.getInt(PREFERENCES_KEY_MINUTES_BEFORE, Context.MODE_PRIVATE);
+    }
+
+    public static boolean putMinuteBefore(Context context, int minutes) {
+        SharedPreferences pref = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(PREFERENCES_KEY_MINUTES_BEFORE, minutes);
+        return editor.commit();
     }
 }
 

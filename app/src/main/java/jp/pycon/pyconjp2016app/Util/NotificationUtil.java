@@ -27,13 +27,13 @@ public class NotificationUtil {
         Intent intent = NotificationReceiver.makeNotificationIntent(context, pk, obj.title);
         PendingIntent sender = PendingIntent.getBroadcast(context, pk, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        // TODO: 通知設定でとった時間にする
-        long mills = DateUtil.toNotificationMills(obj.day, obj.start, 1);
+        long mills = DateUtil.toNotificationMills(obj.day, obj.start, PreferencesManager.getMinutesBefore(context));
         if (mills != 0) {
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, mills, sender);
+            Toast.makeText(context, context.getString(R.string.notification_register_message, obj.title), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, context.getString(R.string.notification_failed_message), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.notification_register_failed_message), Toast.LENGTH_SHORT).show();
         }
         realm.close();
     }
