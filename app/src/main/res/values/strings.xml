@@ -49,6 +49,13 @@
     <string name="notification_register_failed_message">通知の登録に失敗しました</string>
     <string name="notification_register_message">%sを通知に登録しました</string>
 
+    <string name="floor_map_01">フロアマップ1F</string>
+    <string name="floor_map_02">フロアマップ2F</string>
+    <string name="floor_map_03">フロアマップ3F</string>
+    <string name="floor_map_description_01">受付、ポスターセッション、ランチ・パーティー会場</string>
+    <string name="floor_map_description_02">トーク会場、スポンサー等ブース</string>
+    <string name="floor_map_description_03">未定</string>
+
     <!-- Settings -->
     <string name="settings">設定</string>
     <string name="notification_settings">通知設定</string>
