@@ -4,38 +4,43 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
-import java.util.Calendar;
-import java.util.TimeZone;
-
+import io.realm.Realm;
 import jp.pycon.pyconjp2016app.BroadcastReceiver.NotificationReceiver;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
+import jp.pycon.pyconjp2016app.R;
 
 /**
  * Created by rhoboro on 7/26/16.
  */
 public class NotificationUtil {
 
-    public static void setNotification(Context context, String title, int pk, int interval) {
+    public static void setNotification(Context context, int pk) {
 
-        final Intent intent = NotificationReceiver.makeNotificationIntent(context, pk, title);
-        final PendingIntent sender = PendingIntent.getBroadcast(context,  pk, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Realm realm = Realm.getDefaultInstance();
+        RealmPresentationDetailObject obj = realm
+                .where(RealmPresentationDetailObject.class)
+                .equalTo("pk", pk)
+                .findFirst();
 
-        final Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.add(Calendar.SECOND, 5);
-//        calendar.setTimeZone(TimeZone.getDefault());
-//        calendar.set(Calendar.HOUR_OF_DAY, 17);
-//        calendar.set(Calendar.MINUTE, 30);
+        Intent intent = NotificationReceiver.makeNotificationIntent(context, pk, obj.title);
+        PendingIntent sender = PendingIntent.getBroadcast(context, pk, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        final AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
-
+        long mills = DateUtil.toNotificationMills(obj.day, obj.start, PreferencesManager.getMinutesBefore(context));
+        if (mills != 0) {
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, mills, sender);
+            Toast.makeText(context, context.getString(R.string.notification_register_message, obj.title), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, context.getString(R.string.notification_register_failed_message), Toast.LENGTH_SHORT).show();
+        }
+        realm.close();
     }
 
     public static void cancelNotification(Context context, int pk) {
         final Intent intent = new Intent(context, NotificationReceiver.class);
         final PendingIntent sender = PendingIntent.getBroadcast(context, pk, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
         final AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(sender);
     }

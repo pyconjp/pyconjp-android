@@ -44,6 +44,8 @@
     <string name="description">説明</string>
     <string name="abst">概要</string>
     <string name="notification_message">%sがもうすぐ始まります</string>
+    <string name="notification_register_failed_message">通知の登録に失敗しました</string>
+    <string name="notification_register_message">%sを通知に登録しました</string>
 
     <!-- Settings -->
     <string name="settings">設定</string>
