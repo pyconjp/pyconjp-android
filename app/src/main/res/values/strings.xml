@@ -3,7 +3,6 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Settings</string>
 
     <!-- Navigation Menu Items -->
     <string name="nav_talks">トーク一覧</string>
@@ -12,7 +11,7 @@
     <string name="nav_schedule">スケジュール</string>
     <string name="nav_floor_map">フロアマップ</string>
     <string name="nav_about">PyCon JP 2016について</string>
-    <string name="nav_settings">設定</string>
+    <!--<string name="nav_settings">設定</string>-->
     <string name="nav_sponsors">スポンサー</string>
 
     <!-- Fragment -->
@@ -48,7 +47,10 @@
     <string name="notification_message">%sがもうすぐ始まります</string>
     <string name="notification_register_failed_message">通知の登録に失敗しました</string>
     <string name="notification_register_message">%sを通知に登録しました</string>
+    <string name="empty_bookmark_message">トーク一覧を見る</string>
+    <string name="action_settings">通知設定</string>
 
+    <!-- Floor Map -->
     <string name="floor_map_01">フロアマップ1F</string>
     <string name="floor_map_02">フロアマップ2F</string>
     <string name="floor_map_03">フロアマップ3F</string>

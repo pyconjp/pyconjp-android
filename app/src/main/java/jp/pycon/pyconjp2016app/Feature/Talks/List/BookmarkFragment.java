@@ -1,5 +1,6 @@
 package jp.pycon.pyconjp2016app.Feature.Talks.List;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -7,12 +8,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.Feature.Settings.SettingsActivity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmDaysObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmStringObject;
 import jp.pycon.pyconjp2016app.R;
@@ -24,6 +29,7 @@ public class BookmarkFragment extends Fragment implements ViewPager.OnPageChange
 
     private Realm realm;
     private View view;
+    private Context context;
     public static BookmarkFragment newInstance() {
         BookmarkFragment fragment = new BookmarkFragment();
         return fragment;
@@ -33,6 +39,7 @@ public class BookmarkFragment extends Fragment implements ViewPager.OnPageChange
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_view_pager, container, false);
+        setHasOptionsMenu(true);
         realm = Realm.getDefaultInstance();
         TabLayout tab= (TabLayout)view.findViewById(R.id.tab_layout);
         tab.setTabMode(TabLayout.MODE_FIXED);
@@ -65,6 +72,30 @@ public class BookmarkFragment extends Fragment implements ViewPager.OnPageChange
         tab.setupWithViewPager(pager);
 
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_bookmark, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            SettingsActivity.start(context);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
