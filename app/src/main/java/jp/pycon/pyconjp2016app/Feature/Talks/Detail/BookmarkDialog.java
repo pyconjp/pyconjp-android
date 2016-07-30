@@ -100,7 +100,7 @@ public class BookmarkDialog extends DialogFragment {
                                 }
                             });
                             if (checked[0]) {
-                                NotificationUtil.setNotification(mContext, obj.title, pk, 10);
+                                NotificationUtil.setNotification(mContext, pk);
                                 if (mListener != null) {
                                     mListener.bookmarkStatusChanged(pk, true);
                                 }

@@ -31,7 +31,6 @@ import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.R;
-import jp.pycon.pyconjp2016app.Util.DateUtil;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 import jp.pycon.pyconjp2016app.Util.RealmUtil;
 import rx.Subscriber;

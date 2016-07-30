@@ -1,13 +1,12 @@
 package jp.pycon.pyconjp2016app.Util;
 
 import android.support.annotation.NonNull;
-import android.text.format.DateFormat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by rhoboro on 7/25/16.
@@ -46,6 +45,20 @@ public class DateUtil {
             // nop
         }
         return "";
+    }
+
+    public static long toNotificationMills(String day, String start, int duration) {
+        Date date = null;
+        SimpleDateFormat df = new SimpleDateFormat(DATE_FORMAT, Locale.JAPAN);
+        try {
+            date = df.parse(day + " " + start);
+        } catch (ParseException e) {
+            //nop
+        }
+        if (date != null) {
+            return date.getTime() - TimeUnit.MINUTES.toMillis(duration);
+        }
+        return 0;
     }
 
 }
