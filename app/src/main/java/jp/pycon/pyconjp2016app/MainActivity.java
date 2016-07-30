@@ -17,11 +17,7 @@ import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
-import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
-import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
-import jp.pycon.pyconjp2016app.Feature.Settings.SettingsFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 
 public class MainActivity extends AppCompatActivity

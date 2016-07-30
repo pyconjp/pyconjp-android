@@ -49,7 +49,8 @@
             android:label="フロアマップ">
         </activity>
         <activity
-            android:name=".Feature.About.FeedbackActivity" >
+            android:name=".Feature.Settings.SettingsActivity"
+            android:label="@string/action_settings">
         </activity>
         <receiver
             android:name=".BroadcastReceiver.NotificationReceiver"

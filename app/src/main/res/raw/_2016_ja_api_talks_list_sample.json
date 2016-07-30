@@ -3,12 +3,12 @@
     {
       "category": "Documentation",
       "speakers": [
-        "hashimoto"
+        "Shimizukawa (SAMPLE)"
       ],
       "end": "11:20:00",
       "description": "テストだよ",
       "language": "ja",
-      "title": "yutaro test2",
+      "title": "【サンプル】Sphinxで作る貢献しやすいドキュメント翻訳の仕組み(ja)",
       "day": "2016-09-21",
       "start": "10:50:00",
       "rooms": "Tutorials 9",
