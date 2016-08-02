@@ -8,6 +8,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
+import jp.pycon.pyconjp2016app.API.Client.GHPagesAPIClient;
 import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import okhttp3.OkHttpClient;
@@ -57,5 +58,30 @@ public class App extends Application {
                     .build();
         }
         return retrofit.create(APIClient.class);
+    }
+
+    public GHPagesAPIClient getGHPagesAPIClient() {
+        Retrofit retrofit;
+        if (BuildConfig.PRODUCTION) {
+            // 本番APIを叩く
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(GHPagesAPIClient.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .build();
+        } else {
+            // ローカルのサンプルファイルを利用する
+            LocalResponseInterceptor i = new LocalResponseInterceptor(getApplicationContext());
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .addInterceptor(i)
+                    .build();
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(GHPagesAPIClient.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .client(okHttpClient)
+                    .build();
+        }
+        return retrofit.create(GHPagesAPIClient.class);
     }
 }

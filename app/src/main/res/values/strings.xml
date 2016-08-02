@@ -50,6 +50,9 @@
     <string name="empty_bookmark_message">トーク一覧を見る</string>
     <string name="action_settings">通知設定</string>
 
+    <!-- Keynote -->
+    <string name="keynote">基調講演</string>
+
     <!-- Floor Map -->
     <string name="floor_map_01">フロアマップ1F</string>
     <string name="floor_map_02">フロアマップ2F</string>

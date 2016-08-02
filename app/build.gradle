@@ -91,6 +91,7 @@ dependencies {
     compile 'com.deploygate:sdk:3.1'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.1.0'
+    compile "com.squareup.picasso:picasso:2.5.2"
 
     compile 'io.realm:android-adapters:1.3.0'
     compile 'net.opacapp:multiline-collapsingtoolbar:1.2.0'
