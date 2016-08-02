@@ -9,7 +9,7 @@ public class KeynoteEntity {
 
     @SerializedName("speaker")
     public String speaker;
-    @SerializedName("detail")
+    @SerializedName("body")
     public String detail;
     @SerializedName("image_uri")
     public String imageUri;

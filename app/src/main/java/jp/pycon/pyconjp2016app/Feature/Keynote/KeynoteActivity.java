@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -74,6 +75,7 @@ public class KeynoteActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
 
                     }
 
