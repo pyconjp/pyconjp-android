@@ -2,13 +2,9 @@ package jp.pycon.pyconjp2016app.Feature.Keynote;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,6 +20,7 @@ import java.util.List;
 
 import jp.pycon.pyconjp2016app.API.Client.GHPagesAPIClient;
 import jp.pycon.pyconjp2016app.App;
+import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.Model.GHPages.KeynoteEntity;
 import jp.pycon.pyconjp2016app.Model.GHPages.KeynoteListEntity;
 import jp.pycon.pyconjp2016app.R;
@@ -35,31 +32,17 @@ import rx.schedulers.Schedulers;
 /**
  * Created by rhoboro on 8/2/16.
  */
-public class KeynoteActivity extends AppCompatActivity {
+public class KeynoteActivity extends BaseAppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keynote);
-        ActionBar bar = getSupportActionBar();
-        bar.setDisplayHomeAsUpEnabled(true);
         getKeynotes();
     }
 
     public static void start(Context context) {
         Intent intent = new Intent(context, KeynoteActivity.class);
         context.startActivity(intent);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void getKeynotes() {

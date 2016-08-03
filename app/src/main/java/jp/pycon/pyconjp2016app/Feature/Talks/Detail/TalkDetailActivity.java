@@ -28,6 +28,7 @@ import java.util.Random;
 import io.realm.Realm;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.App;
+import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.R;
@@ -40,7 +41,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by rhoboro on 7/9/16.
  */
-public class TalkDetailActivity extends AppCompatActivity {
+public class TalkDetailActivity extends BaseAppCompatActivity {
     public static final String BUNDLE_KEY_PRESENTATION_ID = "bundle_key_presentation_id";
     private Realm realm;
     private Handler mHandler;
@@ -85,18 +86,6 @@ public class TalkDetailActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         realm.close();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void initToolbar() {
