@@ -53,7 +53,7 @@ public class FloorMapFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Floor floor = floors.get(i);
-                FloorMapViewAcitivity.start(context, floor.getTitleResId(), floor.getImageResId());
+                FloorMapViewActivity.start(context, floor.getTitleResId(), floor.getImageResId());
             }
         });
         FloorAdapter adapter = new FloorAdapter(getContext(), R.layout.cell_floor_map, floors);

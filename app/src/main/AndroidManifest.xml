@@ -45,7 +45,7 @@
             android:name=".Feature.About.AboutAppActivity"
             android:label="@string/about_license">
         </activity>
-        <activity android:name=".Feature.FloorMap.FloorMapViewAcitivity"
+        <activity android:name=".Feature.FloorMap.FloorMapViewActivity"
             android:label="フロアマップ">
         </activity>
         <activity
