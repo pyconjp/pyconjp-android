@@ -52,6 +52,10 @@
             android:name=".Feature.Settings.SettingsActivity"
             android:label="@string/action_settings">
         </activity>
+        <activity
+            android:name=".Feature.Keynote.KeynoteActivity"
+            android:label="@string/keynote">
+        </activity>
         <receiver
             android:name=".BroadcastReceiver.NotificationReceiver"
             android:process=":remote" >
