@@ -9,6 +9,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.databinding.ActivityAboutOrganizerBinding;
 
 /**
  * Created by rhoboro on 5/8/16.
@@ -21,6 +22,7 @@ public class AboutAppActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_app);
+
         ActionBar bar = getSupportActionBar();
         bar.setDisplayHomeAsUpEnabled(true);
 

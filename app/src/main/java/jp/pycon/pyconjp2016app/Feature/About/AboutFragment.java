@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.AboutOrganizerActivity;
 import jp.pycon.pyconjp2016app.R;
 
 /**

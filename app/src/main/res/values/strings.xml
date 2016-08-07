@@ -40,6 +40,28 @@
 
     <string name="about_feedback">フィードバックを送る</string>
 
+    <string name="about_conduct_body1">PyConは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。 PyCon JPの開催を通じて、Pythonの使い手が一堂に集まり、Pythonにまつわる様々な分野の知識や情報を交換し、新たな友達やコミュニティとのつながり、仕事やビジネスチャンスを増やせる場所とすることが目標です。</string>
+    <string name="about_conduct_body2">ハラスメント行為には、言葉による性別、性的指向、障碍の有無、外見、身体の大きさ、人種、宗教に関する攻撃的なコメント、公的空間での性的な映像表現、意図的な威力行為、ストーキング、つきまとい、写真撮影や録音によるいやがらせ、トークやその他の会議イベントに対して繰り返して中断しようとする行為、不適切な身体接触、そして望まれない性的な注意を引きつける行為を含みます。</string>
+    <string name="about_conduct_body3">私達は参加者が会議場とワークショップ会場、また会議に関連したソーシャルイベントにて、このルールに従うことを望みます。</string>
+
+    <string name="about_theme_title2">「みんなちがって、みんないい」</string>
+    <string name="about_theme_body1">そのミーティングの中で、今年のイベントのコンセプトとして 「Pythonをキーワードに、多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンス」 にしたいということになりました。 ここでいう 「多様な人たち」というのは、さまざまな国籍、性別、年齢、職業、職種、立場(スタッフ、スピーカーなど)、宗教、役割、Pythonレベル(初級から上級まで)の人たちなどのことです。</string>
+    <string name="about_theme_body2">そして、このコンセプトをあらわすテーマについてチーム内で議論しました。そのなかで 金子みすゞさんの詩「私と小鳥と鈴と」 にある、 「みんなちがって、みんないい」 という一節がイメージに合うのではという話になり、その英語表現として上記のテーマとなりました。</string>
+
+    <string name="about_event_body1">チュートリアル：2016年9月20(火)</string>
+    <string name="about_event_body2">カンファレンス：2016年9月21(水)、22(木・祝)</string>
+    <string name="about_event_body3">開発スプリント：2016年9月23(金)、24(土)</string>
+    <string name="about_event_body4">会場：早稲田大学西早稲田キャンパス</string>
+    <string name="about_event_body5">参加者数(予定)：700</string>
+    <string name="about_event_body6">参加費</string>
+    <string name="about_event_body7">Patron：20,000円</string>
+    <string name="about_event_body8">Business ：5,000円(Early Bird 12,000円)</string>
+    <string name="about_event_body9">Personal：10,000円(Early Bird 8,000円)</string>
+    <string name="about_event_body10">Student：5,000円(without After-Party 2,000円)</string>
+    <string name="about_event_body11">詳細：PyCon JP 2016 への参加登録</string>
+    <string name="about_event_body12">運営：PyCon JP 実行委員会 PyCon JP 2016 運営チーム</string>
+    <string name="about_event_body13">連絡先：2016@pycon.jp</string>
+
     <!-- Talk -->
     <string name="speaker">スピーカー</string>
     <string name="description">説明</string>
@@ -78,4 +100,5 @@
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>
     <string name="python_logo">Python</string>
+
 </resources>
