@@ -13,6 +13,8 @@ import jp.pycon.pyconjp2016app.R;
 
 /**
  * Created by rhoboro on 7/26/16.
+ *
+ * 通知関連の処理を行うクラス
  */
 public class NotificationUtil {
 

@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by rhoboro on 7/25/16.
+ *
+ * 日時データに関する処理を行うクラス
  */
 public class DateUtil {
 
