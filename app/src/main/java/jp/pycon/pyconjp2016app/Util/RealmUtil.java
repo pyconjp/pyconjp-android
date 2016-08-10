@@ -3,7 +3,6 @@ package jp.pycon.pyconjp2016app.Util;
 import android.content.Context;
 
 import java.util.List;
-import java.util.Random;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -19,9 +18,17 @@ import jp.pycon.pyconjp2016app.Model.Realm.RealmStringObject;
 
 /**
  * Created by rhoboro on 7/23/16.
+ *
+ * RealmのDBを扱う処理を行うクラス
  */
 public class RealmUtil {
 
+    /**
+     * トーク一覧をRealmデータベースに保存します
+     * @param context コンテキスト
+     * @param realm Realmインスタンス
+     * @param presentations APIから取得したトーク一覧
+     */
     public static void savePresentationList(Context context, Realm realm, PresentationListEntity presentations) {
         // 前回結果を Realm から削除
         final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
@@ -112,6 +119,12 @@ public class RealmUtil {
         realm.commitTransaction();
     }
 
+    /**
+     * タブを指定してトーク一覧を取得します
+     * @param realm Realmインスタンス
+     * @param position 日付タブのポジション
+     * @return 指定されたタブのトーク一覧
+     */
     public static RealmResults<RealmPresentationObject> getAllTalks(Realm realm, int position) {
         RealmResults<RealmPresentationObject> results;
         RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
@@ -122,6 +135,13 @@ public class RealmUtil {
         return results;
     }
 
+    /**
+     * タブを指定してブックマークに保存されているトーク一覧を取得します
+     * @param context コンテキスト
+     * @param realm Realmインスタンス
+     * @param position 日付タブのポジション
+     * @return 指定されたタブのブックマークに保存されているトーク一覧
+     */
     public static RealmResults<RealmPresentationObject> getBookmarkTalks(Context context, Realm realm, int position) {
         RealmResults<RealmPresentationObject> results;
         RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
@@ -135,12 +155,25 @@ public class RealmUtil {
         return results;
     }
 
+    /**
+     * 指定したトークの詳細情報があるかどうかを返します
+     * @param realm Realmインスタンス
+     * @param pk トークのPK
+     * @return 指定したトークの詳細情報があればtrue
+     */
     public static boolean isTalkDetailExist(Realm realm, int pk) {
         RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
                 .equalTo("pk", pk)
                 .findAll();
         return results.size() > 0;
     }
+
+    /**
+     * トークの詳細情報を取得します
+     * @param realm Realmインスタンス
+     * @param pk トークのPK
+     * @return 指定したトークの詳細情報
+     */
     public static RealmPresentationDetailObject getTalkDetail(Realm realm, int pk) {
         return realm.where(RealmPresentationDetailObject.class)
                 .equalTo("pk", pk)
