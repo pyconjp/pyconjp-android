@@ -13,9 +13,16 @@ import jp.pycon.pyconjp2016app.R;
 
 /**
  * Created by rhoboro on 7/26/16.
+ *
+ * 通知関連の処理を行うクラス
  */
 public class NotificationUtil {
 
+    /**
+     * 指定されたトークの通知を設定します
+     * @param context コンテキスト
+     * @param pk 通知を行うトークのPK
+     */
     public static void setNotification(Context context, int pk) {
 
         Realm realm = Realm.getDefaultInstance();
@@ -38,6 +45,11 @@ public class NotificationUtil {
         realm.close();
     }
 
+    /**
+     * 指定されたトークの通知をキャンセルします
+     * @param context コンテキスト
+     * @param pk トークのPK
+     */
     public static void cancelNotification(Context context, int pk) {
         final Intent intent = new Intent(context, NotificationReceiver.class);
         final PendingIntent sender = PendingIntent.getBroadcast(context, pk, intent, PendingIntent.FLAG_UPDATE_CURRENT);
