@@ -70,6 +70,28 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
+    }
+
+    /**
+     * ツールバーの初期化処理
+     */
+    private void initToolbar() {
+        final Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    /**
+     * トーク詳細情報の表示処理
+     * @param pk 表示するトークのPK
+     */
     private void showTalkDetail(int pk) {
         final RealmPresentationDetailObject presentation = RealmUtil.getTalkDetail(realm, pk);
         // ビューの設定
@@ -82,21 +104,10 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         findViewById(R.id.detail_view).setVisibility(View.VISIBLE);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        realm.close();
-    }
-
-    private void initToolbar() {
-        final Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        final ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
+    /**
+     * ビューの初期化
+     * @param presentation 表示するトークのRealmオブジェクト
+     */
     private void setupViews(RealmPresentationDetailObject presentation) {
         // ロゴ
         final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
@@ -116,6 +127,10 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         ((TextView)findViewById(R.id.abst)).setText(presentation.abst);
     }
 
+    /**
+     * ブックマークボタンの初期化
+     * @param pk 表示するトークのPK
+     */
     private void setupBookmark(final int pk) {
         final FloatingActionButton bookmark = (FloatingActionButton)findViewById(R.id.bookmark);
         if (PreferencesManager.isBookmarkContains(getApplicationContext(), pk)) {
@@ -146,6 +161,10 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         });
     }
 
+    /**
+     * 表示するトークの詳細情報を取得します
+     * @param pk 表示するトークのPK
+     */
     private void getPyConJPPresentationDetail(final int pk) {
         APIClient apiClient = ((App)getApplication()).getAPIClient();
         rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);

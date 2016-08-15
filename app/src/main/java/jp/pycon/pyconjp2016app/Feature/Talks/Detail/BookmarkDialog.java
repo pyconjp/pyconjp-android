@@ -42,6 +42,11 @@ public class BookmarkDialog extends DialogFragment {
         realm.close();
     }
 
+    /**
+     * ブックマークダイアログを表示します
+     * @param savedInstanceState
+     * @return
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -50,67 +55,85 @@ public class BookmarkDialog extends DialogFragment {
         final int pk = bundle.getInt(BUNDLE_KEY_PRESENTATION_ID);
         Dialog dialog;
         if (PreferencesManager.isBookmarkContains(mContext, pk)) {
-            dialog = new AlertDialog.Builder(mContext)
-                    .setTitle(R.string.dialog_title_bookmark_off)
-                    .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            PreferencesManager.deleteBookmark(mContext, pk);
-                            final RealmPresentationObject obj = realm.where(RealmPresentationObject.class)
-                                    .equalTo("pk", pk)
-                                    .findFirst();
-                            realm.executeTransaction(new Realm.Transaction() {
-                                @Override
-                                public void execute(Realm realm) {
-                                    obj.bookmark = false;
-                                    obj.alert = false;
-                                }
-                            });
-                            NotificationUtil.cancelNotification(mContext, pk);
-                            if (mListener != null) {
-                                mListener.bookmarkStatusChanged(pk, false);
-                            }
-                        }
-                    })
-                    .setNegativeButton(R.string.dialog_cancel, null)
-                    .create();
+            dialog = unregisterBookmarkDialog(pk);
         } else {
-            final boolean[] checked = {true};
-            final CharSequence[] notification = {getString(R.string.dialog_list_notification)};
-            dialog = new AlertDialog.Builder(mContext)
-                    .setTitle(R.string.dialog_title_bookmark_on)
-                    .setMultiChoiceItems(notification, checked, new DialogInterface.OnMultiChoiceClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which, boolean flag) {
-                            checked[which] = flag;
-                        }
-                    })
-                    .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            PreferencesManager.putBookmark(mContext, pk);
-                            final RealmPresentationObject obj = realm.where(RealmPresentationObject.class)
-                                    .equalTo("pk", pk)
-                                    .findFirst();
-                            realm.executeTransaction(new Realm.Transaction() {
-                                @Override
-                                public void execute(Realm realm) {
-                                    obj.bookmark = true;
-                                    obj.alert = checked[0];
-                                }
-                            });
-                            if (checked[0]) {
-                                NotificationUtil.setNotification(mContext, pk);
-                                if (mListener != null) {
-                                    mListener.bookmarkStatusChanged(pk, true);
-                                }
-                            }
-                        }
-                    })
-                    .setNegativeButton(R.string.dialog_cancel, null)
-                    .create();
+            dialog = RegisterBookmarkDialog(pk);
         }
         return dialog;
+    }
+
+    /**
+     * トークをブックマークに登録するダイアログを表示します
+     * @param pk ブックマークに登録するトークのPK
+     * @return ダイアログ
+     */
+    private Dialog RegisterBookmarkDialog(final int pk) {
+        final boolean[] checked = {true};
+        final CharSequence[] notification = {getString(R.string.dialog_list_notification)};
+        return new AlertDialog.Builder(mContext)
+                .setTitle(R.string.dialog_title_bookmark_on)
+                .setMultiChoiceItems(notification, checked, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which, boolean flag) {
+                        checked[which] = flag;
+                    }
+                })
+                .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        PreferencesManager.putBookmark(mContext, pk);
+                        final RealmPresentationObject obj = realm.where(RealmPresentationObject.class)
+                                .equalTo("pk", pk)
+                                .findFirst();
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                obj.bookmark = true;
+                                obj.alert = checked[0];
+                            }
+                        });
+                        if (checked[0]) {
+                            NotificationUtil.setNotification(mContext, pk);
+                            if (mListener != null) {
+                                mListener.bookmarkStatusChanged(pk, true);
+                            }
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.dialog_cancel, null)
+                .create();
+    }
+
+    /**
+     * ブックマーク登録済みトークをブックマークから解除します
+     * @param pk ブックマーク登録済みトークのPK
+     * @return ダイアログ
+     */
+    private Dialog unregisterBookmarkDialog(final int pk) {
+        return new AlertDialog.Builder(mContext)
+                .setTitle(R.string.dialog_title_bookmark_off)
+                .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        PreferencesManager.deleteBookmark(mContext, pk);
+                        final RealmPresentationObject obj = realm.where(RealmPresentationObject.class)
+                                .equalTo("pk", pk)
+                                .findFirst();
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                obj.bookmark = false;
+                                obj.alert = false;
+                            }
+                        });
+                        NotificationUtil.cancelNotification(mContext, pk);
+                        if (mListener != null) {
+                            mListener.bookmarkStatusChanged(pk, false);
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.dialog_cancel, null)
+                .create();
     }
 
     public void setmListener(BookmarkDialogListener mListener) {

@@ -85,6 +85,9 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
     public void onPageScrollStateChanged(int state) {
     }
 
+    /**
+     * トーク一覧を取得します
+     */
     private void getPyConJPSchedule() {
         APIClient apiClient = ((App)getActivity().getApplication()).getAPIClient();
         rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
@@ -111,6 +114,9 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
                 );
     }
 
+    /**
+     * トーク一覧画面を作成します
+     */
     private void setupTalkList() {
         TabLayout tab= (TabLayout)view.findViewById(R.id.tab_layout);
         tab.setTabMode(TabLayout.MODE_FIXED);

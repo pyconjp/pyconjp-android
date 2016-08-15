@@ -35,6 +35,10 @@ public class App extends Application {
 
     }
 
+    /**
+     * PyConJPへアクセスするAPIクライアントを返します
+     * @return PyConJPへアクセスするAPIクライアント
+     */
     public APIClient getAPIClient() {
         Retrofit retrofit;
         if (BuildConfig.PRODUCTION) {
@@ -60,6 +64,10 @@ public class App extends Application {
         return retrofit.create(APIClient.class);
     }
 
+    /**
+     * GitHubPagesへアクセスするAPIクライアントを返します
+     * @return GitHubPagesへアクセスするAPIクライアント
+     */
     public GHPagesAPIClient getGHPagesAPIClient() {
         Retrofit retrofit;
         if (BuildConfig.PRODUCTION) {
