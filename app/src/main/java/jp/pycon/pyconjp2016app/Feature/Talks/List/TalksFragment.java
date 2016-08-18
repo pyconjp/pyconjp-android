@@ -52,7 +52,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
         if (days != null) {
             setupTalkList();
         } else {
-            getPyConJPSchedule();
+            getPyConJPTalks();
         }
         return view;
     }
@@ -88,7 +88,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
     /**
      * トーク一覧を取得します
      */
-    private void getPyConJPSchedule() {
+    private void getPyConJPTalks() {
         APIClient apiClient = ((App)getActivity().getApplication()).getAPIClient();
         rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
         observable
@@ -108,7 +108,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
 
                                @Override
                                public void onNext(PresentationListEntity presentationList) {
-                                   RealmUtil.savePresentationList(mContext, realm, presentationList);
+                                   RealmUtil.saveTalkList(mContext, realm, presentationList);
                                }
                            }
                 );
