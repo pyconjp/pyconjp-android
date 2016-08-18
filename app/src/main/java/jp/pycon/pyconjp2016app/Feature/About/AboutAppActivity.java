@@ -7,6 +7,7 @@ import android.webkit.WebViewClient;
 
 import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.databinding.ActivityAboutOrganizerBinding;
 
 /**
  * Created by rhoboro on 5/8/16.

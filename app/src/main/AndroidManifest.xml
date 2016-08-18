@@ -38,7 +38,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".Feature.About.AboutOrganizerActivity"
+            android:name=".Feature.About.AboutOrganizer.AboutOrganizerActivity"
             android:label="@string/about_organizers">
         </activity>
         <activity

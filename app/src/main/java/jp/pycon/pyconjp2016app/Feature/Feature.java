@@ -39,13 +39,13 @@ public enum Feature {
             return AccessFragment.newInstance();
         }
     },
-    FLOOR_MAP(R.id.nav_floor_map, R.string.nav_floor_map, true, FloorMapFragment.class.getSimpleName()){
+    FLOOR_MAP(R.id.nav_floor_map, R.string.nav_floor_map, true, FloorMapFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return FloorMapFragment.newInstance();
         }
     },
-    ABOUT(R.id.nav_about, R.string.nav_about, true, AboutFragment.class.getSimpleName()) {
+    ABOUT(R.id.nav_about, R.string.nav_about, false, AboutFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return AboutFragment.newInstance();
@@ -57,7 +57,7 @@ public enum Feature {
     private final boolean toggleToolbar;
     private final String pageName;
 
-    Feature(int menuId, int titleResId, boolean toggleToolbar, String pageName){
+    Feature(int menuId, int titleResId, boolean toggleToolbar, String pageName) {
         this.menuId = menuId;
         this.titleResId = titleResId;
         this.toggleToolbar = toggleToolbar;
@@ -87,6 +87,7 @@ public enum Feature {
         }
         throw new AssertionError("no menu enum found for the id. you forgot to implement?");
     }
+
     public int getMenuId() {
         return menuId;
     }
@@ -94,7 +95,7 @@ public enum Feature {
     public boolean shouldToggleToolbar() {
         return toggleToolbar;
     }
-    
+
     public int getTitleResId() {
         return titleResId;
     }
