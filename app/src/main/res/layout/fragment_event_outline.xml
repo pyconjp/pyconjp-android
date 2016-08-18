@@ -47,14 +47,6 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="16dp"
-            android:text="@string/about_event_body5" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="16dp"
             android:text="@string/about_event_body6" />
 
         <TextView
@@ -84,30 +76,6 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:text="@string/about_event_body10" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="16dp"
-            android:text="@string/about_event_body11" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="16dp"
-            android:text="@string/about_event_body12" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="16dp"
-            android:text="@string/about_event_body13" />
 
     </LinearLayout>
 
