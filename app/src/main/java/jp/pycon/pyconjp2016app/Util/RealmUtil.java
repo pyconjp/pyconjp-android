@@ -29,9 +29,11 @@ public class RealmUtil {
      * @param realm Realmインスタンス
      * @param presentations APIから取得したトーク一覧
      */
-    public static void savePresentationList(Context context, Realm realm, PresentationListEntity presentations) {
+    public static void saveTalkList(Context context, Realm realm, PresentationListEntity presentations) {
         // 前回結果を Realm から削除
-        final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class).findAll();
+        final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
+                .equalTo("type", RealmPresentationObject.TYPE_TALK)
+                .findAll();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -52,6 +54,7 @@ public class RealmUtil {
         realm.beginTransaction();
         for (PresentationEntity presentation: presentations.presentations) {
             RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
+            obj.type = RealmPresentationObject.TYPE_TALK;
             obj.pk = presentation.pk;
             obj.title = presentation.title;
             obj.start = presentation.start;
@@ -93,6 +96,43 @@ public class RealmUtil {
         realm.commitTransaction();
     }
 
+    /**
+     * ポスター一覧をRealmデータベースに保存します
+     * @param context コンテキスト
+     * @param realm Realmインスタンス
+     * @param presentations APIから取得したトーク一覧
+     */
+    public static void savePosterList(Context context, Realm realm, PresentationListEntity presentations) {
+        // 前回結果を Realm から削除
+        final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
+                .equalTo("type", RealmPresentationObject.TYPE_POSTER)
+                .findAll();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                results.deleteAllFromRealm();
+            }
+        });
+
+        // Realm用のビューモデルに変換してから格納する
+        realm.beginTransaction();
+        for (PresentationEntity presentation: presentations.presentations) {
+            RealmPresentationObject obj = realm.createObject(RealmPresentationObject.class);
+            obj.type = RealmPresentationObject.TYPE_POSTER;
+            obj.pk = presentation.pk;
+            obj.title = presentation.title;
+            obj.language = presentation.language;
+            RealmList<RealmStringObject> speakers = new RealmList<>();
+            for (String speaker : presentation.speakers) {
+                RealmStringObject speakerObject = realm.createObject(RealmStringObject.class);
+                speakerObject.setString(speaker);
+                speakers.add(speakerObject);
+            }
+            obj.speakers = speakers;
+        }
+        realm.commitTransaction();
+    }
+
     public static void savePresentationDetail(Realm realm, int pk, PresentationDetailEntity detail) {
         RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
                 .equalTo("pk", pk)
@@ -130,6 +170,7 @@ public class RealmUtil {
         RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
         String day = days.getDays().get(position).getString();
         results = realm.where(RealmPresentationObject.class)
+                .equalTo("type", RealmPresentationObject.TYPE_TALK)
                 .equalTo("day", day)
                 .findAll();
         return results;
@@ -150,6 +191,7 @@ public class RealmUtil {
         List<Integer> list = PreferencesManager.getBookmark(context);
         RealmQuery<RealmPresentationObject> query = realm.where(RealmPresentationObject.class);
         results = query.equalTo("day", day)
+                .equalTo("type", RealmPresentationObject.TYPE_TALK)
                 .equalTo("bookmark", true)
                 .findAll();
         return results;
@@ -166,6 +208,19 @@ public class RealmUtil {
                 .equalTo("pk", pk)
                 .findAll();
         return results.size() > 0;
+    }
+
+    /**
+     * ポスター一覧を取得します
+     * @param realm Realmインスタンス
+     * @return ポスター一覧
+     */
+    public static RealmResults<RealmPresentationObject> getAllPosters(Realm realm) {
+        RealmResults<RealmPresentationObject> results;
+        results = realm.where(RealmPresentationObject.class)
+                .equalTo("type", RealmPresentationObject.TYPE_POSTER)
+                .findAll();
+        return results;
     }
 
     /**

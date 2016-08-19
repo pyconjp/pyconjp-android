@@ -14,6 +14,9 @@ import io.realm.annotations.PrimaryKey;
  */
 public class RealmPresentationObject extends RealmObject {
 
+    public static final int TYPE_TALK = 0;
+    public static final int TYPE_POSTER = 1;
+
     @PrimaryKey
     public int pk;
     public String title;
@@ -26,6 +29,7 @@ public class RealmPresentationObject extends RealmObject {
     public String end;
     public String dispStart;
     public String language;
+    public int type;
 
     public int getPk() {
         return pk;

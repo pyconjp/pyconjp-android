@@ -7,6 +7,7 @@
     <!-- Navigation Menu Items -->
     <string name="nav_talks">トーク一覧</string>
     <string name="nav_bookmark">ブックマーク</string>
+    <string name="nav_posters">ポスター一覧</string>
     <string name="nav_access">アクセス</string>
     <string name="nav_schedule">スケジュール</string>
     <string name="nav_floor_map">フロアマップ</string>
