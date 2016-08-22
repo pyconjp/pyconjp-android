@@ -53,15 +53,11 @@
     <string name="about_event_body2">カンファレンス：2016年9月21(水)、22(木・祝)</string>
     <string name="about_event_body3">開発スプリント：2016年9月23(金)、24(土)</string>
     <string name="about_event_body4">会場：早稲田大学西早稲田キャンパス</string>
-    <string name="about_event_body5">参加者数(予定)：700</string>
     <string name="about_event_body6">参加費</string>
     <string name="about_event_body7">Patron：20,000円</string>
-    <string name="about_event_body8">Business ：5,000円(Early Bird 12,000円)</string>
+    <string name="about_event_body8">Business ：15,000円(Early Bird 12,000円)</string>
     <string name="about_event_body9">Personal：10,000円(Early Bird 8,000円)</string>
     <string name="about_event_body10">Student：5,000円(without After-Party 2,000円)</string>
-    <string name="about_event_body11">詳細：PyCon JP 2016 への参加登録</string>
-    <string name="about_event_body12">運営：PyCon JP 実行委員会 PyCon JP 2016 運営チーム</string>
-    <string name="about_event_body13">連絡先：2016@pycon.jp</string>
 
     <!-- Talk -->
     <string name="speaker">スピーカー</string>

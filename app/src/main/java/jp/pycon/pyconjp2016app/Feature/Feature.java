@@ -52,7 +52,7 @@ public enum Feature {
             return FloorMapFragment.newInstance();
         }
     },
-    ABOUT(R.id.nav_about, R.string.nav_about, false, AboutFragment.class.getSimpleName()) {
+    ABOUT(R.id.nav_about, R.string.nav_about, true, AboutFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return AboutFragment.newInstance();
