@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.Feature.Keynote.KeynoteActivity;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.Feature.Talks.Detail.TalkDetailActivity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;

@@ -6,10 +6,10 @@
             android:id="@+id/nav_talks"
             android:icon="@drawable/ic_speaker_notes_black_24dp"
             android:title="@string/nav_talks" />
-        <item
-            android:id="@+id/nav_bookmark"
-            android:icon="@drawable/ic_bookmark_black_24dp"
-            android:title="@string/nav_bookmark" />
+        <!--<item-->
+            <!--android:id="@+id/nav_bookmark"-->
+            <!--android:icon="@drawable/ic_bookmark_black_24dp"-->
+            <!--android:title="@string/nav_bookmark" />-->
         <item
             android:id="@+id/nav_posters"
             android:icon="@drawable/ic_view_carousel_black_24dp"

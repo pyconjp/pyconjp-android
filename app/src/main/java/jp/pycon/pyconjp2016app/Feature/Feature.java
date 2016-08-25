@@ -22,12 +22,12 @@ public enum Feature {
             return TalksFragment.newInstance();
         }
     },
-    BOOKMARK(R.id.nav_bookmark, R.string.nav_bookmark, false, BookmarkFragment.class.getSimpleName()) {
-        @Override
-        public Fragment createFragment() {
-            return BookmarkFragment.newInstance();
-        }
-    },
+//    BOOKMARK(R.id.nav_bookmark, R.string.nav_bookmark, false, BookmarkFragment.class.getSimpleName()) {
+//        @Override
+//        public Fragment createFragment() {
+//            return BookmarkFragment.newInstance();
+//        }
+//    },
     POSTERS(R.id.nav_posters, R.string.nav_posters, true, PostersFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
