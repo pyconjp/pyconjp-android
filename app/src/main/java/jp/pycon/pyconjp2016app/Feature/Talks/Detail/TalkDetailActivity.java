@@ -98,7 +98,8 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(presentation.title);
         setupViews(presentation);
-        setupBookmark(pk);
+        // ブックマークは一度機能を外す
+//        setupBookmark(pk);
         ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.GONE);
         findViewById(R.id.detail_view).setVisibility(View.VISIBLE);
