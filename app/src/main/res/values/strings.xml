@@ -56,7 +56,7 @@
     <string name="about_event_body4">会場：早稲田大学西早稲田キャンパス</string>
     <string name="about_event_body6">参加費</string>
     <string name="about_event_body7">Patron：20,000円</string>
-    <string name="about_event_body8">Business ：15,000円(Early Bird 12,000円)</string>
+    <string name="about_event_body8">Business：15,000円(Early Bird 12,000円)</string>
     <string name="about_event_body9">Personal：10,000円(Early Bird 8,000円)</string>
     <string name="about_event_body10">Student：5,000円(without After-Party 2,000円)</string>
 
@@ -97,7 +97,7 @@
     <string name="floor_map_03">フロアマップ3F</string>
     <string name="floor_map_description_01">受付、ポスターセッション、ランチ・パーティー会場</string>
     <string name="floor_map_description_02">トーク会場、スポンサー等ブース</string>
-    <string name="floor_map_description_03">未定</string>
+    <string name="floor_map_description_03">オープンスペース、ビギナーセッション、Youth Coder Workshop</string>
 
     <!-- Settings -->
     <string name="settings">設定</string>
