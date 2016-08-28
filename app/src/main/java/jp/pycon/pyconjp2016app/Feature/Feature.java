@@ -5,6 +5,7 @@ import android.view.MenuItem;
 
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
+import jp.pycon.pyconjp2016app.Feature.Events.EventsFragment;
 import jp.pycon.pyconjp2016app.Feature.FloorMap.FloorMapFragment;
 import jp.pycon.pyconjp2016app.Feature.Posters.PostersFragment;
 import jp.pycon.pyconjp2016app.Feature.Schedule.ScheduleFragment;
@@ -32,6 +33,12 @@ public enum Feature {
         @Override
         public Fragment createFragment() {
             return PostersFragment.newInstance();
+        }
+    },
+    EVENTS(R.id.nav_event, R.string.nav_events, true, EventsFragment.class.getSimpleName()) {
+        @Override
+        public Fragment createFragment() {
+            return EventsFragment.newInstance();
         }
     },
     SCHEDULE(R.id.nav_schedule, R.string.nav_schedule, true, ScheduleFragment.class.getSimpleName()) {
