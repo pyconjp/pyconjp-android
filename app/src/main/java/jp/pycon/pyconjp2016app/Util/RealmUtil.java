@@ -31,17 +31,8 @@ public class RealmUtil {
      * @param presentations APIから取得したトーク一覧
      */
     public static void saveTalkList(Context context, Realm realm, PresentationListEntity presentations) {
-        // 前回結果を Realm から削除
-        final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
-                .equalTo("type", RealmPresentationObject.TYPE_TALK)
-                .findAll();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                results.deleteAllFromRealm();
-            }
-        });
 
+        RealmUtil.deleteTalkList(context, realm);
         final RealmResults<RealmDaysObject> dayResults = realm.where(RealmDaysObject.class).findAll();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -97,16 +88,11 @@ public class RealmUtil {
         realm.commitTransaction();
     }
 
-    /**
-     * ポスター一覧をRealmデータベースに保存します
-     * @param context コンテキスト
-     * @param realm Realmインスタンス
-     * @param presentations APIから取得したトーク一覧
-     */
-    public static void savePosterList(Context context, Realm realm, PresentationListEntity presentations) {
+    public static void deleteTalkList(Context context, Realm realm) {
         // 前回結果を Realm から削除
+        RealmUtil.deletePresentationDetails(realm);
         final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
-                .equalTo("type", RealmPresentationObject.TYPE_POSTER)
+                .equalTo("type", RealmPresentationObject.TYPE_TALK)
                 .findAll();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -114,6 +100,17 @@ public class RealmUtil {
                 results.deleteAllFromRealm();
             }
         });
+    }
+
+    /**
+     * ポスター一覧をRealmデータベースに保存します
+     * @param context コンテキスト
+     * @param realm Realmインスタンス
+     * @param presentations APIから取得したトーク一覧
+     */
+    public static void savePosterList(Context context, Realm realm, PresentationListEntity presentations) {
+
+        RealmUtil.deletePosterList(realm);
 
         // Realm用のビューモデルに変換してから格納する
         realm.beginTransaction();
@@ -132,6 +129,31 @@ public class RealmUtil {
             obj.speakers = speakers;
         }
         realm.commitTransaction();
+    }
+
+    public static void deletePosterList(Realm realm) {
+        // 前回結果を Realm から削除
+        RealmUtil.deletePresentationDetails(realm);
+        final RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
+                .equalTo("type", RealmPresentationObject.TYPE_POSTER)
+                .findAll();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                results.deleteAllFromRealm();
+            }
+        });
+    }
+
+    public static void deletePresentationDetails(Realm realm) {
+        final RealmResults<RealmPresentationDetailObject> results = realm.where(RealmPresentationDetailObject.class)
+                .findAll();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                results.deleteAllFromRealm();
+            }
+        });
     }
 
     public static void savePresentationDetail(Realm realm, int pk, PresentationDetailEntity detail) {

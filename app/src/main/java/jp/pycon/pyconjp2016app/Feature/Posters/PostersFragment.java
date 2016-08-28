@@ -12,6 +12,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -107,7 +110,7 @@ public class PostersFragment extends Fragment {
                 outRect.set(0, top, 0, 0);
             }
         });
-
+        setHasOptionsMenu(true);
         return v;
     }
 
@@ -115,19 +118,30 @@ public class PostersFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         realm = Realm.getDefaultInstance();
-        getPyConPosters();
-        //setupRecycleView();
-
+        if (RealmUtil.getAllPosters(realm).size() > 0) {
+            setupRecycleView();
+        } else {
+            getPyConPosters();
+        }
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_refresh, menu);
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_refresh) {
+            RealmUtil.deletePosterList(realm);
+            getPyConPosters();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -12,6 +12,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -19,6 +22,7 @@ import android.widget.LinearLayout;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
+import jp.pycon.pyconjp2016app.Feature.Settings.SettingsActivity;
 import jp.pycon.pyconjp2016app.Feature.Talks.Adapter.RealmScheduleAdapter;
 import jp.pycon.pyconjp2016app.Feature.Talks.Detail.TalkDetailActivity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
@@ -121,15 +125,7 @@ public class TalkListFragment extends Fragment {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
 
     @Override
     public void onDestroyView() {

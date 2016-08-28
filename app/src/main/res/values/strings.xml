@@ -69,6 +69,7 @@
     <string name="notification_register_message">%sを通知に登録しました</string>
     <string name="empty_bookmark_message">トーク一覧を見る</string>
     <string name="action_settings">通知設定</string>
+    <string name="action_refresh">リフレッシュ</string>
 
     <!-- Events -->
     <string name="invited_talk">招待講演</string>
