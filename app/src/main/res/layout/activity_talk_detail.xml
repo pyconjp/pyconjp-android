@@ -87,7 +87,8 @@
                         android:src="@drawable/ic_query_builder_black_18dp"/>
                     <TextView
                         android:id="@+id/day_start_end"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
@@ -110,7 +111,8 @@
 
                     <TextView
                         android:id="@+id/room"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"

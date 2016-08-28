@@ -10,6 +10,11 @@
     <color name="colorLightGray">#A0A0A0</color>
     <color name="colorMagenta">#EB6D9A</color>
     <color name="colorLightBlue">#92D8F5</color>
-    <color name="colorYellowGreen">#A9C952</color>
     <color name="colorOrange">#FFC134</color>
+
+    <color name="colorRedOrange">#F19975</color>
+    <color name="colorYellowOrange">#F8C058</color>
+    <color name="colorYellow">#FFD000</color>
+    <color name="colorYellowGreen">#A9C952</color>
+    <color name="colorBlueGreen">#86C8A0</color>
 </resources>

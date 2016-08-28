@@ -8,6 +8,7 @@ import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
+import io.realm.Sort;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationEntity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
@@ -172,7 +173,7 @@ public class RealmUtil {
         results = realm.where(RealmPresentationObject.class)
                 .equalTo("type", RealmPresentationObject.TYPE_TALK)
                 .equalTo("day", day)
-                .findAll();
+                .findAllSorted("start", Sort.ASCENDING, "rooms", Sort.ASCENDING);
         return results;
     }
 

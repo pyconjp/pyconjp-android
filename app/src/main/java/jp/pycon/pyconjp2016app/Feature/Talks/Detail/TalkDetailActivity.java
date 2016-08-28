@@ -3,19 +3,19 @@ package jp.pycon.pyconjp2016app.Feature.Talks.Detail;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -23,8 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
-
-import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -35,6 +33,7 @@ import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.ColorUtil;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 import jp.pycon.pyconjp2016app.Util.RealmUtil;
 import rx.Subscriber;
@@ -118,20 +117,21 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         if (TextUtils.isEmpty(dispDate)) {
             findViewById(R.id.date_view).setVisibility(View.GONE);
         } else {
-            ((TextView)findViewById(R.id.day_start_end)).setText(dispDate);
+            TextView dateView = (TextView)findViewById(R.id.day_start_end);
+            dateView.setText(dispDate);
         }
         // 部屋
         final String room = presentation.rooms;
         if (TextUtils.isEmpty(room)) {
             findViewById(R.id.room_view).setVisibility(View.GONE);
         } else {
-            ((TextView) findViewById(R.id.room)).setText(room);
+            TextView roomView = (TextView)findViewById(R.id.room);
+            roomView.setText(room);
+            roomView.setTextColor(ContextCompat.getColor(this, ColorUtil.getRoomColor(room)));
         }
         // ロゴ
         final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
-        Random r = new Random();
-        int i = r.nextInt(6);
-        Drawable drawable = logos.getDrawable(i);
+        Drawable drawable = logos.getDrawable(ColorUtil.getLogoColorIndex(room));
         ((ImageView)findViewById(R.id.python_logo)).setImageDrawable(drawable);
         // スピーカー
         ((TextView)findViewById(R.id.speaker)).setText(presentation.speakerstring());
