@@ -7,6 +7,7 @@
     <!-- Navigation Menu Items -->
     <string name="nav_talks">トーク一覧</string>
     <string name="nav_bookmark">ブックマーク</string>
+    <string name="nav_keynote">基調講演</string>
     <string name="nav_posters">ポスター一覧</string>
     <string name="nav_events">イベント</string>
     <string name="nav_access">アクセス</string>
