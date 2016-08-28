@@ -39,22 +39,6 @@ public class FeatureTest {
         }
 
         @Test
-        public void Bookmark画面のgetMenuID() throws Exception {
-            Feature feature = Feature.forName(new BookmarkFragment());
-            int expected = R.id.nav_bookmark;
-            int actual = feature.getMenuId();
-            assertThat(expected, is(actual));
-        }
-
-        @Test
-        public void Bookmark画面のgetTitleResId() throws Exception {
-            Feature feature = Feature.forName(new BookmarkFragment());
-            int expected = R.string.nav_bookmark;
-            int actual = feature.getTitleResId();
-            assertThat(expected, is(actual));
-        }
-
-        @Test
         public void Access画面のgetMenuID() throws Exception {
             Feature feature = Feature.forName(new AccessFragment());
             int expected = R.id.nav_access;
