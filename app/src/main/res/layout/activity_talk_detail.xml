@@ -74,6 +74,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/date_view"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,6 +96,7 @@
                         android:textColor="@color/colorGray" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/room_view"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -13,6 +13,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
+
+import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -110,16 +113,26 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
      * @param presentation 表示するトークのRealmオブジェクト
      */
     private void setupViews(RealmPresentationDetailObject presentation) {
+        // 日時
+        final String dispDate = presentation.dispDate;
+        if (TextUtils.isEmpty(dispDate)) {
+            findViewById(R.id.date_view).setVisibility(View.GONE);
+        } else {
+            ((TextView)findViewById(R.id.day_start_end)).setText(dispDate);
+        }
+        // 部屋
+        final String room = presentation.rooms;
+        if (TextUtils.isEmpty(room)) {
+            findViewById(R.id.room_view).setVisibility(View.GONE);
+        } else {
+            ((TextView) findViewById(R.id.room)).setText(room);
+        }
         // ロゴ
         final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
         Random r = new Random();
         int i = r.nextInt(6);
         Drawable drawable = logos.getDrawable(i);
         ((ImageView)findViewById(R.id.python_logo)).setImageDrawable(drawable);
-        // 日時
-        ((TextView)findViewById(R.id.day_start_end)).setText(presentation.dispDate);
-        // 部屋
-        ((TextView)findViewById(R.id.room)).setText(presentation.rooms);
         // スピーカー
         ((TextView)findViewById(R.id.speaker)).setText(presentation.speakerstring());
         // 説明
