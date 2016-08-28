@@ -1,9 +1,9 @@
 package jp.pycon.pyconjp2016app.Feature.Keynote;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,6 @@ import java.util.List;
 
 import jp.pycon.pyconjp2016app.API.Client.GHPagesAPIClient;
 import jp.pycon.pyconjp2016app.App;
-import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.Model.GHPages.KeynoteEntity;
 import jp.pycon.pyconjp2016app.Model.GHPages.KeynoteListEntity;
 import jp.pycon.pyconjp2016app.R;
@@ -30,23 +29,35 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by rhoboro on 8/2/16.
+ * Created by rhoboro on 8/28/16.
  */
-public class KeynoteActivity extends BaseAppCompatActivity {
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_keynote);
-        getKeynotes();
+public class KeynoteFragment extends Fragment {
+    private Context context;
+    private ListView listView;
+
+
+    public static KeynoteFragment newInstance() {
+        KeynoteFragment f = new KeynoteFragment();
+        return f;
     }
 
-    public static void start(Context context) {
-        Intent intent = new Intent(context, KeynoteActivity.class);
-        context.startActivity(intent);
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_keynote, container, false);
+        listView = (ListView)v.findViewById(R.id.list_view);
+        getKeynotes();
+        return v;
     }
 
     private void getKeynotes() {
-        GHPagesAPIClient client = ((App)getApplication()).getGHPagesAPIClient();
+        GHPagesAPIClient client = ((App)getActivity().getApplication()).getGHPagesAPIClient();
         Observable<KeynoteListEntity> observable = client.getKeynotes();
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -58,7 +69,7 @@ public class KeynoteActivity extends BaseAppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -74,11 +85,9 @@ public class KeynoteActivity extends BaseAppCompatActivity {
     }
 
     private void showKeynotes(List<KeynoteEntity> list) {
-        ListView listView = (ListView)findViewById(R.id.list_view);
-        KeynoteAdapter adapter = new KeynoteAdapter(getApplicationContext(), R.layout.cell_keynote, list);
+        KeynoteAdapter adapter = new KeynoteAdapter(context, R.layout.cell_keynote, list);
         listView.setAdapter(adapter);
     }
-
     public static class KeynoteAdapter extends ArrayAdapter<KeynoteEntity> {
 
         private LayoutInflater inflater;

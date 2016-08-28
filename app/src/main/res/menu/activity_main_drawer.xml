@@ -11,12 +11,16 @@
             <!--android:icon="@drawable/ic_bookmark_black_24dp"-->
             <!--android:title="@string/nav_bookmark" />-->
         <item
+            android:id="@+id/nav_keynote"
+            android:icon="@drawable/ic_perm_contact_calendar_black_24dp"
+            android:title="@string/nav_keynote" />
+        <item
             android:id="@+id/nav_posters"
             android:icon="@drawable/ic_view_carousel_black_24dp"
             android:title="@string/nav_posters" />
         <item
             android:id="@+id/nav_event"
-            android:icon="@drawable/ic_bookmark_black_24dp"
+            android:icon="@drawable/ic_event_note_black_24dp"
             android:title="@string/nav_events" />
         <item
             android:id="@+id/nav_access"
