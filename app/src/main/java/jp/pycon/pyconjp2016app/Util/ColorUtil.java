@@ -26,4 +26,23 @@ public class ColorUtil {
         }
         return color;
     }
+
+    public static int getLogoColorIndex(String room) {
+        int index = 0;
+        if (TextUtils.isEmpty(room)) {
+            return index;
+        }
+        if (room.contains("201")) {
+            index = 1;
+        } else if (room.contains("202")) {
+            index = 2;
+        } else if (room.contains("203")) {
+            index = 3;
+        } else if (room.contains("204")) {
+            index = 4;
+        } else if (room.contains("205")) {
+            index = 5;
+        }
+        return index;
+    }
 }

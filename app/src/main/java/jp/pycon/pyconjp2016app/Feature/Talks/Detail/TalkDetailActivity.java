@@ -3,6 +3,7 @@ package jp.pycon.pyconjp2016app.Feature.Talks.Detail;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -130,9 +131,7 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         }
         // ロゴ
         final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
-        Random r = new Random();
-        int i = r.nextInt(6);
-        Drawable drawable = logos.getDrawable(i);
+        Drawable drawable = logos.getDrawable(ColorUtil.getLogoColorIndex(room));
         ((ImageView)findViewById(R.id.python_logo)).setImageDrawable(drawable);
         // スピーカー
         ((TextView)findViewById(R.id.speaker)).setText(presentation.speakerstring());
