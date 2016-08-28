@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,8 +61,12 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
         holder.title.setText(obj.title);
         holder.speaker.setText(obj.speakerString());
         holder.start.setText(obj.dispStart);
-        holder.room.setText(obj.rooms);
-        holder.room.setTextColor(ContextCompat.getColor(context, ColorUtil.getRoomColor(obj.rooms)));
+        final String room = obj.rooms;
+        if (!TextUtils.isEmpty(room)) {
+            holder.room.setVisibility(View.VISIBLE);
+            holder.room.setText(obj.rooms);
+            holder.room.setTextColor(ContextCompat.getColor(context, ColorUtil.getRoomColor(obj.rooms)));
+        }
     }
 
     public void setOnClickListener(RealmScheduleAdapterListener listener) {

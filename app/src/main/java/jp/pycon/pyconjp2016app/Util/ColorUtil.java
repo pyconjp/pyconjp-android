@@ -1,5 +1,7 @@
 package jp.pycon.pyconjp2016app.Util;
 
+import android.text.TextUtils;
+
 import jp.pycon.pyconjp2016app.R;
 
 /**
@@ -7,7 +9,10 @@ import jp.pycon.pyconjp2016app.R;
  */
 public class ColorUtil {
     public static int getRoomColor(String room) {
-        int color = R.color.colorRedOrange;
+        int color = R.color.colorLightGray;
+        if (TextUtils.isEmpty(room)) {
+            return color;
+        }
         if (room.contains("201")) {
             color = R.color.colorRedOrange;
         } else if (room.contains("202")) {
