@@ -14,6 +14,7 @@ import io.realm.RealmRecyclerViewAdapter;
 import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.ColorUtil;
 
 /**
  * Created by rhoboro on 7/8/16.
@@ -60,27 +61,11 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
         holder.speaker.setText(obj.speakerString());
         holder.start.setText(obj.dispStart);
         holder.room.setText(obj.rooms);
-        holder.room.setTextColor(ContextCompat.getColor(context, roomColorId(obj.rooms)));
+        holder.room.setTextColor(ContextCompat.getColor(context, ColorUtil.getRoomColor(obj.rooms)));
     }
 
     public void setOnClickListener(RealmScheduleAdapterListener listener) {
         this.mListener = listener;
-    }
-
-    private int roomColorId(String room) {
-        int color = R.color.colorRedOrange;
-        if (room.contains("201")) {
-            color = R.color.colorRedOrange;
-        } else if (room.contains("202")) {
-            color = R.color.colorYellowOrange;
-        } else if (room.contains("203")) {
-            color = R.color.colorYellow;
-        } else if (room.contains("204")) {
-            color = R.color.colorYellowGreen;
-        } else if (room.contains("205")) {
-            color = R.color.colorBlueGreen;
-        }
-        return color;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
