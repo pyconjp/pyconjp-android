@@ -15,9 +15,9 @@
             android:icon="@drawable/ic_view_carousel_black_24dp"
             android:title="@string/nav_posters" />
         <item
-            android:id="@+id/nav_schedule"
-            android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="@string/nav_schedule" />
+            android:id="@+id/nav_event"
+            android:icon="@drawable/ic_bookmark_black_24dp"
+            android:title="@string/nav_events" />
         <item
             android:id="@+id/nav_access"
             android:icon="@drawable/ic_directions_transit_black_24dp"

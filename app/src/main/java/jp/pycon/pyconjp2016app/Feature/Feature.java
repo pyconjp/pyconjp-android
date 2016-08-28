@@ -5,10 +5,9 @@ import android.view.MenuItem;
 
 import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
 import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
+import jp.pycon.pyconjp2016app.Feature.Events.EventsFragment;
 import jp.pycon.pyconjp2016app.Feature.FloorMap.FloorMapFragment;
 import jp.pycon.pyconjp2016app.Feature.Posters.PostersFragment;
-import jp.pycon.pyconjp2016app.Feature.Schedule.ScheduleFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.R;
 
@@ -34,10 +33,10 @@ public enum Feature {
             return PostersFragment.newInstance();
         }
     },
-    SCHEDULE(R.id.nav_schedule, R.string.nav_schedule, true, ScheduleFragment.class.getSimpleName()) {
+    EVENTS(R.id.nav_event, R.string.nav_events, true, EventsFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
-            return ScheduleFragment.newInstance();
+            return EventsFragment.newInstance();
         }
     },
     ACCESS(R.id.nav_access, R.string.nav_access, true, AccessFragment.class.getSimpleName()) {

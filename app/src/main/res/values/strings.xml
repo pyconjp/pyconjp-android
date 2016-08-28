@@ -8,8 +8,8 @@
     <string name="nav_talks">トーク一覧</string>
     <string name="nav_bookmark">ブックマーク</string>
     <string name="nav_posters">ポスター一覧</string>
+    <string name="nav_events">イベント</string>
     <string name="nav_access">アクセス</string>
-    <string name="nav_schedule">スケジュール</string>
     <string name="nav_floor_map">フロアマップ</string>
     <string name="nav_about">PyCon JP 2016について</string>
     <!--<string name="nav_settings">設定</string>-->
@@ -68,6 +68,23 @@
     <string name="notification_register_message">%sを通知に登録しました</string>
     <string name="empty_bookmark_message">トーク一覧を見る</string>
     <string name="action_settings">通知設定</string>
+
+    <!-- Events -->
+    <string name="invited_talk">招待講演</string>
+    <string name="job_fair">ジョブフェア</string>
+    <string name="products_fair">プロダクトフェア</string>
+    <string name="tutorial">チュートリアル</string>
+    <string name="sprint">スプリント</string>
+    <string name="description_invited_talk">『PyCon JP参加者と接点が少ない分野の方々を招待し、参加者と講演者とが交流できる場所を提供する』ことを目的に招待講演を行います。</string>
+    <string name="description_job_fair">ジョブフェアは企業と個人がカジュアルな形で交流し、仕事などについて話ができる場です。本イベントでは、Pythonを用いてプロダクト開発をしている企業の仕事や考え方を中心に、魅力を探っていくセッションです。</string>
+    <string name="description_products_fair">スポンサーの中でも、開発者向けのプロダクトを持つ企業を中心に、ディープラーニングをテーマにしたパネルディスカッションを行います。</string>
+    <string name="description_tutorial">今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
+    <string name="description_sprint">スプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
+    <string name="url_invited_talk">https://pycon.jp/2016/ja/talks/invited-speaker/</string>
+    <string name="url_job_fair">https://pycon.jp/2016/ja/events/jobsfair/</string>
+    <string name="url_products_fair">https://pycon.jp/2016/ja/productfair/</string>
+    <string name="url_tutorial">https://pycon.jp/2016/ja/events/tutorial/</string>
+    <string name="url_sprint">https://pycon.jp/2016/ja/events/sprint/</string>
 
     <!-- Keynote -->
     <string name="keynote">基調講演</string>

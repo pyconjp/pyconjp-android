@@ -56,6 +56,9 @@
             android:name=".Feature.Keynote.KeynoteActivity"
             android:label="@string/keynote">
         </activity>
+        <activity android:name=".Feature.Events.EventsDetailActivity"
+            android:label="イベント詳細">
+        </activity>
         <receiver
             android:name=".BroadcastReceiver.NotificationReceiver"
             android:process=":remote" >
