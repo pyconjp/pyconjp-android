@@ -1,0 +1,184 @@
+# Libraries not listed in licenses.yml:
+- artifact: com.squareup.retrofit2:adapter-rxjava:+
+  name: Adapter: RxJava
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.android.databinding:adapters:+
+  name: adapters
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+- artifact: com.crashlytics.sdk.android:answers:+
+  name: Android SDK Answers
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: Answers Terms of Service
+- artifact: com.crashlytics.sdk.android:crashlytics:+
+  name: Android SDK Crashlytics
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: Crashlytics Terms of Service
+- artifact: com.crashlytics.sdk.android:crashlytics-core:+
+  name: Android SDK Crashlytics Core
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: Crashlytics Terms of Service
+- artifact: io.fabric.sdk.android:fabric:+
+  name: Android SDK Fabric
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: Fabric Software and Services Agreement
+- artifact: com.crashlytics.sdk.android:beta:+
+  name: Android SDK for Beta
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: Crashlytics Terms of Service
+- artifact: io.realm:android-adapters:+
+  name: android-adapters
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: http://realm.io
+- artifact: com.android.support:animated-vector-drawable:+
+  name: animated-vector-drawable
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.android.support:appcompat-v7:+
+  name: appcompat-v7
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.android.support:cardview-v7:+
+  name: cardview-v7
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.github.chrisbanes:PhotoView:+
+  name: chrisbanes/PhotoView
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: Apache License 2.0
+  url: https://github.com/chrisbanes/PhotoView
+- artifact: commons-cli:commons-cli:+
+  name: Commons CLI
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+  url: http://commons.apache.org/cli/
+- artifact: com.squareup.retrofit2:converter-gson:+
+  name: Converter: Gson
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.google.dagger:dagger:+
+  name: Dagger
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.android.databinding:baseLibrary:+
+  name: Data Binding Base Library
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: http://tools.android.com
+- artifact: com.deploygate:sdk:+
+  name: DeployGate SDK
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: https://github.com/DeployGate/deploygate-android-sdk
+- artifact: com.android.support:design:+
+  name: design
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.google.code.findbugs:jsr305:+
+  name: FindBugs-jsr305
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: http://findbugs.sourceforge.net/
+- artifact: com.google.code.gson:gson:+
+  name: Gson
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: javax.inject:javax.inject:+
+  name: javax.inject
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: http://code.google.com/p/atinject/
+- artifact: com.android.databinding:library:+
+  name: library
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+- artifact: net.opacapp:multiline-collapsingtoolbar:+
+  name: Multiline Collapsing Toolbar
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: https://github.com/opacapp/multiline-collapsingtoolbar
+- artifact: com.squareup.okhttp3:okhttp:+
+  name: OkHttp
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.squareup.okio:okio:+
+  name: Okio
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.squareup.picasso:picasso:+
+  name: Picasso
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.google.android.gms:play-services-base:+
+  name: play-services-base
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.google.android.gms:play-services-basement:+
+  name: play-services-basement
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.google.android.gms:play-services-maps:+
+  name: play-services-maps
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.google.android.gms:play-services-tasks:+
+  name: play-services-tasks
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: io.realm:realm-android-library:+
+  name: realm-android-library
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: http://realm.io
+- artifact: io.realm:realm-annotations:+
+  name: realm-annotations
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: http://realm.io
+- artifact: com.android.support:recyclerview-v7:+
+  name: recyclerview-v7
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.getkeepsafe.relinker:relinker:+
+  name: ReLinker
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: https://github.com/KeepSafe/ReLinker
+- artifact: com.squareup.retrofit2:retrofit:+
+  name: Retrofit
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: io.reactivex:rxandroid:+
+  name: RxAndroid
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: https://github.com/ReactiveX/RxAndroid
+- artifact: io.reactivex:rxjava:+
+  name: rxjava
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: https://github.com/ReactiveX/RxJava
+- artifact: com.facebook.stetho:stetho:+
+  name: Stetho
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: BSD License
+  url: https://github.com/facebook/stetho
+- artifact: com.android.support:support-annotations:+
+  name: support-annotations
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.android.support:support-v4:+
+  name: support-v4
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.android.support:support-vector-drawable:+
+  name: support-vector-drawable
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: #LICENSE#
+- artifact: com.jakewharton.timber:timber:+
+  name: Timber
+  copyrightHolder: #COPYRIGHT_HOLDER#
+  license: The Apache Software License, Version 2.0
+  url: https://github.com/JakeWharton/timber

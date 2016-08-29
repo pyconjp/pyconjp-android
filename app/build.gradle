@@ -4,6 +4,7 @@ apply plugin: 'deploygate'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'android-apt'
 apply plugin: 'realm-android'
+apply plugin: 'com.cookpad.android.licensetools'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
