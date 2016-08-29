@@ -14,7 +14,7 @@ import jp.pycon.pyconjp2016app.databinding.ActivityAboutOrganizerBinding;
  */
 public class AboutAppActivity extends BaseAppCompatActivity {
 
-    private static final String LICENSE_PAGE_URL = "https://pyconjp.github.io/pyconjp-android/license.html";
+    private static final String LICENSE_PAGE_URL = "file:///android_asset/licenses.html";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
