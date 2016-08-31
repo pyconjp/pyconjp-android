@@ -157,12 +157,9 @@ public class RealmUtil {
     }
 
     public static void savePresentationDetail(Realm realm, int pk, PresentationDetailEntity detail) {
-        RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
-                .equalTo("pk", pk)
-                .findAll();
         realm.beginTransaction();
         RealmPresentationDetailObject obj = realm.createObject(RealmPresentationDetailObject.class);
-        obj.title = results.get(0).title;
+        obj.title = detail.title;
         obj.pk = pk;
         obj.description = detail.description;
         obj.abst = detail.abst;
