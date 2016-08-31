@@ -93,7 +93,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
                         android:maxLines="1"
-                        android:text="Time: "
                         android:textColor="@color/colorGray" />
                 </LinearLayout>
                 <LinearLayout
@@ -119,7 +118,56 @@
                         android:maxLines="1"
                         android:textColor="@color/colorGray" />
                 </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2sp">
 
+                    <TextView
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:maxLines="1"
+                        android:text="@string/level"
+                        android:textColor="@color/colorGray" />
+                    <TextView
+                        android:id="@+id/level"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorGray" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2sp">
+
+                    <TextView
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:maxLines="1"
+                        android:text="@string/category"
+                        android:textColor="@color/colorGray" />
+                    <TextView
+                        android:id="@+id/category"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorGray" />
+                </LinearLayout>
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
@@ -180,6 +228,7 @@
 
                 <TextView
                     android:id="@+id/abst"
+                    android:autoLink="web"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

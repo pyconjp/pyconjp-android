@@ -129,6 +129,8 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
             roomView.setText(room);
             roomView.setTextColor(ContextCompat.getColor(this, ColorUtil.getRoomColor(room)));
         }
+        ((TextView)findViewById(R.id.level)).setText(presentation.level);
+        ((TextView)findViewById(R.id.category)).setText(presentation.category);
         // ロゴ
         final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
         Drawable drawable = logos.getDrawable(ColorUtil.getLogoColorIndex(room));

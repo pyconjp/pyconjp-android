@@ -168,6 +168,8 @@ public class RealmUtil {
         obj.start = detail.start;
         obj.end = detail.end;
         obj.day = detail.day;
+        obj.level = detail.level;
+        obj.category = detail.category;
         obj.dispDate = DateUtil.toStartToEndFormattedString(detail.day, detail.start, detail.end);
         RealmList<RealmStringObject> speakers = new RealmList<>();
         for (String speaker : detail.speakers) {
