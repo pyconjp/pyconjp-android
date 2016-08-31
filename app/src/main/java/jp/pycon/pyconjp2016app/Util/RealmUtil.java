@@ -157,12 +157,9 @@ public class RealmUtil {
     }
 
     public static void savePresentationDetail(Realm realm, int pk, PresentationDetailEntity detail) {
-        RealmResults<RealmPresentationObject> results = realm.where(RealmPresentationObject.class)
-                .equalTo("pk", pk)
-                .findAll();
         realm.beginTransaction();
         RealmPresentationDetailObject obj = realm.createObject(RealmPresentationDetailObject.class);
-        obj.title = results.get(0).title;
+        obj.title = detail.title;
         obj.pk = pk;
         obj.description = detail.description;
         obj.abst = detail.abst;
@@ -171,6 +168,8 @@ public class RealmUtil {
         obj.start = detail.start;
         obj.end = detail.end;
         obj.day = detail.day;
+        obj.level = detail.level;
+        obj.category = detail.category;
         obj.dispDate = DateUtil.toStartToEndFormattedString(detail.day, detail.start, detail.end);
         RealmList<RealmStringObject> speakers = new RealmList<>();
         for (String speaker : detail.speakers) {
