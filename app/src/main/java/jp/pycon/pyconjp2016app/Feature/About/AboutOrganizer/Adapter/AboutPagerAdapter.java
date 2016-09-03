@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 
 import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.ConductFragment;
 import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.EventOutlineFragment;
+import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.StaffListFragment;
 import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.ThemeFragment;
 import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.WhatIsFragment;
 
@@ -28,10 +29,12 @@ public class AboutPagerAdapter extends FragmentPagerAdapter implements ViewPager
             case 0:
                 return new WhatIsFragment();
             case 1:
-                return new ConductFragment();
+                return new StaffListFragment();
             case 2:
-                return new EventOutlineFragment();
+                return new ConductFragment();
             case 3:
+                return new EventOutlineFragment();
+            case 4:
                 return new ThemeFragment();
         }
         return new WhatIsFragment();
@@ -43,10 +46,12 @@ public class AboutPagerAdapter extends FragmentPagerAdapter implements ViewPager
             case 0:
                 return "PyCon JPってなに？";
             case 1:
-                return "行動規範";
+                return "スタッフ一覧";
             case 2:
-                return "開催概要";
+                return "行動規範";
             case 3:
+                return "開催概要";
+            case 4:
                 return "今年のテーマについて";
         }
         return "";
@@ -66,7 +71,7 @@ public class AboutPagerAdapter extends FragmentPagerAdapter implements ViewPager
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
 }

@@ -60,6 +60,9 @@
     <string name="about_event_body9">Personal：10,000円(Early Bird 8,000円)</string>
     <string name="about_event_body10">Student：5,000円(without After-Party 2,000円)</string>
 
+    <string name="about_button_facebook">Facebook</string>
+    <string name="about_button_twitter">Twitter</string>
+
     <!-- Talk -->
     <string name="speaker">スピーカー</string>
     <string name="description">説明</string>
