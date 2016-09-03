@@ -1,4 +1,4 @@
-package jp.pycon.pyconjp2016app.Model.PyConJP;
+package jp.pycon.pyconjp2016app.Model.GHPages;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,9 +9,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class StaffEntity {
 
-    @SerializedName("teamID")
+    @SerializedName("teamName")
     @Expose
-    private String teamID;
+    private String teamName;
     @SerializedName("name")
     @Expose
     private String name;
@@ -24,20 +24,6 @@ public class StaffEntity {
     @SerializedName("facebook")
     @Expose
     private String facebook;
-
-    /**
-     * @return The teamID
-     */
-    public String getTeamID() {
-        return teamID;
-    }
-
-    /**
-     * @param teamID The teamID
-     */
-    public void setTeamID(String teamID) {
-        this.teamID = teamID;
-    }
 
     /**
      * @return The name
@@ -95,4 +81,11 @@ public class StaffEntity {
         this.facebook = facebook;
     }
 
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
 }
