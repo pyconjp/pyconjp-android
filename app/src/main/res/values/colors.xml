@@ -17,4 +17,7 @@
     <color name="colorYellow">#FFD000</color>
     <color name="colorYellowGreen">#A9C952</color>
     <color name="colorBlueGreen">#86C8A0</color>
+
+    <color name="colorFacebook">#3b5998</color>
+    <color name="colorTwitter">#55acee</color>
 </resources>

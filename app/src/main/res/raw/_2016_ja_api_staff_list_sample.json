@@ -1,0 +1,389 @@
+{
+  "staffList": [
+    {
+      "teamID": "0",
+      "name": "鈴木 たかのり",
+      "title": "座長",
+      "twitter": "https://twitter.com/takanory",
+      "facebook": "https://www.facebook.com/takanory.net"
+    },
+    {
+      "teamID": "0",
+      "name": "津田 麻美子",
+      "title": "副座長(事務局)",
+      "twitter": "",
+      "facebook": ""
+    },
+    {
+      "teamID": "0",
+      "name": "寺田 学",
+      "title": "副座長(会場)",
+      "twitter": "https://twitter.com/terapyon",
+      "facebook": "https://www.facebook.com/terapyon"
+    },
+    {
+      "teamID": "0",
+      "name": "齋藤 大輔",
+      "title": "副座長(プログラム)、チュートリアル(学生)",
+      "twitter": "https://twitter.com/PCShop_kabu",
+      "facebook": "https://www.facebook.com/ds110.sai"
+    },
+    {
+      "teamID": "0",
+      "name": "清田 史和",
+      "title": "副座長(プログラム)",
+      "twitter": "https://twitter.com/kiyotaman",
+      "facebook": "https://www.facebook.com/fumikazu.kiyota"
+    },
+    {
+      "teamID": "0",
+      "name": "吉田 俊輔",
+      "title": "副座長(メディア)",
+      "twitter": "",
+      "facebook": ""
+    },
+    {
+      "teamID": "1",
+      "name": "北村 壮大",
+      "title": "チケット管理",
+      "twitter": "https://twitter.com/nasa9084",
+      "facebook": "https://www.facebook.com/nasa9084"
+    },
+    {
+      "teamID": "1",
+      "name": "安立 沙耶佳",
+      "title": "スポンサー/発注系",
+      "twitter": "https://twitter.com/posi0202",
+      "facebook": ""
+    },
+    {
+      "teamID": "1",
+      "name": "田中 翔",
+      "title": "会計、Web(メディア)",
+      "twitter": "https://twitter.com/tshowis",
+      "facebook": "https://www.facebook.com/tshowis"
+    },
+    {
+      "teamID": "1",
+      "name": "斧田 真奈美",
+      "title": "グッズ",
+      "twitter": "",
+      "facebook": "https://www.facebook.com/manami.onoda.1"
+    },
+    {
+      "teamID": "1",
+      "name": "なかざわ すみこ",
+      "title": "グッズ",
+      "twitter": "",
+      "facebook": ""
+    },
+    {
+      "teamID": "1",
+      "name": "柳 佳音",
+      "title": "",
+      "twitter": "",
+      "facebook": ""
+    },
+    {
+      "teamID": "1",
+      "name": "塚本 英成",
+      "title": "デザイナー",
+      "twitter": "https://twitter.com/denari01",
+      "facebook": "https://www.facebook.com/denari01"
+    },
+    {
+      "teamID": "1",
+      "name": "北川 瑠理",
+      "title": "デザイナー",
+      "twitter": "https://twitter.com/lapis302",
+      "facebook": "https://www.facebook.com/ruri.kitagawa"
+    },
+    {
+      "teamID": "2",
+      "name": "新井 正貴",
+      "title": "飲食関係・手配関係・その他全般の全体取りまとめ",
+      "twitter": "https://twitter.com/massa142",
+      "facebook": "https://www.facebook.com/mstk214"
+    },
+    {
+      "teamID": "2",
+      "name": "高沖 佑輔",
+      "title": "動画全般(生放送・アーカイブ)",
+      "twitter": "",
+      "facebook": ""
+    },
+    {
+      "teamID": "2",
+      "name": "満足 亮",
+      "title": "ネットワーク・生放送・プロジェクタ・電源の全体取りまとめ",
+      "twitter": "https://twitter.com/roro0000",
+      "facebook": "https://www.facebook.com/ryo.manzoku"
+    },
+    {
+      "teamID": "2",
+      "name": "北原",
+      "title": "",
+      "twitter": "https://twitter.com/Surgo",
+      "facebook": "https://www.facebook.com/surgo"
+    },
+    {
+      "teamID": "2",
+      "name": "David Roehrscheid",
+      "title": "英語での情報交換、英語アナウンス他",
+      "twitter": "https://twitter.com/daviddavid",
+      "facebook": "https://www.facebook.com/david.errpunkt"
+    },
+    {
+      "teamID": "2",
+      "name": "元内 柊也",
+      "title": "会場情報まとめ・体力",
+      "twitter": "https://twitter.com/SMotouchi_net",
+      "facebook": "https://www.facebook.com/100004180234700"
+    },
+    {
+      "teamID": "2",
+      "name": "佐藤 良祐",
+      "title": "",
+      "twitter": "https://twitter.com/jtwp470",
+      "facebook": "https://www.facebook.com/ryosuke0904"
+    },
+    {
+      "teamID": "2",
+      "name": "榎本 真美",
+      "title": "託児所",
+      "twitter": "https://twitter.com/mamix1116",
+      "facebook": "https://www.facebook.com/mami.enomoto"
+    },
+    {
+      "teamID": "2",
+      "name": "若林 哲宇",
+      "title": "会場(大学)窓口",
+      "twitter": "",
+      "facebook": ""
+    },
+    {
+      "teamID": "2",
+      "name": "小野田 舜",
+      "title": "",
+      "twitter": "https://twitter.com/jda0s8",
+      "facebook": "https://www.facebook.com/syun.onoda"
+    },
+    {
+      "teamID": "2",
+      "name": "入澤 賢",
+      "title": "",
+      "twitter": "",
+      "facebook": "https://www.facebook.com/irisawa.masaru"
+    },
+    {
+      "teamID": "2",
+      "name": "北野 博紀",
+      "title": "",
+      "twitter": "",
+      "facebook": "https://www.facebook.com/Hiroki.Kitano0129"
+    },
+    {
+      "teamID": "2",
+      "name": "八木 康輔",
+      "title": "",
+      "twitter": "https://twitter.com/patchgi",
+      "facebook": "https://www.facebook.com/epsiloncaprolactam"
+    },
+    {
+      "teamID": "3",
+      "name": "関根 裕紀",
+      "title": "",
+      "twitter": "https://twitter.com/checkpoint",
+      "facebook": ""
+    },
+    {
+      "teamID": "3",
+      "name": "的場 達矢",
+      "title": "",
+      "twitter": "",
+      "facebook": "https://www.facebook.com/tatsuya.matoba"
+    },
+    {
+      "teamID": "3",
+      "name": "清水川 貴之",
+      "title": "トーク、タイムテーブル",
+      "twitter": "https://twitter.com/shimizukawa",
+      "facebook": "https://www.facebook.com/shimizukawa"
+    },
+    {
+      "teamID": "3",
+      "name": "八神 貴心",
+      "title": "キーノート",
+      "twitter": "https://twitter.com/ks888sk",
+      "facebook": "https://www.facebook.com/kishin.yagami"
+    },
+    {
+      "teamID": "3",
+      "name": "舛岡 英人",
+      "title": "招待講演",
+      "twitter": "",
+      "facebook": ""
+    },
+    {
+      "teamID": "3",
+      "name": "畠 弥峰",
+      "title": "チュートリアル(一般)",
+      "twitter": "https://twitter.com/flag_boy",
+      "facebook": "https://www.facebook.com/taishi.abe.79"
+    },
+    {
+      "teamID": "3",
+      "name": "阿部 泰士",
+      "title": "",
+      "twitter": "https://twitter.com/betaishi125",
+      "facebook": ""
+    },
+    {
+      "teamID": "3",
+      "name": "Jonas Obrist",
+      "title": "",
+      "twitter": "https://twitter.com/ojiidotch",
+      "facebook": ""
+    },
+    {
+      "teamID": "3",
+      "name": "飯田 頌平",
+      "title": "スプリント, ポスター",
+      "twitter": "",
+      "facebook": ""
+    },
+    {
+      "teamID": "3",
+      "name": "村松 和哉",
+      "title": "Youth Coder Workshop",
+      "twitter": "https://twitter.com/peta_matu",
+      "facebook": ""
+    },
+    {
+      "teamID": "3",
+      "name": "椎野 数真",
+      "title": "",
+      "twitter": "",
+      "facebook": "https://www.facebook.com/kazz.cno"
+    },
+    {
+      "teamID": "3",
+      "name": "濱田 侑弥",
+      "title": "Youth Coder Workshop",
+      "twitter": "https://twitter.com/youkidearitai",
+      "facebook": "https://www.facebook.com/youkidearitai.yuya.hamada"
+    },
+    {
+      "teamID": "3",
+      "name": "劉 南佐",
+      "title": "スプリント",
+      "twitter": "",
+      "facebook": "https://www.facebook.com/DdrSmiLe"
+    },
+    {
+      "teamID": "3",
+      "name": "田中 舜一",
+      "title": "",
+      "twitter": "",
+      "facebook": "https://www.facebook.com/shunichitanaka"
+    },
+    {
+      "teamID": "3",
+      "name": "玉村 ひまり",
+      "title": "クロージングLT",
+      "twitter": "",
+      "facebook": "https://www.facebook.com/himari.tamamura"
+    },
+    {
+      "teamID": "3",
+      "name": "海老原 由夫樹",
+      "title": "",
+      "twitter": "https://twitter.com/silverskyvicto",
+      "facebook": ""
+    },
+    {
+      "teamID": "3",
+      "name": "犬塚 眞太郎",
+      "title": "",
+      "twitter": "https://twitter.com/studio_graph",
+      "facebook": "https://www.facebook.com/shintaro.inuzuka"
+    },
+    {
+      "teamID": "4",
+      "name": "橋本 安司",
+      "title": "Web取りまとめ",
+      "twitter": "https://twitter.com/yellow844",
+      "facebook": "https://www.facebook.com/yasushi.hashimoto.3"
+    },
+    {
+      "teamID": "4",
+      "name": "牟田 裕太郎",
+      "title": "iOSアプリ開発",
+      "twitter": "https://twitter.com/yutailang0119",
+      "facebook": "https://www.facebook.com/muta.yutaro"
+    },
+    {
+      "teamID": "4",
+      "name": "Ian Lewis",
+      "title": "",
+      "twitter": "https://twitter.com/IanMLewis",
+      "facebook": "https://www.facebook.com/ianmlewis"
+    },
+    {
+      "teamID": "4",
+      "name": "陶山 嶺",
+      "title": "Androidアプリ開発",
+      "twitter": "https://twitter.com/rhoboro",
+      "facebook": "https://www.facebook.com/rei.suyama"
+    },
+    {
+      "teamID": "4",
+      "name": "今津 りこ",
+      "title": "メディア対応補佐",
+      "twitter": "https://twitter.com/RicoImazu",
+      "facebook": "https://www.facebook.com/rico.imazu"
+    },
+    {
+      "teamID": "4",
+      "name": "山口 祐子",
+      "title": "メディア対応",
+      "twitter": "https://twitter.com/yukofeb",
+      "facebook": "https://www.facebook.com/yukofeb"
+    },
+    {
+      "teamID": "4",
+      "name": "芝田 将",
+      "title": "コンテンツ取りまとめ",
+      "twitter": "https://twitter.com/c_bata_",
+      "facebook": "https://www.facebook.com/masashi.cbata"
+    },
+    {
+      "teamID": "4",
+      "name": "菅原 直樹",
+      "title": "",
+      "twitter": "https://twitter.com/gandarla",
+      "facebook": "https://www.facebook.com/gandarla"
+    },
+    {
+      "teamID": "4",
+      "name": "木村 真",
+      "title": "",
+      "twitter": "https://twitter.com/mktkmr4",
+      "facebook": "https://www.facebook.com/makoto.kimura.9406"
+    },
+    {
+      "teamID": "4",
+      "name": "小松 大輔",
+      "title": "当日撮影",
+      "twitter": "https://twitter.com/vkgtaro",
+      "facebook": "https://www.facebook.com/vkgtaro"
+    },
+    {
+      "teamID": "4",
+      "name": "木下 伸二",
+      "title": "",
+      "twitter": "https://twitter.com/snj",
+      "facebook": "https://www.facebook.com/snj.py"
+    }
+  ]
+}

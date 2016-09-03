@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+  <data/>
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        >
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:orientation="vertical"
+          android:padding="8dp"
+          >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+          <TextView
+              android:id="@+id/name_textView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:textSize="23dp"
+              />
+
+          <TextView
+              android:id="@+id/teamID_textView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@color/colorPrimaryDark"
+              android:padding="4dp"
+              android:textColor="@color/colorWhite"
+              />
+
+          <TextView
+              android:id="@+id/title_textView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/name_textView"
+              android:layout_centerHorizontal="true"
+              />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            >
+
+          <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              >
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/facebook_button_false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="@string/about_button_facebook"
+                android:textColor="@color/colorWhite"
+                />
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/facebook_button_true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorFacebook"
+                android:text="@string/about_button_facebook"
+                android:textColor="@color/colorWhite"
+                android:visibility="invisible"
+                />
+          </RelativeLayout>
+
+          <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              >
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/twitter_button_false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="@string/about_button_twitter"
+                android:textColor="@color/colorWhite"
+                />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/twitter_button_true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorTwitter"
+                android:text="@string/about_button_twitter"
+                android:textColor="@color/colorWhite"
+                android:visibility="invisible"
+                />
+          </RelativeLayout>
+
+        </LinearLayout>
+
+      </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+  </RelativeLayout>
+</layout>
