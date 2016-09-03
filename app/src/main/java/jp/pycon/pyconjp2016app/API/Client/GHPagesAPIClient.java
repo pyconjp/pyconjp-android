@@ -1,6 +1,7 @@
 package jp.pycon.pyconjp2016app.API.Client;
 
 import jp.pycon.pyconjp2016app.Model.GHPages.KeynoteListEntity;
+import jp.pycon.pyconjp2016app.Model.GHPages.StaffListEntity;
 import retrofit2.http.GET;
 import rx.Observable;
 
@@ -13,4 +14,7 @@ public interface GHPagesAPIClient {
 
     @GET("keynotes.json")
     Observable<KeynoteListEntity> getKeynotes();
+
+    @GET("stafflist.json")
+    Observable<StaffListEntity> getStaffList();
 }
