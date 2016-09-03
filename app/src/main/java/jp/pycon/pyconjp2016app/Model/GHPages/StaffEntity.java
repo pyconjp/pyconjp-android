@@ -9,9 +9,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class StaffEntity {
 
-    @SerializedName("teamName")
+    @SerializedName("team")
     @Expose
-    private String teamName;
+    private String team;
     @SerializedName("name")
     @Expose
     private String name;
@@ -81,11 +81,11 @@ public class StaffEntity {
         this.facebook = facebook;
     }
 
-    public String getTeamName() {
-        return teamName;
+    public String getTeam() {
+        return team;
     }
 
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
+    public void setTeam(String team) {
+        this.team = team;
     }
 }

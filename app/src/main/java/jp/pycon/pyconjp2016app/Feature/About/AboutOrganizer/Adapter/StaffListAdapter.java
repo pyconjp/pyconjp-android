@@ -38,7 +38,7 @@ public class StaffListAdapter extends RecyclerView.Adapter<StaffListAdapter.View
   @Override public void onBindViewHolder(ViewHolder holder, final int position) {
     final StaffEntity staff = list.get(position);
     holder.binding.nameTextView.setText(staff.getName());
-    holder.binding.teamIDTextView.setText((staff.getTeamName()));
+    holder.binding.teamIDTextView.setText((staff.getTeam()));
     holder.binding.titleTextView.setText(staff.getTitle());
     if (!staff.getFacebook().equals("")) {
       holder.binding.facebookButtonFalse.setVisibility(View.GONE);
