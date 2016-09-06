@@ -42,6 +42,10 @@
             android:label="@string/about_organizers">
         </activity>
         <activity
+            android:name=".Feature.About.AboutSponsorActivity"
+            android:label="@string/about_sponsors">
+        </activity>
+        <activity
             android:name=".Feature.About.AboutAppActivity"
             android:label="@string/about_license">
         </activity>
