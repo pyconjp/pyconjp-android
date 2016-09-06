@@ -36,6 +36,9 @@
     <string name="about_blog">PyCon JP Blog</string>
     <string name="about_blog_web">http://pyconjp.blogspot.jp/</string>
     <string name="about_staff">スタッフ一覧</string>
+    <string name="about_sponsors">PyCon JP スポンサー一覧</string>
+    <string name="about_host">主催: 一般社団法人PyCon JP</string>
+    <string name="about_cohost">共催: 早稲田大学グローバルソフトウェアエンジニアリング研究所</string>
 
     <string name="about_this_app">PyCon JP 2016アプリについて</string>
     <string name="about_license">このアプリについて</string>

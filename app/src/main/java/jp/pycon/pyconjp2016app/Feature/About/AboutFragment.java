@@ -40,7 +40,7 @@ public class AboutFragment extends Fragment  implements AdapterView.OnItemClickL
         ListView listView = (ListView) v.findViewById(R.id.about_list_view);
         listView.setOnItemClickListener(this);
 
-        String[] aboutList = {getString(R.string.about_organizers), getString(R.string.about_this_app)};
+        String[] aboutList = {getString(R.string.about_organizers), getString(R.string.about_sponsors), getString(R.string.about_this_app)};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(mContext, R.layout.cell_about, aboutList);
         listView.setAdapter(arrayAdapter);
         return v;
@@ -54,10 +54,10 @@ public class AboutFragment extends Fragment  implements AdapterView.OnItemClickL
                 intent.setClass(mContext, AboutOrganizerActivity.class);
                 break;
             case 1:
-                intent.setClass(mContext, AboutAppActivity.class);
+                intent.setClass(mContext, AboutSponsorActivity.class);
                 break;
             case 2:
-                intent.setClass(mContext, FeedbackActivity.class);
+                intent.setClass(mContext, AboutAppActivity.class);
                 break;
         }
         startActivity(intent);
