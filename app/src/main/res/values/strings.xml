@@ -124,6 +124,7 @@
     <string name="conference_day_2">9/22</string>
     <string name="conference_day_12">9/21-22</string>
     <string name="sprint_day">9/23</string>
+    <string name="hashtag_prefix">#pyconjp_</string>
 
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>

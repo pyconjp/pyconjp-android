@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -124,10 +125,13 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         final String room = presentation.rooms;
         if (TextUtils.isEmpty(room)) {
             findViewById(R.id.room_view).setVisibility(View.GONE);
+            findViewById(R.id.hashTag).setVisibility(View.GONE);
         } else {
             TextView roomView = (TextView)findViewById(R.id.room);
             roomView.setText(room);
             roomView.setTextColor(ContextCompat.getColor(this, ColorUtil.getRoomColor(room)));
+            TextView hashTag = (TextView)findViewById(R.id.hashTag);
+            hashTag.setText(hashTagString(room));
         }
         ((TextView)findViewById(R.id.level)).setText(presentation.level);
         ((TextView)findViewById(R.id.category)).setText(presentation.category);
@@ -205,5 +209,33 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
                                }
                            }
                 );
+    }
+
+    /**
+     * ハッシュタグがタップされた時に呼ばれます
+     * @param view タップされたビュー
+     */
+    public void onHashTagClicked(View view) {
+        String hashTag = ((TextView)view).getText().toString().replaceAll("#", "");
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("twitter://search?query=%23" + hashTag));
+            startActivity(intent);
+
+        }catch (Exception e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://mobile.twitter.com/search?q=%23" + hashTag + "&s=typd")));
+        }
+    }
+
+    /**
+     * 部屋番号からハッシュタグ文字列を生成
+     * @param room 部屋番号
+     * @return ハッシュタグ
+     */
+    private String hashTagString(String room) {
+        String prefix = getString(R.string.hashtag_prefix);
+        int num = Integer.parseInt(room.replaceAll("[^0-9]",""));
+        return prefix+Integer.toString(num);
     }
 }
