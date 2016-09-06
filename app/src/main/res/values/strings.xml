@@ -116,10 +116,11 @@
 
     <!-- Other -->
     <string name="pycon_theme">Everyone\'s different, all are wonderful.</string>
-    <string name="tutorial_day">9月20日</string>
-    <string name="conference_day_1">9月21日</string>
-    <string name="conference_day_2">9月22日</string>
-    <string name="sprint_day">9月23日</string>
+    <string name="tutorial_day">9/20</string>
+    <string name="conference_day_1">9/21</string>
+    <string name="conference_day_2">9/22</string>
+    <string name="conference_day_12">9/21-22</string>
+    <string name="sprint_day">9/23</string>
 
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>

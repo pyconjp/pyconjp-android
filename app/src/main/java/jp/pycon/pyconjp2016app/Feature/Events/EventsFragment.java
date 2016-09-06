@@ -70,29 +70,34 @@ public class EventsFragment extends Fragment{
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            Event floor = getItem(position);
+            Event event = getItem(position);
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.cell_events, null);
             }
             TextView textView = (TextView)convertView.findViewById(R.id.title_text_view);
-            textView.setText(floor.getTitleResId());
+            textView.setText(event.getTitleResId());
+            TextView dateView = (TextView)convertView.findViewById(R.id.date_text_view);
+            String date = context.getResources().getString(event.getDateId());
+            dateView.setText(" (" + date + ")");
             TextView descTextView = (TextView)convertView.findViewById(R.id.description_text_view);
-            descTextView.setText(floor.getDescResId());
+            descTextView.setText(event.getDescResId());
             return convertView;
         }
     }
 
     public enum Event {
-        INVITED_TALK(R.string.invited_talk, R.string.description_invited_talk, R.string.url_invited_talk),
-        JOB_FAIR(R.string.job_fair, R.string.description_job_fair, R.string.url_job_fair),
-        PRODUCTS_FIAR(R.string.products_fair, R.string.description_products_fair, R.string.url_products_fair),
-        TUTORIAL(R.string.tutorial, R.string.description_tutorial, R.string.url_tutorial),
-        SPRINT(R.string.sprint, R.string.description_sprint, R.string.url_sprint);
+        TUTORIAL(R.string.tutorial, R.string.tutorial_day, R.string.description_tutorial, R.string.url_tutorial),
+        INVITED_TALK(R.string.invited_talk, R.string.conference_day_1, R.string.description_invited_talk, R.string.url_invited_talk),
+        PRODUCTS_FIAR(R.string.products_fair, R.string.conference_day_1, R.string.description_products_fair, R.string.url_products_fair),
+        JOB_FAIR(R.string.job_fair, R.string.conference_day_2, R.string.description_job_fair, R.string.url_job_fair),
+        SPRINT(R.string.sprint, R.string.sprint_day, R.string.description_sprint, R.string.url_sprint);
         private final int descResId;
+        private final int dateId;
         private final int titleResId;
         private final int urlResId;
-        Event(int titleResId, int descResId, int urlResId) {
+        Event(int titleResId, int dateId, int descResId, int urlResId) {
             this.titleResId = titleResId;
+            this.dateId = dateId;
             this.descResId = descResId;
             this.urlResId = urlResId;
         }
@@ -101,6 +106,9 @@ public class EventsFragment extends Fragment{
             return titleResId;
         }
 
+        public int getDateId() {
+            return dateId;
+        }
         public int getDescResId() {
             return descResId;
         }
