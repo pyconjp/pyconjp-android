@@ -61,6 +61,8 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
         holder.title.setText(obj.title);
         holder.speaker.setText(obj.speakerString());
         holder.start.setText(obj.dispStart);
+        int bookmarkVisibility = obj.bookmark ? View.VISIBLE : View.INVISIBLE;
+        holder.bookmark.setVisibility(bookmarkVisibility);
         final String room = obj.rooms;
         if (!TextUtils.isEmpty(room)) {
             holder.room.setVisibility(View.VISIBLE);
@@ -82,6 +84,7 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
         final TextView start;
         final TextView title;
         final TextView room;
+        final ImageView bookmark;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -89,6 +92,7 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
             start = (TextView)itemView.findViewById(R.id.start);
             title = (TextView)itemView.findViewById(R.id.title);
             room = (TextView)itemView.findViewById(R.id.room);
+            bookmark = (ImageView)itemView.findViewById(R.id.bookmark);
         }
     }
 }

@@ -17,21 +17,7 @@
             android:src="@drawable/empty_bookmark"
             android:layout_width="wrap_content"
             android:layout_height="300dp" />
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/show_talk_button"
-            android:text="@string/empty_bookmark_message"
-            android:background="@drawable/rounded_corners_5dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/talk_recycler_view"

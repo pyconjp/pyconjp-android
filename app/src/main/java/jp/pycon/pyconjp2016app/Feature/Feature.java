@@ -9,6 +9,7 @@ import jp.pycon.pyconjp2016app.Feature.Events.EventsFragment;
 import jp.pycon.pyconjp2016app.Feature.FloorMap.FloorMapFragment;
 import jp.pycon.pyconjp2016app.Feature.Keynote.KeynoteFragment;
 import jp.pycon.pyconjp2016app.Feature.Posters.PostersFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.R;
 
