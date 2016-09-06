@@ -21,7 +21,10 @@ android {
         }
 
         release {
-            storeFile file("../conf/debug.keystore")
+            storeFile file("../conf/production.keystore")
+            storePassword System.getenv("KEYSTOREPWD")
+            keyAlias System.getenv("KEYALIAS")
+            keyPassword System.getenv("KEYPWD")
         }
     }
 
