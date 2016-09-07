@@ -16,6 +16,15 @@
             android:textSize="16sp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content" />
+
+        <ImageView
+            android:id="@+id/bookmark"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/colorAccent"
+            android:src="@drawable/ic_bookmark_black_18dp"
+            />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"

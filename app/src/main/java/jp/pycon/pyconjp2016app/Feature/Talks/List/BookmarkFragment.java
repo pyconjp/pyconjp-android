@@ -81,24 +81,6 @@ public class BookmarkFragment extends Fragment implements ViewPager.OnPageChange
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_bookmark, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            SettingsActivity.start(context);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onDestroyView() {
         super.onDestroyView();
         ViewPager pager = (ViewPager)view.findViewById(R.id.view_pager);

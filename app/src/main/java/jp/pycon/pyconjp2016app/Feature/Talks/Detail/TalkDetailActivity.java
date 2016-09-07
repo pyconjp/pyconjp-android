@@ -33,6 +33,7 @@ import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.ColorUtil;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
@@ -101,8 +102,7 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(presentation.title);
         setupViews(presentation);
-        // ブックマークは一度機能を外す
-//        setupBookmark(pk);
+        setupBookmark(pk);
         ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.GONE);
         findViewById(R.id.detail_view).setVisibility(View.VISIBLE);
@@ -159,24 +159,32 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BookmarkDialog dialog = new BookmarkDialog();
-                dialog.setmListener(new BookmarkDialog.BookmarkDialogListener() {
+                mHandler.post(new Runnable() {
                     @Override
-                    public void bookmarkStatusChanged(int pk2, boolean added) {
-                        mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                boolean bookmarkStatus = PreferencesManager.isBookmarkContains(getApplicationContext(), pk);
-                                int resId = bookmarkStatus ? R.drawable.ic_bookmark_black_24dp : R.drawable.ic_bookmark_border_black_24dp;
-                                bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resId, null));
-                            }
-                        });
+                    public void run() {
+                        boolean bookmarkStatus = PreferencesManager.isBookmarkContains(getApplicationContext(), pk);
+                        int resId = bookmarkStatus ? R.drawable.ic_bookmark_border_black_24dp : R.drawable.ic_bookmark_black_24dp;
+                        bookmark.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resId, null));
+                        setBookmark(pk, !bookmarkStatus);
                     }
                 });
-                Bundle bundle = new Bundle();
-                bundle.putInt(BookmarkDialog.BUNDLE_KEY_PRESENTATION_ID, pk);
-                dialog.setArguments(bundle);
-                dialog.show(getSupportFragmentManager(), "bookmark");
+            }
+        });
+    }
+
+    private void setBookmark(int pk, final boolean marked) {
+        if (marked) {
+            PreferencesManager.putBookmark(getApplicationContext(), pk);
+        } else {
+            PreferencesManager.deleteBookmark(getApplicationContext(), pk);
+        }
+        final RealmPresentationObject obj = realm.where(RealmPresentationObject.class)
+                .equalTo("pk", pk)
+                .findFirst();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                obj.bookmark = marked;
             }
         });
     }
