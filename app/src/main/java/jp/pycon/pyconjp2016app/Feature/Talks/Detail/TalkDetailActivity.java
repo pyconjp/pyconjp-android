@@ -3,7 +3,6 @@ package jp.pycon.pyconjp2016app.Feature.Talks.Detail;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,8 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
-
-import java.util.Random;
 
 import io.realm.Realm;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
