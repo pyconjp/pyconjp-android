@@ -6,11 +6,9 @@ import com.deploygate.sdk.DeployGate;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.API.Client.GHPagesAPIClient;
 import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
-import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -26,10 +24,8 @@ public class App extends Application {
         super.onCreate();
         DeployGate.install(this);
 
-        // TODO: リリース時には deleteRealmIfMigrationNeeded を消す
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
-//                .schemaVersion(1)
-                .deleteRealmIfMigrationNeeded()
+                .schemaVersion(1)
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
 

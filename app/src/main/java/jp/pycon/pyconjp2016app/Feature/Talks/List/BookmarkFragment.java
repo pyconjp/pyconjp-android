@@ -8,16 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmResults;
-import jp.pycon.pyconjp2016app.Feature.Settings.SettingsActivity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmDaysObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmStringObject;
 import jp.pycon.pyconjp2016app.R;
