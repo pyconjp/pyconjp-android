@@ -30,7 +30,7 @@ public class AccessFragment extends Fragment implements OnMapReadyCallback {
     final static private double VENUE_LATITUDE = 35.706069;
     final static private double VENUE_LONGITUDE = 139.70681;
     final static private int DEFAULT_ZOOM_LEVEL = 15;
-    final static private String htmlStr = "<a href=\"https://www.waseda.jp/top/access/nishiwaseda-campus\">早稲田大学西早稲田キャンパス</a>";
+    final static private String htmlStr = "<a href=\"https://www.waseda.jp/top/access/nishiwaseda-campus\">早稲田大学西早稲田キャンパス</a> 63号館";
 
     public AccessFragment() {
         super();
