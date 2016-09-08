@@ -1,30 +1,24 @@
 package jp.pycon.pyconjp2016app;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
-import jp.pycon.pyconjp2016app.Feature.About.AboutFragment;
-import jp.pycon.pyconjp2016app.Feature.Access.AccessFragment;
 import jp.pycon.pyconjp2016app.Feature.Feature;
-import jp.pycon.pyconjp2016app.Feature.Talks.MyTalksFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.TalksFragment;
+import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
@@ -38,17 +32,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        if (fab != null) {
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer != null) {
@@ -85,68 +68,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
         if (!item.isChecked()) {
             item.setChecked(true);
-            switch (item.getItemId()) {
-                case R.id.nav_talks:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(TalksFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                case R.id.nav_my_talks:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(MyTalksFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                case R.id.nav_access:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(AccessFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                case R.id.nav_about:
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            replaceFragment(AboutFragment.newInstance());
-                        }
-                    }, DRAWER_CLOSE_DELAY_MILLS);
-                    break;
-                default:
-                    break;
-            }
+            Feature feature = Feature.forMenuId(item.getItemId());
+            changePage(feature.createFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -154,6 +81,25 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         }
         return true;
+    }
+
+    private void changePage(final Fragment fragment) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                replaceFragment(fragment);
+            }
+        }, DRAWER_CLOSE_DELAY_MILLS);
+    }
+
+    private void toggleToolbarElevation(boolean enable) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            float elevation = enable ? getResources().getDimension(R.dimen.elevation) : 0;
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            if (toolbar != null) {
+                toolbar.setElevation(elevation);
+            }
+        }
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -179,8 +125,10 @@ public class MainActivity extends AppCompatActivity
             navigationView.setCheckedItem(feature.getMenuId());
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toggleToolbarElevation(feature.shouldToggleToolbar());
         if (toolbar != null) {
             toolbar.setTitle(feature.getTitleResId());
         }
     }
+
 }

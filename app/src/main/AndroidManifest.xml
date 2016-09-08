@@ -3,6 +3,8 @@
     package="jp.pycon.pyconjp2016app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
         android:name=".App"
@@ -14,8 +16,7 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="${fabric_apikey}"
-            />
+            android:value="${fabric_apikey}" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -31,5 +32,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Feature.Talks.Detail.TalkDetailActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Feature.About.AboutOrganizer.AboutOrganizerActivity"
+            android:label="@string/about_organizers">
+        </activity>
+        <activity
+            android:name=".Feature.About.AboutSponsorActivity"
+            android:label="@string/about_sponsors">
+        </activity>
+        <activity
+            android:name=".Feature.About.AboutAppActivity"
+            android:label="@string/about_license">
+        </activity>
+        <activity android:name=".Feature.FloorMap.FloorMapViewActivity"
+            android:label="フロアマップ">
+        </activity>
+        <activity
+            android:name=".Feature.Settings.SettingsActivity"
+            android:label="@string/action_settings">
+        </activity>
+        <activity android:name=".Feature.Events.EventsDetailActivity"
+            android:label="イベント詳細">
+        </activity>
+        <receiver
+            android:name=".BroadcastReceiver.NotificationReceiver"
+            android:process=":remote" >
+        </receiver>
     </application>
 </manifest>
