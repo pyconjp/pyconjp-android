@@ -17,11 +17,10 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("../conf/debug.keystore")
+            storeFile file('../conf/debug.keystore')
         }
-
         release {
-            storeFile file("../conf/production.keystore")
+            storeFile file("../conf/store.jks")
             storePassword System.getenv("KEYSTOREPWD")
             keyAlias System.getenv("KEYALIAS")
             keyPassword System.getenv("KEYPWD")
@@ -32,13 +31,14 @@ android {
         debug {
             manifestPlaceholders = [
                     google_map_apikey: System.getenv("GOOGLE_MAP_APIKEY_DEBUG") != null ? System.getenv("GOOGLE_MAP_APIKEY_DEBUG") : "",
-                    fabric_apikey: System.getenv("FABRIC_APIKEY") != null ? System.getenv("FABRIC_APIKEY") : ""
+                    fabric_apikey: System.getenv("FABRIC_APIKEY_DEBUG") != null ? System.getenv("FABRIC_APIKEY_DEBUG") : ""
                 ]
         }
         release {
+            signingConfig signingConfigs.release
             manifestPlaceholders = [
                     google_map_apikey: System.getenv('GOOGLE_MAP_APIKEY_RELEASE') != null ? System.getenv('GOOGLE_MAP_APIKEY_RELEASE') : "",
-                    fabric_apikey: System.getenv("FABRIC_APIKEY") != null ? System.getenv("FABRIC_APIKEY") : ""
+                    fabric_apikey: System.getenv("FABRIC_APIKEY_RELEASE") != null ? System.getenv("FABRIC_APIKEY_RELEASE") : ""
                 ]
         }
     }

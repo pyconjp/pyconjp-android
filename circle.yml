@@ -26,8 +26,8 @@ deployment:
   production:
     branch: master
     commands:
-      - ./gradlew assembleRelease
-      - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+      - ./gradlew assembleProductionRelease 
+      - cp -r app/build/outputs/apk $CIRCLE_ARTIFACTS
   beta:
     branch: develop
     commands:
