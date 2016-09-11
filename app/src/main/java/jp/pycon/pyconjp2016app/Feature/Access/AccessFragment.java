@@ -20,6 +20,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Locale;
+
 import jp.pycon.pyconjp2016app.R;
 
 /**
@@ -30,7 +32,8 @@ public class AccessFragment extends Fragment implements OnMapReadyCallback {
     final static private double VENUE_LATITUDE = 35.706069;
     final static private double VENUE_LONGITUDE = 139.70681;
     final static private int DEFAULT_ZOOM_LEVEL = 15;
-    final static private String htmlStr = "<a href=\"https://www.waseda.jp/top/access/nishiwaseda-campus\">早稲田大学西早稲田キャンパス</a> 63号館";
+    final static private String htmlStr_ja = "<a href=\"https://www.waseda.jp/top/access/nishiwaseda-campus\">早稲田大学西早稲田キャンパス</a> 63号館";
+    final static private String htmlStr_en = "<a href=\"https://www.waseda.jp/top/en/access/nishiwaseda-campus\">Waseda University, Nishiwaseda Campus</a> Building 63";
 
     public AccessFragment() {
         super();
@@ -47,8 +50,9 @@ public class AccessFragment extends Fragment implements OnMapReadyCallback {
         View v = inflater.inflate(R.layout.fragment_access, container, false);
 
         // リンク
+        String html = Locale.getDefault().getLanguage().equals("ja") ? htmlStr_ja : htmlStr_en;
         TextView link = (TextView)v.findViewById(R.id.access_link);
-        link.setText(Html.fromHtml(htmlStr));
+        link.setText(Html.fromHtml(html));
         MovementMethod method = LinkMovementMethod.getInstance();
         link.setMovementMethod(method);
 

@@ -5,21 +5,21 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Navigation Menu Items -->
-    <string name="nav_talks">トーク一覧</string>
-    <string name="nav_bookmark">ブックマーク</string>
-    <string name="nav_keynote">基調講演</string>
-    <string name="nav_posters">ポスター一覧</string>
-    <string name="nav_events">イベント</string>
-    <string name="nav_access">アクセス</string>
-    <string name="nav_floor_map">フロアマップ</string>
-    <string name="nav_about">PyCon JP 2016について</string>
+    <string name="nav_talks">Talks</string>
+    <string name="nav_bookmark">Bookmarks</string>
+    <string name="nav_keynote">Keynote Speakers</string>
+    <string name="nav_posters">Posters</string>
+    <string name="nav_events">Events</string>
+    <string name="nav_access">Access</string>
+    <string name="nav_floor_map">Floor Map</string>
+    <string name="nav_about">About</string>
     <string name="nav_sponsors">スポンサー</string>
 
     <!-- Fragment -->
     <!-- Access -->
     <string name="postal_code">〒169&#8211;8555</string>
-    <string name="address">東京都新宿区大久保3&#8211;4&#8211;1</string>
-    <string name="campus_short_name">早稲田大学西早稲田キャンパス</string>
+    <string name="address">3&#8211;4&#8211;1 Ookubo, Shinjuku-ku, Tokyo</string>
+    <string name="campus_short_name">Waseda University, Nishiwaseda Campus</string>
 
     <!-- About -->
     <string name="about_pycon">PyCon JP 2016</string>
