@@ -5,15 +5,15 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Navigation Menu Items -->
-    <string name="nav_talks">Talks</string>
+    <string name="nav_talks">Conference</string>
     <string name="nav_bookmark">Bookmarks</string>
     <string name="nav_keynote">Keynote Speakers</string>
-    <string name="nav_posters">Posters</string>
+    <string name="nav_posters">Poster Sessions</string>
     <string name="nav_events">Events</string>
     <string name="nav_access">Access</string>
     <string name="nav_floor_map">Floor Map</string>
     <string name="nav_about">About</string>
-    <string name="nav_sponsors">スポンサー</string>
+    <string name="nav_sponsors">Sponsors</string>
 
     <!-- Fragment -->
     <!-- Access -->
@@ -66,46 +66,46 @@
     <string name="about_button_twitter">Twitter</string>
 
     <!-- Talk -->
-    <string name="speaker">スピーカー</string>
-    <string name="description">説明</string>
-    <string name="abst">概要</string>
-    <string name="language">言語: </string>
-    <string name="level">対象レベル: </string>
-    <string name="category">カテゴリ: </string>
+    <string name="speaker">Speaker</string>
+    <string name="description">Description</string>
+    <string name="abst">Abstract</string>
+    <string name="language">Language: </string>
+    <string name="level">Audience Level: </string>
+    <string name="category">Category: </string>
     <string name="notification_message">%sがもうすぐ始まります</string>
     <string name="notification_register_failed_message">通知の登録に失敗しました</string>
     <string name="notification_register_message">%sを通知に登録しました</string>
     <string name="empty_bookmark_message">トーク一覧を見る</string>
     <string name="action_settings">通知設定</string>
-    <string name="action_refresh">リフレッシュ</string>
+    <string name="action_refresh">Refresh</string>
 
     <!-- Events -->
-    <string name="invited_talk">招待講演</string>
-    <string name="job_fair">ジョブフェア</string>
-    <string name="products_fair">プロダクトフェア</string>
-    <string name="tutorial">チュートリアル</string>
-    <string name="sprint">スプリント</string>
+    <string name="invited_talk">Invited Talks</string>
+    <string name="job_fair">Job Fair</string>
+    <string name="products_fair">Products Fair</string>
+    <string name="tutorial">Tutorials</string>
+    <string name="sprint">Development Sprints</string>
     <string name="description_invited_talk">『PyCon JP参加者と接点が少ない分野の方々を招待し、参加者と講演者とが交流できる場所を提供する』ことを目的に招待講演を行います。</string>
     <string name="description_job_fair">ジョブフェアは企業と個人がカジュアルな形で交流し、仕事などについて話ができる場です。本イベントでは、Pythonを用いてプロダクト開発をしている企業の仕事や考え方を中心に、魅力を探っていくセッションです。</string>
     <string name="description_products_fair">スポンサーの中でも、開発者向けのプロダクトを持つ企業を中心に、ディープラーニングをテーマにしたパネルディスカッションを行います。</string>
     <string name="description_tutorial">今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
     <string name="description_sprint">スプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
-    <string name="url_invited_talk">https://pycon.jp/2016/ja/talks/invited-speaker/</string>
-    <string name="url_job_fair">https://pycon.jp/2016/ja/events/jobsfair/</string>
-    <string name="url_products_fair">https://pycon.jp/2016/ja/productfair/</string>
-    <string name="url_tutorial">https://pycon.jp/2016/ja/events/tutorial/</string>
-    <string name="url_sprint">https://pycon.jp/2016/ja/events/sprint/</string>
+    <string name="url_invited_talk">https://pycon.jp/2016/en/talks/invited-speaker/</string>
+    <string name="url_job_fair">https://pycon.jp/2016/en/events/jobsfair/</string>
+    <string name="url_products_fair">https://pycon.jp/2016/en/productfair/</string>
+    <string name="url_tutorial">https://pycon.jp/2016/en/events/tutorial/</string>
+    <string name="url_sprint">https://pycon.jp/2016/en/events/sprint/</string>
 
     <!-- Keynote -->
-    <string name="keynote">基調講演</string>
+    <string name="keynote">Keynote</string>
 
     <!-- Floor Map -->
-    <string name="floor_map_01">フロアマップ1F</string>
-    <string name="floor_map_02">フロアマップ2F</string>
-    <string name="floor_map_03">フロアマップ3F</string>
-    <string name="floor_map_description_01">受付、ポスターセッション、ランチ・パーティー会場</string>
-    <string name="floor_map_description_02">トーク会場、スポンサー等ブース</string>
-    <string name="floor_map_description_03">オープンスペース、ビギナーセッション、Youth Coder Workshop</string>
+    <string name="floor_map_01">Floor Map 1F</string>
+    <string name="floor_map_02">Floor Map 2F</string>
+    <string name="floor_map_03">Floor Map 3F</string>
+    <string name="floor_map_description_01">Reception, Poster Session, Lunch, Party</string>
+    <string name="floor_map_description_02">Conference, Sponsor Booth</string>
+    <string name="floor_map_description_03">Open Spaces, Beginner Sessions, Youth Coder Workshop</string>
 
     <!-- Settings -->
     <string name="settings">設定</string>
