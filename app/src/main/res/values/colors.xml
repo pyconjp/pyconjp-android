@@ -21,4 +21,6 @@
     <color name="colorFacebook">#3b5998</color>
     <color name="colorTwitter">#55acee</color>
     <color name="colorTransparent">#00000000</color>
+    <color name="colorJa">#EF7585</color>
+    <color name="colorEn">#74A9D6</color>
 </resources>

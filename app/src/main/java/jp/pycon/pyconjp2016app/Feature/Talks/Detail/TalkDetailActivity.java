@@ -136,6 +136,7 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
             hashTag.setText(hashTagString(room));
         }
         ((TextView)findViewById(R.id.level)).setText(presentation.level);
+        ((TextView)findViewById(R.id.language)).setText(presentation.language);
         ((TextView)findViewById(R.id.category)).setText(presentation.category);
         // 説明
         ((TextView)findViewById(R.id.description)).setText(presentation.description);

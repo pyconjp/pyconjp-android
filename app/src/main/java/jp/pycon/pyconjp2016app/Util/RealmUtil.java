@@ -122,6 +122,7 @@ public class RealmUtil {
             obj.pk = presentation.pk;
             obj.title = presentation.title;
             obj.language = presentation.language;
+            obj.rooms = "Information gallery";
             RealmList<RealmStringObject> speakers = new RealmList<>();
             for (String speaker : presentation.speakers) {
                 RealmStringObject speakerObject = realm.createObject(RealmStringObject.class);
