@@ -18,9 +18,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
 
@@ -134,18 +137,34 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         }
         ((TextView)findViewById(R.id.level)).setText(presentation.level);
         ((TextView)findViewById(R.id.category)).setText(presentation.category);
-        // ロゴ
-        final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
-        Drawable drawable = logos.getDrawable(ColorUtil.getLogoColorIndex(room));
-        ((ImageView)findViewById(R.id.python_logo)).setImageDrawable(drawable);
-        // スピーカー
-        ((TextView)findViewById(R.id.speaker)).setText(presentation.speakerstring());
         // 説明
         ((TextView)findViewById(R.id.description)).setText(presentation.description);
         // 概要
         ((TextView)findViewById(R.id.abst)).setText(presentation.abst);
+        // スピーカー
         for (RealmSpeakerInformationObject info : presentation.speakerInformation) {
-            Log.d("hoge", "hoge" + info.twitter);
+            final LinearLayout speaker = (LinearLayout)getLayoutInflater().inflate(R.layout.row_speaker, null);
+            ((TextView)speaker.findViewById(R.id.name)).setText(info.name);
+
+            if (TextUtils.isEmpty(info.twitter)) {
+                (speaker.findViewById(R.id.twitter)).setVisibility(View.GONE);
+            } else {
+                final String twitter = getString(R.string.twitter_prefix) + info.twitter;
+                ((TextView)speaker.findViewById(R.id.twitter)).setText(twitter);
+            }
+
+            ImageView image = (ImageView)speaker.findViewById(R.id.python_logo);
+            if (TextUtils.isEmpty(info.imageUri)) {
+                // ロゴ
+                final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
+                Drawable drawable = logos.getDrawable(ColorUtil.getLogoColorIndex(room));
+                image.setImageDrawable(drawable);
+            } else {
+                String url = getString(R.string.speaker_image_prefix) + info.imageUri;
+                Picasso.with(this).load(url).transform(new CropCircleTransformation()).into(image);
+            }
+
+            ((LinearLayout)findViewById(R.id.speakers)).addView(speaker);
         }
     }
 
