@@ -70,6 +70,7 @@
     <string name="speaker">スピーカー</string>
     <string name="description">説明</string>
     <string name="abst">概要</string>
+    <string name="language">言語: </string>
     <string name="level">対象レベル: </string>
     <string name="category">カテゴリ: </string>
     <string name="notification_message">%sがもうすぐ始まります</string>
