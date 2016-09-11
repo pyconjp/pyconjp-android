@@ -11,8 +11,6 @@ import rx.Observable;
  */
 public interface APIClient {
 
-    String BASE_URL = "http://pycon.jp/2016/ja/api/";
-
     @GET("talks/list/")
     Observable<PresentationListEntity> getPyConJPTalks();
     @GET("posters/list/")

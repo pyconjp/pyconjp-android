@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.deploygate.sdk.DeployGate;
 
+import java.util.Locale;
+
 import io.realm.DynamicRealm;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -67,10 +69,11 @@ public class App extends Application {
      */
     public APIClient getAPIClient() {
         Retrofit retrofit;
+        final String baseUrl = getResources().getString(R.string.pyconjp_api_base_url);
         if (BuildConfig.PRODUCTION) {
             // 本番APIを叩く
             retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
@@ -81,7 +84,7 @@ public class App extends Application {
                     .addInterceptor(i)
                     .build();
             retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(okHttpClient)
