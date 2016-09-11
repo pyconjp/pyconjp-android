@@ -72,11 +72,6 @@
     <string name="language">Language: </string>
     <string name="level">Audience Level: </string>
     <string name="category">Category: </string>
-    <string name="notification_message">%sがもうすぐ始まります</string>
-    <string name="notification_register_failed_message">通知の登録に失敗しました</string>
-    <string name="notification_register_message">%sを通知に登録しました</string>
-    <string name="empty_bookmark_message">トーク一覧を見る</string>
-    <string name="action_settings">通知設定</string>
     <string name="action_refresh">Refresh</string>
 
     <!-- Events -->
@@ -106,16 +101,6 @@
     <string name="floor_map_description_01">Reception, Poster Session, Lunch, Party</string>
     <string name="floor_map_description_02">Conference, Sponsor Booth</string>
     <string name="floor_map_description_03">Open Spaces, Beginner Sessions, Youth Coder Workshop</string>
-
-    <!-- Settings -->
-    <string name="settings">設定</string>
-    <string name="notification_settings">通知設定</string>
-    <!-- Dialog -->
-    <string name="dialog_title_bookmark_on">このトークをブックマークに登録しますか？</string>
-    <string name="dialog_title_bookmark_off">このトークをブックマークから外しますか？</string>
-    <string name="dialog_list_notification">開始前に通知する</string>
-    <string name="dialog_cancel">キャンセル</string>
-    <string name="dialog_ok">OK</string>
 
     <!-- Other -->
     <string name="pycon_theme">Everyone\'s different, all are wonderful.</string>
