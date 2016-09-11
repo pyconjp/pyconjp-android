@@ -150,7 +150,23 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
                 (speaker.findViewById(R.id.twitter)).setVisibility(View.GONE);
             } else {
                 final String twitter = getString(R.string.twitter_prefix) + info.twitter;
-                ((TextView)speaker.findViewById(R.id.twitter)).setText(twitter);
+                TextView twitterTextView = (TextView)speaker.findViewById(R.id.twitter);
+                twitterTextView.setText(twitter);
+                twitterTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String twitter = ((TextView)view).getText().toString().replaceAll("@", "");
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("twitter://user?screen_name=" + twitter));
+                            startActivity(intent);
+
+                        }catch (Exception e) {
+                            startActivity(new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("https://mobile.twitter.com/" + twitter)));
+                        }
+                    }
+                });
             }
 
             ImageView image = (ImageView)speaker.findViewById(R.id.python_logo);
