@@ -23,6 +23,8 @@ public class ColorUtil {
             color = R.color.colorYellowGreen;
         } else if (room.contains("205")) {
             color = R.color.colorBlueGreen;
+        } else if (room.contains("Information gallery")) {
+            color = R.color.colorPrimary;
         }
         return color;
     }
