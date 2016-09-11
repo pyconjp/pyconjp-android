@@ -1,0 +1,20 @@
+{
+    "keynotes": [
+        {
+            "speaker": "Jessica McKellar",
+            "body": "Jessica McKellar is an entrepreneur, software engineer, and open source developer from San Francisco, California, USA. She is a former Director for the Python Software Foundation, PyCon North America's Diversity Outreach Chair, and a maintainer for several open source projects, including OpenHatch and the Twisted event-driven networking engine. For her outreach efforts in the Python community, she was awarded the O'Reilly Open Source Award in 2013.",
+            "image_uri": "https://pycon.jp/2016/ja/files/5/jessica_profile.jpeg",
+            "day": "2016-09-21",
+            "start": "09:45:00",
+            "end": "10:30:00"
+        },
+        {
+            "speaker": "Andrey Vlasovskikh",
+            "body": "Andrey is the PyCharm Community Lead, the maintainer of the Vim emulation for PyCharm, a contributor to PEP 484 Type Hints. He is also the author of funcparserlib, a functional parsing library for Python, and an organizer of Python meetups in Russia.",
+            "image_uri": "https://pycon.jp/2016/ja/files/4/andrey_profile.jpeg",
+            "day": "2016-09-22",
+            "start": "09:45:00",
+            "end": "10:30:00"
+        }
+    ]
+}
