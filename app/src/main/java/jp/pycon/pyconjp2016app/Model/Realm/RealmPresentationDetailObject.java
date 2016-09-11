@@ -72,4 +72,5 @@ public class RealmPresentationDetailObject extends RealmObject {
         }
         return TextUtils.join("\n", strings);
     }
+    public RealmList<RealmSpeakerInformationObject> speakerInformation;
 }

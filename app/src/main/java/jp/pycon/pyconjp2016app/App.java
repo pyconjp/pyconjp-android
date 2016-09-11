@@ -4,8 +4,11 @@ import android.app.Application;
 
 import com.deploygate.sdk.DeployGate;
 
+import io.realm.DynamicRealm;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmMigration;
+import io.realm.RealmSchema;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.API.Client.GHPagesAPIClient;
 import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
@@ -24,8 +27,34 @@ public class App extends Application {
         super.onCreate();
         DeployGate.install(this);
 
+        RealmMigration migration = new RealmMigration() {
+            @Override
+            public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
+
+                // DynamicRealmからは変更可能なスキーマインスタンスを取得できます
+                RealmSchema schema = realm.getSchema();
+
+                if (oldVersion == 0) {
+                    // バージョン1への移行処理
+                    oldVersion++;
+                }
+
+                if (oldVersion == 1) {
+                    // バージョン2への移行処理
+                    schema.create("RealmSpeakerInformationObject")
+                            .addField("name", String.class)
+                            .addField("twitter", String.class)
+                            .addField("imageUri", String.class);
+                    schema.get("RealmPresentationDetailObject")
+                            .addRealmListField("speakerInformation",schema.get("RealmSpeakerInformationObject"));
+                    oldVersion++;
+                }
+            }
+        };
+
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
-                .schemaVersion(1)
+                .schemaVersion(2)
+                .migration(migration)
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
 

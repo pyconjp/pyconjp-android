@@ -29,8 +29,10 @@ import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationSpeakerInformationEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerInformationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.ColorUtil;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
@@ -142,6 +144,9 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         ((TextView)findViewById(R.id.description)).setText(presentation.description);
         // 概要
         ((TextView)findViewById(R.id.abst)).setText(presentation.abst);
+        for (RealmSpeakerInformationObject info : presentation.speakerInformation) {
+            Log.d("hoge", "hoge" + info.twitter);
+        }
     }
 
     /**

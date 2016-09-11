@@ -12,9 +12,11 @@ import io.realm.Sort;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationEntity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationListEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationSpeakerInformationEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmDaysObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerInformationObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmStringObject;
 
 /**
@@ -178,6 +180,15 @@ public class RealmUtil {
             speakers.add(speakerObject);
         }
         obj.speakers = speakers;
+        RealmList<RealmSpeakerInformationObject> speakerInformation = new RealmList<>();
+        for (PresentationSpeakerInformationEntity info : detail.speakerInfomations) {
+            RealmSpeakerInformationObject realmInfo = realm.createObject(RealmSpeakerInformationObject.class);
+            realmInfo.name = info.name;
+            realmInfo.imageUri = info.imageUri;
+            realmInfo.twitter = info.twitter;
+            speakerInformation.add(realmInfo);
+        }
+        obj.speakerInformation = speakerInformation;
         realm.commitTransaction();
     }
 
