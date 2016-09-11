@@ -18,9 +18,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
 
@@ -29,8 +32,10 @@ import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
+import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationSpeakerInformationEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
+import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerInformationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.ColorUtil;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
@@ -132,16 +137,51 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
         }
         ((TextView)findViewById(R.id.level)).setText(presentation.level);
         ((TextView)findViewById(R.id.category)).setText(presentation.category);
-        // ロゴ
-        final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
-        Drawable drawable = logos.getDrawable(ColorUtil.getLogoColorIndex(room));
-        ((ImageView)findViewById(R.id.python_logo)).setImageDrawable(drawable);
-        // スピーカー
-        ((TextView)findViewById(R.id.speaker)).setText(presentation.speakerstring());
         // 説明
         ((TextView)findViewById(R.id.description)).setText(presentation.description);
         // 概要
         ((TextView)findViewById(R.id.abst)).setText(presentation.abst);
+        // スピーカー
+        for (RealmSpeakerInformationObject info : presentation.speakerInformation) {
+            final LinearLayout speaker = (LinearLayout)getLayoutInflater().inflate(R.layout.row_speaker, null);
+            ((TextView)speaker.findViewById(R.id.name)).setText(info.name);
+
+            if (TextUtils.isEmpty(info.twitter)) {
+                (speaker.findViewById(R.id.twitter)).setVisibility(View.GONE);
+            } else {
+                final String twitter = getString(R.string.twitter_prefix) + info.twitter;
+                TextView twitterTextView = (TextView)speaker.findViewById(R.id.twitter);
+                twitterTextView.setText(twitter);
+                twitterTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String twitter = ((TextView)view).getText().toString().replaceAll("@", "");
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("twitter://user?screen_name=" + twitter));
+                            startActivity(intent);
+
+                        }catch (Exception e) {
+                            startActivity(new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("https://mobile.twitter.com/" + twitter)));
+                        }
+                    }
+                });
+            }
+
+            ImageView image = (ImageView)speaker.findViewById(R.id.python_logo);
+            if (TextUtils.isEmpty(info.imageUri)) {
+                // ロゴ
+                final TypedArray logos = getResources().obtainTypedArray(R.array.python_logo);
+                Drawable drawable = logos.getDrawable(ColorUtil.getLogoColorIndex(room));
+                image.setImageDrawable(drawable);
+            } else {
+                String url = getString(R.string.speaker_image_prefix) + info.imageUri;
+                Picasso.with(this).load(url).transform(new CropCircleTransformation()).into(image);
+            }
+
+            ((LinearLayout)findViewById(R.id.speakers)).addView(speaker);
+        }
     }
 
     /**
