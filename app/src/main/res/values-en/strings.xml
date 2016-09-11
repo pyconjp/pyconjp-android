@@ -113,6 +113,7 @@
     <string name="twitter_prefix">\@</string>
     <string name="speaker_image_prefix">https://pycon.jp</string>
     <string name="pyconjp_api_base_url">http://pycon.jp/2016/en/api/</string>
+    <string name="ghpage_base_url">https://pyconjp.github.io/pyconjp-android/en/</string>
 
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>
