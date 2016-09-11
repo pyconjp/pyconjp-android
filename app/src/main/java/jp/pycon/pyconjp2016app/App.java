@@ -26,7 +26,10 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         DeployGate.install(this);
+        setUpRealm();
+    }
 
+    private void setUpRealm() {
         RealmMigration migration = new RealmMigration() {
             @Override
             public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
@@ -47,7 +50,6 @@ public class App extends Application {
                             .addField("imageUri", String.class);
                     schema.get("RealmPresentationDetailObject")
                             .addRealmListField("speakerInformation",schema.get("RealmSpeakerInformationObject"));
-                    oldVersion++;
                 }
             }
         };
@@ -57,7 +59,6 @@ public class App extends Application {
                 .migration(migration)
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
-
     }
 
     /**
