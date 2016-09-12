@@ -23,44 +23,44 @@
 
     <!-- About -->
     <string name="about_pycon">PyCon JP 2016</string>
-    <string name="about_pycon_body">PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。\n\nPyCon JP 2016では、「Everyone\'s different, all are wonderful.」をテーマに据えました。Pythonをキーワードに多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンスを目指して、スタッフ全員で企画を進めています。</string>
+    <string name="about_pycon_body">PyCon JP is a conference where Python users, or people interested in Python, gather to learn from each other and meet other members of the community.\n\nThis year, we chose "Everyone\'s different, all are wonderful." as our theme. The Pycon JP staff is continuing to work hard on making a conference that will allow everyone to have a great time and unlock new possibilities through Python.</string>
     <string name="about_pycon_web">https://pycon.jp/2016</string>
 
-    <string name="about_organizers">PyCon JP 運営について</string>
-    <string name="about_organizers_body1">PyCon JP 2016は、PyCon JP実行委員会 PyCon JP 2016運営チームによって運営されています。</string>
+    <string name="about_organizers">About PyCon JP</string>
+    <string name="about_organizers_body1">PyCon JP 2016 is being organized by the PyCon JP Organizing Committee.</string>
     <string name="about_organizers_body2">私たちは、Pythonユーザが一堂に介し、互いに交流を深め、知識を分けあい、新たな可能性を見つけられる場所として、PyCon JPの企画と運営に取り組んできました。とりわけ、PyCon JPを広く世界のPythonユーザにも開かれた場と位置づけ、国内外のユーザにとって魅力的なカンファレンスとなるよう努力をつづけています。</string>
-    <string name="about_organizers_chairperson">座長: 鈴木たかのり</string>
-    <string name="about_organizers_web">Webサイト: http://www.pycon.jp</string>
-    <string name="about_organizers_contact">連絡先: 2016@pycon.jp</string>
+    <string name="about_organizers_chairperson">Chair: Takanori Suzuki</string>
+    <string name="about_organizers_web">Web site: http://www.pycon.jp</string>
+    <string name="about_organizers_contact">Contact: 2016@pycon.jp</string>
     <string name="about_blog">PyCon JP Blog</string>
     <string name="about_blog_web">http://pyconjp.blogspot.jp/</string>
-    <string name="about_staff">スタッフ一覧</string>
-    <string name="about_sponsors">PyCon JP スポンサー一覧</string>
-    <string name="about_host">主催: 一般社団法人PyCon JP</string>
-    <string name="about_cohost">共催: 早稲田大学グローバルソフトウェアエンジニアリング研究所</string>
+    <string name="about_staff">Staff list</string>
+    <string name="about_sponsors">PyCon JP Sponsors List</string>
+    <string name="about_host">Host: PyCon JP Committee</string>
+    <string name="about_cohost">Cohost: Global Software Engineering Laboratory, Waseda University</string>
 
-    <string name="about_this_app">PyCon JP 2016アプリについて</string>
-    <string name="about_license">このアプリについて</string>
+    <string name="about_this_app">About PyCon JP 2016 app</string>
+    <string name="about_license">About this app</string>
 
-    <string name="about_feedback">フィードバックを送る</string>
+    <string name="about_feedback">Send feedback</string>
 
-    <string name="about_conduct_body1">PyConは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。 PyCon JPの開催を通じて、Pythonの使い手が一堂に集まり、Pythonにまつわる様々な分野の知識や情報を交換し、新たな友達やコミュニティとのつながり、仕事やビジネスチャンスを増やせる場所とすることが目標です。</string>
-    <string name="about_conduct_body2">ハラスメント行為には、言葉による性別、性的指向、障碍の有無、外見、身体の大きさ、人種、宗教に関する攻撃的なコメント、公的空間での性的な映像表現、意図的な威力行為、ストーキング、つきまとい、写真撮影や録音によるいやがらせ、トークやその他の会議イベントに対して繰り返して中断しようとする行為、不適切な身体接触、そして望まれない性的な注意を引きつける行為を含みます。</string>
-    <string name="about_conduct_body3">私達は参加者が会議場とワークショップ会場、また会議に関連したソーシャルイベントにて、このルールに従うことを望みます。</string>
+    <string name="about_conduct_body1">PyCon JP is a conference where Python users, or people interested in Python, gather to learn from each other and meet other members of the community. We hope that everyone joining PyCon JP will not only learn new and exciting things, but also meet new friends and strengthen the connection with the community, and thus the community itself.</string>
+    <string name="about_conduct_body2">Harassment includes offensive verbal comments related to gender, age, sexual orientation, disability, physical appearance, body size, race, religion, sexual images in public spaces, deliberate intimidation, stalking, following, harassing photography or recording, sustained disruption of talks or other events, inappropriate physical contact, and unwelcome sexual attention.</string>
+    <string name="about_conduct_body3">We expect participants to follow these rules at conference and workshop venues and conference-related social events.</string>
 
-    <string name="about_theme_title2">「みんなちがって、みんないい」</string>
+    <string name="about_theme_title2">「Everyone's different, all are wonderful.」</string>
     <string name="about_theme_body1">そのミーティングの中で、今年のイベントのコンセプトとして 「Pythonをキーワードに、多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンス」 にしたいということになりました。 ここでいう 「多様な人たち」というのは、さまざまな国籍、性別、年齢、職業、職種、立場(スタッフ、スピーカーなど)、宗教、役割、Pythonレベル(初級から上級まで)の人たちなどのことです。</string>
     <string name="about_theme_body2">そして、このコンセプトをあらわすテーマについてチーム内で議論しました。そのなかで 金子みすゞさんの詩「私と小鳥と鈴と」 にある、 「みんなちがって、みんないい」 という一節がイメージに合うのではという話になり、その英語表現として上記のテーマとなりました。</string>
 
-    <string name="about_event_body1">チュートリアル：2016年9月20(火)</string>
-    <string name="about_event_body2">カンファレンス：2016年9月21(水)、22(木・祝)</string>
-    <string name="about_event_body3">開発スプリント：2016年9月23(金)、24(土)</string>
-    <string name="about_event_body4">会場：早稲田大学西早稲田キャンパス</string>
-    <string name="about_event_body6">参加費</string>
-    <string name="about_event_body7">Patron：20,000円</string>
-    <string name="about_event_body8">Business：15,000円(Early Bird 12,000円)</string>
-    <string name="about_event_body9">Personal：10,000円(Early Bird 8,000円)</string>
-    <string name="about_event_body10">Student：5,000円(without After-Party 2,000円)</string>
+    <string name="about_event_body1">Tutorials：Sep 20 (Tue)</string>
+    <string name="about_event_body2">Conference：Sep 21(Wed)、Sep 22(Thu)</string>
+    <string name="about_event_body3">Development Sprints：Sep 23(Fri)、 24(Sat)</string>
+    <string name="about_event_body4">Venue：Waseda University, Nishiwaseda Campus</string>
+    <string name="about_event_body6">Price</string>
+    <string name="about_event_body7">Patron：20,000JPY</string>
+    <string name="about_event_body8">Business：15,000JPY(Early Bird 12,000JPY)</string>
+    <string name="about_event_body9">Personal：10,000JPY(Early Bird 8,000JPY)</string>
+    <string name="about_event_body10">Student：5,000JPY(without After-Party 2,000JPY)</string>
 
     <string name="about_button_facebook">Facebook</string>
     <string name="about_button_twitter">Twitter</string>
@@ -83,7 +83,7 @@
     <string name="description_invited_talk">The purpose of Invitation Talks is to invite guest speakers to share their unique perspectives and provide opportunities for participants to expand their networks. We invited two researchers this year!</string>
     <string name="description_job_fair">This program provides an opportunity for companies and individuals to meet and talk about their works in an informal setting.</string>
     <string name="description_products_fair">スポンサーの中でも、開発者向けのプロダクトを持つ企業を中心に、ディープラーニングをテーマにしたパネルディスカッションを行います。</string>
-    <string name="description_tutorial">今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
+    <string name="description_tutorial">This year we will have courses in areas such as “Python for beginners”, “Data Analysis”, “Deep Learning” and “Documentation”. In this year, it is not required to apply to PyCon JP 2016 to attend these courses.</string>
     <string name="description_sprint">
 Sprint is the event for the short term and centralized software developments. Some people call it as Hack-a-thon or developing meet up.It is a great opportunity for those who are interested and passionate about the developments in a group.</string>
     <string name="url_invited_talk">https://pycon.jp/2016/en/talks/invited-speaker/</string>
