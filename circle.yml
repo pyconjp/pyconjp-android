@@ -28,6 +28,11 @@ deployment:
     commands:
       - ./gradlew assembleProductionRelease 
       - cp -r app/build/outputs/apk $CIRCLE_ARTIFACTS
+  betatest:
+    branch: betatest
+    commands:
+      - ./gradlew assembleProductionRelease 
+      - cp -r app/build/outputs/apk $CIRCLE_ARTIFACTS
   beta:
     branch: develop
     commands:
