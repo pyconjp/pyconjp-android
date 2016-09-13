@@ -40,7 +40,7 @@ public class AboutFragment extends Fragment  implements AdapterView.OnItemClickL
         ListView listView = (ListView) v.findViewById(R.id.about_list_view);
         listView.setOnItemClickListener(this);
 
-        String[] aboutList = {getString(R.string.about_organizers), getString(R.string.about_sponsors), getString(R.string.about_this_app)};
+        String[] aboutList = {getString(R.string.about_organizers), getString(R.string.about_sponsors), getString(R.string.about_this_app), getString(R.string.about_feedback)};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(mContext, R.layout.cell_about, aboutList);
         listView.setAdapter(arrayAdapter);
         return v;
@@ -59,7 +59,20 @@ public class AboutFragment extends Fragment  implements AdapterView.OnItemClickL
             case 2:
                 intent.setClass(mContext, AboutAppActivity.class);
                 break;
+            case 3:
+                intent = generateFeedbackIntent();
+                break;
         }
         startActivity(intent);
+    }
+
+    private Intent generateFeedbackIntent() {
+        final Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"pyconj+app@gmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for PyCon JP 2016 App");
+        intent.putExtra(Intent.EXTRA_TEXT, "Android OS:\nReply-To:\n\nFeedback:\n");
+        return intent;
     }
 }
