@@ -82,19 +82,43 @@
 
     <!-- Events -->
     <string name="invited_talk">招待講演</string>
-    <string name="job_fair">ジョブフェア</string>
-    <string name="products_fair">プロダクトフェア</string>
-    <string name="tutorial">チュートリアル</string>
-    <string name="sprint">スプリント</string>
     <string name="description_invited_talk">『PyCon JP参加者と接点が少ない分野の方々を招待し、参加者と講演者とが交流できる場所を提供する』ことを目的に招待講演を行います。</string>
-    <string name="description_job_fair">ジョブフェアは企業と個人がカジュアルな形で交流し、仕事などについて話ができる場です。本イベントでは、Pythonを用いてプロダクト開発をしている企業の仕事や考え方を中心に、魅力を探っていくセッションです。</string>
-    <string name="description_products_fair">スポンサーの中でも、開発者向けのプロダクトを持つ企業を中心に、ディープラーニングをテーマにしたパネルディスカッションを行います。</string>
-    <string name="description_tutorial">今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
-    <string name="description_sprint">スプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
     <string name="url_invited_talk">https://pycon.jp/2016/ja/talks/invited-speaker/</string>
+
+    <string name="job_fair">ジョブフェア</string>
+    <string name="description_job_fair">ジョブフェアは企業と個人がカジュアルな形で交流し、仕事などについて話ができる場です。本イベントでは、Pythonを用いてプロダクト開発をしている企業の仕事や考え方を中心に、魅力を探っていくセッションです。</string>
     <string name="url_job_fair">https://pycon.jp/2016/ja/events/jobsfair/</string>
+
+    <string name="products_fair">プロダクトフェア</string>
+    <string name="description_products_fair">スポンサーの中でも、開発者向けのプロダクトを持つ企業を中心に、ディープラーニングをテーマにしたパネルディスカッションを行います。</string>
     <string name="url_products_fair">https://pycon.jp/2016/ja/productfair/</string>
+
+    <string name="tutorial">チュートリアル</string>
+    <string name="description_tutorial">今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
     <string name="url_tutorial">https://pycon.jp/2016/ja/events/tutorial/</string>
+
+    <string name="youth_coder_workshop">Youth Coder Workshop</string>
+    <string name="description_youth_coder_workshop">PyCon JP 2016では、子ども向けワークショップ、改め「Youth Coder Workshop」（ユース コーダー ワークショップ）を開催します。</string>
+    <string name="url_youth_corder_workshop">https://pycon.jp/2016/ja/events/youth-ws/</string>
+
+    <string name="beginner_session">ビギナーセッション</string>
+    <string name="description_beginner_session">今年、2014年及び2015年にオープンスペースで行われたコードリーディング等の自主イベントをビギナーセッションとして開催致します。 PyCon JP 2016 カンファレンスデイ期間中に、トークと並行して実施致します。 ご自由にご参加下さい。</string>
+    <string name="url_beginner_session">https://pycon.jp/2016/ja/events/beginners/</string>
+
+    <string name="committee_meeting">Committee Meeting</string>
+    <string name="description_committee_meeting">PyCon JP 2016を運営しているチームとは別に、法人格を持っている一般社団法人PyCon JPが存在します。この法人の役割や今後の活動について、幅広く意見を交換したいと考えております。 自由にご参加ください。</string>
+    <string name="url_committee_meeting">https://pycon.jp/2016/ja/events/committee-meeting/</string>
+
+    <string name="community_booth">コミュニティブース</string>
+    <string name="description_community_booth">コミュニティブースはPythonに関連したコミュニティを参加者の方に広く知って頂くために、 コミュニティに所属している方と来場者の方とで交流できる場所を提供しようという取り組みです。お昼ごはんを食べながらカジュアルに各コミュニティの方と交流を深めたり、実際にコミュニティに参加するきっかけにして頂ければと思います。</string>
+    <string name="url_community_booth">https://pycon.jp/2016/ja/events/community-booth/</string>
+
+    <string name="open_space">オープンスペース</string>
+    <string name="description_open_space">参加者が自由に発表やハンズオン、ミーティング、議論などをできる場所と時間を提供します。</string>
+    <string name="url_open_space">https://pycon.jp/2016/ja/events/open-space/</string>
+
+    <string name="sprint">スプリント</string>
+    <string name="description_sprint">スプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
     <string name="url_sprint">https://pycon.jp/2016/ja/events/sprint/</string>
 
     <!-- Keynote -->
