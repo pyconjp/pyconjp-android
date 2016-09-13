@@ -9,7 +9,6 @@ import jp.pycon.pyconjp2016app.Feature.Events.EventsFragment;
 import jp.pycon.pyconjp2016app.Feature.FloorMap.FloorMapFragment;
 import jp.pycon.pyconjp2016app.Feature.Keynote.KeynoteFragment;
 import jp.pycon.pyconjp2016app.Feature.Posters.PostersFragment;
-import jp.pycon.pyconjp2016app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.R;
 
@@ -23,12 +22,6 @@ public enum Feature {
             return TalksFragment.newInstance();
         }
     },
-//    BOOKMARK(R.id.nav_bookmark, R.string.nav_bookmark, false, BookmarkFragment.class.getSimpleName()) {
-//        @Override
-//        public Fragment createFragment() {
-//            return BookmarkFragment.newInstance();
-//        }
-//    },
     KEYNOTE(R.id.nav_keynote, R.string.nav_keynote, true, KeynoteFragment.class.getSimpleName()) {
     @Override
     public Fragment createFragment() {

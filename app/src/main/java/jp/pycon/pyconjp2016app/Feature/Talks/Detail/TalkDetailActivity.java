@@ -32,7 +32,6 @@ import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationDetailEntity;
-import jp.pycon.pyconjp2016app.Model.PyConJP.PresentationSpeakerInformationEntity;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationDetailObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerInformationObject;

@@ -13,7 +13,6 @@
     <string name="nav_access">アクセス</string>
     <string name="nav_floor_map">フロアマップ</string>
     <string name="nav_about">PyCon JP 2016について</string>
-    <!--<string name="nav_settings">設定</string>-->
     <string name="nav_sponsors">スポンサー</string>
 
     <!-- Fragment -->
@@ -26,6 +25,12 @@
     <string name="about_pycon">PyCon JP 2016</string>
     <string name="about_pycon_body">PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。\n\nPyCon JP 2016では、「Everyone\'s different, all are wonderful.」をテーマに据えました。Pythonをキーワードに多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンスを目指して、スタッフ全員で企画を進めています。</string>
     <string name="about_pycon_web">https://pycon.jp/2016</string>
+
+    <string name="about_tab1">PyCon JPってなに？</string>
+     <string name="about_tab2">スタッフ一覧</string> 
+    <string name="about_tab3">行動規範</string> 
+    <string name="about_tab4">開催概要</string> 
+    <string name="about_tab5">今年のテーマについて</string>
 
     <string name="about_organizers">PyCon JP 運営について</string>
     <string name="about_organizers_body1">PyCon JP 2016は、PyCon JP実行委員会 PyCon JP 2016運営チームによって運営されています。</string>
@@ -73,11 +78,6 @@
     <string name="language">言語: </string>
     <string name="level">対象レベル: </string>
     <string name="category">カテゴリ: </string>
-    <string name="notification_message">%sがもうすぐ始まります</string>
-    <string name="notification_register_failed_message">通知の登録に失敗しました</string>
-    <string name="notification_register_message">%sを通知に登録しました</string>
-    <string name="empty_bookmark_message">トーク一覧を見る</string>
-    <string name="action_settings">通知設定</string>
     <string name="action_refresh">リフレッシュ</string>
 
     <!-- Events -->
@@ -108,16 +108,6 @@
     <string name="floor_map_description_02">トーク会場、スポンサー等ブース</string>
     <string name="floor_map_description_03">オープンスペース、ビギナーセッション、Youth Coder Workshop</string>
 
-    <!-- Settings -->
-    <string name="settings">設定</string>
-    <string name="notification_settings">通知設定</string>
-    <!-- Dialog -->
-    <string name="dialog_title_bookmark_on">このトークをブックマークに登録しますか？</string>
-    <string name="dialog_title_bookmark_off">このトークをブックマークから外しますか？</string>
-    <string name="dialog_list_notification">開始前に通知する</string>
-    <string name="dialog_cancel">キャンセル</string>
-    <string name="dialog_ok">OK</string>
-
     <!-- Other -->
     <string name="pycon_theme">Everyone\'s different, all are wonderful.</string>
     <string name="tutorial_day">9/20</string>
@@ -128,6 +118,8 @@
     <string name="hashtag_prefix">#pyconjp_</string>
     <string name="twitter_prefix">\@</string>
     <string name="speaker_image_prefix">https://pycon.jp</string>
+    <string name="pyconjp_api_base_url">http://pycon.jp/2016/ja/api/</string>
+    <string name="ghpage_base_url">https://pyconjp.github.io/pyconjp-android/</string>
 
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>

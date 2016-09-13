@@ -25,7 +25,7 @@ public class AboutOrganizerActivity extends AppCompatActivity {
         TabLayout tabLayout = binding.tagLayout;
 
         ViewPager viewPager = binding.viewPager;
-        AboutPagerAdapter aboutPagerAdapter = new AboutPagerAdapter(getSupportFragmentManager());
+        AboutPagerAdapter aboutPagerAdapter = new AboutPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(aboutPagerAdapter);
         viewPager.addOnPageChangeListener(aboutPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
