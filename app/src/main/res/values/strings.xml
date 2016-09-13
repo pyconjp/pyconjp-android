@@ -26,6 +26,12 @@
     <string name="about_pycon_body">PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。\n\nPyCon JP 2016では、「Everyone\'s different, all are wonderful.」をテーマに据えました。Pythonをキーワードに多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンスを目指して、スタッフ全員で企画を進めています。</string>
     <string name="about_pycon_web">https://pycon.jp/2016</string>
 
+    <string name="about_tab1">PyCon JPってなに？</string>
+     <string name="about_tab2">スタッフ一覧</string> 
+    <string name="about_tab3">行動規範</string> 
+    <string name="about_tab4">開催概要</string> 
+    <string name="about_tab5">今年のテーマについて</string>
+
     <string name="about_organizers">PyCon JP 運営について</string>
     <string name="about_organizers_body1">PyCon JP 2016は、PyCon JP実行委員会 PyCon JP 2016運営チームによって運営されています。</string>
     <string name="about_organizers_body2">私たちは、Pythonユーザが一堂に介し、互いに交流を深め、知識を分けあい、新たな可能性を見つけられる場所として、PyCon JPの企画と運営に取り組んできました。とりわけ、PyCon JPを広く世界のPythonユーザにも開かれた場と位置づけ、国内外のユーザにとって魅力的なカンファレンスとなるよう努力をつづけています。</string>
