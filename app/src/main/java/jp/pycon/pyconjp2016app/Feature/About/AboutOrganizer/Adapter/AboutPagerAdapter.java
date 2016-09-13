@@ -1,6 +1,6 @@
 package jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.Adapter;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -20,11 +20,11 @@ import jp.pycon.pyconjp2016app.R;
 public class AboutPagerAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
 
     private ViewPager viewPager;
-    private Activity activity;
+    private Context context;
 
-    public AboutPagerAdapter(FragmentManager fm, Activity activity) {
+    public AboutPagerAdapter(FragmentManager fm,  Context context) {
         super(fm);
-        this.activity = activity;
+        this.context = context;
     }
 
     @Override
@@ -48,15 +48,15 @@ public class AboutPagerAdapter extends FragmentPagerAdapter implements ViewPager
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return activity.getString(R.string.about_tab1);
+                return context.getString(R.string.about_tab1);
             case 1:
-                return activity.getString(R.string.about_tab2);
+                return context.getString(R.string.about_tab2);
             case 2:
-                return activity.getString(R.string.about_tab3);
+                return context.getString(R.string.about_tab3);
             case 3:
-                return activity.getString(R.string.about_tab4);
+                return context.getString(R.string.about_tab4);
             case 4:
-                return activity.getString(R.string.about_tab5);
+                return context.getString(R.string.about_tab5);
         }
         return "";
     }
