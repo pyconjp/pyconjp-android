@@ -71,9 +71,10 @@ public class EventsFragment extends Fragment{
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             Event event = getItem(position);
-            if (convertView == null) {
+            // ビューの再利用で日付の表示位置がずれるため暫定対応。リストの内容は少ないのでパフォーマンスへの影響は軽微
+//            if (convertView == null) {
                 convertView = inflater.inflate(R.layout.cell_events, null);
-            }
+//            }
             TextView textView = (TextView)convertView.findViewById(R.id.title_text_view);
             textView.setText(event.getTitleResId());
             TextView dateView = (TextView)convertView.findViewById(R.id.date_text_view);
