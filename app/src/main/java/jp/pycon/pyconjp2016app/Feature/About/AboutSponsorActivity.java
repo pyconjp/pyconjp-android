@@ -24,5 +24,6 @@ public class AboutSponsorActivity extends BaseAppCompatActivity {
         final WebView webView = (WebView)findViewById(R.id.web_view);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(SPONSOR_PAGE_URL);
+        webView.getSettings().setJavaScriptEnabled(true);
     }
 }

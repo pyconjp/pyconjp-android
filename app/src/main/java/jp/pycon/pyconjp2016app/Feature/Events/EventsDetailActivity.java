@@ -43,5 +43,6 @@ public class EventsDetailActivity extends BaseAppCompatActivity {
         final WebView webView = (WebView)findViewById(R.id.web_view);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(url);
+        webView.getSettings().setJavaScriptEnabled(true);
     }
 }
