@@ -4,8 +4,6 @@ import android.app.Application;
 
 import com.deploygate.sdk.DeployGate;
 
-import java.util.Locale;
-
 import io.realm.DynamicRealm;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -27,7 +25,9 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        // DeployGateを初期化
         DeployGate.install(this);
+        // Realmを初期化
         setUpRealm();
     }
 
