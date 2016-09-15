@@ -21,6 +21,7 @@
     <string name="postal_code">〒169&#8211;8555</string>
     <string name="address">東京都新宿区大久保3&#8211;4&#8211;1</string>
     <string name="campus_short_name">早稲田大学西早稲田キャンパス</string>
+    <string name="participants">参加の手引き: https://pycon.jp/2016/ja/participants/</string>
 
     <!-- About -->
     <string name="about_pycon">PyCon JP 2016</string>

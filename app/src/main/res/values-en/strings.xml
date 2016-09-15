@@ -21,6 +21,7 @@
     <string name="postal_code">〒169&#8211;8555</string>
     <string name="address">3&#8211;4&#8211;1 Ookubo, Shinjuku-ku, Tokyo</string>
     <string name="campus_short_name">Waseda University, Nishiwaseda Campus</string>
+    <string name="participants">Guidance: https://pycon.jp/2016/en/participants/</string>
 
     <!-- About -->
     <string name="about_pycon">PyCon JP 2016</string>
