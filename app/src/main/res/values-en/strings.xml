@@ -14,6 +14,7 @@
     <string name="nav_floor_map">Floor Map</string>
     <string name="nav_about">About</string>
     <string name="nav_sponsors">Sponsors</string>
+    <string name="nav_survey">Questionnaire</string>
 
     <!-- Fragment -->
     <!-- Access -->
@@ -89,7 +90,7 @@
     <string name="url_job_fair">https://pycon.jp/2016/en/events/jobsfair/</string>
 
     <string name="products_fair">Products Fair</string>
-    <string name="description_products_fair">In sponsors, we have panel discussion center at company which have developers preject, and its theme is deep learing.</string>
+    <string name="description_products_fair">In sponsors, we have panel discussion center at company which have developers project, and its theme is deep learning.</string>
     <string name="url_products_fair">https://pycon.jp/2016/en/productfair/</string>
 
     <string name="tutorial">Tutorials</string>
@@ -143,6 +144,7 @@
     <string name="speaker_image_prefix">https://pycon.jp</string>
     <string name="pyconjp_api_base_url">http://pycon.jp/2016/en/api/</string>
     <string name="ghpage_base_url">https://pyconjp.github.io/pyconjp-android/en/</string>
+    <string name="survey_url">https://docs.google.com/forms/d/e/1FAIpQLSefOgaVN8_cwUAcW-NmTaBNoNG8K47vursedtxkE_cbv_E37A/viewform?usp=send_form</string>
 
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>

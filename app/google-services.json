@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "633383162180",
+    "firebase_url": "https://pycon-jp-2016-1473085649713.firebaseio.com",
+    "project_id": "pycon-jp-2016-1473085649713",
+    "storage_bucket": "pycon-jp-2016-1473085649713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633383162180:android:c73fa93b1fb712ba",
+        "android_client_info": {
+          "package_name": "jp.pycon.pyconjp2016app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633383162180-2kcnh5jr4s8t033ohr67cl3qlp35qcg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmfAdaEtum8A07FmW-NLVhhpni8I3Bokc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

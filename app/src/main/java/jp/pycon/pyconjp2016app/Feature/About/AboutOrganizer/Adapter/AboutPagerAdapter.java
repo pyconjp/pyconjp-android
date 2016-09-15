@@ -12,6 +12,7 @@ import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.StaffLis
 import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.ThemeFragment;
 import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.WhatIsFragment;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
 
 /**
  * Created by wj on 16/8/3.
@@ -19,7 +20,6 @@ import jp.pycon.pyconjp2016app.R;
 
 public class AboutPagerAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
 
-    private ViewPager viewPager;
     private Context context;
 
     public AboutPagerAdapter(FragmentManager fm,  Context context) {
@@ -67,6 +67,25 @@ public class AboutPagerAdapter extends FragmentPagerAdapter implements ViewPager
 
     @Override
     public void onPageSelected(int position) {
+        String title = "";
+        switch (position) {
+            case 0:
+                title = context.getString(R.string.about_tab1);
+                break;
+            case 1:
+                title = context.getString(R.string.about_tab2);
+                break;
+            case 2:
+                title = context.getString(R.string.about_tab3);
+                break;
+            case 3:
+                title = context.getString(R.string.about_tab4);
+                break;
+            case 4:
+                title = context.getString(R.string.about_tab5);
+                break;
+        }
+        FirebaseUtil.sendAbout(context, title);
     }
 
     @Override
