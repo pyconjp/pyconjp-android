@@ -1,12 +1,15 @@
 package jp.pycon.pyconjp2016app;
 
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,9 +18,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 import io.fabric.sdk.android.Fabric;
+import jp.pycon.pyconjp2016app.Feature.About.AboutSponsorActivity;
+import jp.pycon.pyconjp2016app.Feature.Events.EventsDetailActivity;
 import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
@@ -26,14 +30,13 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
 
     private static final long DRAWER_CLOSE_DELAY_MILLS = 300L;
-    private FirebaseAnalytics mAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         // Firebase Analyticsを初期化
-        mAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseUtil.initialize(this);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
+            navigationView.getMenu().findItem(R.id.nav_survey).setVisible(FirebaseUtil.getEnableSurvey(this));
             navigationView.setNavigationItemSelectedListener(this);
             if (savedInstanceState == null) {
                 // 初期表示はトーク一覧画面
@@ -76,17 +80,23 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        if (!item.isChecked()) {
-            item.setChecked(true);
-            Feature feature = Feature.forMenuId(item.getItemId());
-            changePage(feature.createFragment());
-            FirebaseUtil.sendNavItemClicked(this, feature);
-        }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer != null) {
             drawer.closeDrawer(GravityCompat.START);
         }
+
+        if (!item.isChecked()) {
+            if (item.getItemId() == R.id.nav_survey) {
+                FirebaseUtil.sendNavItemClicked(this, item.getTitle().toString());
+                showSurvey();
+            } else {
+                item.setChecked(true);
+                Feature feature = Feature.forMenuId(item.getItemId());
+                FirebaseUtil.sendNavItemClicked(this, feature.getPageName());
+                changePage(feature.createFragment());
+            }
+        }
+
         return true;
     }
 
@@ -136,6 +146,17 @@ public class MainActivity extends AppCompatActivity
         if (toolbar != null) {
             toolbar.setTitle(feature.getTitleResId());
         }
+    }
+
+    private void showSurvey() {
+        new Handler().postDelayed(() -> {
+            CustomTabsIntent intent = new CustomTabsIntent.Builder()
+                    .setShowTitle(true)
+                    .setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
+                    .build();
+
+            intent.launchUrl(this, Uri.parse(getString(R.string.survey_url)));
+        },DRAWER_CLOSE_DELAY_MILLS);
     }
 
 }

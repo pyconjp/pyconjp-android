@@ -14,6 +14,7 @@
     <string name="nav_floor_map">フロアマップ</string>
     <string name="nav_about">PyCon JP 2016について</string>
     <string name="nav_sponsors">スポンサー</string>
+    <string name="nav_survey">アンケート</string>
 
     <!-- Fragment -->
     <!-- Access -->
@@ -144,6 +145,7 @@
     <string name="speaker_image_prefix">https://pycon.jp</string>
     <string name="pyconjp_api_base_url">http://pycon.jp/2016/ja/api/</string>
     <string name="ghpage_base_url">https://pyconjp.github.io/pyconjp-android/</string>
+    <string name="survey_url">https://docs.google.com/forms/d/e/1FAIpQLSefOgaVN8_cwUAcW-NmTaBNoNG8K47vursedtxkE_cbv_E37A/viewform?usp=send_form</string>
 
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>
