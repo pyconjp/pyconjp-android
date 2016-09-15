@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
-            navigationView.getMenu().findItem(R.id.nav_survey).setVisible(FirebaseUtil.getEnableSurvey(this));
+            navigationView.getMenu().findItem(R.id.nav_survey).setVisible(FirebaseUtil.getEnableSurvey());
             navigationView.setNavigationItemSelectedListener(this);
             if (savedInstanceState == null) {
                 // 初期表示はトーク一覧画面

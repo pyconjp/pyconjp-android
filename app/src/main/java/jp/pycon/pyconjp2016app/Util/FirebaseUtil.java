@@ -33,13 +33,12 @@ public class FirebaseUtil {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             mRemoteConfig.activateFetched();
-                            Log.d("hoge", "enable_survey: " + getEnableSurvey(context));
                         }
                     }
                 });
     }
 
-    public static boolean getEnableSurvey(Context context) {
+    public static boolean getEnableSurvey() {
         final FirebaseRemoteConfig mRemoteConfig = FirebaseRemoteConfig.getInstance();
         return mRemoteConfig.getBoolean("enable_survey");
     }
@@ -55,5 +54,39 @@ public class FirebaseUtil {
         bundle.putString(FirebaseAnalytics.Param.LOCATION, "navigation_item");
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, title);
         analytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+    }
+
+    public static void sendTalkDetail(Context context, String title, String speaker, String start) {
+        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LOCATION, "show_talk_detail");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, title);
+        bundle.putString(FirebaseAnalytics.Param.CHARACTER, speaker);
+        bundle.putString(FirebaseAnalytics.Param.START_DATE, start);
+        analytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
+    }
+
+    public static void sendEvent(Context context, String title) {
+        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LOCATION, "show_event_detail");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, title);
+        analytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
+    }
+
+    public static void sendFloorMap(Context context, String title) {
+        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LOCATION, "show_floor_map_detail");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, title);
+        analytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
+    }
+
+    public static void sendAbout(Context context, String title) {
+        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LOCATION, "show_about");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, title);
+        analytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
     }
 }
