@@ -65,4 +65,28 @@ public class FirebaseUtil {
         bundle.putString(FirebaseAnalytics.Param.START_DATE, start);
         analytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
     }
+
+    public static void sendEvent(Context context, String title) {
+        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LOCATION, "show_event_detail");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, title);
+        analytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
+    }
+
+    public static void sendFloorMap(Context context, String title) {
+        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LOCATION, "show_floor_map_detail");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, title);
+        analytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
+    }
+
+    public static void sendAbout(Context context, String title) {
+        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LOCATION, "show_about");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, title);
+        analytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
+    }
 }

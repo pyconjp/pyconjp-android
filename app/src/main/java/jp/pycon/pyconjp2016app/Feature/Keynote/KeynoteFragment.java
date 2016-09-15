@@ -23,6 +23,7 @@ import jp.pycon.pyconjp2016app.App;
 import jp.pycon.pyconjp2016app.Model.GHPages.KeynoteEntity;
 import jp.pycon.pyconjp2016app.Model.GHPages.KeynoteListEntity;
 import jp.pycon.pyconjp2016app.R;
+import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -87,6 +88,7 @@ public class KeynoteFragment extends Fragment {
     private void showKeynotes(List<KeynoteEntity> list) {
         KeynoteAdapter adapter = new KeynoteAdapter(context, R.layout.cell_keynote, list);
         listView.setAdapter(adapter);
+        FirebaseUtil.sendEvent(context, getString(R.string.keynote));
     }
     public static class KeynoteAdapter extends ArrayAdapter<KeynoteEntity> {
 
