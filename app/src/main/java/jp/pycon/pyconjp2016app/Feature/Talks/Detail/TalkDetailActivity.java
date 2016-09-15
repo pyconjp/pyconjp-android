@@ -37,6 +37,7 @@ import jp.pycon.pyconjp2016app.Model.Realm.RealmPresentationObject;
 import jp.pycon.pyconjp2016app.Model.Realm.RealmSpeakerInformationObject;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.ColorUtil;
+import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
 import jp.pycon.pyconjp2016app.Util.PreferencesManager;
 import jp.pycon.pyconjp2016app.Util.RealmUtil;
 import rx.Subscriber;
@@ -99,6 +100,7 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
      */
     private void showTalkDetail(int pk) {
         final RealmPresentationDetailObject presentation = RealmUtil.getTalkDetail(realm, pk);
+        FirebaseUtil.sendTalkDetail(this, presentation.title, presentation.speakerstring(), presentation.dispDate);
         // ビューの設定
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(presentation.title);
