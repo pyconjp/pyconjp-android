@@ -27,7 +27,8 @@ public class FirebaseUtil {
         Map<String, Object> defValues = new HashMap<>();
         defValues.put("enable_survey", false);
         mRemoteConfig.setDefaults(defValues);
-        mRemoteConfig.fetch(60)
+        // 5回/1hの制限があるようなので12分に一回更新
+        mRemoteConfig.fetch(60 * 60 / 5)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
