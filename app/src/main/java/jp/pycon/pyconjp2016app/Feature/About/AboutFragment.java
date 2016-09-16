@@ -15,6 +15,7 @@ import android.widget.ListView;
 import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.AboutOrganizerActivity;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
+import jp.pycon.pyconjp2016app.Util.GAUtil;
 
 /**
  * Created by rhoboro on 4/22/16.
@@ -57,14 +58,17 @@ public class AboutFragment extends Fragment  implements AdapterView.OnItemClickL
             case 1:
                 intent.setClass(mContext, AboutSponsorActivity.class);
                 FirebaseUtil.sendAbout(mContext, getString(R.string.about_sponsors));
+                GAUtil.sendAbout(mContext, getString(R.string.about_sponsors));
                 break;
             case 2:
                 intent.setClass(mContext, AboutAppActivity.class);
                 FirebaseUtil.sendAbout(mContext, getString(R.string.about_this_app));
+                GAUtil.sendAbout(mContext, getString(R.string.about_this_app));
                 break;
             case 3:
                 intent = generateFeedbackIntent();
                 FirebaseUtil.sendAbout(mContext, getString(R.string.about_feedback));
+                GAUtil.sendAbout(mContext, getString(R.string.about_feedback));
                 break;
         }
         startActivity(intent);
@@ -74,7 +78,7 @@ public class AboutFragment extends Fragment  implements AdapterView.OnItemClickL
         final Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("message/rfc822");
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"pyconj+app@gmail.com"});
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"symposion@pycon.jp"});
         intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for PyCon JP 2016 App");
         intent.putExtra(Intent.EXTRA_TEXT, "Android OS:\nDevice:\nReply-To:\n\nFeedback:\n");
         return intent;

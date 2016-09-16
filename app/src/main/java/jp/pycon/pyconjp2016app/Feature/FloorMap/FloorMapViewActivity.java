@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
+import jp.pycon.pyconjp2016app.Util.GAUtil;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
@@ -32,6 +33,7 @@ public class FloorMapViewActivity extends BaseAppCompatActivity {
         ActionBar bar = getSupportActionBar();
         bar.setTitle(titleResId);
         FirebaseUtil.sendFloorMap(this, getString(titleResId));
+        GAUtil.sendFloorMap(this, getString(titleResId));
         mImageView = (ImageView)findViewById(R.id.image_view);
         mImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), imageResId, null));
         mAttacher = new PhotoViewAttacher(mImageView);
