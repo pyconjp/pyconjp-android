@@ -51,7 +51,7 @@ android {
         applicationId "jp.pycon.pyconjp2016app"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 4
+        versionCode 5
         versionName "1.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
