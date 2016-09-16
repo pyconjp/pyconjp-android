@@ -71,9 +71,10 @@ public class EventsFragment extends Fragment{
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             Event event = getItem(position);
-            if (convertView == null) {
+            // ビューの再利用で日付の表示位置がずれるため暫定対応。リストの内容は少ないのでパフォーマンスへの影響は軽微
+//            if (convertView == null) {
                 convertView = inflater.inflate(R.layout.cell_events, null);
-            }
+//            }
             TextView textView = (TextView)convertView.findViewById(R.id.title_text_view);
             textView.setText(event.getTitleResId());
             TextView dateView = (TextView)convertView.findViewById(R.id.date_text_view);
@@ -89,7 +90,12 @@ public class EventsFragment extends Fragment{
         TUTORIAL(R.string.tutorial, R.string.tutorial_day, R.string.description_tutorial, R.string.url_tutorial),
         INVITED_TALK(R.string.invited_talk, R.string.conference_day_1, R.string.description_invited_talk, R.string.url_invited_talk),
         PRODUCTS_FIAR(R.string.products_fair, R.string.conference_day_1, R.string.description_products_fair, R.string.url_products_fair),
+        YOUTH_CODER_WORKSHOP(R.string.youth_coder_workshop, R.string.conference_day_2, R.string.description_youth_coder_workshop, R.string.url_youth_corder_workshop),
         JOB_FAIR(R.string.job_fair, R.string.conference_day_2, R.string.description_job_fair, R.string.url_job_fair),
+        COMMITTEE_MEETING(R.string.committee_meeting, R.string.conference_day_2, R.string.description_committee_meeting, R.string.url_committee_meeting),
+        COMMUNITY_BOOTH(R.string.community_booth, R.string.conference_day_2, R.string.description_community_booth, R.string.url_community_booth),
+        BEGINNER_SESSION(R.string.beginner_session, R.string.conference_day_12, R.string.description_beginner_session, R.string.url_beginner_session),
+        OPEN_SPACE(R.string.open_space, R.string.conference_day_12, R.string.description_open_space, R.string.url_open_space),
         SPRINT(R.string.sprint, R.string.sprint_day, R.string.description_sprint, R.string.url_sprint);
         private final int descResId;
         private final int dateId;

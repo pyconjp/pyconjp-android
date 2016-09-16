@@ -13,19 +13,26 @@
     <string name="nav_access">アクセス</string>
     <string name="nav_floor_map">フロアマップ</string>
     <string name="nav_about">PyCon JP 2016について</string>
-    <!--<string name="nav_settings">設定</string>-->
     <string name="nav_sponsors">スポンサー</string>
+    <string name="nav_survey">アンケート</string>
 
     <!-- Fragment -->
     <!-- Access -->
     <string name="postal_code">〒169&#8211;8555</string>
     <string name="address">東京都新宿区大久保3&#8211;4&#8211;1</string>
     <string name="campus_short_name">早稲田大学西早稲田キャンパス</string>
+    <string name="participants">参加の手引き: https://pycon.jp/2016/ja/participants/</string>
 
     <!-- About -->
     <string name="about_pycon">PyCon JP 2016</string>
     <string name="about_pycon_body">PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。\n\nPyCon JP 2016では、「Everyone\'s different, all are wonderful.」をテーマに据えました。Pythonをキーワードに多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンスを目指して、スタッフ全員で企画を進めています。</string>
     <string name="about_pycon_web">https://pycon.jp/2016</string>
+
+    <string name="about_tab1">PyCon JPってなに？</string>
+     <string name="about_tab2">スタッフ一覧</string> 
+    <string name="about_tab3">行動規範</string> 
+    <string name="about_tab4">開催概要</string> 
+    <string name="about_tab5">今年のテーマについて</string>
 
     <string name="about_organizers">PyCon JP 運営について</string>
     <string name="about_organizers_body1">PyCon JP 2016は、PyCon JP実行委員会 PyCon JP 2016運営チームによって運営されています。</string>
@@ -43,7 +50,7 @@
     <string name="about_this_app">PyCon JP 2016アプリについて</string>
     <string name="about_license">このアプリについて</string>
 
-    <string name="about_feedback">フィードバックを送る</string>
+    <string name="about_feedback">アプリのフィードバックを送る</string>
 
     <string name="about_conduct_body1">PyConは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。 PyCon JPの開催を通じて、Pythonの使い手が一堂に集まり、Pythonにまつわる様々な分野の知識や情報を交換し、新たな友達やコミュニティとのつながり、仕事やビジネスチャンスを増やせる場所とすることが目標です。</string>
     <string name="about_conduct_body2">ハラスメント行為には、言葉による性別、性的指向、障碍の有無、外見、身体の大きさ、人種、宗教に関する攻撃的なコメント、公的空間での性的な映像表現、意図的な威力行為、ストーキング、つきまとい、写真撮影や録音によるいやがらせ、トークやその他の会議イベントに対して繰り返して中断しようとする行為、不適切な身体接触、そして望まれない性的な注意を引きつける行為を含みます。</string>
@@ -70,30 +77,50 @@
     <string name="speaker">スピーカー</string>
     <string name="description">説明</string>
     <string name="abst">概要</string>
+    <string name="language">言語: </string>
     <string name="level">対象レベル: </string>
     <string name="category">カテゴリ: </string>
-    <string name="notification_message">%sがもうすぐ始まります</string>
-    <string name="notification_register_failed_message">通知の登録に失敗しました</string>
-    <string name="notification_register_message">%sを通知に登録しました</string>
-    <string name="empty_bookmark_message">トーク一覧を見る</string>
-    <string name="action_settings">通知設定</string>
     <string name="action_refresh">リフレッシュ</string>
 
     <!-- Events -->
     <string name="invited_talk">招待講演</string>
-    <string name="job_fair">ジョブフェア</string>
-    <string name="products_fair">プロダクトフェア</string>
-    <string name="tutorial">チュートリアル</string>
-    <string name="sprint">スプリント</string>
     <string name="description_invited_talk">『PyCon JP参加者と接点が少ない分野の方々を招待し、参加者と講演者とが交流できる場所を提供する』ことを目的に招待講演を行います。</string>
-    <string name="description_job_fair">ジョブフェアは企業と個人がカジュアルな形で交流し、仕事などについて話ができる場です。本イベントでは、Pythonを用いてプロダクト開発をしている企業の仕事や考え方を中心に、魅力を探っていくセッションです。</string>
-    <string name="description_products_fair">スポンサーの中でも、開発者向けのプロダクトを持つ企業を中心に、ディープラーニングをテーマにしたパネルディスカッションを行います。</string>
-    <string name="description_tutorial">今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
-    <string name="description_sprint">スプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
     <string name="url_invited_talk">https://pycon.jp/2016/ja/talks/invited-speaker/</string>
+
+    <string name="job_fair">ジョブフェア</string>
+    <string name="description_job_fair">ジョブフェアは企業と個人がカジュアルな形で交流し、仕事などについて話ができる場です。本イベントでは、Pythonを用いてプロダクト開発をしている企業の仕事や考え方を中心に、魅力を探っていくセッションです。</string>
     <string name="url_job_fair">https://pycon.jp/2016/ja/events/jobsfair/</string>
+
+    <string name="products_fair">プロダクトフェア</string>
+    <string name="description_products_fair">スポンサーの中でも、開発者向けのプロダクトを持つ企業を中心に、ディープラーニングをテーマにしたパネルディスカッションを行います。</string>
     <string name="url_products_fair">https://pycon.jp/2016/ja/productfair/</string>
+
+    <string name="tutorial">チュートリアル</string>
+    <string name="description_tutorial">今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
     <string name="url_tutorial">https://pycon.jp/2016/ja/events/tutorial/</string>
+
+    <string name="youth_coder_workshop">Youth Coder Workshop</string>
+    <string name="description_youth_coder_workshop">PyCon JP 2016では、子ども向けワークショップ、改め「Youth Coder Workshop」（ユース コーダー ワークショップ）を開催します。</string>
+    <string name="url_youth_corder_workshop">https://pycon.jp/2016/ja/events/youth-ws/</string>
+
+    <string name="beginner_session">ビギナーセッション</string>
+    <string name="description_beginner_session">今年、2014年及び2015年にオープンスペースで行われたコードリーディング等の自主イベントをビギナーセッションとして開催致します。 PyCon JP 2016 カンファレンスデイ期間中に、トークと並行して実施致します。 ご自由にご参加下さい。</string>
+    <string name="url_beginner_session">https://pycon.jp/2016/ja/events/beginners/</string>
+
+    <string name="committee_meeting">Committee Meeting</string>
+    <string name="description_committee_meeting">PyCon JP 2016を運営しているチームとは別に、法人格を持っている一般社団法人PyCon JPが存在します。この法人の役割や今後の活動について、幅広く意見を交換したいと考えております。 自由にご参加ください。</string>
+    <string name="url_committee_meeting">https://pycon.jp/2016/ja/events/committee-meeting/</string>
+
+    <string name="community_booth">コミュニティブース</string>
+    <string name="description_community_booth">コミュニティブースはPythonに関連したコミュニティを参加者の方に広く知って頂くために、 コミュニティに所属している方と来場者の方とで交流できる場所を提供しようという取り組みです。お昼ごはんを食べながらカジュアルに各コミュニティの方と交流を深めたり、実際にコミュニティに参加するきっかけにして頂ければと思います。</string>
+    <string name="url_community_booth">https://pycon.jp/2016/ja/events/community-booth/</string>
+
+    <string name="open_space">オープンスペース</string>
+    <string name="description_open_space">参加者が自由に発表やハンズオン、ミーティング、議論などをできる場所と時間を提供します。</string>
+    <string name="url_open_space">https://pycon.jp/2016/ja/events/open-space/</string>
+
+    <string name="sprint">スプリント</string>
+    <string name="description_sprint">スプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
     <string name="url_sprint">https://pycon.jp/2016/ja/events/sprint/</string>
 
     <!-- Keynote -->
@@ -107,16 +134,6 @@
     <string name="floor_map_description_02">トーク会場、スポンサー等ブース</string>
     <string name="floor_map_description_03">オープンスペース、ビギナーセッション、Youth Coder Workshop</string>
 
-    <!-- Settings -->
-    <string name="settings">設定</string>
-    <string name="notification_settings">通知設定</string>
-    <!-- Dialog -->
-    <string name="dialog_title_bookmark_on">このトークをブックマークに登録しますか？</string>
-    <string name="dialog_title_bookmark_off">このトークをブックマークから外しますか？</string>
-    <string name="dialog_list_notification">開始前に通知する</string>
-    <string name="dialog_cancel">キャンセル</string>
-    <string name="dialog_ok">OK</string>
-
     <!-- Other -->
     <string name="pycon_theme">Everyone\'s different, all are wonderful.</string>
     <string name="tutorial_day">9/20</string>
@@ -125,6 +142,11 @@
     <string name="conference_day_12">9/21-22</string>
     <string name="sprint_day">9/23-24</string>
     <string name="hashtag_prefix">#pyconjp_</string>
+    <string name="twitter_prefix">\@</string>
+    <string name="speaker_image_prefix">https://pycon.jp</string>
+    <string name="pyconjp_api_base_url">http://pycon.jp/2016/ja/api/</string>
+    <string name="ghpage_base_url">https://pyconjp.github.io/pyconjp-android/</string>
+    <string name="survey_url">https://docs.google.com/forms/d/e/1FAIpQLSefOgaVN8_cwUAcW-NmTaBNoNG8K47vursedtxkE_cbv_E37A/viewform?usp=send_form</string>
 
     <!-- contentDescriptions -->
     <string name="pycon_logo">PyCon JP 2016 logo</string>

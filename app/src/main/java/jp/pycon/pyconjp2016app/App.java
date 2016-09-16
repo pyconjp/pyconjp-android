@@ -4,8 +4,11 @@ import android.app.Application;
 
 import com.deploygate.sdk.DeployGate;
 
+import io.realm.DynamicRealm;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmMigration;
+import io.realm.RealmSchema;
 import jp.pycon.pyconjp2016app.API.Client.APIClient;
 import jp.pycon.pyconjp2016app.API.Client.GHPagesAPIClient;
 import jp.pycon.pyconjp2016app.API.Client.LocalResponseInterceptor;
@@ -22,13 +25,42 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        // DeployGateを初期化
         DeployGate.install(this);
+        // Realmを初期化
+        setUpRealm();
+    }
+
+    private void setUpRealm() {
+        RealmMigration migration = new RealmMigration() {
+            @Override
+            public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
+
+                // DynamicRealmからは変更可能なスキーマインスタンスを取得できます
+                RealmSchema schema = realm.getSchema();
+
+                if (oldVersion == 0) {
+                    // バージョン1への移行処理
+                    oldVersion++;
+                }
+
+                if (oldVersion == 1) {
+                    // バージョン2への移行処理
+                    schema.create("RealmSpeakerInformationObject")
+                            .addField("name", String.class)
+                            .addField("twitter", String.class)
+                            .addField("imageUri", String.class);
+                    schema.get("RealmPresentationDetailObject")
+                            .addRealmListField("speakerInformation",schema.get("RealmSpeakerInformationObject"));
+                }
+            }
+        };
 
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
-                .schemaVersion(1)
+                .schemaVersion(2)
+                .migration(migration)
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
-
     }
 
     /**
@@ -37,10 +69,11 @@ public class App extends Application {
      */
     public APIClient getAPIClient() {
         Retrofit retrofit;
+        final String baseUrl = getResources().getString(R.string.pyconjp_api_base_url);
         if (BuildConfig.PRODUCTION) {
             // 本番APIを叩く
             retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
@@ -51,7 +84,7 @@ public class App extends Application {
                     .addInterceptor(i)
                     .build();
             retrofit = new Retrofit.Builder()
-                    .baseUrl(APIClient.BASE_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(okHttpClient)
@@ -66,10 +99,11 @@ public class App extends Application {
      */
     public GHPagesAPIClient getGHPagesAPIClient() {
         Retrofit retrofit;
+        final String baseUrl = getString(R.string.ghpage_base_url);
         if (BuildConfig.PRODUCTION) {
             // 本番APIを叩く
             retrofit = new Retrofit.Builder()
-                    .baseUrl(GHPagesAPIClient.BASE_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
@@ -80,7 +114,7 @@ public class App extends Application {
                     .addInterceptor(i)
                     .build();
             retrofit = new Retrofit.Builder()
-                    .baseUrl(GHPagesAPIClient.BASE_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(okHttpClient)

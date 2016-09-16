@@ -1,0 +1,154 @@
+<resources>
+    <string name="app_name">PyCon JP 2016</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Navigation Menu Items -->
+    <string name="nav_talks">Conference</string>
+    <string name="nav_bookmark">Bookmarks</string>
+    <string name="nav_keynote">Keynote Speakers</string>
+    <string name="nav_posters">Poster Sessions</string>
+    <string name="nav_events">Events</string>
+    <string name="nav_access">Access</string>
+    <string name="nav_floor_map">Floor Map</string>
+    <string name="nav_about">About</string>
+    <string name="nav_sponsors">Sponsors</string>
+    <string name="nav_survey">Questionnaire</string>
+
+    <!-- Fragment -->
+    <!-- Access -->
+    <string name="postal_code">〒169&#8211;8555</string>
+    <string name="address">3&#8211;4&#8211;1 Ookubo, Shinjuku-ku, Tokyo</string>
+    <string name="campus_short_name">Waseda University, Nishiwaseda Campus</string>
+    <string name="participants">Guidance: https://pycon.jp/2016/en/participants/</string>
+
+    <!-- About -->
+    <string name="about_pycon">PyCon JP 2016</string>
+    <string name="about_pycon_body">PyCon JP is a conference where Python users, or people interested in Python, gather to learn from each other and meet other members of the community.\n\nThis year, we chose "Everyone\'s different, all are wonderful." as our theme. The Pycon JP staff is continuing to work hard on making a conference that will allow everyone to have a great time and unlock new possibilities through Python.</string>
+    <string name="about_pycon_web">https://pycon.jp/2016</string>
+
+    <string name="about_tab1">What is PyCon JP?</string>
+     <string name="about_tab2">Staff List</string> 
+    <string name="about_tab3">Code of Conduct</string> 
+    <string name="about_tab4">Summary</string> 
+    <string name="about_tab5">About this year theme</string>
+
+    <string name="about_organizers">About PyCon JP</string>
+    <string name="about_organizers_body1">PyCon JP 2016 is being organized by the PyCon JP Organizing Committee.</string>
+    <string name="about_organizers_body2">We that python user are planning and operating PyconJp to make it become the place where people communicate with other, share our knowledge and find the new possibility. We hope the PyconJp become the position user can contect with the world and an attractive conference.</string>
+    <string name="about_organizers_chairperson">Chair: Takanori Suzuki</string>
+    <string name="about_organizers_web">Web site: http://www.pycon.jp</string>
+    <string name="about_organizers_contact">Contact: 2016@pycon.jp</string>
+    <string name="about_blog">PyCon JP Blog</string>
+    <string name="about_blog_web">http://pyconjp.blogspot.jp/</string>
+    <string name="about_staff">Staff list</string>
+    <string name="about_sponsors">PyCon JP Sponsors List</string>
+    <string name="about_host">Host: PyCon JP Committee</string>
+    <string name="about_cohost">Cohost: Global Software Engineering Laboratory, Waseda University</string>
+
+    <string name="about_this_app">About PyCon JP 2016 app</string>
+    <string name="about_license">About this app</string>
+
+    <string name="about_feedback">Send a feedback for this app</string>
+
+    <string name="about_conduct_body1">PyCon JP is a conference where Python users, or people interested in Python, gather to learn from each other and meet other members of the community. We hope that everyone joining PyCon JP will not only learn new and exciting things, but also meet new friends and strengthen the connection with the community, and thus the community itself.</string>
+    <string name="about_conduct_body2">Harassment includes offensive verbal comments related to gender, age, sexual orientation, disability, physical appearance, body size, race, religion, sexual images in public spaces, deliberate intimidation, stalking, following, harassing photography or recording, sustained disruption of talks or other events, inappropriate physical contact, and unwelcome sexual attention.</string>
+    <string name="about_conduct_body3">We expect participants to follow these rules at conference and workshop venues and conference-related social events.</string>
+
+    <string name="about_theme_title2">「みんなちがって、みんないい」</string>
+    <string name="about_theme_body1">In this year the concept is 「Let Python be the keyword make everyone happy and meet new possibility.」 The 「everyone 」is mean whatever your nationality, gender, age, job, position(staff or speaker), religion or which level at Python.</string>
+    <string name="about_theme_body2">And we discussed how to show the theme with this concept. Finally we choiced Mrs.金子みすゞ paragraph at poetry 「私と小鳥と鈴と」, 「みんなちがって、みんないい」 is match the image we thought, and translated it to English.</string>
+
+    <string name="about_event_body1">Tutorials：Sep 20 (Tue)</string>
+    <string name="about_event_body2">Conference：Sep 21(Wed)、Sep 22(Thu)</string>
+    <string name="about_event_body3">Development Sprints：Sep 23(Fri)、 24(Sat)</string>
+    <string name="about_event_body4">Venue：Waseda University, Nishiwaseda Campus</string>
+    <string name="about_event_body6">Price</string>
+    <string name="about_event_body7">Patron：20,000JPY</string>
+    <string name="about_event_body8">Business：15,000JPY(Early Bird 12,000JPY)</string>
+    <string name="about_event_body9">Personal：10,000JPY(Early Bird 8,000JPY)</string>
+    <string name="about_event_body10">Student：5,000JPY(without After-Party 2,000JPY)</string>
+
+    <string name="about_button_facebook">Facebook</string>
+    <string name="about_button_twitter">Twitter</string>
+<!-- Talk -->
+    <string name="speaker">Speaker</string>
+    <string name="description">Description</string>
+    <string name="abst">Abstract</string>
+    <string name="language">Language: </string>
+    <string name="level">Audience Level: </string>
+    <string name="category">Category: </string>
+    <string name="action_refresh">Refresh</string>
+
+    <!-- Events -->
+    <string name="invited_talk">Invited Talks</string>
+    <string name="description_invited_talk">The purpose of Invitation Talks is to invite guest speakers to share their unique perspectives and provide opportunities for participants to expand their networks. We invited two researchers this year!</string>
+    <string name="url_invited_talk">https://pycon.jp/2016/en/talks/invited-speaker/</string>
+
+    <string name="job_fair">Job Fair</string>
+    <string name="description_job_fair">This program provides an opportunity for companies and individuals to meet and talk about their works in an informal setting.</string>
+    <string name="url_job_fair">https://pycon.jp/2016/en/events/jobsfair/</string>
+
+    <string name="products_fair">Products Fair</string>
+    <string name="description_products_fair">In sponsors, we have panel discussion center at company which have developers project, and its theme is deep learning.</string>
+    <string name="url_products_fair">https://pycon.jp/2016/en/productfair/</string>
+
+    <string name="tutorial">Tutorials</string>
+    <string name="description_tutorial">This year we will have courses in areas such as “Python for beginners”, “Data Analysis”, “Deep Learning” and “Documentation”. In this year, it is not required to apply to PyCon JP 2016 to attend these courses.</string>
+    <string name="url_tutorial">https://pycon.jp/2016/en/events/tutorial/</string>
+
+    <string name="youth_coder_workshop">Youth Coder Workshop</string>
+    <string name="description_youth_coder_workshop">At PyCon JP 2016, we will hold a workshop for young coders or future coders.</string>
+    <string name="url_youth_corder_workshop">https://pycon.jp/2016/en/events/youth-ws/</string>
+
+    <string name="beginner_session">Beginner Session</string>
+    <string name="description_beginner_session">We believe that reading Python libraries and read others’ code will be the best way to improve beginners’ coding skills. We will have three sessions in two days. Please feel free to join us.</string>
+    <string name="url_beginner_session">https://pycon.jp/2016/en/events/beginners/</string>
+
+    <string name="committee_meeting">Committee Meeting</string>
+    <string name="description_committee_meeting">The PyCon JP board will be holding a public meeting to gather feedback from the community.</string>
+    <string name="url_committee_meeting">https://pycon.jp/2016/en/events/committee-meeting/</string>
+
+    <string name="community_booth">Community Booth</string>
+    <string name="description_community_booth">Community Booth is an event where attendees can communicate with each other about Python and become familiar with members of existing Python Communities. </string>
+    <string name="url_community_booth">https://pycon.jp/2016/en/events/community-booth/</string>
+
+    <string name="open_space">Open Space</string>
+    <string name="description_open_space">We provide some open spaces for presentations, meetings, and discussions.</string>
+    <string name="url_open_space">https://pycon.jp/2016/en/events/open-space/</string>
+
+    <string name="sprint">Development Sprints</string>
+    <string name="description_sprint">Sprint is the event for the short term and centralized software developments. Some people call it as Hack-a-thon or developing meet up.It is a great opportunity for those who are interested and passionate about the developments in a group.</string>
+    <string name="url_sprint">https://pycon.jp/2016/en/events/sprint/</string>
+
+    <!-- Keynote -->
+    <string name="keynote">Keynote</string>
+
+    <!-- Floor Map -->
+    <string name="floor_map_01">Floor Map 1F</string>
+    <string name="floor_map_02">Floor Map 2F</string>
+    <string name="floor_map_03">Floor Map 3F</string>
+    <string name="floor_map_description_01">Reception, Poster Session, Lunch, Party</string>
+    <string name="floor_map_description_02">Conference, Sponsor Booth</string>
+    <string name="floor_map_description_03">Open Spaces, Beginner Sessions, Youth Coder Workshop</string>
+
+    <!-- Other -->
+    <string name="pycon_theme">Everyone\'s different, all are wonderful.</string>
+    <string name="tutorial_day">9/20</string>
+    <string name="conference_day_1">9/21</string>
+    <string name="conference_day_2">9/22</string>
+    <string name="conference_day_12">9/21-22</string>
+    <string name="sprint_day">9/23-24</string>
+    <string name="hashtag_prefix">#pyconjp_</string>
+    <string name="twitter_prefix">\@</string>
+    <string name="speaker_image_prefix">https://pycon.jp</string>
+    <string name="pyconjp_api_base_url">http://pycon.jp/2016/en/api/</string>
+    <string name="ghpage_base_url">https://pyconjp.github.io/pyconjp-android/en/</string>
+    <string name="survey_url">https://docs.google.com/forms/d/e/1FAIpQLSefOgaVN8_cwUAcW-NmTaBNoNG8K47vursedtxkE_cbv_E37A/viewform?usp=send_form</string>
+
+    <!-- contentDescriptions -->
+    <string name="pycon_logo">PyCon JP 2016 logo</string>
+    <string name="python_logo">Python</string>
+
+</resources>

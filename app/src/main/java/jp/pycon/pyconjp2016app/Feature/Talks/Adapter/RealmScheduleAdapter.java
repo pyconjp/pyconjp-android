@@ -68,6 +68,13 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
             holder.room.setText(obj.rooms);
             holder.room.setTextColor(ContextCompat.getColor(context, ColorUtil.getRoomColor(obj.rooms)));
         }
+        if (TextUtils.equals(obj.language, "en")) {
+            holder.en.setVisibility(View.VISIBLE);
+            holder.ja.setVisibility(View.GONE);
+        } else if (TextUtils.equals(obj.language, "ja")) {
+            holder.en.setVisibility(View.GONE);
+            holder.ja.setVisibility(View.VISIBLE);
+        }
     }
 
     public void setOnClickListener(RealmScheduleAdapterListener listener) {
@@ -83,6 +90,8 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
         final TextView start;
         final TextView title;
         final TextView room;
+        final TextView en;
+        final TextView ja;
         final ImageView bookmark;
 
         public MyViewHolder(View itemView) {
@@ -92,6 +101,8 @@ public class RealmScheduleAdapter extends RealmRecyclerViewAdapter<RealmPresenta
             title = (TextView)itemView.findViewById(R.id.title);
             room = (TextView)itemView.findViewById(R.id.room);
             bookmark = (ImageView)itemView.findViewById(R.id.bookmark);
+            en = (TextView)itemView.findViewById(R.id.language_en);
+            ja = (TextView)itemView.findViewById(R.id.language_ja);
         }
     }
 }
