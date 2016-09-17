@@ -3,6 +3,8 @@ package jp.pycon.pyconjp2016app;
 import android.app.Application;
 
 import com.deploygate.sdk.DeployGate;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 
 import io.realm.DynamicRealm;
 import io.realm.Realm;
@@ -21,6 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by rhoboro on 4/3/16.
  */
 public class App extends Application {
+
+    private Tracker mTracker;
 
     @Override
     public void onCreate() {
@@ -121,5 +125,13 @@ public class App extends Application {
                     .build();
         }
         return retrofit.create(GHPagesAPIClient.class);
+    }
+
+    synchronized public Tracker getDefaultTracker() {
+        if (mTracker == null) {
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            mTracker = analytics.newTracker("UA-84280039-1");
+        }
+        return mTracker;
     }
 }

@@ -13,6 +13,7 @@ import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.ThemeFra
 import jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.WhatIsFragment;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
+import jp.pycon.pyconjp2016app.Util.GAUtil;
 
 /**
  * Created by wj on 16/8/3.
@@ -86,6 +87,7 @@ public class AboutPagerAdapter extends FragmentPagerAdapter implements ViewPager
                 break;
         }
         FirebaseUtil.sendAbout(context, title);
+        GAUtil.sendAbout(context, title);
     }
 
     @Override
