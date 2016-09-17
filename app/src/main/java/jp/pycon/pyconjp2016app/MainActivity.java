@@ -25,6 +25,7 @@ import jp.pycon.pyconjp2016app.Feature.Events.EventsDetailActivity;
 import jp.pycon.pyconjp2016app.Feature.Feature;
 import jp.pycon.pyconjp2016app.Feature.Talks.List.TalksFragment;
 import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
+import jp.pycon.pyconjp2016app.Util.GAUtil;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
@@ -88,11 +89,13 @@ public class MainActivity extends AppCompatActivity
         if (!item.isChecked()) {
             if (item.getItemId() == R.id.nav_survey) {
                 FirebaseUtil.sendNavItemClicked(this, item.getTitle().toString());
+                GAUtil.sendCommonScreen(this, item.getTitle().toString());
                 showSurvey();
             } else {
                 item.setChecked(true);
                 Feature feature = Feature.forMenuId(item.getItemId());
                 FirebaseUtil.sendNavItemClicked(this, feature.getPageName());
+                GAUtil.sendCommonScreen(this, feature.getPageName());
                 changePage(feature.createFragment());
             }
         }
