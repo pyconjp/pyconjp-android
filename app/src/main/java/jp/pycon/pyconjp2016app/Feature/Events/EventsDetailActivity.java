@@ -11,6 +11,7 @@ import android.webkit.WebViewClient;
 import jp.pycon.pyconjp2016app.BaseAppCompatActivity;
 import jp.pycon.pyconjp2016app.R;
 import jp.pycon.pyconjp2016app.Util.FirebaseUtil;
+import jp.pycon.pyconjp2016app.Util.GAUtil;
 
 /**
  * Created by rhoboro on 8/28/16.
@@ -39,6 +40,7 @@ public class EventsDetailActivity extends BaseAppCompatActivity {
         bar.setTitle(titleResId);
 
         FirebaseUtil.sendEvent(this, getString(titleResId));
+        GAUtil.sendEvent(this, getString(titleResId));
 
         final int urlResId = getIntent().getIntExtra(BUNDLE_KEY_URL, 0);
         final String url = getString(urlResId);
