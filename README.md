@@ -12,3 +12,8 @@ PyCon JP 2016 Official website is [here](https://pycon.jp/2016/).
   * KEYALIAS
   * KEYPWD
 
+## Use docker
+
+1. Edit `YOUR_APIKEY` in the Dockerfile.
+1. Run `make apk BRANCH=develop VARIANTS=assembleDebug`
+
