@@ -1,18 +1,18 @@
 {
     "keynotes": [
         {
-            "speaker": "Jessica McKellar",
-            "body": "Jessica McKellar is an entrepreneur, software engineer, and open source developer from San Francisco, California, USA. She is a former Director for the Python Software Foundation, PyCon North America's Diversity Outreach Chair, and a maintainer for several open source projects, including OpenHatch and the Twisted event-driven networking engine. For her outreach efforts in the Python community, she was awarded the O'Reilly Open Source Award in 2013.",
-            "image_uri": "https://pycon.jp/2016/ja/files/5/jessica_profile.jpeg",
-            "day": "2016-09-21",
+            "speaker": "Masaaki Horikoshi",
+            "body": "Mr. Masaaki Horikoshi (ARISE analytics Co., Ltd.) is a core development member of pandas which is a package for analyzing data in Python, and Dask which is a package that processes it in parallel and distributed. Also, He is developing packages for data analysis in Python, R, Rust by themselves. PyCon JP has appeared twice in the past and is doing a talk about data analysis at pandas.",
+            "image_uri": "https://pycon.jp/2017/site_media/media/images/2017/06/19/22115238601_387a41f706_k.jpeg",
+            "day": "2017-09-08",
             "start": "09:45:00",
             "end": "10:30:00"
         },
         {
-            "speaker": "Andrey Vlasovskikh",
-            "body": "Andrey is the PyCharm Community Lead, the maintainer of the Vim emulation for PyCharm, a contributor to PEP 484 Type Hints. He is also the author of funcparserlib, a functional parsing library for Python, and an organizer of Python meetups in Russia.",
-            "image_uri": "https://pycon.jp/2016/ja/files/4/andrey_profile.jpeg",
-            "day": "2016-09-22",
+            "speaker": "Peter Wang",
+            "body": "Peter Wang is the Chief Technology Officer and Co-Founder of Continuum Analytics. Peter has been developing commercial scientific computing and visualization software for over 15 years. He has extensive experience in software design and development across a broad range of areas, including 3D graphics, geophysics, financial risk modeling, large data simulation and visualization, and medical imaging.\nPeter's interests in the fundamentals of vector computing and interactive visualization led him to co-found Continuum Analytics in 2012. At Continuum, Peter leads the product engineering team for the Anaconda data science ecosystem, and works on product engineering and software architecture for open source projects including Bokeh and Blaze.\nAs a creator of the PyData community and conferences, he devotes time and energy to growing the Python data science community, and advocating and teaching Python at conferences around the world. Peter holds a BA in Physics from Cornell University.",
+            "image_uri": "https://pycon.jp/2017/site_media/media/Peter_Wang_profile_photo.jpg",
+            "day": "2017-09-09",
             "start": "09:45:00",
             "end": "10:30:00"
         }
