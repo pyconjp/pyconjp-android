@@ -1,18 +1,18 @@
 {
     "keynotes": [
         {
-            "speaker": "Jessica McKellar",
-            "body": "Jessica McKellarは、サンフランシスコ在住の起業家であり、ソフトウェアエンジニアであり、オープンソース開発者です。彼女はPython Software Foundationの元ディレクター、北米PyConにおける多様性推進活動の代表者、OpenHatchやTwisted等のOSSのメンテナとしても活躍しています。Pythonコミュニティにおける多様性推進の取り組みが評価され、彼女は2013年のO'Reilly Open Source Awardの受賞者に選ばれました。",
-            "image_uri": "https://pycon.jp/2016/ja/files/5/jessica_profile.jpeg",
-            "day": "2016-09-21",
+            "speaker": "堀越 真映",
+            "body": "堀越 真映さん (株式会社 ARISE analytics) は、Pythonでデータ分析を行うためのパッケージであるpandas、ならびにそれを並列・分散処理するパッケージであるDaskのコア開発メンバーをつとめています。また、自身でもPython, R, Rustでデータ分析のためのパッケージの開発を行なっています。PyCon JPでは過去2回登壇し、pandasでのデータ分析に関するトークを行なっています。",
+            "image_uri": "https://pycon.jp/2017/site_media/media/images/2017/06/19/22115238601_387a41f706_k.jpeg",
+            "day": "2017-09-08",
             "start": "09:45:00",
             "end": "10:30:00"
         },
         {
-            "speaker": "Andrey Vlasovskikh",
-            "body": "AndreyはPyCharmのコミュニティリード、PyCharm用Vimエミュレーションのメンテナ、PEP 484 型ヒントへの貢献者です。さらに、彼はPython向けfunctional parsingライブラリであるfuncparserlibの作者、ロシアのPython meetupの主催者としても活躍しています。",
-            "image_uri": "https://pycon.jp/2016/ja/files/4/andrey_profile.jpeg",
-            "day": "2016-09-22",
+            "speaker": "Peter Wang",
+            "body": "Peter Wangは、Continuum Analyticsの共同設立者でCTO（最高技術責任者）です。15年以上にわたり商業的な科学計算と可視化ソフトウェアを開発していて、3Dグラフィックス、地球物理学、財務リスクモデリング、大規模なデータシミュレーションとビジュアライゼーション、医療イメージングなど、幅広い分野でソフトウェア設計と開発に豊富な経験を持っています。\nベクトルコンピューティングとインタラクティブなビジュアリゼーションの基礎に関心を持ち、2012年にContinuum Analyticsを共同設立しました。Continuumでは、Anacondaデータサイエンスエコシステムの製品エンジニアリングチームを率いて、BokehとBlazeと共にオープンソースプロジェクトの製品エンジニアリングとソフトウェアアーキテクチャに取り組んでいます。\nまた、PyDataコミュニティとカンファレンスの創設者として、Pythonデータサイエンスコミュニティを成長させ、世界中の会議でPythonを提唱して教えるための活動をしています。コーネル大学で物理学の学士号を取得しています",
+            "image_uri": "https://pycon.jp/2017/site_media/media/Peter_Wang_profile_photo.jpg",
+            "day": "2017-09-09",
             "start": "09:45:00",
             "end": "10:30:00"
         }
