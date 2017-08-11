@@ -104,26 +104,11 @@ public class App extends Application {
     public GHPagesAPIClient getGHPagesAPIClient() {
         Retrofit retrofit;
         final String baseUrl = getString(R.string.ghpage_base_url);
-        if (BuildConfig.PRODUCTION) {
-            // 本番APIを叩く
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .build();
-        } else {
-            // ローカルのサンプルファイルを利用する
-            LocalResponseInterceptor i = new LocalResponseInterceptor(getApplicationContext());
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .addInterceptor(i)
-                    .build();
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .client(okHttpClient)
-                    .build();
-        }
+        retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
         return retrofit.create(GHPagesAPIClient.class);
     }
 
