@@ -22,7 +22,7 @@ import okio.Buffer;
 public class LocalResponseInterceptor implements Interceptor {
 
     private Context context;
-    private static final String PREFIX_PRESENTATION = "_2016_ja_api_presentation";
+    private static final String PREFIX_PRESENTATION = "_2017_ja_api_presentation";
 
     public LocalResponseInterceptor(Context ctx) {
         this.context = ctx;
