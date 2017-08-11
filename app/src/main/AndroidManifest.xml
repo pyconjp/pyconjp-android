@@ -14,7 +14,7 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="8df065b13f14a83790c4a27f89ea6fabba2ac9ec" />
+            android:value="${fabric_apikey}" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
