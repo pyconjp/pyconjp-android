@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.ConductFragment">
+    tools:context="jp.pycon.pyconjp2017app.Feature.About.AboutOrganizer.SubFragment.ConductFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
