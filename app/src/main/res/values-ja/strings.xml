@@ -25,7 +25,7 @@
 
     <!-- About -->
     <string name="about_pycon">PyCon JP 2017</string>
-    <string name="about_pycon_body">PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。\n\nPyCon JP 2017では、「Everyone\'s different, all are wonderful.」をテーマに据えました。Pythonをキーワードに多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンスを目指して、スタッフ全員で企画を進めています。</string>
+    <string name="about_pycon_body">PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。\n\nPyCon JP 2017では、「Output &amp; Follow」をテーマに据えました。Pythonをキーワードに多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンスを目指して、スタッフ全員で企画を進めています。</string>
     <string name="about_pycon_web">https://pycon.jp/2017</string>
 
     <string name="about_tab1">PyCon JPってなに？</string>
@@ -37,7 +37,7 @@
     <string name="about_organizers">PyCon JP 運営について</string>
     <string name="about_organizers_body1">PyCon JP 2017は、PyCon JP実行委員会 PyCon JP 2017運営チームによって運営されています。</string>
     <string name="about_organizers_body2">私たちは、Pythonユーザが一堂に介し、互いに交流を深め、知識を分けあい、新たな可能性を見つけられる場所として、PyCon JPの企画と運営に取り組んできました。とりわけ、PyCon JPを広く世界のPythonユーザにも開かれた場と位置づけ、国内外のユーザにとって魅力的なカンファレンスとなるよう努力をつづけています。</string>
-    <string name="about_organizers_chairperson">座長: 鈴木たかのり</string>
+    <string name="about_organizers_chairperson">座長: 吉田 俊輔</string>
     <string name="about_organizers_web">Webサイト: http://www.pycon.jp</string>
     <string name="about_organizers_contact">連絡先: 2017@pycon.jp</string>
     <string name="about_blog">PyCon JP Blog</string>
@@ -52,20 +52,16 @@
 
     <string name="about_feedback">アプリのフィードバックを送る</string>
 
-    <string name="about_conduct_body1">PyConは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。 PyCon JPの開催を通じて、Pythonの使い手が一堂に集まり、Pythonにまつわる様々な分野の知識や情報を交換し、新たな友達やコミュニティとのつながり、仕事やビジネスチャンスを増やせる場所とすることが目標です。</string>
-    <string name="about_conduct_body2">ハラスメント行為には、言葉による性別、性的指向、障碍の有無、外見、身体の大きさ、人種、宗教に関する攻撃的なコメント、公的空間での性的な映像表現、意図的な威力行為、ストーキング、つきまとい、写真撮影や録音によるいやがらせ、トークやその他の会議イベントに対して繰り返して中断しようとする行為、不適切な身体接触、そして望まれない性的な注意を引きつける行為を含みます。</string>
-    <string name="about_conduct_body3">私達は参加者が会議場とワークショップ会場、また会議に関連したソーシャルイベントにて、このルールに従うことを望みます。</string>
+    <string name="about_conduct_body1">PyConは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。 PyCon JPの開催を通じて、Pythonの使い手が一堂に集まり、Pythonにまつわる様々な分野の知識や情報を交換し、新たな友達やコミュニティとのつながり、仕事やビジネスチャンスを増やせる場所とすることが目標です。\n\nハラスメント行為には、言葉による性別、性的指向、障碍の有無、外見、身体の大きさ、人種、宗教に関する攻撃的なコメント、公的空間での性的な映像表現、意図的な威力行為、ストーキング、つきまとい、写真撮影や録音によるいやがらせ、トークやその他の会議イベントに対して繰り返して中断しようとする行為、不適切な身体接触、そして望まれない性的な注意を引きつける行為を含みます。\n\n参加者は、これらのハラスメント行為を止めるように求められた場合、すぐに従わなければなりません。\n\nスポンサーもまた反ハラスメント行為ポリシーに従わなければなりません。特に、スポンサーは性的な関心を引き起こす映像表現、活動、あるいはその他の物品を使うべきではありません。ボランティアを含め、ブースのスタッフは、性的な関心を引き起こすような服装/制服/コスチュームを使うべきではありませんし、その他の手段で性的な関心を引き起こすような環境を作ることもすべきではありません。\n\n参加者がハラスメント行為に属するふるまいをした場合は、会議主催者は適切と判断した範囲で、当該行為を行った者に対する警告や、参加費を返還せずに会議から追放処分とするなどを含むいかなる行動も取ります。\n\nもしあなたがハラスメントに遭った場合、他の人がハラスメントに遭っている場合、あるいは他に気になることがあった時は、すぐに会議スタッフの誰かに連絡していただくようお願いします。会議スタッフは会議のブランドを付けたTシャツを着ています。\n\n会議スタッフは、ハラスメントを経験した人が、会議期間中安全かつ安心と感じられるように、参加者がホテル/会場の警備や近隣の警察に連絡すること、付き添い者の提供、およびその他の支援を行います。私達にとってあなたが参加しているのは大事なことなのです。\n\n私達は参加者が会議場とワークショップ会場、また会議に関連したソーシャルイベントにて、このルールに従うことを望みます。\n\n</string>
 
-    <string name="about_theme_title2">「みんなちがって、みんないい」</string>
-    <string name="about_theme_body1">そのミーティングの中で、今年のイベントのコンセプトとして 「Pythonをキーワードに、多様な人たちが、いろいろ楽しめて、新しい可能性が生まれるカンファレンス」 にしたいということになりました。 ここでいう 「多様な人たち」というのは、さまざまな国籍、性別、年齢、職業、職種、立場(スタッフ、スピーカーなど)、宗教、役割、Pythonレベル(初級から上級まで)の人たちなどのことです。</string>
-    <string name="about_theme_body2">そして、このコンセプトをあらわすテーマについてチーム内で議論しました。そのなかで 金子みすゞさんの詩「私と小鳥と鈴と」 にある、 「みんなちがって、みんないい」 という一節がイメージに合うのではという話になり、その英語表現として上記のテーマとなりました。</string>
+    <string name="about_theme_body1">昨年、2016年11月よりPyCon JP 2017 のスタッフで全体MTGを11月、12月、1月と3度開きPyCon JP 2017のテーマ、開催目的を検討してきました。\n\n全体MTGでは、今年は座長が交代したこともあり、また新規のスタッフも多いので、 PyCon JP 2016開催の際に検討したPyCon JPのステークホルダモデル、価値分析モデル、価値デザインモデルの確認から始めました。 そして、スタッフ内でPyCon JP 2017のコンセプト案を募り複数のコンセプトのアイデアを出しました。 PyCon JP 2016までのコンセプト、テーマについても再確認し、どのようなコンセプトがよいか検討しました。\n\nそして、テーマ案についてもスタッフ内から募り、スタッフ内で投票しました。 が、テーマについては、実は最多投票があった案をテーマとしたのではありません。\n\nコンセプト検討の際にも多くのコンセプト案が出たのですが、 「参加者同士の対話」、「広げる」、「繋がる」といったコンセプトがスタッフ内で評価が高く、それに一番マッチしたテーマ案の「Output &amp; Follow」が具体的であり、マッチするとの考えで決定しました。\n\n</string>
 
-    <string name="about_event_body1">チュートリアル：2017年9月20(火)</string>
-    <string name="about_event_body2">カンファレンス：2017年9月21(水)、22(木・祝)</string>
-    <string name="about_event_body3">開発スプリント：2017年9月23(金)、24(土)</string>
+    <string name="about_event_body1">チュートリアル：2017年9月7日(木)</string>
+    <string name="about_event_body2">カンファレンス：2017年9月8日(金)、9日(土)</string>
+    <string name="about_event_body3">開発スプリント：2017年9月10日(金)</string>
     <string name="about_event_body4">会場：早稲田大学西早稲田キャンパス</string>
     <string name="about_event_body6">参加費</string>
-    <string name="about_event_body7">Patron：20,000円</string>
+    <string name="about_event_body7">Patron：40,000円</string>
     <string name="about_event_body8">Business：15,000円(Early Bird 12,000円)</string>
     <string name="about_event_body9">Personal：10,000円(Early Bird 8,000円)</string>
     <string name="about_event_body10">Student：5,000円(without After-Party 2,000円)</string>
