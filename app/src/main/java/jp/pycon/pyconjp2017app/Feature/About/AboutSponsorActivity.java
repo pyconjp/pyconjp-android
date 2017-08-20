@@ -13,7 +13,7 @@ import jp.pycon.pyconjp2017app.R;
  */
 public class AboutSponsorActivity extends BaseAppCompatActivity {
 
-    private static final String SPONSOR_PAGE_URL = "https://pycon.jp/2016/ja/sponsors/";
+    private static final String SPONSOR_PAGE_URL = "https://pycon.jp/2017/ja/sponsors/";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

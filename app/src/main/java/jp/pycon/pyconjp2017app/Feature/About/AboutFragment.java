@@ -79,7 +79,7 @@ public class AboutFragment extends Fragment  implements AdapterView.OnItemClickL
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("message/rfc822");
         intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"symposion@pycon.jp"});
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for PyCon JP 2016 App");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for PyCon JP 2017 App");
         intent.putExtra(Intent.EXTRA_TEXT, "Android OS:\nDevice:\nReply-To:\n\nFeedback:\n");
         return intent;
     }
