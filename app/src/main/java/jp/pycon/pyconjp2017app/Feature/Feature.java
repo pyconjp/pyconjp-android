@@ -10,24 +10,31 @@ import jp.pycon.pyconjp2017app.Feature.FloorMap.FloorMapFragment;
 import jp.pycon.pyconjp2017app.Feature.Keynote.KeynoteFragment;
 import jp.pycon.pyconjp2017app.Feature.Posters.PostersFragment;
 import jp.pycon.pyconjp2017app.Feature.Talks.List.TalksFragment;
+import jp.pycon.pyconjp2017app.Feature.Talks.List.BookmarkFragment;
 import jp.pycon.pyconjp2017app.R;
 
 /**
  * Created by rhoboro on 5/1/16.
  */
 public enum Feature {
+    KEYNOTE(R.id.nav_keynote, R.string.nav_keynote, true, KeynoteFragment.class.getSimpleName()) {
+        @Override
+        public Fragment createFragment() {
+            return KeynoteFragment.newInstance();
+        }
+    },
     TALKS(R.id.nav_talks, R.string.nav_talks, false, TalksFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
             return TalksFragment.newInstance();
         }
     },
-    KEYNOTE(R.id.nav_keynote, R.string.nav_keynote, true, KeynoteFragment.class.getSimpleName()) {
-    @Override
-    public Fragment createFragment() {
-        return KeynoteFragment.newInstance();
-    }
-},
+    BOOKMARK(R.id.nav_bookmark, R.string.nav_bookmark, false, BookmarkFragment.class.getSimpleName()) {
+        @Override
+        public Fragment createFragment() {
+            return BookmarkFragment.newInstance();
+        }
+    },
     POSTERS(R.id.nav_posters, R.string.nav_posters, true, PostersFragment.class.getSimpleName()) {
         @Override
         public Fragment createFragment() {
