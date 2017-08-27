@@ -78,17 +78,13 @@
     <string name="action_refresh">Refresh</string>
 
     <!-- Events -->
-    <string name="invited_talk">Invited Talks</string>
-    <string name="description_invited_talk">The purpose of Invitation Talks is to invite guest speakers to share their unique perspectives and provide opportunities for participants to expand their networks. We invited two researchers this year!</string>
-    <string name="url_invited_talk">https://pycon.jp/2017/en/talks/invited-speaker/</string>
-
     <string name="job_fair">Job Fair</string>
     <string name="description_job_fair">This program provides an opportunity for companies and individuals to meet and talk about their works in an informal setting.</string>
     <string name="url_job_fair">https://pycon.jp/2017/en/events/jobsfair/</string>
 
-    <string name="products_fair">Products Fair</string>
-    <string name="description_products_fair">In sponsors, we have panel discussion center at company which have developers project, and its theme is deep learning.</string>
-    <string name="url_products_fair">https://pycon.jp/2017/en/productfair/</string>
+    <string name="media_meeting">Media Meeting</string>
+    <string name="description_media_meeting"></string>
+    <string name="url_media_meeting">https://pycon.jp/2017/en/events/media-meeting/</string>
 
     <string name="tutorial">Tutorials</string>
     <string name="description_tutorial">This year we will have courses in areas such as “Python for beginners”, “Data Analysis”, “Deep Learning” and “Documentation”. In this year, it is not required to apply to PyCon JP 2017 to attend these courses.</string>
@@ -98,20 +94,16 @@
     <string name="description_youth_coder_workshop">At PyCon JP 2017, we will hold a workshop for young coders or future coders.</string>
     <string name="url_youth_corder_workshop">https://pycon.jp/2017/en/events/youth-ws/</string>
 
-    <string name="beginner_session">Beginner Session</string>
-    <string name="description_beginner_session">We believe that reading Python libraries and read others’ code will be the best way to improve beginners’ coding skills. We will have three sessions in two days. Please feel free to join us.</string>
-    <string name="url_beginner_session">https://pycon.jp/2017/en/events/beginners/</string>
-
     <string name="committee_meeting">Committee Meeting</string>
     <string name="description_committee_meeting">The PyCon JP board will be holding a public meeting to gather feedback from the community.</string>
     <string name="url_committee_meeting">https://pycon.jp/2017/en/events/committee-meeting/</string>
 
     <string name="community_booth">Community Booth</string>
-    <string name="description_community_booth">Community Booth is an event where attendees can communicate with each other about Python and become familiar with members of existing Python Communities. </string>
+    <string name="description_community_booth">Community booths are a space where you can learn about various communities related to Python and interact with their members.</string>
     <string name="url_community_booth">https://pycon.jp/2017/en/events/community-booth/</string>
 
     <string name="open_space">Open Space</string>
-    <string name="description_open_space">We provide some open spaces for presentations, meetings, and discussions.</string>
+    <string name="description_open_space">Open Spaces are a place that attendees can use freely to give presentations, hands-on teaching, meetings, discussions or anything else you can think of that fits the conference.</string>
     <string name="url_open_space">https://pycon.jp/2017/en/events/open-space/</string>
 
     <string name="sprint">Development Sprints</string>
