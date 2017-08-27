@@ -70,11 +70,7 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
 
         final int pk = getIntent().getIntExtra(BUNDLE_KEY_PRESENTATION_ID, 0);
         Log.d("pk", "" + pk);
-        if (RealmUtil.isTalkDetailExist(realm, pk)) {
-            showTalkDetail(pk);
-        } else {
-            getPyConJPPresentationDetail(pk);
-        }
+        getPyConJPPresentationDetail(pk);
     }
 
     @Override
@@ -235,6 +231,7 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
      * @param pk 表示するトークのPK
      */
     private void getPyConJPPresentationDetail(final int pk) {
+        final boolean hasDetail = RealmUtil.isTalkDetailExist(realm, pk);
         APIClient apiClient = ((App)getApplication()).getAPIClient();
         rx.Observable<PresentationDetailEntity> observable = apiClient.getPyConJPPresentationDetail(pk);
         observable
@@ -250,6 +247,10 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
                                public void onError(Throwable e) {
                                    e.printStackTrace();
                                    Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
+                                   if (hasDetail) {
+                                       showTalkDetail(pk);
+                                       Toast.makeText(getApplicationContext(), "use cache", Toast.LENGTH_SHORT).show();
+                                   }
                                }
 
                                @Override
