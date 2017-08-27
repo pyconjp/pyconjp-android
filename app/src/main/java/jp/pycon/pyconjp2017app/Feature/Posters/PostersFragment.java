@@ -152,6 +152,7 @@ public class PostersFragment extends Fragment {
     }
 
     private void getPyConPosters() {
+        final boolean hasPosters = (RealmUtil.getAllPosters(realm).size() > 0);
         APIClient apiClient = ((App)getActivity().getApplication()).getAPIClient();
         rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPPosters();
         observable
@@ -167,6 +168,10 @@ public class PostersFragment extends Fragment {
                                public void onError(Throwable e) {
                                    e.printStackTrace();
                                    Toast.makeText(mContext, "error" + e, Toast.LENGTH_SHORT).show();
+                                   if (hasPosters) {
+                                       setupRecycleView();
+                                       Toast.makeText(mContext, "use cache", Toast.LENGTH_SHORT).show();
+                                   }
                                }
 
                                @Override

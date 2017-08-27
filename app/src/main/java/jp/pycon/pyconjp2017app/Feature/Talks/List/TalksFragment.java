@@ -51,12 +51,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_view_pager, container, false);
         realm = Realm.getDefaultInstance();
-        final RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
-        if (days != null) {
-            setupTalkList();
-        } else {
-            getPyConJPTalks();
-        }
+        getPyConJPTalks();
         setHasOptionsMenu(true);
         return view;
     }
@@ -112,6 +107,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
      * トーク一覧を取得します
      */
     private void getPyConJPTalks() {
+        final RealmDaysObject days = realm.where(RealmDaysObject.class).findFirst();
         APIClient apiClient = ((App)getActivity().getApplication()).getAPIClient();
         rx.Observable<PresentationListEntity> observable = apiClient.getPyConJPTalks();
         observable
@@ -127,6 +123,10 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
                                public void onError(Throwable e) {
                                    e.printStackTrace();
                                    Toast.makeText(mContext, "error" + e, Toast.LENGTH_SHORT).show();
+                                   if (days != null) {
+                                       setupTalkList();
+                                       Toast.makeText(mContext, "use cache", Toast.LENGTH_SHORT).show();
+                                   }
                                }
 
                                @Override
