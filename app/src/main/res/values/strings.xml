@@ -83,7 +83,7 @@
     <string name="url_job_fair">https://pycon.jp/2017/en/events/jobsfair/</string>
 
     <string name="media_meeting">Media Meeting</string>
-    <string name="description_media_meeting"></string>
+    <string name="description_media_meeting">The media meeting is a new project. The aim of the project is to "set up a place for exchange between engineers and media companies, to create a chance to publish new Python books". We invite publisher editors / book writers and discuss them with various themes.</string>
     <string name="url_media_meeting">https://pycon.jp/2017/en/events/media-meeting/</string>
 
     <string name="tutorial">Tutorials</string>
