@@ -80,35 +80,35 @@
 
     <!-- Events -->
     <string name="job_fair">ジョブフェア</string>
-    <string name="description_job_fair">ジョブフェアは企業と個人がカジュアルな形で交流し、仕事などについて話ができる場です。本イベントでは、Pythonを用いてプロダクト開発をしている企業の仕事や考え方を中心に、魅力を探っていくセッションです。</string>
+    <string name="description_job_fair">9/9 12:00 - 14:00 (2F 202)\n\nジョブフェアは企業と個人がカジュアルな形で交流し、仕事などについて話ができる場です。本イベントでは、Pythonを用いてプロダクト開発をしている企業の仕事や考え方を中心に、魅力を探っていくセッションです。</string>
     <string name="url_job_fair">https://pycon.jp/2017/ja/events/jobsfair/</string>
 
     <string name="media_meeting">メディア会議</string>
-    <string name="description_media_meeting">メディア会議は今年初めて開催する新しい企画です。企画の狙いは「エンジニアとメディア企業との交流の場を設け、新しいPythonの書籍などを生み出すきっかけをつくる」です。出版社編集者・書籍執筆者を招いて様々なテーマでディスカッションしていただきます。</string>
+    <string name="description_media_meeting">9/8 12:10 - 13:10 (2F 202)\n\nメディア会議は今年初めて開催する新しい企画です。企画の狙いは「エンジニアとメディア企業との交流の場を設け、新しいPythonの書籍などを生み出すきっかけをつくる」です。出版社編集者・書籍執筆者を招いて様々なテーマでディスカッションしていただきます。</string>
     <string name="url_media_meeting">https://pycon.jp/2017/en/events/media-meeting/</string>
 
     <string name="tutorial">チュートリアル</string>
-    <string name="description_tutorial">今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
+    <string name="description_tutorial">9/7 10:00 - 18:00\n\n今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
     <string name="url_tutorial">https://pycon.jp/2017/ja/events/tutorial/</string>
 
     <string name="youth_coder_workshop">Youth Coder Workshop</string>
-    <string name="description_youth_coder_workshop">PyCon JP 2017でプログラミングを学ぼう!!PyCon JP 2015から始まったYouth Coder Workshopを今年も開催します。今年は、ゲーム開発のプロがゲームプログラミングを教えます。</string>
+    <string name="description_youth_coder_workshop">9/9 10:45 - 15:00 (3F Gルーム)\n\nPyCon JP 2017でプログラミングを学ぼう!!PyCon JP 2015から始まったYouth Coder Workshopを今年も開催します。今年は、ゲーム開発のプロがゲームプログラミングを教えます。</string>
     <string name="url_youth_corder_workshop">https://pycon.jp/2017/ja/events/youth-ws/</string>
 
     <string name="committee_meeting">Committee Meeting</string>
-    <string name="description_committee_meeting">PyCon JP 2017を運営しているチームとは別に、法人格を持っている一般社団法人PyCon JPが存在します。この法人の役割や今後の活動について、幅広く意見を交換したいと考えております。 自由にご参加ください。</string>
+    <string name="description_committee_meeting">9/9 15:40 - 16:45 (3F Gルーム)\n\nPyCon JP 2017を運営しているチームとは別に、法人格を持っている一般社団法人PyCon JPが存在します。この法人の役割や今後の活動について、幅広く意見を交換したいと考えております。 自由にご参加ください。</string>
     <string name="url_committee_meeting">https://pycon.jp/2017/ja/events/committee-meeting/</string>
 
     <string name="community_booth">コミュニティブース</string>
-    <string name="description_community_booth">コミュニティブースは、Pythonに関連したコミュニティと自由に交流できるコーナーです。</string>
+    <string name="description_community_booth">9/8 12:00 - 13:30 (2F 201)\n9/9 12:00 - 13:30 (2F 201)\n\nコミュニティブースは、Pythonに関連したコミュニティと自由に交流できるコーナーです。</string>
     <string name="url_community_booth">https://pycon.jp/2017/ja/events/community-booth/</string>
 
     <string name="open_space">オープンスペース</string>
-    <string name="description_open_space">オープンスペースは、参加者が自由に利用できるコーナーです。 発表やハンズオン、ミーティング、議論など様々に利用いただけます。</string>
+    <string name="description_open_space">9/9 10:40 - 17:00 (3F Fルーム)\n\nオープンスペースは、参加者が自由に利用できるコーナーです。 発表やハンズオン、ミーティング、議論など様々に利用いただけます。</string>
     <string name="url_open_space">https://pycon.jp/2017/ja/events/open-space/</string>
 
     <string name="sprint">スプリント</string>
-    <string name="description_sprint">スプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
+    <string name="description_sprint">9/10 10:30 - 18:00 (日本マイクロソフト株式会社)\n\nスプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
     <string name="url_sprint">https://pycon.jp/2017/ja/events/sprint/</string>
 
     <!-- Keynote -->
@@ -118,9 +118,9 @@
     <string name="floor_map_01">フロアマップ1F</string>
     <string name="floor_map_02">フロアマップ2F</string>
     <string name="floor_map_03">フロアマップ3F</string>
-    <string name="floor_map_description_01">受付、ポスターセッション、ランチ・パーティー会場</string>
-    <string name="floor_map_description_02">トーク会場、スポンサー等ブース</string>
-    <string name="floor_map_description_03">オープンスペース、ビギナーセッション、Youth Coder Workshop</string>
+    <string name="floor_map_description_01">受付、ポスターセッション、パーティー会場</string>
+    <string name="floor_map_description_02">トーク会場、スポンサー等ブース、メディア会議、ジョブフェア</string>
+    <string name="floor_map_description_03">オープンスペース、Youth Coder Workshop、Committee Meeting</string>
 
     <!-- Other -->
     <string name="pycon_theme">Output &amp; Follow</string>
