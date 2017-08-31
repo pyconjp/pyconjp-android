@@ -187,6 +187,8 @@ public class RealmUtil {
             realmInfo.name = info.name;
             realmInfo.imageUri = info.imageUri;
             realmInfo.twitter = info.twitter;
+            realmInfo.github = info.github;
+            realmInfo.facebook = info.facebook;
             speakerInformation.add(realmInfo);
         }
         obj.speakerInformation = speakerInformation;

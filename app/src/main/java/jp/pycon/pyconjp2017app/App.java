@@ -57,11 +57,18 @@ public class App extends Application {
                     schema.get("RealmPresentationDetailObject")
                             .addRealmListField("speakerInformation",schema.get("RealmSpeakerInformationObject"));
                 }
+
+                if (oldVersion == 2) {
+                    // バージョン3への移行処理
+                    schema.get("RealmSpeakerInformationObject")
+                            .addField("github", String.class)
+                            .addField("facebook", String.class);
+                }
             }
         };
 
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
-                .schemaVersion(2)
+                .schemaVersion(3)
                 .migration(migration)
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
