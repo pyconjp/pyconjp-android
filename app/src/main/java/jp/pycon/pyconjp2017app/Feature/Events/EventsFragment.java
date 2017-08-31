@@ -88,14 +88,12 @@ public class EventsFragment extends Fragment{
 
     public enum Event {
         TUTORIAL(R.string.tutorial, R.string.tutorial_day, R.string.description_tutorial, R.string.url_tutorial),
-        INVITED_TALK(R.string.invited_talk, R.string.conference_day_1, R.string.description_invited_talk, R.string.url_invited_talk),
-        PRODUCTS_FIAR(R.string.products_fair, R.string.conference_day_1, R.string.description_products_fair, R.string.url_products_fair),
+        COMMUNITY_BOOTH(R.string.community_booth, R.string.conference_day_12, R.string.description_community_booth, R.string.url_community_booth),
+        MEDIA_MEETING(R.string.media_meeting, R.string.conference_day_1, R.string.description_media_meeting, R.string.url_media_meeting),
         YOUTH_CODER_WORKSHOP(R.string.youth_coder_workshop, R.string.conference_day_2, R.string.description_youth_coder_workshop, R.string.url_youth_corder_workshop),
         JOB_FAIR(R.string.job_fair, R.string.conference_day_2, R.string.description_job_fair, R.string.url_job_fair),
         COMMITTEE_MEETING(R.string.committee_meeting, R.string.conference_day_2, R.string.description_committee_meeting, R.string.url_committee_meeting),
-        COMMUNITY_BOOTH(R.string.community_booth, R.string.conference_day_2, R.string.description_community_booth, R.string.url_community_booth),
-        BEGINNER_SESSION(R.string.beginner_session, R.string.conference_day_12, R.string.description_beginner_session, R.string.url_beginner_session),
-        OPEN_SPACE(R.string.open_space, R.string.conference_day_12, R.string.description_open_space, R.string.url_open_space),
+        OPEN_SPACE(R.string.open_space, R.string.conference_day_2, R.string.description_open_space, R.string.url_open_space),
         SPRINT(R.string.sprint, R.string.sprint_day, R.string.description_sprint, R.string.url_sprint);
         private final int descResId;
         private final int dateId;
