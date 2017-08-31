@@ -79,35 +79,35 @@
 
     <!-- Events -->
     <string name="job_fair">Job Fair</string>
-    <string name="description_job_fair">This program provides an opportunity for companies and individuals to meet and talk about their works in an informal setting.</string>
+    <string name="description_job_fair">9/9 12:00 - 14:00 (2F 202)\n\nThis program provides an opportunity for companies and individuals to meet and talk about their works in an informal setting.</string>
     <string name="url_job_fair">https://pycon.jp/2017/en/events/jobsfair/</string>
 
     <string name="media_meeting">Media Meeting</string>
-    <string name="description_media_meeting">The media meeting is a new project. The aim of the project is to "set up a place for exchange between engineers and media companies, to create a chance to publish new Python books". We invite publisher editors / book writers and discuss them with various themes.</string>
+    <string name="description_media_meeting">9/8 12:10 - 13:10 (2F 202)\n\nThe media meeting is a new project. The aim of the project is to "set up a place for exchange between engineers and media companies, to create a chance to publish new Python books". We invite publisher editors / book writers and discuss them with various themes.</string>
     <string name="url_media_meeting">https://pycon.jp/2017/en/events/media-meeting/</string>
 
     <string name="tutorial">Tutorials</string>
-    <string name="description_tutorial">This year we will have courses in areas such as “Python for beginners”, “Data Analysis”, “Deep Learning” and “Documentation”. In this year, it is not required to apply to PyCon JP 2017 to attend these courses.</string>
+    <string name="description_tutorial">9/7 10:00 - 18:00\n\nThis year we will have courses in areas such as “Python for beginners”, “Data Analysis”, “Deep Learning” and “Documentation”. In this year, it is not required to apply to PyCon JP 2017 to attend these courses.</string>
     <string name="url_tutorial">https://pycon.jp/2017/en/events/tutorial/</string>
 
     <string name="youth_coder_workshop">Youth Coder Workshop</string>
-    <string name="description_youth_coder_workshop">At PyCon JP 2017, we will hold a workshop for young coders or future coders.</string>
+    <string name="description_youth_coder_workshop">9/9 10:45 - 15:00 (3F Room G)\n\nAt PyCon JP 2017, we will hold a workshop for young coders or future coders.</string>
     <string name="url_youth_corder_workshop">https://pycon.jp/2017/en/events/youth-ws/</string>
 
     <string name="committee_meeting">Committee Meeting</string>
-    <string name="description_committee_meeting">The PyCon JP board will be holding a public meeting to gather feedback from the community.</string>
+    <string name="description_committee_meeting">9/9 15:40 - 16:45 (3F Room G)\n\nThe PyCon JP board will be holding a public meeting to gather feedback from the community.</string>
     <string name="url_committee_meeting">https://pycon.jp/2017/en/events/committee-meeting/</string>
 
     <string name="community_booth">Community Booth</string>
-    <string name="description_community_booth">Community booths are a space where you can learn about various communities related to Python and interact with their members.</string>
+    <string name="description_community_booth">9/8 12:00 - 13:30 (2F 201)\n9/9 12:00 - 13:30 (2F 201)\n\nCommunity booths are a space where you can learn about various communities related to Python and interact with their members.</string>
     <string name="url_community_booth">https://pycon.jp/2017/en/events/community-booth/</string>
 
     <string name="open_space">Open Space</string>
-    <string name="description_open_space">Open Spaces are a place that attendees can use freely to give presentations, hands-on teaching, meetings, discussions or anything else you can think of that fits the conference.</string>
+    <string name="description_open_space">9/9 10:40 - 17:00 (3F Room F)\n\nOpen Spaces are a place that attendees can use freely to give presentations, hands-on teaching, meetings, discussions or anything else you can think of that fits the conference.</string>
     <string name="url_open_space">https://pycon.jp/2017/en/events/open-space/</string>
 
     <string name="sprint">Development Sprints</string>
-    <string name="description_sprint">Sprint is the event for the short term and centralized software developments. Some people call it as Hack-a-thon or developing meet up.It is a great opportunity for those who are interested and passionate about the developments in a group.</string>
+    <string name="description_sprint">9/10 10:30 - 18:00 (Microsoft Japan)\n\nSprint is the event for the short term and centralized software developments. Some people call it as Hack-a-thon or developing meet up.It is a great opportunity for those who are interested and passionate about the developments in a group.</string>
     <string name="url_sprint">https://pycon.jp/2017/en/events/sprint/</string>
 
     <!-- Keynote -->
@@ -117,9 +117,9 @@
     <string name="floor_map_01">Floor Map 1F</string>
     <string name="floor_map_02">Floor Map 2F</string>
     <string name="floor_map_03">Floor Map 3F</string>
-    <string name="floor_map_description_01">Reception, Poster Session, Lunch, Party</string>
-    <string name="floor_map_description_02">Conference, Sponsor Booth</string>
-    <string name="floor_map_description_03">Open Spaces, Beginner Sessions, Youth Coder Workshop</string>
+    <string name="floor_map_description_01">Reception, Poster Session, Party</string>
+    <string name="floor_map_description_02">Conference, Sponsor Booth, Media Meeting, Job Fair</string>
+    <string name="floor_map_description_03">Open Spaces, Youth Coder Workshop, Committee Meeting</string>
 
     <!-- Other -->
     <string name="pycon_theme">Output &amp; Follow</string>
