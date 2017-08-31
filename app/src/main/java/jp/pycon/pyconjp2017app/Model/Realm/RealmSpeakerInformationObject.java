@@ -10,5 +10,7 @@ public class RealmSpeakerInformationObject extends RealmObject {
     public String name;
     public String imageUri;
     public String twitter;
+    public String github;
+    public String facebook;
 
 }

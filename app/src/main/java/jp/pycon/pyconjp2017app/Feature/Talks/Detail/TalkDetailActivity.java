@@ -149,21 +149,58 @@ public class TalkDetailActivity extends BaseAppCompatActivity {
             if (TextUtils.isEmpty(info.twitter)) {
                 (speaker.findViewById(R.id.twitter)).setVisibility(View.GONE);
             } else {
-                final String twitter = getString(R.string.twitter_prefix) + info.twitter;
-                TextView twitterTextView = (TextView)speaker.findViewById(R.id.twitter);
-                twitterTextView.setText(twitter);
+                View twitterTextView = speaker.findViewById(R.id.twitter);
                 twitterTextView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String twitter = ((TextView)view).getText().toString().replaceAll("@", "");
                         try {
                             Intent intent = new Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("twitter://user?screen_name=" + twitter));
+                                    Uri.parse("twitter://user?screen_name=" + info.twitter));
                             startActivity(intent);
 
                         }catch (Exception e) {
                             startActivity(new Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("https://mobile.twitter.com/" + twitter)));
+                                    Uri.parse("https://mobile.twitter.com/" + info.twitter)));
+                        }
+                    }
+                });
+            }
+            if (TextUtils.isEmpty(info.github)) {
+                (speaker.findViewById(R.id.github)).setVisibility(View.GONE);
+            } else {
+                View githubView = speaker.findViewById(R.id.github);
+                githubView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://github.com/" + info.github)));
+                    }
+                });
+            }
+            if (TextUtils.isEmpty(info.facebook)) {
+                (speaker.findViewById(R.id.facebook)).setVisibility(View.GONE);
+            } else {
+                final String facebookPageID = info.facebook;
+                final String facebookUrl = "https://www.facebook.com/" + facebookPageID;
+                final String facebookUrlScheme = "fb://page/" + facebookPageID;
+                View facebookTextView = speaker.findViewById(R.id.facebook);
+                facebookTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        try {
+                            // Facebookアプリのバージョンを取得
+                            int versionCode = getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;
+                            if (versionCode >= 3002850) {
+                                // Facebook アプリのバージョン 11.0.0.11.23 (3002850) 以上の場合
+                                Uri uri = Uri.parse("fb://facewebmodal/f?href=" + facebookUrl);
+                                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                            } else {
+                                // Facebook アプリが古い場合
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrlScheme)));
+                            }
+
+                        }catch (Exception e) {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrl)));
                         }
                     }
                 });

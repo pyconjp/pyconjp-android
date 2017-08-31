@@ -11,6 +11,10 @@ public class PresentationSpeakerInformationEntity {
     public String name;
     @SerializedName("twitter")
     public String twitter;
+    @SerializedName("github")
+    public String github;
+    @SerializedName("facebook")
+    public String facebook;
     @SerializedName("image_uri")
     public String imageUri;
 
