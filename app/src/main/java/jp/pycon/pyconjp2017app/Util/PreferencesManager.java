@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class PreferencesManager {
 
-    private static final String PREFERENCES_NAME = "jp.pycon.pychonjp2016app";
+    private static final String PREFERENCES_NAME = "jp.pycon.pychonjp2017app";
     private static final String PREFERENCES_KEY_BOOKMARK_ARRAY = "preferences_key_bookmark_array";
     private static final String PREFERENCES_KEY_MINUTES_BEFORE = "preferences_key_minutes_before";
 

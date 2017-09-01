@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity
                     .setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
                     .build();
 
-            intent.launchUrl(this, Uri.parse(getString(R.string.survey_url)));
+            intent.launchUrl(this, Uri.parse(FirebaseUtil.getSurveyUrl()));
         },DRAWER_CLOSE_DELAY_MILLS);
     }
 

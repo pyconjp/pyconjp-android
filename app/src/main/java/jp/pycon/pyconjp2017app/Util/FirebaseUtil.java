@@ -3,6 +3,7 @@ package jp.pycon.pyconjp2017app.Util;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,7 +39,12 @@ public class FirebaseUtil {
 
     public static boolean getEnableSurvey() {
         final FirebaseRemoteConfig mRemoteConfig = FirebaseRemoteConfig.getInstance();
-        return mRemoteConfig.getBoolean("enable_survey");
+        return mRemoteConfig.getBoolean("enable_survey") && !TextUtils.isEmpty(FirebaseUtil.getSurveyUrl());
+    }
+
+    public static String getSurveyUrl() {
+        final FirebaseRemoteConfig mRemoteConfig = FirebaseRemoteConfig.getInstance();
+        return mRemoteConfig.getString("survey_url");
     }
 
     /**
