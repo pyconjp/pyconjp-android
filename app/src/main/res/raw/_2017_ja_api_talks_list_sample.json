@@ -1,0 +1,525 @@
+{
+  "presentations": [
+    {
+      "category": "Industry Uses",
+      "speakers": [
+        "Justus Perlwitz"
+      ],
+      "description": "In this talk we'll explore how to use the new Python 3 asyncio library to automate hardware-software integration tests for industrial automation. We will find out how asynchronous coroutines can simplify and speed up distributed tests in real world environments, and what possible difficulties to watch out for.",
+      "language": "en",
+      "title": "Industrial Test Automation with Asyncio",
+      "id": 1,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Web Frameworks",
+      "speakers": [
+        "Manoj Pandey",
+        "Arsh"
+      ],
+      "description": "Want to learn how to scrape the web (and / or organized data sets and APIs) for content? This talk will give you the building blocks (and code) to begin your own scraping adventures. We will review basic data scraping, API usage, form submission as well as how to scrape pesky bits like Javascript-usage for DOM manipulation.",
+      "language": "en",
+      "title": "An Introduction to web scraping using Python",
+      "id": 2,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Gaming",
+      "speakers": [
+        "郭 学聡 (Hsueh-Tsung Kuo)"
+      ],
+      "description": "As startup game makers, many people might be able to build a workable mobile game service, but have no experience in building a stable, reliable, high performance mobile game service due to some reasons such as race condition and lack of caching.\r\nWe will introduce how we built a commercial game server by showing the essence of Python code and Flask usage from VOEZ game server.",
+      "language": "en",
+      "title": "after VOEZ launch: how to resolve problems of mobile game server development and service maintenance",
+      "id": 3,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Other",
+      "speakers": [
+        "Iskandar Setiadi"
+      ],
+      "description": "What if we could combine bots, machine learning, artificial intelligence, and open source projects for building a personalized assistant in a simple way with Python? In this talk, we will discuss the infinite possibilities of personalized assistant features which could be developed for assisting daily lives.",
+      "language": "en",
+      "title": "Building a Customized Personal Assistant with Python",
+      "id": 4,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Big Data",
+      "speakers": [
+        "Bhargav Srinivasa Desikan"
+      ],
+      "description": "The explosion in Artificial Intelligence and Machine Learning is unprecedented now - and text analysis is likely the most easily accessible and understandable part of this. And with python, it is crazy easy to do this - python has been used as a parsing langauge forever, and with the rich set of text analysis tools, it works more than just well.",
+      "language": "en",
+      "title": "Why you should do text analysis with Python (even if you don't want to)",
+      "id": 5,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Cloud",
+      "speakers": [
+        "Keith Yang"
+      ],
+      "description": "Instead of common tutorials of Python Reactive Programming and AWS Lambda, fun, real coding practice, and benefits of \"Reactive AWS Lambda\" will be focused in this talk by discomposed actions in different aspects and tools, including serverless, functional programming, deployment, testing, debug, and activity/performance monitor. PyFunctional, RxPy, Zappa, and Apex will also be looked at.",
+      "language": "en",
+      "title": "Reactive Programming on AWS Lambda in Python",
+      "id": 6,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Best Practices/Patterns",
+      "speakers": [
+        "Devon Peticolas"
+      ],
+      "description": "A brief history of ascii, encoding, and unicode and how unicode and character encoding is done both wrong and right with examples in python 2.7 and 3.x.\r\n",
+      "language": "en",
+      "title": "How (and Why) We Speak in Unicode",
+      "id": 7,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Science",
+      "speakers": [
+        "en zyme"
+      ],
+      "description": "Exponentiation is the gotcha of math operators. Be it square or square root, exp, log, tanh, or the complex roots of unity, ** aka ^ has it's work cut out. Ints, floats, fractions, matrices, complex, and zero don't play nice.. Precision, accuracy, and performance aspects of Python and Julia can be contrasted by following ** from code down to the bits. Machine Learning aspects considered. ",
+      "language": "en",
+      "title": "A Guide to Exponentiation, and how it effects Machine Learning",
+      "id": 8,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Web Frameworks",
+      "speakers": [
+        "Graham Dumpleton"
+      ],
+      "description": "The mod\\_wsgi ecosystem has grown in recent years, adding easier ways to deploy Python web applications, and tools for deploying to containerised environments. This talk will highlight new or not well known capabilities of mod\\_wsgi. It will also provide tips on how to configure mod\\_wsgi to ensure it is setup properly, will perform well and can automatically recover from problems that can occur.",
+      "language": "en",
+      "title": "Secrets of a WSGI master.",
+      "id": 9,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Distributed Computing",
+      "speakers": [
+        "Shane Cousins"
+      ],
+      "description": "Is pandas running out of memory?  Have you wanted to more easily process large scale data?\r\ndask may be what your looking for.\r\n\r\nHere I'll introduce the dask framework and talk about how you can get it running in the cloud",
+      "language": "en",
+      "title": "Running Dask in the Cloud",
+      "id": 10,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Useful libraries",
+      "speakers": [
+        "Aaron Mildenstein"
+      ],
+      "description": "Suppose that an API already exists for a service you use. Now suppose that you want to make a tool that only uses a subset of that API to make it easier to perform certain tasks in that API. This is a wrapper API: A way to simplify or abstract API functions in a way that your tool doesn't have a lot of repetitive code, and that makes it easy for others to build on or contribute to your tool.",
+      "language": "en",
+      "title": "Building A Wrapper API: The case for abstraction",
+      "id": 11,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Web Frameworks",
+      "speakers": [
+        "Shinya Okano"
+      ],
+      "description": "Djangoフレームワークにはユーザーモデルと認証の仕組みが組み込まれています。これらの紹介とカスタマイズのポイント、ハマりどころなどについて話します。",
+      "language": "ja",
+      "title": "Djangoフレームワークのユーザーモデルと認証",
+      "id": 17,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Core Python (Language, Stdlib)",
+      "speakers": [
+        "Greg Price"
+      ],
+      "description": "Python now offers static types! Companies like Dropbox and open-source projects like Zulip now use static types (with PEP 484 and mypy) to make Python more productive and fun to work with — in existing codebases from 40k lines to 4 million, in Python 2 and 3, and while preserving the conciseness and flexibility that make Python a great language in the first place. I’ll describe how.\r\n",
+      "language": "en",
+      "title": "Clearer Code at Scale: Static Types at Zulip and Dropbox",
+      "id": 12,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Core Python (Language, Stdlib)",
+      "speakers": [
+        "Takumi Sueda"
+      ],
+      "description": "変数アノテーションを実行時に読む方法から、実用的な活かし方までを解説。 (English slides + Japanese speech)",
+      "language": "ja",
+      "title": "ベンリに使おう変数アノテーション - typing.pyとの楽しいお付き合い",
+      "id": 13,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Distributed Computing",
+      "speakers": [
+        "chie hayashida"
+      ],
+      "description": "昨今では大量データの分析や機械学習のニーズが増えています。Apache Sparkは、高度なCPUやメモリ利用の効率化が行われた並列分散処理フレームワークとして、ビッグデータアーキテクトやデータサイエンティストの中で最も注目を浴びるプロダクトの一つとなっています。しかしながら、Sparkをきちんと扱うためには、分散処理における勘所を理解する必要があります。本発表では、Sparkをこれから始めるという人も、すでに導入しているという人にもわかりやすく、Sparkのアーキテクチャを説明します。また、PySparkを用いた分析基盤の開発と実運用を通してのはまりどころを紹介します。",
+      "language": "ja",
+      "title": "Pythonで大量データ処理！PySparkを用いたデータ分析のきほん",
+      "id": 14,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Science",
+      "speakers": [
+        "Shinichi Nakagawa(野球の人)"
+      ],
+      "description": "野球の統計モデルをPythonで実現する方法について紹介します.スクレイピング(Scrapy,Beautifulsoup),データパイプライン(Airflow),可視化ツール(Jupyter,Redashなど)を駆使し,野球統計学「セイバーメトリクス」を用いた野球選手の評価方法および,野球統計パッケージ(自作)について解説いたします.",
+      "language": "ja",
+      "title": "野球を科学する技術〜Pythonを用いた統計ライブラリ作成と分析基盤構築",
+      "id": 15,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Best Practices/Patterns",
+      "speakers": [
+        "Toshiyuki Takeda"
+      ],
+      "description": "データ分析ツールとしてPythonとRはそれぞれの強みがあります。このtalkではPythonとRを両方使って分析を進めるための，いくつかのデータ交換手段を紹介します。",
+      "language": "ja",
+      "title": "PythonとRを行ったり来たり",
+      "id": 18,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Business",
+      "speakers": [
+        "akira taniguchi"
+      ],
+      "description": "TwitterやFacebookでもおなじみ、認可機能であるOAuth。  \r\n携わったことがある方も多いと思いますが、ほとんどはクライアントであって、認可を行うサーバ側を実際に実装した方は少ないのではないでしょうか。  \r\n今回のトークではOAuthとは何ぞやというところから、Pythonを使ってOAuthサーバを構築した方法や注意点、工夫した箇所を話します。",
+      "language": "ja",
+      "title": "PythonでOAuth『サーバ』を構築した話",
+      "id": 19,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "GUI Programming",
+      "speakers": [
+        "Jun okazaki"
+      ],
+      "description": "KivyはPythonのGUIライブラリーとして海外では積極的に取り上げられていますが日本語での使い方は少ないです。今回はKivyでどういったアプリケーションが作成できるかや、また日本語環境による特有のはまりどころを紹介します。",
+      "language": "ja",
+      "title": "Kivyによるアプリケーション開発のすすめ",
+      "id": 20,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Big Data",
+      "speakers": [
+        "Hiromitsu Ota"
+      ],
+      "description": "◇Pythonを用いて、文書を自動生成する主要な３つの方法をお伝えします。\r\n１）マルコフ連鎖、 ２）自動要約、 ３）ディープラーニング（RNN/ LSTM）\r\n\r\n◇特にKeras/ Tensorflowによる文章自動生成はPythonで数行で簡易的に書けます。\r\n◇文章などのデータを非構造化データと呼びますが、身近でデータ収集がしやすく、個人の趣味やちょっとした研究に適しています。",
+      "language": "ja",
+      "title": "Pythonによる文章自動生成入門！Python ✖︎ 自然言語処理 ✖︎ ディープラーニング",
+      "id": 21,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Core Python (Language, Stdlib)",
+      "speakers": [
+        "Takayuki Shimizukawa"
+      ],
+      "description": "Pythonには文字列やリストなど、長さをもつオブジェクトがあります。長さを手に入れるには、文字列なら、name.length ではなく len(name) のようにlen関数を使います。len関数はどうやってnameに入っているオブジェクトの長さを手に入れているのでしょうか。if文にはTrue/Falseとなる条件式を指定しますが、それだけでなく文字や数字、自分で作ったデータ型も渡せます。if文はどうやって与えられたオブジェクトがTrueなのかFalseなのかを手に入れているのでしょうか。\r\n\r\nこの発表では、Pythonのプログラムがどうやって必要な情報を手に入れているのか、また、自分で実装するときにどう実装すればlen()やif文やfor文に指定できるのかを説明します。",
+      "language": "ja",
+      "title": "len()関数がオブジェクトの長さを手にいれる仕組み",
+      "id": 22,
+      "start": "11:00:00",
+      "end": "11:30:00",
+      "day": "2017-09-08"
+    },
+    {
+      "category": "Useful libraries",
+      "speakers": [
+        "Takuro Wada"
+      ],
+      "description": "APIを記述するためのフォーマットであるOpenAPI（Swagger）を用いたPythonWebアプリケーション開発についてご紹介致します。",
+      "language": "ja",
+      "title": "OpenAPIを利用したPythonWebアプリケーション開発",
+      "id": 29,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Mobile",
+      "speakers": [
+        "Yusuke Muraoka"
+      ],
+      "description": "Pythonは様々なところで使えるプログラミング言語ですが実はiOS上でも使えます。\r\nそれがPythonistaです。\r\nPythonistaはiOS上で統合開発環境として単体で開発をおこなうことができ、さらにiOSの機能も呼び出すことができます。\r\nこのトークではこのiOSの機能を呼び出すことにフォーカスし、どこまでプロトタイピングとして遊びつくせるのかを現時点までの実績をベースに発表します。",
+      "language": "ja",
+      "title": "Pythonistaで始めるiOSプロトタイプ開発",
+      "id": 23,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Testing",
+      "speakers": [
+        "Isao Takaesu"
+      ],
+      "description": "Webアプリの脆弱性を見つけ出すWebアプリ診断。この業務は、セキュリティエンジニアのスキルと経験に大きく依存するため、長年、人手不足が叫ばれています。また、その業務の特殊さ故に、自動化は難しいとも言われてきました。\r\n本セッションでは、このWebアプリ診断業務を「Python+機械学習」を駆使して自動化を試みた際のテクニックやノウハウなどをお話いたします。",
+      "language": "ja",
+      "title": "Pythonと機械学習によるWebセキュリティの自動化",
+      "id": 24,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Web Frameworks",
+      "speakers": [
+        "Hiroki Kiyohara"
+      ],
+      "description": "DjangoのView内でユーザーの権限を調べるif分岐がグチャグチャ、DjangoのPermissionがイマイチ使えない、チームやロール、契約プランが絡んだパーミッションが難しい。。。そんな人はこのトークを聞いてください。\r\n\r\nこのトークではPyQ https://pyq.jp/ という製品開発を通して学んだパーミッション、権限管理、オブジェクト認可の方法を話します。\r\nユーザーの権限や契約中のプラン、チームやロールによってパーミッションが変わるようなDjangoアプリケーションをどう作るかを、深〜く説明いたします。\r\nオブジェクトの単純な認可でなく、Viewにアクセスできるかの判定や、テンプレートの一部を表示非表示するような、アプリケーション開発に必要なパーミッションの知識を網羅します。\r\n",
+      "language": "ja",
+      "title": "プロダクト開発して分かったDjangoの深～いパーミッション管理の話",
+      "id": 25,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Science",
+      "speakers": [
+        "KATAYOSE LINA"
+      ],
+      "description": "著しい進化を遂げたドローン（マルチコプター）が近年では流通しているが、その中核となるフライトコントローラはブラックボックスである。機体の価格も下がり今では個人で購入できるものもあり、気軽に飛ばせるようになったが、まだまだ発展途上であるガジェット。今回はPythonや航空力学などを用いてドローンのフライトコントローラとなる部分を開発し、その経緯を報告する。",
+      "language": "ja",
+      "title": "ドローンのフライトコントローラをPythonで制御してみた話",
+      "id": 26,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Other",
+      "speakers": [
+        "SHINJI KITAGAWA"
+      ],
+      "description": "前年は4コマ漫画を対象にコマ毎の画像を切り出す手法までについて発表しました。今年はそれらの画像からデータを抽出して分析・評論を行うまでを発表したいと思います。\r\n",
+      "language": "ja",
+      "title": "Pythonで実現する4コマ漫画の分析・評論 2017",
+      "id": 27,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Databases/NoSQL",
+      "speakers": [
+        "Akira Matsuzaki"
+      ],
+      "description": "マルチテナント型のサービスを開発・運用する際に使われるテクニックの一つとして、データベースの Sharding があります。本トークでは、Pythonの代表的なORMであるSQLAlchemyを使って、単一のアプリケーションインスタンスから、Sharding されたデータベースへのアクセスを実現するテクニックを説明します。",
+      "language": "ja",
+      "title": "Sharding with SQLAlchemy",
+      "id": 28,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Cloud",
+      "speakers": [
+        "Masashi TERUI"
+      ],
+      "description": "昨今、注目を集めるServerlessについて、現状最もPythonの利用が盛んであるAWS Lambdaと関連サービスを例として、その考え方やFaaSの動作原理に触れながら、それらの特性を踏まえた設計・実装方法をご紹介していきます。",
+      "language": "ja",
+      "title": "The theory of Serverless development by Python (理論から学ぶPythonによるサーバレス開発)",
+      "id": 30,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Best Practices/Patterns",
+      "speakers": [
+        "Junya Hayashi"
+      ],
+      "description": "ウェブ開発やロボット開発でドメイン駆動設計を適用してきた体験を元に、Python でドメイン駆動設計を実践する際によくある課題や失敗、役に立つ設計やライブラリ、考え方についてお話します。",
+      "language": "ja",
+      "title": "Python におけるドメイン駆動設計(戦術面)の勘どころ",
+      "id": 31,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Embedded Systems",
+      "speakers": [
+        "Yuta Kitagami"
+      ],
+      "description": "IoTの仕組みをPythonで殆ど構築できるので、その実践と紹介を。\r\n・サーバー機能 Flask\r\n・ネットワーク機能 Requests\r\n・データーDB　SQLite\r\n・数値計算　NumPy\r\n・ハードウェア制御　akilib\r\nほぼPythonのみで完成したIoTシステムが構築できます。",
+      "language": "ja",
+      "title": "Pythonの本気！RaspberryPiやEdisonを使ったIoTシステムの構築",
+      "id": 32,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Concurrency",
+      "speakers": [
+        "Ryos Suzuki"
+      ],
+      "description": "Polyphony は Python で書かれたソースコードをそのまま Verilog HDL にコンパイルすることの出来る高位合成コンパイラです。Polyphony を使えば FPGA による並列処理をより身近に使うことが出来ます。難しいハードウェア用言語を覚える必要がありません。応用事例として RISC-V の実装、CNNへの応用 にも言及します。",
+      "language": "ja",
+      "title": "Polyphony: Python ではじめる FPGA と CNN への応用",
+      "id": 33,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Useful libraries",
+      "speakers": [
+        "Yuichiro Someya"
+      ],
+      "description": "チームで機械学習のタスクに取り組む際、過去の自分や他人が利用したデータの再現をするのに苦労する事があります。\r\n本トークでは、データの再現性が低下する原因について体系的に解説し、akagi というオープンソースのPython ライブラリを利用してデータの再現性を高める方法について紹介します。",
+      "language": "ja",
+      "title": "機械学習におけるデータの再現性について",
+      "id": 34,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Concurrency",
+      "speakers": [
+        "tell- k"
+      ],
+      "description": "Pythonにおける並行/非同期処理を広く浅くまとめて紹介します。並行/非同期処理を理解するためには色々なトピックに触れる必要がありなかなか理解するまでに時間がかかるケースがあると思います。本セッションでは並行/非同期処理に触れる際に頻出するトピックを\r\nPythonコード/ライブラリの話を交えながら、紹介していきます。\r\n",
+      "language": "ja",
+      "title": "Pythonをとりまく並行/非同期の話",
+      "id": 35,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Useful libraries",
+      "speakers": [
+        "Yuta Kashino"
+      ],
+      "description": "ディープニューラルネットで計算を行う，スケーラブルな確率的プログラミングライブラリEdwardの画期的な意義と使い方を本トークで紹介します．EdwardはTensorFlowの上に確率変数とベイズ推定を実装したPythonライブラリです．計算において確率的な情報を常に保持する確率的プログラミングライブラリですので，確率事象であるこの世の現象を合理的かつうまく計算することができます．",
+      "language": "ja",
+      "title": "ディープニューラルネット確率的プログラミングライブラリEdward",
+      "id": 36,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Best Practices/Patterns",
+      "speakers": [
+        "TakesxiSximada"
+      ],
+      "description": "1ファイルのスクリプトから、様々なフレームワークを利用したコード、様々なところでバグは発生します。それらのバグの解消を速やかに行えるように、デバッグのツールやノウハウが進化しています。デバッグ手法の意義について学び、また各種デバッグツールとその使い方を解説します。また実業務で発生する実際のデバッグしたい環境を想定したデバッグ手法の解説、デバッグに関する失敗談を解説します。",
+      "language": "ja",
+      "title": "Pythonにおけるデバッグ手法",
+      "id": 37,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Industry Uses",
+      "speakers": [
+        "yuzutas0"
+      ],
+      "description": "Python（JupyterNotebook）とBigQueryを用いたモニタリング基盤・データ分析基盤の開発・運用について話します。\r\n\r\n多様な部署・職種が関わる大企業において、どのような目的・用途・制約が与えられ、そのためにどのようなシステム・プロセスを採用したのか共有します。",
+      "language": "ja",
+      "title": "SREエンジニアがJupyter＋BigQueryでデータ分析基盤をDev＆Opsする話",
+      "id": 38,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Core Python (Language, Stdlib)",
+      "speakers": [
+        "Motohiro Ueki"
+      ],
+      "description": "pythonの言語仕様、標準ライブラリに対して新しい発見が得られます!!\r\n\r\n現在、機械学習、Web、データ分析など、様々な分野で活用されていますが、\r\nもともとのpythonの魅力は、「Batteries Included」と言われており、言語仕様や標準ライブラリの先進性が評価されていました。\r\n\r\nこのセッションは、言語仕様、標準ライブラリに対する3択形式のクイズに挑戦する参加型のセッションです。\r\n\r\nそして!! 勝者には素敵なプレゼントもあるよ!!",
+      "language": "ja",
+      "title": "クイズ・pythonミリオネア!!!",
+      "id": 39,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Cloud",
+      "speakers": [
+        "Satoru Kadowaki"
+      ],
+      "description": "PythonとMeCab+NEologdを使用した日本語形態素解析環境は様々な場面で広く利用されていますが，容量などサイズも比較的大きくなりがちで，サーバレス環境のような気軽な環境で動作させることは容易ではありません．本トークではAWSのサーバレスサービスであるLambdaを使用して日本語形態素解析環境をPython + MeCab/NEologd + AWS Lambdaで作成する際に有効なTipsを中心に紹介します．",
+      "language": "ja",
+      "title": "AWS APIGateway + Python Lambda + NEologdで作るサーバレス日本語形態素解析API",
+      "id": 40,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    },
+    {
+      "category": "Packaging",
+      "speakers": [
+        "Atsushi Odagiri"
+      ],
+      "description": "Pythonのパッケージング周辺技術やPEPアップデートの解説",
+      "language": "ja",
+      "title": "Pythonとパッケージングと私",
+      "id": 41,
+      "start": "12:00:00",
+      "end": "12:30:00",
+      "day": "2017-09-10"
+    }
+  ]
+}

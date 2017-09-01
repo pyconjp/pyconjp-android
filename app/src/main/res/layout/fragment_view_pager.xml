@@ -15,10 +15,10 @@
             android:layout_width="match_parent"
             android:elevation="@dimen/elevation"
             android:background="?attr/colorPrimary"
-            app:tabIndicatorColor="@color/colorMagenta"
+            app:tabIndicatorColor="@color/colorAccent"
             app:tabIndicatorHeight="3dp"
-            app:tabSelectedTextColor="@color/colorWhite"
-            app:tabTextColor="@color/colorLightBlue"/>
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@color/colorWhite"/>
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"

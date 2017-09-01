@@ -88,3 +88,5 @@ tags
 
 # Environment Variables
 environments
+conf
+production_env*
