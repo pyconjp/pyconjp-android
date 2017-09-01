@@ -134,7 +134,7 @@
     <string name="facebook_prefix">https://www.facebook.com/</string>
     <string name="speaker_image_prefix">https://pycon.jp</string>
     <string name="pyconjp_api_base_url">http://pycon.jp/2017/en/api/</string>
-    <string name="ghpage_base_url">https://pyconjp.github.io/pyconjp-android/en/</string>
+    <string name="ghpage_base_url">https://pyconjp.github.io/app-static-api/2017/en/</string>
     <string name="survey_url">https://docs.google.com/forms/d/e/1FAIpQLSefOgaVN8_cwUAcW-NmTaBNoNG8K47vursedtxkE_cbv_E37A/viewform?usp=send_form</string>
 
     <!-- contentDescriptions -->

@@ -10,8 +10,6 @@ import rx.Observable;
  */
 public interface GHPagesAPIClient {
 
-    String BASE_URL = "https://pyconjp.github.io/pyconjp-android/";
-
     @GET("keynotes.json")
     Observable<KeynoteListEntity> getKeynotes();
 
