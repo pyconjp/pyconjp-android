@@ -105,7 +105,7 @@
 
     <string name="open_space">オープンスペース</string>
     <string name="description_open_space">9/9 10:40 - 17:00 (3F Fルーム)\n\nオープンスペースは、参加者が自由に利用できるコーナーです。 発表やハンズオン、ミーティング、議論など様々に利用いただけます。</string>
-    <string name="url_open_space">https://pycon.jp/2017/ja/events/open-space/</string>
+    <string name="url_open_space">https://pycon.jp/2017/ja/events/openspace/</string>
 
     <string name="sprint">スプリント</string>
     <string name="description_sprint">9/10 10:30 - 18:00 (日本マイクロソフト株式会社)\n\nスプリントは、短期集中型のソフトウェア開発イベントです。開発したいテーマを提案する人と、そのテーマに興味を持った人が集まり、共通の興味をもった沢山の開発者の方と交流をする機会になります。</string>
