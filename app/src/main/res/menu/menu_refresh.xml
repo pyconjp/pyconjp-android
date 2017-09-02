@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="jp.pycon.pyconjp2016app.MainActivity">
+    tools:context="jp.pycon.pyconjp2017app.MainActivity">
     <item android:id="@+id/action_refresh"
         android:title="@string/action_refresh"
         android:orderInCategory="100"

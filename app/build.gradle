@@ -48,11 +48,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "jp.pycon.pyconjp2016app"
+        applicationId "jp.pycon.pyconjp2017app"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 7
-        versionName "1.3"
+        versionCode 0
+        versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

@@ -6,7 +6,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="jp.pycon.pyconjp2016app.Feature.About.AboutOrganizer.SubFragment.StaffListFragment">
+        tools:context="jp.pycon.pyconjp2017app.Feature.About.AboutOrganizer.SubFragment.StaffListFragment">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
