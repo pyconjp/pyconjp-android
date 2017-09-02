@@ -104,7 +104,7 @@
 
     <string name="open_space">Open Space</string>
     <string name="description_open_space">9/9 10:40 - 17:00 (3F Room F)\n\nOpen Spaces are a place that attendees can use freely to give presentations, hands-on teaching, meetings, discussions or anything else you can think of that fits the conference.</string>
-    <string name="url_open_space">https://pycon.jp/2017/en/events/open-space/</string>
+    <string name="url_open_space">https://pycon.jp/2017/en/events/openspace/</string>
 
     <string name="sprint">Development Sprints</string>
     <string name="description_sprint">9/10 10:30 - 18:00 (Microsoft Japan)\n\nSprint is the event for the short term and centralized software developments. Some people call it as Hack-a-thon or developing meet up.It is a great opportunity for those who are interested and passionate about the developments in a group.</string>
