@@ -85,7 +85,7 @@
 
     <string name="media_meeting">メディア会議</string>
     <string name="description_media_meeting">9/8 12:10 - 13:10 (2F 202)\n\nメディア会議は今年初めて開催する新しい企画です。企画の狙いは「エンジニアとメディア企業との交流の場を設け、新しいPythonの書籍などを生み出すきっかけをつくる」です。出版社編集者・書籍執筆者を招いて様々なテーマでディスカッションしていただきます。</string>
-    <string name="url_media_meeting">https://pycon.jp/2017/en/events/media-meeting/</string>
+    <string name="url_media_meeting">https://pycon.jp/2017/ja/events/media-meeting/</string>
 
     <string name="tutorial">チュートリアル</string>
     <string name="description_tutorial">9/7 10:00 - 18:00\n\n今年もカンファレンスの前日にPythonに関する有料のチュートリアルを開催します！内容は全て初心者向けで講師の他にチューターがつくのでしっかりと身につけられるようになっています。</string>
@@ -101,7 +101,7 @@
 
     <string name="community_booth">コミュニティブース</string>
     <string name="description_community_booth">9/8 12:00 - 13:30 (2F 201)\n9/9 12:00 - 13:30 (2F 201)\n\nコミュニティブースは、Pythonに関連したコミュニティと自由に交流できるコーナーです。</string>
-    <string name="url_community_booth">https://pycon.jp/2017/ja/events/community-booth/</string>
+    <string name="url_community_booth">https://pycon.jp/2017/ja/events/community/</string>
 
     <string name="open_space">オープンスペース</string>
     <string name="description_open_space">9/9 10:40 - 17:00 (3F Fルーム)\n\nオープンスペースは、参加者が自由に利用できるコーナーです。 発表やハンズオン、ミーティング、議論など様々に利用いただけます。</string>

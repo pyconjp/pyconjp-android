@@ -100,7 +100,7 @@
 
     <string name="community_booth">Community Booth</string>
     <string name="description_community_booth">9/8 12:00 - 13:30 (2F 201)\n9/9 12:00 - 13:30 (2F 201)\n\nCommunity booths are a space where you can learn about various communities related to Python and interact with their members.</string>
-    <string name="url_community_booth">https://pycon.jp/2017/en/events/community-booth/</string>
+    <string name="url_community_booth">https://pycon.jp/2017/en/events/community/</string>
 
     <string name="open_space">Open Space</string>
     <string name="description_open_space">9/9 10:40 - 17:00 (3F Room F)\n\nOpen Spaces are a place that attendees can use freely to give presentations, hands-on teaching, meetings, discussions or anything else you can think of that fits the conference.</string>
