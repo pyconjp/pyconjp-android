@@ -37,6 +37,8 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
     private Context mContext;
     private View view;
     private Realm realm;
+    // ゆるくキャッシュ管理する
+    private boolean hasTalks = false;
 
     public static TalksFragment newInstance() {
         return new TalksFragment();
@@ -76,7 +78,11 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
 
         if (id == R.id.action_refresh) {
             RealmUtil.deleteTalkList(mContext, realm);
-            getPyConJPTalks();
+            if (hasTalks) {
+                setupTalkList();
+            } else {
+                getPyConJPTalks();
+            }
             return true;
         }
 
@@ -111,6 +117,7 @@ public class TalksFragment extends Fragment implements ViewPager.OnPageChangeLis
                                @Override
                                public void onCompleted() {
                                    setupTalkList();
+                                   hasTalks = true;
                                }
 
                                @Override
