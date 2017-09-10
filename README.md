@@ -1,7 +1,7 @@
-# PyCon JP 2016 Official Android app
+# PyCon JP 2017 Official Android app
 
 [PyCon JP](http://www.pycon.jp/) is the conference where every Python users gather, interact, and exchange information about software written in Python and Python itself.  
-PyCon JP 2016 Official website is [here](https://pycon.jp/2016/).
+PyCon JP 2017 Official website is [here](https://pycon.jp/2017/).
 
 * Environment variables
   * FABRIC_APIKEY_RELEASE ([Crashlytics](https://fabric.io/kits/android/crashlytics))
